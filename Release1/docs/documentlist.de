@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/documentlist.de,v $
-    * $Revision: 1.2 $
-    * $Id: documentlist.de,v 1.2 2001/11/23 08:03:04 darkpact Exp $
+    * $Revision: 1.3 $
+    * $Id: documentlist.de,v 1.3 2001/12/06 15:55:24 hifix Exp $
     */
 
 $pagename = "Dokumente";
@@ -13,11 +13,17 @@ $show = "Zeige";
 $translate = "&Uuml;bersetzen";
 $translator = "&Uuml;bersetzer";
 $number = "Nr";
+$docinfos = "Doumentinformationen";
 $doctitle = "Titel";
+$description = "Beschreibung";
 $languagefrom = "Von";
 $languageto = "Nach";
+$language = "Sprache";
 $docdate = "Datum";
 $docauthor = "Autor";
 $docstatus = "Status";
-
+$statusopen = "Offen";
+$statuswork = "In Arbeit";
+$statusfinished = "Beendet";
+$download = "Herunterladen";
 ?>
