@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/documentlist.inc,v $
- * $Revision: 1.4 $
- * $Id: documentlist.inc,v 1.4 2001/12/10 22:09:00 darkpact Exp $
+ * $Revision: 1.5 $
+ * $Id: documentlist.inc,v 1.5 2001/12/16 22:55:49 hifix Exp $
  */
 
 include ("documentlist.de");
@@ -28,7 +28,7 @@ $docfinished = show_docs("finished");
     <? } else { ?>
     <tr>
     <? } ?>
-      <td><a href="document.php?otid=<?=$d->BaseID?>"><?=$d->Title?></a></td>
+      <td><a href="document.php?otid=<?=($d->BaseID)?$d->BaseID:$d->TextID?>"><?=$d->Title?></a></td>
       <td><?=$d->Language?></td>
       <td><?=$d->Date?></td>
       <td><?=show_name($d->AuthorID)?></td>
