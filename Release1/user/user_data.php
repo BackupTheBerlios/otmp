@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/user_data.php,v $
- * $Revision: 1.8 $
- * $Id: user_data.php,v 1.8 2001/12/15 00:07:48 alexgn Exp $
+ * $Revision: 1.9 $
+ * $Id: user_data.php,v 1.9 2001/12/16 13:14:33 alexgn Exp $
  *
  * To Do:
  * - Quelltext aufraeumen!
@@ -23,11 +23,18 @@ $tmp = get_user_info($session['username']);
 
 include("$CFG->templatedir/header.php");
 include("templates/user_data.inc");
-/* if user = uebersetzer */
-/* include user_dataUeb.inc */
-/* else include </table></center> */
-/* end if */
-include("templates/user_dataUeb.inc");
+
+/* check wether user has translator status */
+if( !isset($newtrans)) {
+$newtrans = 0;
+}
+if ($session['translator'] == 1 OR $newtrans == 1) {
+   include("templates/user_dataUeb.inc");
+} else {
+echo ("<tr><td>Klicken Sie <a href=\"user_data.php?newtrans=1\">hier</a> wenn Sie auch Texte &uuml;bersetzen wollen!</td></tr>\n");
+echo ("</table></center>\n");
+}
+
 include("$CFG->templatedir/footer.php");
 
 /******************************************************************************
@@ -40,6 +47,12 @@ function get_user_info($LoginName) {
   
 
 }
+
+function makeusertranslator($userid) {
+   
+   $session['translator'] = 1;
+}
+
 
 function getUserTransCapData($userid) {
 /* function returns users translation capabilities */
