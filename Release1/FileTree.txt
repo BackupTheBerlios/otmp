@@ -1,7 +1,10 @@
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/FileTree.txt,v $
-* $Revision: 1.9 $
-* $Id: FileTree.txt,v 1.9 2001/12/14 18:16:49 hifix Exp $
+* $Revision: 1.10 $
+* $Id: FileTree.txt,v 1.10 2001/12/16 22:22:18 hifix Exp $
 * $Log: FileTree.txt,v $
+* Revision 1.10  2001/12/16 22:22:18  hifix
+* added: task und upload files
+*
 * Revision 1.9  2001/12/14 18:16:49  hifix
 * added user/logout.php
 *
@@ -65,11 +68,11 @@ Legende
   forgot_passwdord.php    - Passwort vergessen
   logout.php              - User Logout
   *options.php            - Useroptionen einstellen
-  changetranscap.php    - Aendern der Uebersetzungsfaehigkeiten
-  changepassword.php    - Seite zum Passwort aendern
+  changetranscap.php      - Aendern der Uebersetzungsfaehigkeiten
+  changepassword.php      - Seite zum Passwort aendern
   changepersonaldata.php  - Aendern der personenbezogenen Daten
   changeuserprogdata.php  - Aendern der bekannten Programme
-  user_data.php     - Uebersicht ueber alle Nutzerdaten
+  user_data.php           - Uebersicht ueber alle Nutzerdaten
 
 /user/templates/
   forgot_password_form.inc   - Formular zum Password vergessen
@@ -80,11 +83,11 @@ Legende
   change_data_success.inc    - Allgemeine Seite fuer erfolgreiche Datenaenderung
   change_password_success.inc- Passwort Aenderung erfolgreich
   changepersonaldata.inc     - Formular zum Aendern der personenbezogenen Daten
-  changepassword.inc       - Formular zum Aendern des Passworts
-  changetranscap.inc       - Formular zum Aendern der Uebersetzerfaehigkeiten
+  changepassword.inc         - Formular zum Aendern des Passworts
+  changetranscap.inc         - Formular zum Aendern der Uebersetzerfaehigkeiten
   changeuserprogdata.inc     - Formular zum Aendern der dem User bekannte Programme
-  user_data.inc        - 2 Tabellen mit personenbezogenen Daten
-  user_dataUeb.inc       - 2 Tabellen mit Uebersetzerfaehigkeitsdaten und infos zu bekannten Programmen
+  user_data.inc              - 2 Tabellen mit personenbezogenen Daten
+  user_dataUeb.inc           - 2 Tabellen mit Uebersetzerfaehigkeitsdaten und infos zu bekannten Programmen
 
 
 /help/
@@ -100,7 +103,7 @@ Legende
   userdocuments.php       - Alle Dokumente eines Benutzers aufgeführt
   *download.php           - Dokument runterladen
   upload.php              - Dokument hochladen
-  *task.php               - Auftragseingabe
+  task.php                - Auftragseingabe
 
 /docs/templates
   documentlist.inc        - Liste aller Dokumente
@@ -110,7 +113,10 @@ Legende
   upload_data_form.inc    - Text upload Formular (Daten)
   upload_success.inc      - Text upload Erfolgreich
   *download_form.inc      - Text download Formular
-  *task_form.inc          - Auftragsformular
+  document_detials.inc    - Angaben zum Dokument (statische Infos)
+  document_langdetails.inc- Angaben zu Sprachen, Aufträgen zum Dokument
+  task_success.inc        - Auftragseingabe ok, nochmal (Form)
+  maketask_form.inc       - Formular zur Auftragserstellung
 
 /imgs/
 /imgs/flags/
