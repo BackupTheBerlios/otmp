@@ -1,8 +1,8 @@
 <? 
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/forgot_password_success.inc,v $
- * $Revision: 1.2 $
- * $Id: forgot_password_success.inc,v 1.2 2001/11/29 20:14:14 hifix Exp $
+ * $Revision: 1.3 $
+ * $Id: forgot_password_success.inc,v 1.3 2001/12/06 16:17:43 hifix Exp $
  *
  * Password vergessen Form
  *
@@ -13,6 +13,6 @@
 ?> 
 <p>
 Ihr neues Password wird in kürze per mail bei Ihnen eintreffen. Melden Sie sich mit diesem Passwort an und ändern Sie das Passwort dann bitte gleich. 
-<BR>
-Viel Spaß weiterhin bei OTMP.
+<br>
+<a href="<?=$CFG->wwwroot?>/main.php">Hier geht es zur Hauptseite</a>.
 </p>
