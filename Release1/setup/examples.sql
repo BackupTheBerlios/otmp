@@ -1,12 +1,15 @@
 #
 # Beispielsql für OTMP
-# $Id: examples.sql,v 1.9 2002/01/27 22:11:16 darkpact Exp $
-# $Revision: 1.9 $
+# $Id: examples.sql,v 1.10 2002/01/28 17:46:12 hifix Exp $
+# $Revision: 1.10 $
 #
 # ----------------------------------------------------------------------
 # Log for examples.sql
 # ----------------------------------------------------------------------
 # $Log: examples.sql,v $
+# Revision 1.10  2002/01/28 17:46:12  hifix
+# added types
+#
 # Revision 1.9  2002/01/27 22:11:16  darkpact
 # Änderungen vom So
 #
@@ -116,6 +119,18 @@ INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSor
 INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (42, 11, 'txt', '1');
 INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (43, 11, 'html', '3');
 INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (44, 12, 'doc', '2');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (45, 12, 'txt', '3');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (54, 12, 'rtf', '1');
+
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (46, 14, 'doc', '2');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (47, 14, 'txt', '3');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (55, 14, 'rtf', '1');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (48, 14, 'doc', '2');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (49, 15, 'txt', '1');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (50, 15, 'doc', '2');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (51, 15, 'txt', '1');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (52, 16, 'doc', '2');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (53, 16, 'txt', '1');
 
 #
 # Dumping data for table `otmp_Kategorie`
@@ -165,24 +180,24 @@ INSERT INTO otmp_Person (PersonPID, PersonKennung, PersonName, PersonVorname, Pe
 #
 
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (1, 'StarOffice', '5.2', '0', '60');
-INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (2, 'KOffice KWord', '', '0', '30');
-#INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (3, 'WordPerfect', '10', '0', '40');
+#INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (2, 'KOffice KWord', '', '0', '30');
+INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (3, 'WordPerfect', '10', '0', '40');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (4, 'WordPerfect Office', '2002', '0', '50');
 #INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (5, 'StarOffice', '5.2', '0', '60');
 #INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (6, 'KOffice KWord', '', '0', '30');
 #INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (7, 'WordPerfect', '10', '0', '40');
 #INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (8, 'WordPerfect Office', '2002', '0', '50');
-INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (9, 'Gnome Office AbiWord', '', '0', '70');
-INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (10, 'OpenOffice OpenWriter', '', '0', '80');
+#INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (9, 'Gnome Office AbiWord', '', '0', '70');
+#INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (10, 'OpenOffice OpenWriter', '', '0', '80');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (11, 'MS Word', '97', '0', '11');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (12, 'MS Word', '2000', '0', '10');
-INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (13, 'MS Excel', '97', '0', '21');
+#INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (13, 'MS Excel', '97', '0', '21');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (14, 'MS Excel', '2000', '0', '20');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (15, 'MS Word', '95', '0', '12');
 #INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (16, 'MS WinWord', '6.0', '0', '13');
 #INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (17, 'MS WinWord', '5.0', '0', '14');
-INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (18, 'MS Excel', '4.0', '0', '24');
-INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (19, 'MS Excel', '5.0', '0', '23');
+#INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (18, 'MS Excel', '4.0', '0', '24');
+#INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (19, 'MS Excel', '5.0', '0', '23');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (20, 'MS Excel', '95', '0', '22');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (21, 'WinZip', '', '1', '100');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (22, 'Stuff It!', '', '1', '110');
