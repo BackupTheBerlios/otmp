@@ -1,14 +1,14 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/documentlist.de,v $
-    * $Revision: 1.4 $
-    * $Id: documentlist.de,v 1.4 2001/12/06 22:38:34 darkpact Exp $
+    * $Revision: 1.5 $
+    * $Id: documentlist.de,v 1.5 2001/12/10 22:08:46 darkpact Exp $
     */
 
 $pagename = "Dokumente";                  // Name of the Page
 $opendocs = "Offene Aufträge";            // Title of all Open Tasks
 $workdocs = "Aufträge in Arbeit";         // Tasks in work
-$finisheddocs = "Restlichen Dokumente";   // Finished Tasks
-$alldocs = "Alle Dokumente und Aufträge"; // All Documents and Tasks
+$finisheddocs = "Fertige Aufträge";       // Finished Tasks
+$alldocs = "Alle Aufträge";               // All Tasks
 $show = "Zeige";                          // Show
 $translate = "&Uuml;bersetzen";           // to translate
 $translator = "&Uuml;bersetzer";          // Translator
@@ -26,4 +26,22 @@ $statusopen = "Offen";                    // Open
 $statuswork = "In Arbeit";                // In Work
 $statusfinished = "Beendet";              // Finished
 $download = "Herunterladen";              // Download
+$allready = "Alle Dokumente";             // All Documents
+$taketask = "Annehmen";                   // Take Task
+
+$headeropen     = "#FF6666";              // color scheme for open docs header
+$rowopen        = "#FFAAAA";              // color scheme for open docs rows
+$headerwork     = "#FFFF55";              // color scheme for work docs header
+$rowwork        = "#FFFF88";              // color scheme for work docs rows
+$headerfinished = "#55FF55";              // color scheme for finished docs header
+$rowfinished    = "#88FF88";              // color scheme for finished docs rows
+
+// Alternate Colors
+//$headeropen     = "#99FF66";
+//$rowopen        = "#BBFF88";
+//$headerwork     = "#DDDD77";
+//$rowwork        = "#DDDD99";
+//$headerfinished = "#FF8855";
+//$rowfinished    = "#FFAA77";
+
 ?>

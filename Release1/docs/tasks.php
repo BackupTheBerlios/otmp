@@ -1,8 +1,8 @@
 <?
 /*
- * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/userdocuments.php,v $
- * $Revision: 1.4 $
- * $Id: userdocuments.php,v 1.4 2001/12/10 22:08:46 darkpact Exp $
+ * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/Attic/tasks.php,v $
+ * $Revision: 1.1 $
+ * $Id: tasks.php,v 1.1 2001/12/10 22:08:46 darkpact Exp $
  *
  * To Do:
  * - Localisation
@@ -14,25 +14,26 @@
 
 include("../application.php");
 
-$DOC_TITLE = "All User Documents";
+$DOC_TITLE = "Tasks Info";
 
-setdefault($usrid,"1");
+setdefault($list,"all");
 
 include("$CFG->templatedir/header.php");
-include("templates/userdocuments.inc");
+include("templates/tasks.inc");
 include("$CFG->templatedir/footer.php");
 
 /******************************************************************************
  * FUNCTIONS
  *****************************************************************************/
 
-function show_docs($usrid) {
+function show_tasks($status) {
 /* ... */
-  return sql_getUserDocuments($usrid);
+  return sql_getAuftrag($status);
 }
 
 function show_name($id) {
 /* ... */
   return sql_getUserFromText($id);
 }
+
 ?>

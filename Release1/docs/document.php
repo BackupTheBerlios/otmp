@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/document.php,v $
- * $Revision: 1.3 $
- * $Id: document.php,v 1.3 2001/12/09 13:34:01 darkpact Exp $
+ * $Revision: 1.4 $
+ * $Id: document.php,v 1.4 2001/12/10 22:08:46 darkpact Exp $
  *
  * To Do:
  * - Localisation
@@ -29,6 +29,11 @@ include("$CFG->templatedir/footer.php");
 function show_docs($otid) {
 /* ... */
   return sql_getBaseDocuments($otid);
+}
+
+function show_name($id) {
+/* ... */
+  return sql_getUserFromText($id);
 }
 
 ?>
