@@ -3,8 +3,8 @@
  * Dokument Upload
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/upload.php,v $
- * $Revision: 1.7 $
- * $Id: upload.php,v 1.7 2002/01/30 01:42:58 hifix Exp $
+ * $Revision: 1.8 $
+ * $Id: upload.php,v 1.8 2002/03/12 09:34:15 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -121,8 +121,19 @@ function upload_file(&$frm) {
   // file anlegen/kopieren
   copy($frm['file']['tmp_name'],$CFG->uploadDir."/$textID.$ext");
   
+  //packer($textID.$ext);
   return $textID;
   
+}
+
+function packer($file) {
+  global $session, $CFG;
+  
+  $fp = popen ("/bin/gzip $file", "r");
+  pclose($fp);
+        
+   
+
 }
 
 ?>
