@@ -1,8 +1,8 @@
 <? 
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.8 $
- * $Id: sql.php,v 1.8 2001/12/06 16:16:45 hifix Exp $
+ * $Revision: 1.9 $
+ * $Id: sql.php,v 1.9 2001/12/07 23:55:12 alexgn Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -91,6 +91,7 @@ function sql_setUserpasswd($username, $passwd) {
 /* set new password for user with username */
   global $CFG;
   $qid = db_query("UPDATE $CFG->tbl_user SET PersonPassword = PASSWORD('$passwd') WHERE PersonKennung = '$username'");
+  return $qid;
 }
 
 function sql_updateUser($lastname, $firstname, $email,$userid) {
@@ -109,16 +110,73 @@ function sql_updateUser($lastname, $firstname, $email,$userid) {
 
 function sql_getUserProgrammData($userid) {
   global $CFG;
-  $qid = db_query("SELECT ProgrammName FROM $CFG->tbl_perhatprog WHERE PersonPID= '$userid'");
+  $result = NULL;
+  $qid = db_query("SELECT t1.ProgrammName, t1.ProgrammVersion FROM $CFG->tbl_programm AS t1, $CFG->tbl_perhatprog AS t2 WHERE t2.PerHatProgPID = '$userid' AND t2.PerHatProgPRGID = t1.ProgrammPRGID");
   $i = 0;
   while ($row = mysql_fetch_object ($qid)) {
-    $result[$i] = $row->ProgrammName;
-    $i = $i + 1;
-  }
+	$result[$i][0] = $row->ProgrammName;
+	$result[$i][1] = $row->ProgrammVersion;
+        $i = $i + 1;
+	} 
+  return $result;
+}
+
+function sql_getUserProgrammData2($userid) {
+  global $CFG;
+  $result = NULL;
+  $qid = db_query("SELECT PerHatProgPRGID FROM $CFG->tbl_perhatprog WHERE PerHatProgPID = '$userid'");
+  $i = 0;
+  while ($row = mysql_fetch_object ($qid)) {
+	$result[$i] = $row->PerHatProgPRGID;
+        $i = $i + 1;
+	} 
+  return $result;
+}
+
+function sql_deleteUserProgrammData($userid) {
+  global $CFG;
+  $qid = db_query("DELETE FROM $CFG->tbl_perhatprog WHERE PerHatProgPID = '$userid'");
+  return $qid; 
+}
+
+function sql_setUserProgrammData($v,$userid) {
+  global $CFG;
+  $query = "INSERT INTO $CFG->tbl_perhatprog
+            (PerHatProgPID, PerHatProgPRGID)
+            VALUES (
+            '$userid'
+            ,'$v'
+            )";
+  $qid = db_query($query);
+  return $qid;
+}
+
+/*                  */
+/********************/
+/* Programm Table   */
+/********************/
+/*                  */
+
+function sql_getProgramms() {
+/* Function returns all programms and their versions */
+ global $CFG;
+ $qid = db_query("SELECT * FROM $CFG->tbl_programm");
+ $i = 0;
+ while ($row = mysql_fetch_object($qid)) {
+	$result[$i][0] = $row->ProgrammPRGID;
+	$result[$i][1] = $row->ProgrammName;
+	$result[$i][2] = $row->ProgrammVersion;
+        $i = $i + 1;
+	}
  return $result;
 }
 
-/* UebersetzerVonSprache Table */
+
+/*                               */
+/*********************************/
+/* UebersetzerVonSprache Table   */
+/*********************************/
+/*                               */
 
 function sql_getUebersetzerVonSprache($userid) {
   global $CFG;
