@@ -1,8 +1,8 @@
-<? 
+<?
 /*
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/templates/header.php,v $
-* $Revision: 1.2 $
-* $Id: header.php,v 1.2 2001/11/29 19:01:00 hifix Exp $
+* $Revision: 1.3 $
+* $Id: header.php,v 1.3 2001/12/09 13:34:26 darkpact Exp $
 *
 *
 * ToDo:
@@ -21,13 +21,13 @@
 
 <body bgcolor="#FFFFFF" leftmargin="3" topmargin="1" marginwidth="1">
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
-  <tr bgcolor="#666666">
+  <tr bgcolor="#898989">
     <td><div align="right"><b><font color="#FFFFFF">
-    <? if ( isset($session['userid']) ){ ?> 
-        you are logged in as: <?=$session['username']?>
-    <? } else { ?> 
-        you are not logged in: <a href="<?=$CFG->wwwroot?>/user/login.php">login</a>
-    <? } ?> 
+    <? if ( isset($session['userid']) ){ ?>
+        Dein Status: Eingelogged als <?=$session['username']?>
+    <? } else { ?>
+        Dein Status: Du bist nicht eingelogged. <a href="<?=$CFG->wwwroot?>/user/login.php">Einloggen</a>
+    <? } ?>
     </font></b></div></td>
   </tr>
   <tr bgcolor="#CCCCCC">
@@ -38,7 +38,7 @@
   <tr>
     <td>
       <table border="0" width="100%" cellspacing="0" cellpadding="2"  bgcolor="#FFCC99">
-        <tr> 
+        <tr>
           <td colspan="5" class="notice">
             <div align="center"><? echo nvl($session['notice']); unset($session['notice']);?></div>
           </td>
