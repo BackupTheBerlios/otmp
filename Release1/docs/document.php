@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/document.php,v $
- * $Revision: 1.4 $
- * $Id: document.php,v 1.4 2001/12/10 22:08:46 darkpact Exp $
+ * $Revision: 1.5 $
+ * $Id: document.php,v 1.5 2001/12/14 19:21:15 hifix Exp $
  *
  * To Do:
  * - Localisation
@@ -19,6 +19,12 @@ $DOC_TITLE = "Document List";
 setdefault($otid,"1");
 
 include("$CFG->templatedir/header.php");
+
+// testing
+$id = $otid;
+include("templates/document_details.inc");
+echo "<hr>";
+
 include("templates/document.inc");
 include("$CFG->templatedir/footer.php");
 
