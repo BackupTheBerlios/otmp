@@ -1,8 +1,8 @@
 <? 
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.7 $
- * $Id: sql.php,v 1.7 2001/12/05 23:43:43 hifix Exp $
+ * $Revision: 1.8 $
+ * $Id: sql.php,v 1.8 2001/12/06 16:16:45 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -73,10 +73,10 @@ function sql_emailExists($email) {
 function sql_getUsername($email) {
 /* return the username based on an email address */
   global $CFG;
-  $qid = db_query("SELECT usrName FROM $CFG->tbl_user WHERE usrEmail = '$email'");
+  $qid = db_query("SELECT PersonKennung FROM $CFG->tbl_user WHERE PersonEmail = '$email'");
   $user = db_fetch_object($qid);
 
-  return $user->usrName;
+  return $user->PersonKennung;
 }
 
 function sql_getUserdataFromUsername($username) {
