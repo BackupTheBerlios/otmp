@@ -1,70 +1,60 @@
-<? /*
-    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/login.php,v $
-    * $Revision: 1.2 $
-    * $Id: login.php,v 1.2 2001/11/23 08:03:04 darkpact Exp $
-    */
-?>
-<!-- doc header -->
 <?
-$langs=isset($langs)?$langs:"us";
-include ("../all." . $langs);
-include ("login." . $langs);
-$loginname=isset($loginname)?$loginname:$notlogedin;
-$maindir = "../";
-include ("../otmpheader.php");
-?>
-<!-- doc header end -->
+/*
+ * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/login.php,v $
+ * $Revision: 1.3 $
+ * $Id: login.php,v 1.3 2001/11/24 16:13:21 hifix Exp $
+ */
+ 
+include "../application.php";
 
-<!-- doc body -->
-<p align="center"> Um Dich am System anzumelden, gib bitte Deinen Usernamen und Dein Passwort ein.</p>
-<form method="post" action="">
-  <div align="center">
-    <table border="0" cellspacing="0" cellpadding="4">
-      <tr>
-        <td align="center" valign="top">
-          <table cellspacing="0" cellpadding="1" bgcolor="#000000">
-            <tr>
-              <td>
-                <table cellspacing="0" cellpadding="6">
-                  <tr bgcolor="#FFFFFF">
-                    <td>username:</td>
-                    <td>
-                      <input type="text" name="username">
-                    </td>
-                  </tr>
-                  <tr bgcolor="#FFFFFF">
-                    <td>passwort:</td>
-                    <td>
-                      <input type="password" name="password">
-                    </td>
-                  </tr>
-                  <tr bgcolor="#FFFFFF" >
-                    <td colspan=2 align="center">
-                      <input type="submit" name="login" value="login">
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-        <td valign="top">
-          <p>Noch keinen Account?<br>
-            <a href="signup.php">Hier</a> kannst Du Dich anmelden.</p>
-          <p>Passwort vergessen? <a href="forgot_password.php"><br>
-            Hier</a> gibts Hilfe.</p>
-        </td>
-      </tr>
-    </table>
-  </div>
-</form>
-<!-- doc body end -->
+$DOC_TITLE = "Login";
 
-<!-- doc footer -->
-<?
-$userdir = "";
-$docsdir = "../docs/";
-$helpdir = "../help/";
-include ("../otmpfooter.php");
+if (isset($HTTP_POST_VARS) && $REQUEST_METHOD=="POST") {
+    $frm = $HTTP_POST_VARS;
+  /* form has been submitted, check if it the user login information is correct */
+  if (isset($frm['login'])) {
+
+    $user = verify_login($frm["username"], $frm["password"]);
+
+    /* set all user's sessionvariables */
+    if ($user) {
+       unset($session);
+       $session['username']   = $user['usrName'];
+       $session['userid']     = $user['usrID'];
+       $session['adminLevel'] = $user['usrAdminLevel'];
+    
+      /* if wantsurl is set, that means we came from a page that required
+       * log in, so let's go back there.  otherwise go back to the main page */
+      $goto = empty($session["wantsurl"]) ? "$CFG->wwwroot/" : $session["wantsurl"];
+      header("Location: $goto");
+      die;
+
+    } else {
+        $errormsg = "Invalid login, please try again";
+    } // endif user
+  } // endif frm[login]
+
+}
+
+include("$CFG->templatedir/header.php");
+if (!empty($errormsg)) { 
+ echo "<div class=warning align=center>$errormsg</div>";
+}
+include("templates/login_form.inc");
+  
+include("$CFG->templatedir/footer.php");
+
+
+/******************************************************************************
+ * FUNCTIONS
+ *****************************************************************************/
+
+function verify_login($username, $password) {
+/* verify the username and password.  if it is a valid login, return an array
+ * with the userdatas */
+
+  return sql_LoginGetUserdata($username, $password);
+}
+
+/******************************************************************************/
 ?>
-<!-- doc footer end -->
