@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.31 $
- * $Id: sql.php,v 1.31 2001/12/18 00:14:40 alexgn Exp $
+ * $Revision: 1.32 $
+ * $Id: sql.php,v 1.32 2001/12/18 11:52:21 ahlabadi Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -425,7 +425,7 @@ function sql_getDocuments4BaseID($id) {
       TextTitel       as title,
       SpracheName     as language,
       TextStatus      as status
-    FROM tbl_text
+    FROM $CFG->tbl_text
     LEFT JOIN $CFG->tbl_person ON PersonPID = TextAutor
     LEFT JOIN $CFG->tbl_sprache ON SpracheSID = TextSID
     WHERE ((TextOTID = $id) OR (TextTID = $id))
@@ -444,7 +444,7 @@ function sql_addNewText($title,$abstract,$length,$langID,$CategoryID,$filetypID,
  $status = $OriginalTextID==0?'finished':'open';
 
  $query = "
-    INSERT INTO `tbl_text`
+    INSERT INTO `$CFG->tbl_text`
     (`TextOTID`, `TextTitel`, `TextAbstract`, `TextLaenge`, `TextSID`, `TextKID`, `TextFID`, `TextAutor` , `TextStatus`, `TextDatum`)
     VALUES ('$OriginalTextID', '$title', '$abstract','$length', '$langID', '$CategoryID', '$filetypID', '$authorID', '$status', NOW())";
   $qid = db_query($query);
@@ -463,7 +463,7 @@ function sql_addNewTask($fromTextID,$toTextID,$userID,$frist='0000-00-00') {
 /* add a new Task for the given arguments, return generated TaskID*/
  
   $query = "
-    INSERT INTO tbl_auftrag (`AuftragOTID`, `AuftragNTID`, `AuftragDatum`, `AuftragNID`, `AuftragBisDatum`) 
+    INSERT INTO $CFG->tbl_auftrag (`AuftragOTID`, `AuftragNTID`, `AuftragDatum`, `AuftragNID`, `AuftragBisDatum`) 
     VALUES ('$fromTextID', '$toTextID', NOW(), '$userID', '$frist')
   ";
   $qid = db_query($query);
@@ -567,7 +567,7 @@ function sql_getAuftrag($status) {
 
 function sql_getUserFromText($usrid) {
 /* UserNamen zu den IDs holen */
-  $qid = db_query ("SELECT PersonKennung as Author FROM tbl_person WHERE PersonPID = $usrid");
+  $qid = db_query ("SELECT PersonKennung as Author FROM $CFG->tbl_person WHERE PersonPID = $usrid");
   $qname = db_fetch_object($qid);
   return $qname->Author;
 }
