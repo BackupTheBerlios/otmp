@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.20 $
- * $Id: sql.php,v 1.20 2001/12/13 21:25:21 hifix Exp $
+ * $Revision: 1.21 $
+ * $Id: sql.php,v 1.21 2001/12/14 09:34:03 darkpact Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -387,7 +387,7 @@ function sql_getBaseDocuments($otid) {
       TextTID          as TextID,
       TextTitel        as Title,
       TextAutor        as AuthorID,
-      DATE_FORMAT(TextDatum,'%e. %M %Y') as Date,
+      DATE_FORMAT(TextDatum,'%e.%b.%Y') as Date,
       SpracheName      as Language,
       TextAbstract     as Description,
       TextStatus       as Status
@@ -408,7 +408,7 @@ function sql_getUserDocuments($usrid) {
       TextOTID         as BaseID,
       TextTitel        as Title,
       TextAutor        as AuthorID,
-      DATE_FORMAT(TextDatum,'%e. %M %Y') as Date,
+      DATE_FORMAT(TextDatum,'%e.%b.%Y') as Date,
       SpracheName      as Language,
       TextAbstract     as Description,
       TextStatus       as Status
@@ -431,7 +431,7 @@ function sql_getDocuments($status) {
       TextOTID         as BaseID,
       TextTitel        as Title,
       TextAutor        as AuthorID,
-      DATE_FORMAT(TextDatum,'%e. %M %Y') as Date,
+      DATE_FORMAT(TextDatum,'%e.%b.%Y') as Date,
       SpracheName      as Language,
       TextAbstract     as Description,
       TextStatus       as Status
@@ -449,7 +449,7 @@ function sql_getAuftrag($status) {
   global $CFG;
   $out = array();
   $qid = db_query ("SELECT
-      DATE_FORMAT(a1.AuftragDatum,'%e. %M %Y') as Date,
+      DATE_FORMAT(a1.AuftragDatum,'%e.%b.%Y') as Date,
       d1.TextTitel     as Title,
       d1.TextOTID      as BaseID,
       s1.SpracheName   as FromLanguage,
@@ -474,5 +474,10 @@ function sql_getUserFromText($usrid) {
   $qname = db_fetch_object($qid);
   return $qname->Author;
 }
+
+/*********************************/
+/* Ende Dokument Seiten          */
+/*********************************/
+
 
 ?>
