@@ -1,0 +1,18 @@
+<? /*
+    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/Attic/all.de,v $
+    * $Revision: 1.1 $
+    * $Id: all.de,v 1.1 2001/11/22 20:00:46 darkpact Exp $
+    */
+
+$login = "Sie sind eingeloggt als: ";
+$notlogedin = "Nicht Eingeloggt";
+$mainpagename = "Hauptseite";
+$documentpagename = "Dokumente";
+$contactpagename = "Kontakt";
+$helppagename = "Hilfe";
+$loginpagename = "Einloggen";
+$languagepagename = "Sprache &Auml;ndern";
+$revision = "v1.0";
+$datum = "12-Dec-2001";
+
+?>

@@ -1,0 +1,18 @@
+<? /*
+    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/Attic/all.us,v $
+    * $Revision: 1.1 $
+    * $Id: all.us,v 1.1 2001/11/22 20:00:46 darkpact Exp $
+    */
+
+$login = "You are logged in as: ";
+$notlogedin = "Not logged in";
+$mainpagename = "Main";
+$documentpagename = "Documents";
+$contactpagename = "Contact";
+$helppagename = "Help";
+$loginpagename = "Login";
+$languagepagename = "Change Language";
+$revision = "v1.0";
+$datum = "12-Dec-2001";
+
+?>
