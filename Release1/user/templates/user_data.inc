@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/user_data.inc,v $
- * $Revision: 1.2 $
- * $Id: user_data.inc,v 1.2 2001/12/05 01:12:39 alexgn Exp $
+ * $Revision: 1.3 $
+ * $Id: user_data.inc,v 1.3 2001/12/07 23:58:25 alexgn Exp $
  *
  * Displays all of the users current data
  *
@@ -64,7 +64,7 @@ Hinweise zu den einzelnen Felder stehen rechts daneben.
    <table cellspacing="0" cellpadding="6" border="1"> 
       <td align="left" bgcolor="#CCCCCC" colspan="3"> 
         <b>Angaben f&uuml;r die Benutzung von OTMP</b>
-	&nbsp;<a href="">&auml;ndern</a>
+	&nbsp;<a href="changepassword.php">&auml;ndern</a>
       </td>
     </tr>
     <tr> 
@@ -92,96 +92,4 @@ Hinweise zu den einzelnen Felder stehen rechts daneben.
 <td height="15">
 </td>
 </tr>
-<tr>
-<td>
-   <table cellspacing="0" cellpadding="6" border="1">
-    <tr> 
-      <td align="left" bgcolor="#CCCCCC" colspan="3"> 
-        <b>Angaben von Textverarbeitungsprogrammen</b>
-        &nbsp;<a href="">&auml;ndern</a>
-      </td>
-    </tr>
-    <tr> 
-      <td align="right" bgcolor="#DDDDDD"><b>Ihre Programme</b></td>
-      <td> 
-        <?php
-		$tmp2 = sql_getUserProgrammData(111); # Es muss unbedingt die userid aus der 
-						      # Session genommen werden! Hier ist    
- 						      # userid = 111 richtig ist session['userid']
-		foreach($tmp2 as $v) {
-			echo ($v. "<br>");
-		}
-	?>
-      </td>
-      <td>
-        Dies sind die Programme, die Sie benutzen. Mit diesen Angaben, k&ouml;nnen Sie<br>
-        sich nur die Dokumente anzeigen lassen, die Sie auch lesen k&ouml;nnen.
-      </td>
-    </tr>
-   </table>
-</td>
-</tr>
-<tr>
-<td height="15">
-</td>
-</tr>
-<tr>
-<td> 
-  <table cellspacing="0" cellpadding="6" border="1">
-    <tr> 
-      <td align="left" bgcolor="#CCCCCC" colspan="3"> 
-        <b>Angaben zu &Uuml;bersetzerf&auml;higkeiten</b>
-        &nbsp;<a href="">&auml;ndern</a>
-      </td>
-    </tr>
-    <tr> 
-      <td align="left" colspan="3">Hier finden Sie Ihre Übersetzerfähigkeiten.</td>
-    </tr>
-    <tr>
-      <td align="center" bgcolor="#DDDDDD"> 
-        <b>Von</b>
-      </td>
-      <td align="center" bgcolor="#DDDDDD">
-        <b>Nach</b> 
-      </td>
-      <td align="center" bgcolor="#DDDDDD">
-        <b>Kategorien</b>
-      </td>
-    </tr>
-    <tr>
-      <td>
-	<?php
-		$tmp2 = sql_getUebersetzerVonSprache(111); # Es muss unbedingt die userid aus der 
-						          # Session genommen werden! Hier ist    
- 						          # userid = 111 richtig ist session['userid']
-		 foreach($tmp2 as $v) {
-			echo ($v. "<br>");
-		}
- 	?>
-      </td>
-      <td>
-	<?php
-		$tmp2 = sql_getUebersetzerNachSprache(111); # Es muss unbedingt die userid aus der 
-						            # Session genommen werden! Hier ist    
- 						            # userid = 111 richtig ist session['userid']
-		 foreach($tmp2 as $v) {
-			echo ($v. "<br>");
-		}
- 	?>
-      </td>
-      <td>
-	<?php
-		$tmp2 = sql_getUebersetzerKategorien(111); # Es muss unbedingt die userid aus der 
-						           # Session genommen werden! Hier ist    
- 						           # userid = 111 richtig ist session['userid']
-		 foreach($tmp2 as $v) {
-			echo ($v. "<br>");
-		}
-	?>
-      </td>
-    </tr>
-  </table>
-</td>
-</tr>
-</table>	
-</center>
+
