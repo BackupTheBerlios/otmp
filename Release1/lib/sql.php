@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.18 $
- * $Id: sql.php,v 1.18 2001/12/10 22:08:07 darkpact Exp $
+ * $Revision: 1.19 $
+ * $Id: sql.php,v 1.19 2001/12/12 21:51:01 ahlabadi Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -112,7 +112,7 @@ function sql_getUserProgrammData($userid) {
 /* returns ProgrammName and ProgrammVersion inside an array */
   global $CFG;
   $result = NULL;
-  $qid = db_query("SELECT t1.ProgrammName, t1.ProgrammVersion FROM $CFG->tbl_programm AS t1, $CFG->tbl_perhatprog AS t2 WHERE t2.PerProPID = '$userid' AND t2.PerProPRGID = t1.ProgrammPRGID");
+  $qid = db_query("SELECT t1.ProgrammName, t1.ProgrammVersion FROM $CFG->tbl_programm AS t1, $CFG->tbl_perhatprog AS t2 WHERE t2.PerProPID = '$userid' AND t2.PerProPRGID = t1.ProgrammPRGID ORDER BY t1.ProgrammSort");
   $i = 0;
   while ($row = mysql_fetch_object ($qid)) {
   $result[$i][0] = $row->ProgrammName;
@@ -163,7 +163,7 @@ function sql_getProgramms() {
 /* Function returns all programms and their versions */
  global $CFG;
  $result = NULL;
- $qid = db_query("SELECT * FROM $CFG->tbl_programm");
+ $qid = db_query("SELECT * FROM $CFG->tbl_programm ORDER BY ProgrammSort");
  $i = 0;
  while ($row = mysql_fetch_object($qid)) {
   $result[$i][0] = $row->ProgrammPRGID;
@@ -177,7 +177,7 @@ function sql_getProgramms() {
 function sql_SQL4PrgIdAndName($packer=0) {
 /* returns the Query for Selecting the ID and Name of all Programms/Packer in the Table */
   global $CFG;
-  return "SELECT ProgrammPRGID as id, CONCAT(ProgrammName, ' ',ProgrammVersion) as name FROM $CFG->tbl_programm WHERE ProgrammPacker='$packer'";
+  return "SELECT ProgrammPRGID as id, CONCAT(ProgrammName, ' ',ProgrammVersion) as name FROM $CFG->tbl_programm WHERE ProgrammPacker='$packer' ORDER BY ProgrammSort";
 }
 
 /*                               */
@@ -254,7 +254,7 @@ function sql_updateUebsetzerSprachen($valuestring,$userid) {
 
 function sql_getLangName($langkey) {
   global $CFG;
-  $qid = db_query("SELECT SpracheName FROM $CFG->tbl_sprache WHERE SpracheSID = '$langkey'");
+  $qid = db_query("SELECT SpracheName FROM $CFG->tbl_sprache WHERE SpracheSID = '$langkey' ORDER BY SpracheSort");
   $lang = db_fetch_object($qid);
 
 /* <<<<<<< sql.php */
@@ -267,7 +267,7 @@ function sql_getAllLangs() {
   $result = NULL;
   $i = 0;
 
-  $qid = db_query("SELECT SpracheSID, SpracheName FROM $CFG->tbl_sprache");
+  $qid = db_query("SELECT SpracheSID, SpracheName FROM $CFG->tbl_sprache ORDER BY SpracheSort");
 
   while ($row = mysql_fetch_object($qid)) {
         $result[$i][0] = $row->SpracheSID;
@@ -282,7 +282,7 @@ function sql_getAllLangs() {
 function sql_SQL4LangIdAndName() {
 /* returns the Query for Selecting the ID and Name of all Languages in the Table */
   global $CFG;
-  return "SELECT SpracheSID as id, SpracheName as name FROM $CFG->tbl_sprache";
+  return "SELECT SpracheSID as id, SpracheName as name FROM $CFG->tbl_sprache OREDER BY SpracheSort";
 /* >>>>>>> 1.15 */
 }
 
@@ -295,7 +295,7 @@ function sql_SQL4LangIdAndName() {
 function sql_getKatName($katkey) {
 /* function returns kategorie name for a given key */
   global $CFG;
-  $qid = db_query("SELECT KategorieName FROM $CFG->tbl_kategorie WHERE KategorieKID = '$katkey'");
+  $qid = db_query("SELECT KategorieName FROM $CFG->tbl_kategorie WHERE KategorieKID = '$katkey' ORDER BY KategorieSort ");
   $kat = db_fetch_object($qid);
 
   return $kat->KategorieName;
@@ -308,7 +308,7 @@ function sql_getAllCategories() {
   $result = NULL;
   $i = 0;
 
-  $qid = db_query("SELECT KategorieKID, KategorieName FROM $CFG->tbl_kategorie");
+  $qid = db_query("SELECT KategorieKID, KategorieName FROM $CFG->tbl_kategorie ORDER BY KategorieSort");
 
   while ($row = mysql_fetch_object($qid)) {
   $result[$i][0] = $row->KategorieKID;
@@ -321,8 +321,15 @@ function sql_getAllCategories() {
 function sql_SQL4KatNameAndID() {
 /* returns the Query for Selecting the ID and Name of all Kategories in the Table */
   global $CFG;
-  return "SELECT KategorieKID as id, KategorieName as name FROM $CFG->tbl_kategorie";
+  return "SELECT KategorieKID as id, KategorieName as name FROM $CFG->tbl_kategorie ORDER BY KategorieSort";
 }
+
+
+
+/*******************************/
+/* Text Table                  */
+/*******************************/
+
 
 function sql_getDocument($id) {
 /* Dokument mit id zurückgeben (alle "wichtigen" Felder)
@@ -470,3 +477,4 @@ function sql_getUserFromText($usrid) {
 }
 
 ?>
+
