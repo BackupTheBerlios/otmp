@@ -1,8 +1,8 @@
 <? 
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.4 $
- * $Id: sql.php,v 1.4 2001/12/04 21:29:04 alexgn Exp $
+ * $Revision: 1.5 $
+ * $Id: sql.php,v 1.5 2001/12/05 00:09:38 alexgn Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -26,7 +26,7 @@ function sql_LoginGetUserdata($username, $password) {
    return:  array(usrID, Name, AdminLevel) */
   global $CFG;
   $qid = db_query("
-    SELECT PersonPID as usrID, PersonName as Name, '0' as AdminLevel
+    SELECT PersonPID as usrID, LoginName as Name, '0' as AdminLevel
     FROM $CFG->tbl_user
     WHERE LoginName = '$username' AND PersonPassword = PASSWORD('$password')
   ");
