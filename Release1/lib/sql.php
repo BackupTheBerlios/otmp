@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.17 $
- * $Id: sql.php,v 1.17 2001/12/10 10:15:49 hifix Exp $
+ * $Revision: 1.18 $
+ * $Id: sql.php,v 1.18 2001/12/10 22:08:07 darkpact Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -177,7 +177,7 @@ function sql_getProgramms() {
 function sql_SQL4PrgIdAndName($packer=0) {
 /* returns the Query for Selecting the ID and Name of all Programms/Packer in the Table */
   global $CFG;
-  return "SELECT ProgrammPRGID as id, CONCAT(ProgrammName, ' ',ProgrammVersion) as name FROM $CFG->tbl_programm WHERE ProgrammPacker='$packer'"; 
+  return "SELECT ProgrammPRGID as id, CONCAT(ProgrammName, ' ',ProgrammVersion) as name FROM $CFG->tbl_programm WHERE ProgrammPacker='$packer'";
 }
 
 /*                               */
@@ -206,7 +206,7 @@ function sql_deleteMarkedTransData($frm,$userid) {
  $vonid = NULL;
  $nachid = NULL;
  global $CFG;
- 
+
  $repeats = count($frm);
  $i = 1;
 
@@ -217,15 +217,15 @@ function sql_deleteMarkedTransData($frm,$userid) {
           $vonid = $tmparray[0];
           $nachid = $tmparray[1];
           $katid = $tmparray[2];
- 
+
           $qid = db_query("DELETE FROM $CFG->tbl_uebsprach WHERE UebersetzerSprachenUEID = '$userid' AND
-	  	  UebersetzerSprachenVonSID = '$vonid' AND UebersetzerSprachenNachSID = '$nachid' AND
-		  UebersetzerSprachenKID = '$katid'");
+        UebersetzerSprachenVonSID = '$vonid' AND UebersetzerSprachenNachSID = '$nachid' AND
+      UebersetzerSprachenKID = '$katid'");
           $i = $i + 1;
        }
-    }  
+    }
   }
-  return 1; 
+  return 1;
 }
 
 function sql_updateUebsetzerSprachen($valuestring,$userid) {
@@ -233,15 +233,15 @@ function sql_updateUebsetzerSprachen($valuestring,$userid) {
  $vonid = NULL;
  $nachid = NULL;
  global $CFG;
- 
+
  $tmparray = explode(":",$valuestring);
  $vonid = $tmparray[0];
  $nachid = $tmparray[1];
  $katid = $tmparray[2];
- 
+
  $qid = db_query("INSERT INTO $CFG->tbl_uebsprach (UebersetzerSprachenUEID, UebersetzerSprachenVonSID,
-		 UebersetzerSprachenNachSID, UebersetzerSprachenKID, UebersetzerSprachenAuto)
-		VALUES ('$userid','$vonid','$nachid','$katid','0')");
+     UebersetzerSprachenNachSID, UebersetzerSprachenKID, UebersetzerSprachenAuto)
+    VALUES ('$userid','$vonid','$nachid','$katid','0')");
 
   return 1;
 }
@@ -258,7 +258,7 @@ function sql_getLangName($langkey) {
   $lang = db_fetch_object($qid);
 
 /* <<<<<<< sql.php */
-  return $lang->SpracheName; 
+  return $lang->SpracheName;
 }
 
 function sql_getAllLangs() {
@@ -268,11 +268,11 @@ function sql_getAllLangs() {
   $i = 0;
 
   $qid = db_query("SELECT SpracheSID, SpracheName FROM $CFG->tbl_sprache");
-  
+
   while ($row = mysql_fetch_object($qid)) {
         $result[$i][0] = $row->SpracheSID;
-	$result[$i][1] = $row->SpracheName;
-	$i = $i + 1; 
+  $result[$i][1] = $row->SpracheName;
+  $i = $i + 1;
   }
   return $result;
 /* ======= */
@@ -309,11 +309,11 @@ function sql_getAllCategories() {
   $i = 0;
 
   $qid = db_query("SELECT KategorieKID, KategorieName FROM $CFG->tbl_kategorie");
-  
+
   while ($row = mysql_fetch_object($qid)) {
-	$result[$i][0] = $row->KategorieKID;
-	$result[$i][1] = $row->KategorieName;
-	$i = $i + 1; 
+  $result[$i][0] = $row->KategorieKID;
+  $result[$i][1] = $row->KategorieName;
+  $i = $i + 1;
   }
   return $result;
 }
@@ -324,85 +324,8 @@ function sql_SQL4KatNameAndID() {
   return "SELECT KategorieKID as id, KategorieName as name FROM $CFG->tbl_kategorie";
 }
 
-/*                               */
-/*********************************/
-/* Dokument Seiten               */
-/*********************************/
-/*                               */
-
-function sql_getBaseDocuments($otid) {
-/* Alle Dokumente im System, welche eine BaseID haben */
-  global $CFG;
-  $out = array();
-  $qid = db_query ("SELECT
-      TextTID         as TextID,
-      TextTitel       as Titel,
-      PersonName      as Author,
-      SpracheName     as Sprache,
-      TextAbstract    as Description,
-      TextStatus      as Status
-    FROM otmp_Text, otmp_Person, otmp_Sprache
-    WHERE TextOTID = $otid AND
-      TextSID = SpracheSID AND
-      TextAutor = PersonPID");
-   while( $r = db_fetch_object($qid) ) {
-     array_push($out,$r);
-   }
-  return $out;
-}
-
-function sql_getUserDocuments($usrid) {
-/* Alle Dokumente im System, welche eine UserID haben */
-  global $CFG;
-  $out = array();
-  $qid = db_query ("SELECT
-      TextOTID        as BaseID,
-      TextTitel       as Titel,
-      PersonName      as Author,
-      SpracheName     as Sprache,
-      TextAbstract    as Description,
-      TextStatus      as Status
-    FROM otmp_Text, otmp_Person, otmp_Sprache
-    WHERE PersonPID = $usrid AND
-      TextSID = SpracheSID AND
-      TextAutor = $usrid");
-   while( $r = db_fetch_object($qid) ) {
-     array_push($out,$r);
-   }
-  return $out;
-}
-
-function sql_getAuftrag($status) {
-/* Alle Aufträge mit $status aus dem System holen */
-  global $CFG;
-  $out = array();
-  $qid = db_query ("SELECT
-      AuftragDatum    as Date,
-      AuftragStatus   as Status,
-      d1.TextTitel    as Title,
-      d1.TextOTID     as BaseID,
-      s1.SpracheName  as FromLanguage,
-      d1.TextStatus   as FromDocStatus,
-      p1.PersonName   as Author,
-      s2.SpracheName  as ToLanguage,
-      d2.TextStatus   as ToDocStatus,
-      p2.PersonName   as Translator
-    FROM otmp_Auftrag, otmp_Text as d1, otmp_Text as d2, otmp_Person as p1, otmp_Person as p2, otmp_Sprache as s1, otmp_Sprache as s2
-    WHERE d1.TextTID = AuftragOTID AND
-          d2.TextTID = AuftragNTID AND
-          d2.TextStatus = '$status' AND
-          s1.SpracheSID = d1.TextSID AND
-          s2.SpracheSID = d2.TextSID AND
-          p1.PersonPID = d1.TextAutor AND
-          p2.PersonPID = d2.TextAutor");
-   while( $r = db_fetch_object($qid) ) {
-     array_push($out,$r);
-   }
-  return $out;
-}
-
 function sql_getDocument($id) {
-/* Dokument mit id zurückgeben (alle "wichtigen" Felder) 
+/* Dokument mit id zurückgeben (alle "wichtigen" Felder)
  * returns: Object
  */
   global $CFG;
@@ -419,29 +342,131 @@ function sql_getDocument($id) {
     FROM otmp_Text
     LEFT JOIN otmp_Person ON PersonPID = TextAutor
     LEFT JOIN otmp_Sprache ON SpracheSID = TextSID
-    WHERE TextTID = $id 
+    WHERE TextTID = $id
     ");
    $out = db_fetch_object($qid);
   return $out;
 }
 
 function sql_addNewText($title,$abstract,$length,$langID,$CategoryID,$filetypID,$authorID,$OriginalTextID=0) {
-/* add a new Text, return generated textID or 0 if an error occured 
+/* add a new Text, return generated textID or 0 if an error occured
  * if $OriginalTextID == 0, this is an brandNew Text with Status=finished, otherwise Status set to open
  */
  $status = $OriginalTextID==0?'finished':'open';
- 
+
  $query = "
-    INSERT INTO `otmp_Text` 
-    (`TextOTID`, `TextTitel`, `TextAbstract`, `TextLaenge`, `TextSID`, `TextKID`, `TextFID`, `TextAutor` , `TextStatus`, `TextDatum`) 
-    VALUES ('$OriginalTextID', '$title', '$abstract','$length', '$langID', '$CategoryID', '$filetypID', '$authorID', '$status', NOW())"; 
+    INSERT INTO `otmp_Text`
+    (`TextOTID`, `TextTitel`, `TextAbstract`, `TextLaenge`, `TextSID`, `TextKID`, `TextFID`, `TextAutor` , `TextStatus`, `TextDatum`)
+    VALUES ('$OriginalTextID', '$title', '$abstract','$length', '$langID', '$CategoryID', '$filetypID', '$authorID', '$status', NOW())";
   $qid = db_query($query);
   if(!$qid) {
     $session['notice'] = "Ein interner Fehler ist aufgetreten. Versuchen Sie es bitte nochmals<br>";
-    return 0;  
+    return 0;
   }
   return db_insert_id();
 }
 /* >>>>>>> 1.15 */
+
+/*                               */
+/*********************************/
+/* Dokument Seiten               */
+/*********************************/
+/*                               */
+
+function sql_getBaseDocuments($otid) {
+/* Alle Dokumente im System, welche eine BaseID haben */
+  global $CFG;
+  $out = array();
+  $qid = db_query ("SELECT
+      TextTID          as TextID,
+      TextTitel        as Title,
+      TextAutor        as AuthorID,
+      DATE_FORMAT(TextDatum,'%e. %M %Y') as Date,
+      SpracheName      as Language,
+      TextAbstract     as Description,
+      TextStatus       as Status
+    FROM otmp_Text, otmp_Sprache
+    WHERE ((TextOTID = $otid) OR (TextTID = $otid))
+      AND TextSID = SpracheSID");
+   while( $r = db_fetch_object($qid) ) {
+     array_push($out,$r);
+   }
+  return $out;
+}
+
+function sql_getUserDocuments($usrid) {
+/* Alle Dokumente im System, welche eine UserID haben */
+  global $CFG;
+  $out = array();
+  $qid = db_query ("SELECT
+      TextOTID         as BaseID,
+      TextTitel        as Title,
+      TextAutor        as AuthorID,
+      DATE_FORMAT(TextDatum,'%e. %M %Y') as Date,
+      SpracheName      as Language,
+      TextAbstract     as Description,
+      TextStatus       as Status
+    FROM otmp_Text, otmp_Sprache, otmp_Person
+    WHERE PersonPID = $usrid
+      AND TextSID = SpracheSID
+      AND TextAutor = $usrid");
+  while( $r = db_fetch_object($qid) ) {
+    array_push($out,$r);
+  }
+  return $out;
+}
+
+function sql_getDocuments($status) {
+/* Alle fertigen Dokumente aus dem System holen */
+  global $CFG;
+  $out = array();
+  $qid = db_query ("SELECT
+      TextTID          as TextID,
+      TextOTID         as BaseID,
+      TextTitel        as Title,
+      TextAutor        as AuthorID,
+      DATE_FORMAT(TextDatum,'%e. %M %Y') as Date,
+      SpracheName      as Language,
+      TextAbstract     as Description,
+      TextStatus       as Status
+    FROM otmp_Text, otmp_Sprache
+    WHERE TextStatus = '$status'
+      AND TextSID = SpracheSID");
+  while( $r = db_fetch_object($qid) ) {
+    array_push($out,$r);
+  }
+  return $out;
+}
+
+function sql_getAuftrag($status) {
+/* Alle Aufträge mit $status aus dem System holen */
+  global $CFG;
+  $out = array();
+  $qid = db_query ("SELECT
+      DATE_FORMAT(a1.AuftragDatum,'%e. %M %Y') as Date,
+      d1.TextTitel     as Title,
+      d1.TextOTID      as BaseID,
+      s1.SpracheName   as FromLanguage,
+      d1.TextAutor     as AuthorID,
+      s2.SpracheName   as ToLanguage,
+      d2.TextAutor     as TranslatorID
+    FROM otmp_Auftrag  as a1, otmp_Text as d1, otmp_Text as d2, otmp_Sprache as s1, otmp_Sprache as s2
+    WHERE d1.TextTID = a1.AuftragOTID
+      AND d2.TextTID = a1.AuftragNTID
+      AND d2.TextStatus = '$status'
+      AND s1.SpracheSID = d1.TextSID
+      AND s2.SpracheSID = d2.TextSID");
+  while( $r = db_fetch_object($qid) ) {
+    array_push($out,$r);
+  }
+  return $out;
+}
+
+function sql_getUserFromText($usrid) {
+/* UserNamen zu den IDs holen */
+  $qid = db_query ("SELECT PersonKennung as Author FROM otmp_Person WHERE PersonPID = $usrid");
+  $qname = db_fetch_object($qid);
+  return $qname->Author;
+}
 
 ?>
