@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.14 $
- * $Id: sql.php,v 1.14 2001/12/09 21:10:23 hifix Exp $
+ * $Revision: 1.15 $
+ * $Id: sql.php,v 1.15 2001/12/09 21:14:52 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -326,8 +326,8 @@ function sql_addNewText($title,$abstract,$length,$langID,$CategoryID,$filetypID,
  
  $query = "
     INSERT INTO `otmp_Text` 
-    (`TextOTID`, `TextTitel`, `TextAbstract`, `TextLaenge`, `TextSID`, `TextKID`, `TextFID`, `TextAutor` , `TextStatus`) 
-    VALUES ('$OriginalTextID', '$title', '$abstract','$length', '$langID', '$CategoryID', '$filetypID', '$authorID', '$status')"; 
+    (`TextOTID`, `TextTitel`, `TextAbstract`, `TextLaenge`, `TextSID`, `TextKID`, `TextFID`, `TextAutor` , `TextStatus`, `TextDatum`) 
+    VALUES ('$OriginalTextID', '$title', '$abstract','$length', '$langID', '$CategoryID', '$filetypID', '$authorID', '$status', NOW())"; 
   $qid = db_query($query);
   if(!$qid) {
     $session['notice'] = "Ein interner Fehler ist aufgetreten. Versuchen Sie es bitte nochmals<br>";
