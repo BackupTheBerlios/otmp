@@ -3,14 +3,14 @@
  * Show Dokument Info
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/document_details.inc,v $
- * $Revision: 1.4 $
- * $Id: document_details.inc,v 1.4 2001/12/18 23:29:22 hifix Exp $
+ * $Revision: 1.5 $
+ * $Id: document_details.inc,v 1.5 2002/01/27 22:12:37 darkpact Exp $
  *
  * To Do:
  * - LOcalisation
  *
  * Variables:
- * id   - DokumentID to Show
+ * id   - DokumentID to Show (this should be the otid ??!)
  */
 
 $d = getDocumentDetails($id);
@@ -41,6 +41,10 @@ $d = getDocumentDetails($id);
   <tr>
     <td><b>erstellt von:</b></td>
     <td><?=ov($d->author)?> (<?=$d->date?>)</td>
+  </tr>
+  <tr>
+    <td><br></td>
+    <td><a href="<?=$CFG->wwwroot?>/docs/download.php?id=<?=$id?>">download</a></td>
   </tr>
 </table>
 <!-- END Details -->

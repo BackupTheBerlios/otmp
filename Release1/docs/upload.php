@@ -3,8 +3,8 @@
  * Dokument Upload
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/upload.php,v $
- * $Revision: 1.5 $
- * $Id: upload.php,v 1.5 2002/01/27 10:25:23 hifix Exp $
+ * $Revision: 1.6 $
+ * $Id: upload.php,v 1.6 2002/01/27 22:12:50 darkpact Exp $
  *
  * To Do:
  * - LOcalisation
@@ -29,7 +29,7 @@ if (match_referer() && isset($HTTP_POST_VARS)) {
   $frm['file'] = nvl($HTTP_POST_FILES['file']);
   $errormsg = validate_form($frm, $errors);
   
-  print_r($frm);
+  //print_r($frm);
   if (empty($errormsg)) {
     $id = upload_file($frm);
     unset($errors);
@@ -85,11 +85,25 @@ function validate_form(&$frm, &$errors) {
 	  if (!isset($frm['file'])) {
 		$errors->file = true;
 		$msg .= "<li>Sie haben keine Datei angegeben/ausgew&auml;hlt";
+		
 	  } elseif(is_uploaded_file($frm['file']['tmp_name'])) {
 		// file checken
 		if(preg_match("/\.(\w{2,4})$/",$frm['file']['name'],$parts)){
 		  /* extension given */
 		  $frm['file']['ext'] = $parts[1];
+		  // extension is valid ?
+		  $fileID = getFileID4ext( $frm['filetyp'],$frm['file']['ext'] );
+		  if( !$fileID ) {
+		   	$errors->file = true;
+			$msg .= "<li>Fehler beim Hochladen der Datei! Die Dateierweiterung ist nicht g&uuml;ltig f&uuml;r das gew&auml;hlte Programm!";
+		  } else {
+		  	$frm['file']['fileID'] = $fileID;
+		  	//mydebug($frm);
+		  	//die;
+		  }
+		} else {
+			$errors->file = true;
+			$msg .= "<li>Fehler im Dateinamen! Es ist eine Datei ohne Dateierweiterung (z.B. .doc, .txt) ausgw&auml;t worden, w&auml;len Sie eine andere Datei!<br>F&uuml;r weitere Hilfe, lesen sie bitte auf den Hilfeseiten nach.";
 		}
 	  } else { // hacking ?!
 		$errors->file = true;
@@ -102,27 +116,30 @@ function validate_form(&$frm, &$errors) {
 
 function upload_file(&$frm) {
   global $session, $CFG;      
-  $ext=''; // fileextension for savefile
-  // FileTypID bestimmen
-  if(isset($frm['file']['ext'])) {
-    $qid = db_query("
-    	SELECT FiletypeFID FROM otmp_Filetype 
-    	WHERE FiletypePRGID = $frm[filetyp] 
-    	  AND FiletypeType like '".$frm['file']['ext']."'
-    	");
-   	$filetypeID = db_fetch_array($qid);
-   	if(!isset($filetypeID)) {
-   	  // errorhandling for unknown fileExtension for given Programm here ...
-   	}
-   	$ext = ".".$frm['file']['ext'];
-  }
+  $ext=$frm['file']['ext']; // fileextension for savefile
+
   // neuen Text anlegen
-  $textID = sql_addNewText($frm['title'],nvl($frm['abstract']),nvl($frm['length'],0),$frm['lang'],nvl($frm['cat'],0),nvl($filetypeID,0),$session['userid']);
+  $textID = sql_addNewText($frm['title'],nvl($frm['abstract']),nvl($frm['length'],0),$frm['lang'],nvl($frm['cat'],0),$frm['file']['fileID'],$session['userid']);
   // file anlegen/kopieren
-  copy($frm['file']['tmp_name'],$CFG->uploadDir."/".$textID.$ext);
+  copy($frm['file']['tmp_name'],$CFG->uploadDir."/$textID.$ext");
   
   return $textID;
   
 }
 
+function getFileID4ext($prgID,$ext) {
+  /* returns */
+  // FileTypID bestimmen
+    $qid = db_query("
+    	SELECT FiletypeFID FROM otmp_Filetype 
+    	WHERE FiletypePRGID = $prgID
+    	  AND FiletypeType like '".$ext."'
+    	");
+   	list($filetypeID) = db_fetch_array($qid);
+   	if(!isset($filetypeID)) {
+   	  // errorhandling for unknown fileExtension for given Programm here ...
+   	  return 0;
+   	}
+    return $filetypeID;
+}
 ?>

@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/otmplib.php,v $
- * $Revision: 1.4 $
- * $Id: otmplib.php,v 1.4 2001/12/14 19:22:43 hifix Exp $
+ * $Revision: 1.5 $
+ * $Id: otmplib.php,v 1.5 2002/01/27 22:12:14 darkpact Exp $
  * 
  */
  
@@ -102,8 +102,10 @@ function err(&$errorvar) {
   }
 }
 
-function mydebug($txt) {
-  echo "<h5>$txt</h5>\n";
+function mydebug(&$var) {
+  echo "<hr><pre>\n";
+  print_r($var);
+  echo "</pre>\n<hr>";
 }
 
 

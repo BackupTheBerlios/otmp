@@ -3,8 +3,8 @@
  * Task (make)
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/task.php,v $
- * $Revision: 1.3 $
- * $Id: task.php,v 1.3 2001/12/18 23:29:22 hifix Exp $
+ * $Revision: 1.4 $
+ * $Id: task.php,v 1.4 2002/01/27 22:12:50 darkpact Exp $
  *
  * To Do:
  * - LOcalisation
@@ -21,13 +21,11 @@ checklogin();
 /* form has been submitted, try to create the new user account */
 if (isset($HTTP_POST_VARS)) {
   $frm = $HTTP_POST_VARS;
-  
   // yes / no Button abfangen
   if (isset($frm['no'])) {
-    $session['notice'] = "Übersetzungsaufträge im System gespeichert";
-    /* if wantsurl is set, that means we came from a page that required
-     * log in, so let's go back there.  otherwise go back to the main page */
-    $goto = empty($session["wantsurl"]) ? "$CFG->wwwroot/main.php" : $session["wantsurl"];
+    $session['notice'] = "&Uuml;bersetzungsaufträge im System gespeichert";
+    
+    $goto = "$CFG->wwwroot/docs/document.php?otid=$frm[textID]";
     header("Location: $goto");
     die;
   }
@@ -74,7 +72,7 @@ function validate_form(&$frm, &$errors) {
   
   if (empty($frm["lang"])) {
     $errors->lang = true;
-    $msg .= "<li>Sie haben die Sprache für den Text nicht angegeben";
+    $msg .= "<li>Sie haben die Sprache f&uuml;r den Text nicht angegeben";
   }
   
   return $msg;

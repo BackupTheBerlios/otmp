@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/document.inc,v $
- * $Revision: 1.6 $
- * $Id: document.inc,v 1.6 2001/12/18 23:29:22 hifix Exp $
+ * $Revision: 1.7 $
+ * $Id: document.inc,v 1.7 2002/01/27 22:12:37 darkpact Exp $
  */
 
 $docs = show_docs($otid);
@@ -67,14 +67,17 @@ include ("documentlist.de");
 <? $i=0; foreach ($docs as $d) { if ($i>0) {
     if ($d->Status=="open") { $mystatus = $statusopen; ?>
     <tr bgcolor=<?=$rowopen?>>
+      <td><?=$d->Title?></td>
     <? } elseif ($d->Status=="work") { $mystatus = $statuswork ?>
     <tr bgcolor=<?=$rowwork?>>
+      <td><?=$d->Title?></td>
     <? } elseif ($d->Status=="finished") { $mystatus = $statusfinished ?>
     <tr bgcolor=<?=$rowfinished?>>
+      <td><a href="download.php?id=<?=$d->TextID?>"><?=$d->Title?></a></td>
     <? } else { ?>
     <tr>
+      <td><?=$d->Title?></td>
     <? } ?>
-      <td><a href="download.php?id=<?=$d->TextID?>"><?=$d->Title?></a></td>
       <td><?=$d->Language?></td>
       <td><?=$d->Date?></td>
       <td><? if ($d->Status=="open") {?><input type="submit" name="taketask" value="<?=$taketask?>" class="tbl_btn"><? } else { ?><?=show_name($d->AuthorID)?><? } ?></td>

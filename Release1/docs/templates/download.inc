@@ -3,8 +3,8 @@
  * Show Dokument Info
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/download.inc,v $
- * $Revision: 1.3 $
- * $Id: download.inc,v 1.3 2001/12/18 23:29:22 hifix Exp $
+ * $Revision: 1.4 $
+ * $Id: download.inc,v 1.4 2002/01/27 22:12:37 darkpact Exp $
  *
  * To Do:
  * - LOcalisation
@@ -16,7 +16,8 @@
 $d = getDocumentDetails($id);
 ?>
 <h2>Text download</h2>
-<form method="post" action="">
+<form method="post" action="<?=$CFG->wwwroot?>/docs/download.php">
+  <input type="hidden" name="textID" value="<?=$id?>">
   <table width="100%" cellspacing="1" cellpadding="2">
     <tr> 
       <td>runterzuladener Text:</td>

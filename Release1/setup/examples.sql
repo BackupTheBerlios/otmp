@@ -1,12 +1,15 @@
 #
 # Beispielsql für OTMP
-# $Id: examples.sql,v 1.8 2001/12/18 23:29:22 hifix Exp $
-# $Revision: 1.8 $
+# $Id: examples.sql,v 1.9 2002/01/27 22:11:16 darkpact Exp $
+# $Revision: 1.9 $
 #
 # ----------------------------------------------------------------------
 # Log for examples.sql
 # ----------------------------------------------------------------------
 # $Log: examples.sql,v $
+# Revision 1.9  2002/01/27 22:11:16  darkpact
+# Änderungen vom So
+#
 # Revision 1.8  2001/12/18 23:29:22  hifix
 # sorry, major modifications for relase1
 #
@@ -108,6 +111,11 @@ INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSor
 INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (37, 10, 'xls', '4');
 INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (38, 10, 'txt', '1');
 INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (39, 10, 'html', '3');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (40, 11, 'doc', '2');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (41, 11, 'xls', '4');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (42, 11, 'txt', '1');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (43, 11, 'html', '3');
+INSERT INTO otmp_Filetype (FiletypeFID, FiletypePRGID, FiletypeType, FiletypeSort) VALUES (44, 12, 'doc', '2');
 
 #
 # Dumping data for table `otmp_Kategorie`
