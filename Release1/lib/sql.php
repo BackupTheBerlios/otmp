@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.11 $
- * $Id: sql.php,v 1.11 2001/12/09 13:34:53 darkpact Exp $
+ * $Revision: 1.12 $
+ * $Id: sql.php,v 1.12 2001/12/09 21:01:38 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -174,6 +174,12 @@ function sql_getProgramms() {
  return $result;
 }
 
+function sql_SQL4PrgIdAndName($packer=0) {
+/* returns the Query for Selecting the ID and Name of all Programms/Packer in the Table */
+  global $CFG;
+  return "SELECT ProgrammPRGID as id, CONCAT(ProgrammName, ' ',ProgrammVersion) as name FROM $CFG->tbl_programm WHERE ProgrammPacker='$packer'"; 
+}
+
 /*                               */
 /*********************************/
 /* UebersetzerSprachen Table   */
@@ -221,6 +227,12 @@ function sql_getKatName($katkey) {
   $kat = db_fetch_object($qid);
 
   return $kat->KategorieName;
+}
+
+function sql_SQL4KatNameAndID() {
+/* returns the Query for Selecting the ID and Name of all Kategories in the Table */
+  global $CFG;
+  return "SELECT KategorieKID as id, KategorieName as name FROM $CFG->tbl_kategorie";
 }
 
 /*                               */
@@ -299,6 +311,7 @@ function sql_getAuftrag($status) {
    }
   return $out;
 }
+
 
 
 ?>
