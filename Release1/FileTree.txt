@@ -1,7 +1,10 @@
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/FileTree.txt,v $
-* $Revision: 1.4 $
-* $Id: FileTree.txt,v 1.4 2001/12/05 00:02:29 hifix Exp $
+* $Revision: 1.5 $
+* $Id: FileTree.txt,v 1.5 2001/12/06 22:40:34 darkpact Exp $
 * $Log: FileTree.txt,v $
+* Revision 1.5  2001/12/06 22:40:34  darkpact
+* Erweitert um userdocs
+*
 * Revision 1.4  2001/12/05 00:02:29  hifix
 * added Task.php etc.
 * added Upload.php etc.
@@ -10,7 +13,7 @@
 * added Dir: /imgs , /imgs/flags
 *
 
-Diese Datei dient zur Übersicht, was die einzelnen Files machen und wo sie sich befinden. 
+Diese Datei dient zur Übersicht, was die einzelnen Files machen und wo sie sich befinden.
 Dies sind, solange noch nicht umgesetzt, nur Vorschläge. Wenn Ihr was ändert oder einstellt, dann passt diese Datei auch an.
 
 Kompletter OTMP Dateibaum
@@ -47,33 +50,34 @@ Legende
   signup.php              - Anmeldeseite
   forgot_passwdord.php    - Passwort vergessen
   *options.php            - Useroptionen einstellen
-  
+
 /user/templates/
   forgot_password_form.inc   - Formular zum Password vergessen
   signup_form.inc            - Formular für Useranmeldung
   forgot_password_success.inc- Passwort erfolgreich wiederhergestellt
   signup_success.inc         - Useranmeldung erfolgreich
   login_form.inc             - Login Formular
-  
+
 /help/
   !help.php               - Haupthilfeseite
   *whatis.php             - Was ist OTMP und wozu
   *faq.php                - Häufig gestellte Fragen
   *upload.html            - Hilfe zum Upload von Texten
-  
+
 /docs/
-  *documentlist.php       - Liste aller Dokumente
+  documentlist.php        - Liste aller Dokumente
   *document.php           - Genauere Ansicht zu einem Dokument
-  upload.php              - Dokument hochladen
+  userdocuments.php       - Alle Dokumente eines Benutzers aufgeführt
   *download.php           - Dokument runterladen
+  upload.php              - Dokument hochladen
   *task.php               - Auftragseingabe
 
 /docs/templates
-  upload_data_form.inc	  - Text upload Formular (Daten)
-  upload_success.inc	  - Text upload Erfolgreich
-  *download_form.inc	  - Text download Formular
+  upload_data_form.inc    - Text upload Formular (Daten)
+  upload_success.inc    - Text upload Erfolgreich
+  *download_form.inc    - Text download Formular
   *task_form.inc          - Auftragsformular
-  
+
 /imgs/
 /imgs/flags/
   flag_xx.gif             - Die einzelnen Flaggen Bilder [..]
