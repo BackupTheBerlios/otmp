@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/main.php,v $
-    * $Revision: 1.6 $
-    * $Id: main.php,v 1.6 2001/11/20 17:20:43 darkpact Exp $
+    * $Revision: 1.7 $
+    * $Id: main.php,v 1.7 2001/11/21 10:04:46 hifix Exp $
     */
 ?>
 <!-- doc header -->
@@ -16,7 +16,9 @@
 <body bgcolor="#FFFFFF" leftmargin="3" topmargin="1" marginwidth="1">
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr bgcolor="#666666">
-    <td><div align="right"><b><font color="#FFFFFF">Sie sind eingeloggt als: Nicht Eingeloggt</font></b></div></td>
+    <td>
+      <div align="right"><b><font color="#FFFFFF"> Sie sind nicht eingeloggt</font></b></div>
+    </td>
   </tr>
   <tr bgcolor="#CCCCCC">
     <td><b class="logo">OTMP</b></td>
@@ -28,7 +30,7 @@
 <table width="100%">
   <tr>
     <td width="70%">
-      <h3>Willkommen bei OTMP - Ihrem &Uuml;bersetzungsdienst!</font></h3>
+      <h3>Willkommen bei OTMP - Der &Uuml;bersetzungsmarktplatz!</h3>
 
       <p>OTMP ist eine offene &Uuml;bersetzungsplattform. Auf OTMP können sie Ihre
       Texte veröffentlichen und in verschiedene andere Sprachen &uuml;bersetzen
@@ -75,8 +77,7 @@
   </tr>
 </table>
 
-<p align="center" class="footer">
-  Revision: <? echo $revision; echo $datum; ?> &copy; 2001 otmp-developer</p>
+<p align="center" class="footer"> Revision: &copy; 2001 otmp-developer</p>
 </body>
 </html>
 <!-- doc footer end -->

@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/user/signup_ok.php,v $ 
-    * $Revision: 1.2 $
-    * $Id: signup_ok.php,v 1.2 2001/11/20 12:41:53 alexgn Exp $
+    * $Revision: 1.3 $
+    * $Id: signup_ok.php,v 1.3 2001/11/21 10:04:46 hifix Exp $
     */
 ?>
 <html>
@@ -32,13 +32,17 @@ Signup succesfull">
   </tr>
 </table>
 <h3 align="left">Anmeldung f&uuml;r OTMP - erfolgreich</h3>
-<p>Herzlichen Dank f&uuml;r Ihre Anmeldung. Sie k&ouml;nnen jetzt das System in vollem Umfang benutzen.<br>
-  Bitte notieren Sie sich Ihren Usernamen:<br>
+<p>Herzlichen Dank f&uuml;r Ihre Anmeldung. Sie k&ouml;nnen jetzt das System in 
+  vollem Umfang benutzen.<br>
+  Bitte notieren Sie sich Ihren Usernamen und das Passwort:<br>
 </p>
-<p> <b>Username</b>: Schmitz09<br>
-  
+      <h4>Login Daten</h4>
+      <p><b>Username: </b>Schmitz42<b><br>
+        Password: </b>blkjsls</p>
+
+<p><br>
 <p>Das Passwort ist an einem sicheren Ort aufzubewahren und nicht weiterzugeben. Auch nicht an einen Mitarbeiter von OTMP!</p>
-<p>Du kannst Dich jetzt mit Deinem Usernamen und Passwort hier <a href="login.php">einloggen</a>, 
+<p>Sie k&ouml;nnen sich jetzt mit Deinem Usernamen und Passwort hier <a href="login.php">einloggen</a>, 
   oder zur <a href="../main.php">Hauptseite</a> gehen.</p>
 <p>Viel Spa&szlig; mit OTMP.</p>
 <div align="center"></div>
@@ -47,6 +51,6 @@ Signup succesfull">
   | <a href="../help.php">help</a><br>
   <a href="login.php">login</a><br>
   <br>
-  $Revision: 1.2 $ &copy; 2001 otmp-developer :)</p>
+  $Revision: 1.3 $ &copy; 2001 otmp-developer :)</p>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/user/forgot_password_ok.php,v $ 
-    * $Revision: 1.1 $
-    * $Id: forgot_password_ok.php,v 1.1 2001/11/16 16:08:44 hifix Exp $
+    * $Revision: 1.2 $
+    * $Id: forgot_password_ok.php,v 1.2 2001/11/21 10:04:46 hifix Exp $
     */
 ?>
 <html>
@@ -35,9 +35,9 @@ Passwort Recovery succesfull">
 <h3 align="center"> Passwort Wiederherstellung - Erfolgreich<br>
 </h3>
 <p align="center">Dein <b>neues Password</b> wird in kürze per <b>mail</b> bei 
-  Dir eintreffen. <br>
-  Melde Dich mit diesem neuen Passwort <a href="login.php">hier</a> an und ändere 
-  das Passwort dann bitte gleich. <br>
+  Ihnen eintreffen. <br>
+  Melde Sie sich mit diesem neuen Passwort <a href="login.php">hier</a> an und 
+  ändern Sie das Passwort dann bitte gleich. <br>
 </p>
 <p align="center">Weiterhin viel Spa&szlig; mit OTMP <br>
   zur Hauptseite geht es <a href="../main.php">hier</a></p>
@@ -46,6 +46,6 @@ Passwort Recovery succesfull">
   | <a href="../help.php">help</a><br>
   <a href="login.php">login</a><br>
   <br>
-  $Revision: 1.1 $ &copy; 2001 otmp-developer :)</p>
+  $Revision: 1.2 $ &copy; 2001 otmp-developer :)</p>
 </body>
 </html>

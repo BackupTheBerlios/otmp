@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/user/signup4a.php,v $ 
-    * $Revision: 1.1 $
-    * $Id: signup4a.php,v 1.1 2001/11/20 12:54:45 alexgn Exp $
+    * $Revision: 1.2 $
+    * $Id: signup4a.php,v 1.2 2001/11/21 10:04:46 hifix Exp $
     */
 ?>
 <html>
@@ -73,6 +73,7 @@ Signup">
 		</p>
 	      </td>      
             </tr>
+<!--
 	     <tr bgcolor="#FFFFFF"> 
               <td class=label colspan="1"><b>Formate</b>
 	      </td>
@@ -94,6 +95,7 @@ Signup">
 		</p>
 	      </td> 
             </tr>
+-->
 	    <tr bgcolor="#FFFFFF"> 
               <td class=label colspan="1"><b>Packer</b>
 	      </td>	     
@@ -135,6 +137,6 @@ Packer sind ...<br>
   | <a href="../help.php">help</a><br>
   <a href="login.php">login</a><br>
   <br>
-  $Revision: 1.1 $ &copy; 2001 otmp-developer :)</p>
+  $Revision: 1.2 $ &copy; 2001 otmp-developer :)</p>
 </body>
 </html>

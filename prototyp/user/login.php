@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/user/login.php,v $ 
-    * $Revision: 1.3 $
-    * $Id: login.php,v 1.3 2001/11/11 14:14:16 hifix Exp $
+    * $Revision: 1.4 $
+    * $Id: login.php,v 1.4 2001/11/21 10:04:46 hifix Exp $
     */
 ?>
 <html>
@@ -32,7 +32,7 @@
 </table>
 <p align="center"> Um Dich am System anzumelden, gib bitte Deinen Usernamen und 
   Dein Passwort ein.</p>
-<form method="post" action="">
+<form method="post" action="../main.php">
   <div align="center"> 
     <table border="0" cellspacing="0" cellpadding="4">
       <tr> 
@@ -55,7 +55,7 @@
                   </tr>
                   <tr bgcolor="#FFFFFF" > 
                     <td colspan=2 align="center"> 
-                      <input type="submit" name="login" value="login">
+                      <input type="submit" name="../main.php" value="login">
                     </td>
                   </tr>
                 </table>
@@ -78,6 +78,6 @@
   | <a href="../help.php">help</a><br>
   <a href="login.php">login</a><br>
   <br>
-  $Revision: 1.3 $ &copy; 2001 otmp-developer :)</p>
+  $Revision: 1.4 $ &copy; 2001 otmp-developer :)</p>
 </body>
 </html>

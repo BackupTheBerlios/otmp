@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/user/forgot_password.php,v $ 
-    * $Revision: 1.1 $
-    * $Id: forgot_password.php,v 1.1 2001/11/16 16:08:44 hifix Exp $
+    * $Revision: 1.2 $
+    * $Id: forgot_password.php,v 1.2 2001/11/21 10:04:46 hifix Exp $
     */
 ?>
 <html>
@@ -38,12 +38,12 @@ Passwort Recovery">
     <table cellpadding=20>
       <tr valign=top> 
         <td width=300 class=normal> 
-          <p><!--Das muss noch Übersetzt werden  ..... -->Enter in your email 
-            address to recover your password. When you submit this request, your 
-            password will be reset, and a new password will be sent to you via 
-            email. 
-          <p>If you do not want to do this, you can return to the <a href="login.php">login 
-            screen</a> or the <a href="../main.php">home page</a> now. 
+          <p><!--Das muss noch Übersetzt werden  ..... -->Geben Sie Ihre e-mail 
+            Adresse ein mit der Sie am System angemeldet sind. Wenn Sie den Abschicken 
+            Button dr&uuml;cken, wird Ihr aktuelles Passwort zur&uuml;ckgesetzt 
+            und Sie erhalten das neue Password per mail an die angegegebene Adresse
+          <p>M&ouml;chten Sie dies nicht tun, k&ouml;nnen sie hier zur <a href="login.php">login 
+            Seite </a> oder zur <a href="../main.php">Hauptseite</a> zur&uuml;ckkehren. 
         </td>
         <td> 
           <div class=warning align=center></div>
@@ -60,10 +60,9 @@ Passwort Recovery">
                   <tr> 
                     <td></td>
                     <td>
-                      <input type="submit" value="Submit" name="submit">
-                      <input type="button" value="Cancel" onClick="javascript: history.go(-1)" name="button">
-                      <p class=normal> <a href="login.php">Login Screen</a> | 
-                        <a href="../main.php">Home Page</a> 
+                      <input type="submit" value="Abschicken" name="submit">
+                      <input type="button" value="Abbrechen" onClick="javascript: history.go(-1)" name="button">
+                      <p class=normal> <a href="login.php">Login</a> | <a href="../main.php">Home</a> 
                     </td>
                   </tr>
                 </table>
@@ -80,6 +79,6 @@ Passwort Recovery">
   | <a href="../help.php">help</a><br>
   <a href="login.php">login</a><br>
   <br>
-  $Revision: 1.1 $ &copy; 2001 otmp-developer :)</p>
+  $Revision: 1.2 $ &copy; 2001 otmp-developer :)</p>
 </body>
 </html>
