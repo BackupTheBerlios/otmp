@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.23 $
- * $Id: sql.php,v 1.23 2001/12/15 00:23:14 alexgn Exp $
+ * $Revision: 1.24 $
+ * $Id: sql.php,v 1.24 2001/12/15 17:34:33 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -23,10 +23,10 @@
 function sql_LoginGetUserdata($username, $password) {
 /* return an array of userdata if password is valid for given username.
    Otherwise return false
-   return:  array(usrID, Name, AdminLevel) */
+   return:  array(usrID, Name, AdminLevel, Translator) */
   global $CFG;
   $qid = db_query("
-    SELECT PersonPID as usrID, PersonKennung as Name, PersonAdminlevel as AdminLevel
+    SELECT PersonPID as usrID, PersonKennung as Name, PersonAdminlevel as AdminLevel, PersonUebersetzer as Translator
     FROM $CFG->tbl_user
     WHERE PersonKennung = '$username' AND PersonPassword = PASSWORD('$password')
   ");
@@ -252,12 +252,12 @@ function sql_existsTransCap($fromlang, $tolang, $kat, $userid) {
   
   global $CFG;
   $qid = db_query("SELECT * FROM $CFG->tbl_uebsprach WHERE UebersetzerSprachenUEID = '$userid' AND
-		UebersetzerSprachenVonSID = '$fromlang' AND UebersetzerSprachenNachSID = '$tolang' AND
-		UebersetzerSprachenKID ='$kat'");
+    UebersetzerSprachenVonSID = '$fromlang' AND UebersetzerSprachenNachSID = '$tolang' AND
+    UebersetzerSprachenKID ='$kat'");
   if (mysql_num_rows($qid)>0) {
     return TRUE;
   } else {
-    return FALSE;	
+    return FALSE; 
   }
 }
 
@@ -285,8 +285,8 @@ function sql_getAllLangs() {
 
   while ($row = mysql_fetch_object($qid)) {
         $result[$i][0] = $row->SpracheSID;
-  	$result[$i][1] = $row->SpracheName;
-  	$i = $i + 1;
+    $result[$i][1] = $row->SpracheName;
+    $i = $i + 1;
   }
   return $result;
 }
