@@ -108,15 +108,14 @@ CREATE TABLE otmp_Optionen
 # #######################################
 
 CREATE TABLE otmp_Sprache
-       (
-   SpracheSID         TINYINT(3) UNSIGNED AUTO_INCREMENT NOT NULL,
-   SpracheName    VARCHAR(25) NOT NULL,
-   SpracheAbkuerzung  CHAR(3) NOT NULL DEFAULT '---',
-   SpracheSort      TINYINT UNSIGNED DEFAULT 255,
+(
+  SpracheSID         TINYINT(3) UNSIGNED AUTO_INCREMENT NOT NULL,
+  SpracheName        VARCHAR(40) NOT NULL,
+  SpracheAbkuerzung  CHAR(3) NOT NULL DEFAULT '---',
+  SpracheSort        TINYINT UNSIGNED DEFAULT 255,
 
-  PRIMARY KEY(SpracheSID)
-
-       );
+PRIMARY KEY(SpracheSID)
+);
 
 # #####################################
 
