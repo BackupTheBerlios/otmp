@@ -1,8 +1,8 @@
 <?
 /*
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/templates/header.php,v $
-* $Revision: 1.4 $
-* $Id: header.php,v 1.4 2001/12/10 22:06:57 darkpact Exp $
+* $Revision: 1.5 $
+* $Id: header.php,v 1.5 2001/12/17 18:33:38 hifix Exp $
 *
 *
 * ToDo:
@@ -31,7 +31,7 @@
     </font></b></div></td>
   </tr>
   <tr bgcolor="#BBBBFF">
-    <td><b class="logo">OTMP</b></td>
+    <td><b class="logo"><img src="<?=$CFG->imagedir?>/otmp_logo_header.gif" width="191" height="42" vspace="2" hspace="4"></b></td>
   </tr>
 </table>
 <table border="0" width="100%" cellspacing="0" cellpadding="1" bgcolor="#333333">
