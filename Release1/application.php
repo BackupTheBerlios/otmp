@@ -2,8 +2,8 @@
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/application.php,v $
  *
- * $Revision: 1.9 $
- * $Id: application.php,v 1.9 2001/12/13 21:21:02 hifix Exp $ 
+ * $Revision: 1.10 $
+ * $Id: application.php,v 1.10 2001/12/17 18:35:11 hifix Exp $ 
  * 
  *
  * -----------------------------------------------------------------
@@ -24,8 +24,8 @@
 
 /* turn on verbose error reporting (15) to see all warnings and errors */
 error_reporting(15);
-$RELEASE = "1.0";
-$RELEASEDATE = "24-11-2001";
+$RELEASE = "1.1";
+$RELEASEDATE = "17-12-2001";
 
 $debug_mode=1;
 
