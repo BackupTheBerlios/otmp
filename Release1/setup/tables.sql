@@ -1,7 +1,15 @@
+# $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/setup/tables.sql,v $
+# $Revision: 1.8 $
+# $Id: tables.sql,v 1.8 2001/12/05 23:36:19 hifix Exp $
+# -------------------------------------------------------------
+# $Log: tables.sql,v $
+# Revision 1.8  2001/12/05 23:36:19  hifix
+# CVS comments added
+# minor changes in some default values
+#
+# -------------------------------------------------------------
 # ####################################
-
 # 	OTMP-Datenbank
-
 # ####################################
 
 
@@ -63,7 +71,7 @@ CREATE TABLE otmp_Filetype
        ( 
 	 FiletypeFID		SMALLINT(5) UNSIGNED AUTO_INCREMENT NOT NULL,
 	 FiletypePRGID		SMALLINT(5) UNSIGNED NOT NULL,
-	 FiletypeType		VARCHAR(5) NOT NULL DEFAULT '---',
+	 FiletypeType		VARCHAR(5) NOT NULL DEFAULT '-',
 
 	PRIMARY KEY(FiletypeFID)
        );
@@ -112,7 +120,7 @@ CREATE TABLE otmp_Sprache
        ( 
 	 SpracheSID	        TINYINT(3) UNSIGNED AUTO_INCREMENT NOT NULL, 	
 	 SpracheName		VARCHAR(25) NOT NULL,
-	 SpracheAbkuerzung	CHAR(3)	NOT NULL DEFAULT '---', 
+	 SpracheAbkuerzung	CHAR(3)	NOT NULL DEFAULT '-', 
 
 	PRIMARY KEY(SpracheSID)
 
