@@ -1,15 +1,15 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/signup_form.inc,v $
- * $Revision: 1.3 $
- * $Id: signup_form.inc,v 1.3 2001/11/29 20:12:27 hifix Exp $
+ * $Revision: 1.4 $
+ * $Id: signup_form.inc,v 1.4 2001/11/29 20:16:29 hifix Exp $
  *
  * Signup Formular
  *
  * To Do:
  * - LOcalisation
  * - more help on error
- * - showemaples() function for usernames
+ * - showexamples() function for usernames
  */
 ?> 
 <center>
