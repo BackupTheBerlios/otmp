@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/userdocuments.php,v $
- * $Revision: 1.2 $
- * $Id: userdocuments.php,v 1.2 2001/12/06 22:38:34 darkpact Exp $
+ * $Revision: 1.3 $
+ * $Id: userdocuments.php,v 1.3 2001/12/09 13:34:01 darkpact Exp $
  *
  * To Do:
  * - Localisation
@@ -15,6 +15,8 @@
 include("../application.php");
 
 $DOC_TITLE = "All User Documents";
+
+setdefault($usrid,"1");
 
 include("$CFG->templatedir/header.php");
 include("templates/userdocuments.inc");
