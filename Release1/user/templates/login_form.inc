@@ -1,8 +1,11 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/login_form.inc,v $
- * $Revision: 1.1 $
- * $Id: login_form.inc,v 1.1 2001/11/25 20:45:01 hifix Exp $
+ * $Revision: 1.2 $
+ * $Id: login_form.inc,v 1.2 2001/11/25 23:20:02 hifix Exp $
+ *
+ * To Do:
+ * - LOcalisation
  */
 ?>
 <p align="center"> Um OTMP in vollem Umfang benutzen zu können, müssen Sie sich einloggen!</p>
@@ -39,8 +42,8 @@
         </td>
         <td valign="top"> 
           <p>Noch nich Angemeldet bei OTMP?<br>
-            <a href="<?=$CFG->wwwroot?>/signup.php">Hier</a> können Sie sich anmelden.</p>
-          <p>Haben Sie Ihr Password vergessen? <a href="<?=$CFG->wwwroot?>/forgot_password.php"><br>
+            <a href="signup.php">Hier</a> können Sie sich anmelden.</p>
+          <p>Haben Sie Ihr Password vergessen? <a href="forgot_password.php"><br>
             Hier</a> gibts Hilfe.</p>
         </td>
       </tr>

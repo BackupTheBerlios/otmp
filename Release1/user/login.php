@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/login.php,v $
- * $Revision: 1.3 $
- * $Id: login.php,v 1.3 2001/11/24 16:13:21 hifix Exp $
+ * $Revision: 1.4 $
+ * $Id: login.php,v 1.4 2001/11/25 23:20:02 hifix Exp $
  */
  
 include "../application.php";
@@ -19,13 +19,13 @@ if (isset($HTTP_POST_VARS) && $REQUEST_METHOD=="POST") {
     /* set all user's sessionvariables */
     if ($user) {
        unset($session);
-       $session['username']   = $user['usrName'];
+       $session['username']   = $user['Name'];
        $session['userid']     = $user['usrID'];
-       $session['adminLevel'] = $user['usrAdminLevel'];
+       $session['adminlevel'] = $user['AdminLevel'];
     
       /* if wantsurl is set, that means we came from a page that required
        * log in, so let's go back there.  otherwise go back to the main page */
-      $goto = empty($session["wantsurl"]) ? "$CFG->wwwroot/" : $session["wantsurl"];
+      $goto = empty($session["wantsurl"]) ? "$CFG->wwwroot/main.php" : $session["wantsurl"];
       header("Location: $goto");
       die;
 

@@ -1,64 +1,104 @@
-<? /*
-    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/signup.php,v $
-    * $Revision: 1.1 $
-    * $Id: signup.php,v 1.1 2001/11/23 08:03:04 darkpact Exp $
-    */
-?>
-<!-- doc header -->
 <?
-$langs=isset($langs)?$langs:"us";
-include ("../all." . $langs);
-include ("signup." . $langs);
-$loginname=isset($loginname)?$loginname:$notlogedin;
-$maindir = "../";
-include ("../otmpheader.php");
+/*
+ * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/signup.php,v $
+ * $Revision: 1.2 $
+ * $Id: signup.php,v 1.2 2001/11/25 23:20:02 hifix Exp $
+ *
+ * To Do:
+ * - LOcalisation
+ * - minimal password length check
+ */
+
+/******************************************************************************
+ * MAIN
+ *****************************************************************************/
+
+include("../application.php");
+
+/* form has been submitted, try to create the new user account */
+if (match_referer() && isset($HTTP_POST_VARS)) {
+  $frm = $HTTP_POST_VARS;
+  $errormsg = validate_form($frm, $errors);
+
+  if (empty($errormsg)) {
+    $status = insert_user($frm);
+
+    $DOC_TITLE = "Signup Successful";
+    include("$CFG->templatedir/header.php");
+    include("templates/signup_success.inc");
+    include("$CFG->templatedir/footer.php");
+    die;
+  } else {
+    $session['notice'] = $errormsg;
+  }
+}
+
+$DOC_TITLE = "Signup";
+include("$CFG->templatedir/header.php");
+include("templates/signup_form.inc");
+include("$CFG->templatedir/footer.php");
+
+/******************************************************************************
+ * FUNCTIONS
+ *****************************************************************************/
+
+function validate_form(&$frm, &$errors) {
+/* validate the signup form, and return the error messages in a string.  if
+ * the string is empty, then there are no errors */
+
+  $errors = new Object;
+  $msg = "";
+
+  
+  if (empty($frm["lastname"])) {
+    $errors->lastname = true;
+    $msg .= "<li>You did not specify your lastname";  
+  }
+  
+  if (empty($frm["firstname"])) {
+    $errors->firstname = true;
+    $msg .= "<li>You did not specify your firstname";
+  }
+  
+  if (empty($frm["password"])) {
+    $errors->password = true;
+    $msg .= "<li>You did not specify a password";
+  
+  } elseif (empty($frm["password_check"])) {
+    $errors->password_check = true;
+    $msg .= "<li>You did not repeat your password";
+  
+  } elseif ( $frm["password"] != $frm["password_check"] ) {
+    $errors->password_check = true;
+    $errors->password = true;
+    $msg .= "<li>the password you entered doesn't match!";
+  }
+  
+  if (empty($frm["username"])) {
+     $errors->username = true;
+     $msg .= "<li>You did not specify a username";
+     
+  } elseif (username_exists($frm["username"]) ) {
+    $errors->username = true;
+    $msg .= "<li>The username <b>" . ov($frm["email"]) ."</b> already exists. Please choose an other name.";
+  }
+  
+  if (empty($frm["email"])) {
+    $errors->email = true;
+    $msg .= "<li>You did not specify your email adress";  
+  
+  } elseif ( email_exists($frm["email"]) ) {
+    $errors->email = true;
+    $msg .= "<li>The email address <b>" . ov($frm["email"]) ."</b> already exists";
+  }
+  
+  return $msg;
+}
+
+function insert_user(&$frm) {
+/* add the new user into the database */
+ 
+  return sql_addNewUser($frm['lastname'], $frm['firstname'], $frm['email'], $frm['username'], $frm['password']);
+}
+
 ?>
-<!-- doc header end -->
-
-<!-- doc body -->
-<h3 align="left"><? echo $signuphead; ?></h3>
-<p><? echo $signuptext; ?>
-Egal ob Sie sich als Übersetzer oder als Nutzer anmelden, die Anmeldung beim OTMP erfolgt in
-wenigen einfachen Schritten. Füllen Sie einfach untenstehendes Formular aus und folgen Sie
-den weiteren Anweisungen.</p>
-
-<form method="post" action="signup2a.php">
-  <table cellspacing="0" cellpadding="6">
-    <tr>
-      <td align="right"><? echo $signupname; ?></td>
-      <td><input type="text" size=60 name="name"></td>
-    </tr>
-    <tr>
-      <td align="right"><? echo $signupfirstname; ?></td>
-      <td><input type="text" size=60 name="vorname"></td>
-    </tr>
-    <tr>
-      <td align="right"><? echo $signupemail; ?></td>
-      <td><input type="password" size=60 name="email"></td>
-    </tr>
-    <tr>
-      <td align="right"><? echo $signuppasswd; ?></td>
-      <td><input type="password" size=60 name="password"></td>
-    </tr>
-    <tr>
-      <td align="right"><? echo $signuppasswdrepeat; ?></td>
-      <td><input type="password" size=60 name="password2"></td>
-    </tr>
-  </table>
-</form>
-
-<h4>Hilfe:</h4>
-<p><i>Ich habe keine Emailadresse, kann ich mich trotzdem anmelden?</i><br><br>
-Sicher. Um den Dienst von OTMP nutzen zu k&ouml;nnen, m&uuml;ssen sie keine Emailadresse haben.</p>
-<p><i>Wie kann ich ein Passwort eingeben obwohl ich keins habe?</i><br><br>
-An dieser Stelle w&auml;hlen Sie Ihr Passwort selber fest. Um sicher zu gehen, da&szlig; Sie sich nicht vertippt haben, m&uuml;ssen Sie das Passwort dann ein zweites Mal eingeben.</p>
-<!-- doc body end -->
-
-<!-- doc footer -->
-<?
-$userdir = "";
-$docsdir = "../docs/";
-$helpdir = "../help/";
-include ("../otmpfooter.php");
-?>
-<!-- doc footer end -->
