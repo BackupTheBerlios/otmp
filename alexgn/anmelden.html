@@ -42,21 +42,34 @@
      <table cellpadding="2" cellspacing="2" border="0" width="80%">
       <tbody>
        <tr>
-        <td valign="Top"><font color="#000000"><b>Willkommen</b> beim
-         OTMP - Ihrem &Uuml;bersetzungsdienst!<br><br>
-         OTMP ist eine offene &Uuml;bersetzungsplattform, auf der
-         Sie Ihre Texte in verschiedene andere Sprachen &uuml;bersetzen lassen k&ouml;nnen.
-         Dazu m&uuml;ssen sie sich <a href="anmelden.html">anmelden</a> falls Sie noch
-         keine Zugangsdaten haben oder <a href="/einloggen">einloggen</a> falls Sie
-         schon &uuml;ber einen Benutzernamen und Passwort verf&uuml;gen.<br><br>
-
-         OTMP ist auf gute &Uuml;bersetzer angewiesen, und daher stets auf der Suche
-         nach neuen &Uuml;bersetzern. Lesen Sie hier, welche <a href="/vorteile">Vorteile</a>
-         Ihnen das arbeiten als &Uuml;bersetzer bringt. Wenn Sie &uuml;berzeugt sind,
-         k&ouml;nnen Sie sich ja gleich <a href="anmelden.html">anmelden</a>!<br><br>
-
-         Wir w&uuml;nschen Ihnen viel Spass und Erfolg mit unserem System!</font><br>
+        <td valign="Top"><font color="#000000"><b>Anmelden</b>
+	  <br><br>
+	  Um einen Text &uuml;bersetzen zu lassen oder um einen Text zu &uuml;bersetzen,
+	   m&uuml;ssen Sie sich ersteinmal anmelden. F&uuml;llen Sie hierzu 
+	   das folgende Formular einfach aus und senden Sie es uns zu!</font><br>
         </td>
+       </tr>
+       <tr>
+        <td height="10">
+        </td>
+       </tr>
+       <tr>
+        <td><form action="mailto:admin@otmp.org" method="post" enctype="text/plain">
+	       Vorname:  &nbsp;&nbsp;&nbsp;<input name="vorname" type="text" size="20"><br>
+	       Nachname: &nbsp;<input name="nachname" type="text" size="20"><br>
+	       Geschlecht: <input name="geschlecht" type="text" size="20"><br>
+	       <br>
+	       Username: <input name="username" type="text" size="20"><br>
+	       Passwort: <input name="passwort" type="password" size="20"><br>
+	       <br>
+	       Anmelden als:<br>
+	       <input type="checkbox" name="anmeldenals" value="uebersetzer">&Uuml;bersetzer<br>
+	       oder <br>
+	       <input type="checkbox" name="anmeldenals" value="normal">Normaler Benutzer<br>
+	       <br>
+	       <input type="submit">	         
+	    </form>
+	</td>
        </tr>
       </tbody>
      </table>
