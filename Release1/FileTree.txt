@@ -1,10 +1,9 @@
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/FileTree.txt,v $
-* $Revision: 1.2 $
-* $Id: FileTree.txt,v 1.2 2001/12/01 00:16:49 hifix Exp $
+* $Revision: 1.3 $
+* $Id: FileTree.txt,v 1.3 2001/12/01 00:34:20 hifix Exp $
 * $Log: FileTree.txt,v $
-* Revision 1.2  2001/12/01 00:16:49  hifix
-* neue erste Version (hifix-Schema).
-* Die 1.1 wird damit obsolet.
+* Revision 1.3  2001/12/01 00:34:20  hifix
+* added Dir: /imgs , /imgs/flags
 *
 
 Diese Datei dient zur Übersicht, was die einzelnen Files machen und wo sie sich befinden. 
@@ -24,17 +23,8 @@ Legende
   main.php                - Hauptseite
   !contact.php            - Kontaktinformationen/formular
 
-/lib/
-  class.html.mime.mail.inc- mail class zum versenden und erstellen von (html)mails
-  dblib.php               - Datenbankfunktionen
-  otmplib.php             - Projektspezifische Funktionen
-  sql.php                 - Alle SQL Queries als Funktionen
-  stdlib.php              - "Standart" (php) funktionen
-  wordlist.txt            - Wortliste zur Erstellung 
-  
 /setup/
   tables.sql              - Tabellendefinitionen für die DB (MySQL)
-  *install.txt            - Installationsanweisungen
 
 /templates/
   header.php              - allgemeiner Seitenheader
@@ -47,13 +37,11 @@ Legende
   *c_translation          - Bestätigung der Annahme zur Übersetzung
   *i_textintranslation    - Info, daß Text in Übersetzung ist
   *i_textstatus           - Info über Status der Texte (User)
-  *i_passwordchanged      - Info über Passwordänderung
 
 /user/
   login.php               - Login Seite
   signup.php              - Anmeldeseite
-  forgot_password.php     - Passwort vergessen
-  *change_password.php    - Passwort ändern
+  forgot_passwdord.php    - Passwort vergessen
   *options.php            - Useroptionen einstellen
   
 /user/templates/
@@ -62,7 +50,6 @@ Legende
   forgot_password_success.inc- Passwort erfolgreich wiederhergestellt
   signup_success.inc         - Useranmeldung erfolgreich
   login_form.inc             - Login Formular
-  *change_password_form.inc  - Password ändern Formular
   
 /help/
   !help.php               - Haupthilfeseite
@@ -81,12 +68,12 @@ Legende
   *upload_success.inc	  - Text upload Erfolgreich
   *download_form.inc	  - Text download Formular
   
+/imgs/
+/imgs/flags/
+  flag_xx.gif             - Die einzelnen Flaggen Bilder [..]
 
 /admin/
   *index.php              - Administratorseite (haupt)
-  *konto.php              - Kontos verwalten
 
 /admin/templates
-  *s_user.inc               - User anzeigen
-  *s_konto.inc              - Konto(s) anzeigen
-  *e_konto_form.inc         - Konto editieren Formular
+  *user.inc               - User anzeigen
