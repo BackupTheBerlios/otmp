@@ -2,8 +2,8 @@
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/application.php,v $
  *
- * $Revision: 1.10 $
- * $Id: application.php,v 1.10 2001/12/17 18:35:11 hifix Exp $ 
+ * $Revision: 1.11 $
+ * $Id: application.php,v 1.11 2001/12/17 19:25:46 ahlabadi Exp $ 
  * 
  *
  * -----------------------------------------------------------------
@@ -63,8 +63,8 @@ $CFG->bgcolorNav    = "#eeeee0";
 $CFG->wordlist    = "$CFG->libdir/wordlist.txt";
 
 /* setup the db variables for "mapping" of tablenames */
-$CFG->tbl_user = "otmp_Person";
-$CFG->tbl_perhatprog = "otmp_PerPro";
+$CFG->tbl_person = "otmp_Person";
+$CFG->tbl_perpro = "otmp_PerPro";
 $CFG->tbl_sprache = "otmp_Sprache";
 $CFG->tbl_uebsprach = "otmp_UebersetzerSprachen";
 $CFG->tbl_programm = "otmp_Programm";
@@ -104,3 +104,5 @@ session_register("session");
 db_connect($CFG->dbhost, $CFG->dbname, $CFG->dbuser, $CFG->dbpass);
 
 ?>
+
+

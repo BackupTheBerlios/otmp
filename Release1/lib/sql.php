@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.28 $
- * $Id: sql.php,v 1.28 2001/12/17 18:37:06 hifix Exp $
+ * $Revision: 1.29 $
+ * $Id: sql.php,v 1.29 2001/12/17 19:25:46 ahlabadi Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -27,7 +27,7 @@ function sql_LoginGetUserdata($username, $password) {
   global $CFG;
   $qid = db_query("
     SELECT PersonPID as usrID, PersonKennung as Name, PersonAdminlevel as AdminLevel, PersonUebersetzer as Translator
-    FROM $CFG->tbl_user
+    FROM $CFG->tbl_person
     WHERE PersonKennung = '$username' AND PersonPassword = PASSWORD('$password')
   ");
   return db_fetch_array($qid);
@@ -36,7 +36,7 @@ function sql_LoginGetUserdata($username, $password) {
 function sql_addNewUser($lastname, $firstname, $email, $username, $password) {
 /* insert a new user into the DB */
   global $CFG;
-  $query = "INSERT INTO $CFG->tbl_user
+  $query = "INSERT INTO $CFG->tbl_person
             (PersonKennung, PersonPassword, PersonEmail, PersonName, PersonVorname)
             VALUES (
             '$username'
@@ -52,28 +52,28 @@ function sql_addNewUser($lastname, $firstname, $email, $username, $password) {
 function sql_usernameExists($username) {
 /* returns 1 if the username exists, otherwise 0 */
   global $CFG;
-  $qid = db_query("SELECT 1 FROM $CFG->tbl_user WHERE PersonKennung = '$username'");
+  $qid = db_query("SELECT 1 FROM $CFG->tbl_person WHERE PersonKennung = '$username'");
   return db_num_rows($qid);
 }
 
 function sql_nameExists($firstname, $lastname) {
 /* returns 1 if the name (first, last) exists otherwise 0*/
   global $CFG;
-  $qid = db_query("SELECT 1 FROM $CFG->tbl_user WHERE PersonVorname = '$firstname' AND PersonNachname = '$lastname'");
+  $qid = db_query("SELECT 1 FROM $CFG->tbl_person WHERE PersonVorname = '$firstname' AND PersonNachname = '$lastname'");
   return db_num_rows($qid);
 }
 
 function sql_emailExists($email) {
 /* returns 1 if the email address exists otherwise 0 */
   global $CFG;
-  $qid = db_query("SELECT 1 FROM $CFG->tbl_user WHERE PersonEmail = '$email'");
+  $qid = db_query("SELECT 1 FROM $CFG->tbl_person WHERE PersonEmail = '$email'");
   return db_num_rows($qid);
 }
 
 function sql_getUsername($email) {
 /* return the username based on an email address */
   global $CFG;
-  $qid = db_query("SELECT PersonKennung FROM $CFG->tbl_user WHERE PersonEmail = '$email'");
+  $qid = db_query("SELECT PersonKennung FROM $CFG->tbl_person WHERE PersonEmail = '$email'");
   $user = db_fetch_object($qid);
 
   return $user->PersonKennung;
@@ -83,21 +83,21 @@ function sql_getUserdataFromUsername($username) {
 /* return the user (object) based on the username
    user : Lastname, Firstname, LastName, Email */
   global $CFG;
-  $qid = db_query("SELECT PersonVorname as Firstname, PersonName as Lastname, PersonEmail as Email FROM $CFG->tbl_user WHERE PersonKennung = '$username'");
+  $qid = db_query("SELECT PersonVorname as Firstname, PersonName as Lastname, PersonEmail as Email FROM $CFG->tbl_person WHERE PersonKennung = '$username'");
   return db_fetch_object($qid);
 }
 
 function sql_setUserpasswd($username, $passwd) {
 /* set new password for user with username */
   global $CFG;
-  $qid = db_query("UPDATE $CFG->tbl_user SET PersonPassword = PASSWORD('$passwd') WHERE PersonKennung = '$username'");
+  $qid = db_query("UPDATE $CFG->tbl_person SET PersonPassword = PASSWORD('$passwd') WHERE PersonKennung = '$username'");
   return $qid;
 }
 
 function sql_updateUser($lastname, $firstname, $email,$userid) {
 /* Update User Data in the Database */
   global $CFG;
-  $query = "UPDATE $CFG->tbl_user SET PersonName = '$lastname', PersonVorname= '$firstname', PersonEmail= '$email' WHERE PersonPID= '$userid'";
+  $query = "UPDATE $CFG->tbl_person SET PersonName = '$lastname', PersonVorname= '$firstname', PersonEmail= '$email' WHERE PersonPID= '$userid'";
   $qid = db_query($query);
   return $qid;
 }
@@ -105,7 +105,7 @@ function sql_updateUser($lastname, $firstname, $email,$userid) {
 function sql_changeUserToTranslator($userid) {
 /* set PersonUebersetzer = 1 */
    global $CFG;
-   $query = "UPDATE $CFG->tbl_user SET PersonUebersetzer = 1  WHERE PersonPID= '$userid'";
+   $query = "UPDATE $CFG->tbl_person SET PersonUebersetzer = 1  WHERE PersonPID= '$userid'";
   $qid = db_query($query);
   return $qid;
 }
@@ -122,7 +122,7 @@ function sql_getUserProgrammData($userid, $archive) {
 /* $packer = 1 returns archiving programms              */
   global $CFG;
   $result = NULL;
-  $qid = db_query("SELECT t1.ProgrammName, t1.ProgrammVersion FROM $CFG->tbl_programm AS t1, $CFG->tbl_perhatprog AS t2 WHERE t2.PerProPID = '$userid' AND t2.PerProPRGID = t1.ProgrammPRGID AND t1.ProgrammPacker = '$archive' ORDER BY t1.ProgrammSort");
+  $qid = db_query("SELECT t1.ProgrammName, t1.ProgrammVersion FROM $CFG->tbl_programm AS t1, $CFG->tbl_perpro AS t2 WHERE t2.PerProPID = '$userid' AND t2.PerProPRGID = t1.ProgrammPRGID AND t1.ProgrammPacker = '$archive' ORDER BY t1.ProgrammSort");
   $i = 0;
   while ($row = mysql_fetch_object ($qid)) {
   $result[$i][0] = $row->ProgrammName;
@@ -136,7 +136,7 @@ function sql_getUserProgrammData2($userid) {
 /* returns programmID of all programms user has selected */
   global $CFG;
   $result = NULL;
-  $qid = db_query("SELECT PerProPRGID FROM $CFG->tbl_perhatprog WHERE PerProPID = '$userid'");
+  $qid = db_query("SELECT PerProPRGID FROM $CFG->tbl_perpro WHERE PerProPID = '$userid'");
   $i = 0;
   while ($row = mysql_fetch_object ($qid)) {
   $result[$i] = $row->PerProPRGID;
@@ -147,13 +147,13 @@ function sql_getUserProgrammData2($userid) {
 
 function sql_deleteUserProgrammData($userid) {
   global $CFG;
-  $qid = db_query("DELETE FROM $CFG->tbl_perhatprog WHERE PerProPID = '$userid'");
+  $qid = db_query("DELETE FROM $CFG->tbl_perpro WHERE PerProPID = '$userid'");
   return $qid;
 }
 
 function sql_setUserProgrammData($v,$userid) {
   global $CFG;
-  $query = "INSERT INTO $CFG->tbl_perhatprog
+  $query = "INSERT INTO $CFG->tbl_perpro
             (PerProPID, PerProPRGID)
             VALUES (
              '$userid'
@@ -353,7 +353,7 @@ function sql_getDocumentIDFromSearch($keyword) {
    global $CFG;
    $i = 0;
    $result = NULL;
-   $qid = db_query("SELECT TextTID FROM otmp_Text WHERE TextTitel LIKE '%$keyword%'");
+   $qid = db_query("SELECT TextTID FROM tbl_text WHERE TextTitel LIKE '%$keyword%'");
       
    while ($row = mysql_fetch_object($qid)) {
    $result[$i] = $row->TextTID;
@@ -374,10 +374,10 @@ function sql_getDocumentFromSearch($docid) {
       SpracheName     as language,
       KategorieName   as category,
       TextDatum       as date
-    FROM otmp_Text
-    LEFT JOIN otmp_Person ON PersonPID = TextAutor
-    LEFT JOIN otmp_Sprache ON SpracheSID = TextSID
-    LEFT JOIN otmp_Kategorie ON KategorieKID = TextKID
+    FROM tbl_text
+    LEFT JOIN tbl_person ON PersonPID = TextAutor
+    LEFT JOIN tbl_sprache ON SpracheSID = TextSID
+    LEFT JOIN tbl_kategorie ON KategorieKID = TextKID
     WHERE TextTID = '$docid'
     ");
    $out = db_fetch_object($qid);
@@ -400,9 +400,9 @@ function sql_getDocument($id) {
       SpracheName     as language,
       TextAbstract    as abstract,
       TextStatus      as status
-    FROM otmp_Text
-    LEFT JOIN otmp_Person ON PersonPID = TextAutor
-    LEFT JOIN otmp_Sprache ON SpracheSID = TextSID
+    FROM tbl_text
+    LEFT JOIN tbl_person ON PersonPID = TextAutor
+    LEFT JOIN tbl_sprache ON SpracheSID = TextSID
     WHERE TextTID = $id
     ");
    $out = db_fetch_object($qid);
@@ -421,9 +421,9 @@ function sql_getDocuments4BaseID($id) {
       TextTitel       as title,
       SpracheName     as language,
       TextStatus      as status
-    FROM otmp_Text
-    LEFT JOIN otmp_Person ON PersonPID = TextAutor
-    LEFT JOIN otmp_Sprache ON SpracheSID = TextSID
+    FROM tbl_text
+    LEFT JOIN tbl_person ON PersonPID = TextAutor
+    LEFT JOIN tbl_sprache ON SpracheSID = TextSID
     WHERE ((TextOTID = $id) OR (TextTID = $id))
     ORDER BY TextStatus
     ");
@@ -440,7 +440,7 @@ function sql_addNewText($title,$abstract,$length,$langID,$CategoryID,$filetypID,
  $status = $OriginalTextID==0?'finished':'open';
 
  $query = "
-    INSERT INTO `otmp_Text`
+    INSERT INTO `tbl_text`
     (`TextOTID`, `TextTitel`, `TextAbstract`, `TextLaenge`, `TextSID`, `TextKID`, `TextFID`, `TextAutor` , `TextStatus`, `TextDatum`)
     VALUES ('$OriginalTextID', '$title', '$abstract','$length', '$langID', '$CategoryID', '$filetypID', '$authorID', '$status', NOW())";
   $qid = db_query($query);
@@ -459,7 +459,7 @@ function sql_addNewTask($fromTextID,$toTextID,$userID,$frist='0000-00-00') {
 /* add a new Task for the given arguments, return generated TaskID*/
  
   $query = "
-    INSERT INTO otmp_Auftrag (`AuftragOTID`, `AuftragNTID`, `AuftragDatum`, `AuftragNID`, `AuftragBisDatum`) 
+    INSERT INTO tbl_auftrag (`AuftragOTID`, `AuftragNTID`, `AuftragDatum`, `AuftragNID`, `AuftragBisDatum`) 
     VALUES ('$fromTextID', '$toTextID', NOW(), '$userID', '$frist')
   ";
   $qid = db_query($query);
@@ -484,7 +484,7 @@ function sql_getBaseDocuments($otid) {
       SpracheName      as Language,
       TextAbstract     as Description,
       TextStatus       as Status
-    FROM otmp_Text, otmp_Sprache
+    FROM tbl_text, tbl_sprache
     WHERE ((TextOTID = $otid) OR (TextTID = $otid))
       AND TextSID = SpracheSID");
    while( $r = db_fetch_object($qid) ) {
@@ -505,7 +505,7 @@ function sql_getUserDocuments($usrid) {
       SpracheName      as Language,
       TextAbstract     as Description,
       TextStatus       as Status
-    FROM otmp_Text, otmp_Sprache, otmp_Person
+    FROM tbl_text, tbl_sprache, tbl_person
     WHERE PersonPID = $usrid
       AND TextSID = SpracheSID
       AND TextAutor = $usrid");
@@ -528,7 +528,7 @@ function sql_getDocuments($status) {
       SpracheName      as Language,
       TextAbstract     as Description,
       TextStatus       as Status
-    FROM otmp_Text, otmp_Sprache
+    FROM tbl_text, tbl_sprache
     WHERE TextStatus = '$status'
       AND TextSID = SpracheSID");
   while( $r = db_fetch_object($qid) ) {
@@ -549,7 +549,7 @@ function sql_getAuftrag($status) {
       d1.TextAutor     as AuthorID,
       s2.SpracheName   as ToLanguage,
       d2.TextAutor     as TranslatorID
-    FROM otmp_Auftrag  as a1, otmp_Text as d1, otmp_Text as d2, otmp_Sprache as s1, otmp_Sprache as s2
+    FROM tbl_auftrag  as a1, tbl_text as d1, tbl_text as d2, tbl_sprache as s1, tbl_sprache as s2
     WHERE d1.TextTID = a1.AuftragOTID
       AND d2.TextTID = a1.AuftragNTID
       AND d2.TextStatus = '$status'
@@ -563,7 +563,7 @@ function sql_getAuftrag($status) {
 
 function sql_getUserFromText($usrid) {
 /* UserNamen zu den IDs holen */
-  $qid = db_query ("SELECT PersonKennung as Author FROM otmp_Person WHERE PersonPID = $usrid");
+  $qid = db_query ("SELECT PersonKennung as Author FROM tbl_person WHERE PersonPID = $usrid");
   $qname = db_fetch_object($qid);
   return $qname->Author;
 }
@@ -574,3 +574,21 @@ function sql_getUserFromText($usrid) {
 
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
