@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/main.php,v $
-    * $Revision: 1.8 $
-    * $Id: main.php,v 1.8 2001/12/14 09:36:11 darkpact Exp $
+    * $Revision: 1.9 $
+    * $Id: main.php,v 1.9 2001/12/14 18:17:42 hifix Exp $
     */
 
 include "application.php";
@@ -18,13 +18,14 @@ include("$CFG->templatedir/header.php");
     </td>
     <td bgcolor="#CCCCCC">
       <h5>Benutzer</h5>
-      <p> <a href="<?=$CFG->wwwroot?>/user/signup.php">Neu Anmelden</a>
+      <p> 
     <? if ( isset($session['userid']) ){ ?>
       <br><a href="<?=$CFG->wwwroot?>/user/logout.php">Ausloggen</a>
-    <? } else { ?>
-      <br><a href="<?=$CFG->wwwroot?>/user/login.php">Einloggen</a>
-    <? } ?>
       <br><a href="<?=$CFG->wwwroot?>/user/user_data.php">Ihre Daten</a>
+    <? } else { ?>
+      <a href="<?=$CFG->wwwroot?>/user/signup.php">Neu Anmelden</a>
+      <br><a href="<?=$CFG->wwwroot?>/user/login.php">Einloggen</a>  
+    <? } ?>
       </p>
     </td>
   </tr>
