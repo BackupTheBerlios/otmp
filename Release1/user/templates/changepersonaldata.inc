@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/changepersonaldata.inc,v $
- * $Revision: 1.2 $
- * $Id: changepersonaldata.inc,v 1.2 2001/12/05 01:12:09 alexgn Exp $
+ * $Revision: 1.3 $
+ * $Id: changepersonaldata.inc,v 1.3 2001/12/07 18:22:58 alexgn Exp $
  *
  * Signup Formular
  *
@@ -17,7 +17,6 @@
 <? if (isset($errors)) { ?> 
 <p class="warning">Es ist ein Fehler aufgetreten. Bitte überprüfen Sie die markierten 
   Felder bitte nochmals.</p>
-  Bitte beachten Sie, daß Sie Ihr Passwort nochmals eingeben müssen.
 <? } else { ?> Hier k&ouml;nnen Sie Ihre pers&ouml;nlichen Daten &auml;ndern.<br>
 Hinweise zu den einzelnen Felder stehen rechts daneben. <? } ?> 
 <form method="post" action="<?=ME()?>">
