@@ -1,12 +1,15 @@
 #
 # Datenbank für OTMP
-# $Id: tables.sql,v 1.16 2001/12/17 19:01:17 hifix Exp $
-# $Revision: 1.16 $
+# $Id: tables.sql,v 1.17 2001/12/18 23:54:25 hifix Exp $
+# $Revision: 1.17 $
 #
 # ----------------------------------------------------------------------
 # Log for tables.sql
 # ----------------------------------------------------------------------
 # $Log: tables.sql,v $
+# Revision 1.17  2001/12/18 23:54:25  hifix
+# SpracheTabelle um EthnoCode erweitert
+#
 # Revision 1.16  2001/12/17 19:01:17  hifix
 # added CVS Header
 #
@@ -118,15 +121,15 @@ CREATE TABLE otmp_Optionen
 
 # #######################################
 
-CREATE TABLE otmp_Sprache
-(
-  SpracheSID         TINYINT(3) UNSIGNED AUTO_INCREMENT NOT NULL,
-  SpracheName        VARCHAR(40) NOT NULL,
-  SpracheAbkuerzung  CHAR(3) NOT NULL DEFAULT '---',
-  SpracheSort        TINYINT UNSIGNED DEFAULT 255,
+CREATE TABLE otmp_Sprache (
+  SpracheSID tinyint(3) unsigned NOT NULL auto_increment,
+  SpracheName varchar(40) NOT NULL default '',
+  SpracheAbkuerzung char(3) default NULL,
+  SpracheEthnoCode varchar(4) default NULL,
+  SpracheSort tinyint(3) unsigned default '255',
+  PRIMARY KEY  (SpracheSID)
+) ;
 
-PRIMARY KEY(SpracheSID)
-);
 
 # #####################################
 
