@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changeuserprogdata.php,v $
- * $Revision: 1.2 $
- * $Id: changeuserprogdata.php,v 1.2 2001/12/09 00:25:30 alexgn Exp $
+ * $Revision: 1.3 $
+ * $Id: changeuserprogdata.php,v 1.3 2001/12/13 21:27:04 hifix Exp $
  *
  * To Do:
  * - Check that user is logged in! 
@@ -46,11 +46,11 @@ function update_userProgramms(&$frm,$userid) {
   $delete = sql_deleteUserProgrammData($userid);
 
   foreach($frm as $v) {
-	  if ($i > 1) { 
-	     $i = $i - 1;
-	     $changedata = sql_setUserProgrammData($v,$userid);
-	  }
-	} 
+    if ($i > 1) { 
+       $i = $i - 1;
+       $changedata = sql_setUserProgrammData($v,$userid);
+    }
+  } 
   # return sql_updateuserProgramms($frm['lastname'], $frm['firstname'], $frm['email'],$userid);
 }
 
@@ -59,37 +59,37 @@ function getProgramms($userid) {
 
 $userprogramms = sql_getUserProgrammData2($userid);
 $programms = sql_getProgramms();
-	$i = 0;
-	if (is_null($programms)) {
-	/* In case no programms can be found in the database */
-	echo("Leider keine Programme zur Auswahl!");
-	} else {
-	foreach($programms as $v1) {
-			foreach($v1 as $v2){
-				if ($i == 0) {
-					echo ("<input type=\"checkbox\" name=\"progs".$v2."\" value=\"".$v2."\" ");
-					# check wether user has programm
-					if (is_null($userprogramms)) {
-					} else {
-					   foreach($userprogramms as $up) {
-						   if ( $up == $v2) {
-							   echo ("checked");
-							   break;
-						   }
-					   }
-					}
-					echo(">");
-					$i = 1;
-			   	} elseif($i == 1) {
-					echo (" " .$v2. " ");
-					$i = 2;
-			   	} else {
-					echo ($v2. "<br>\n ");
-					$i = 0;
-				}
-			}
-	}
-	}
+  $i = 0;
+  if (empty($programms)) {
+  /* In case no programms can be found in the database */
+  echo("Leider keine Programme zur Auswahl!");
+  } else {
+  foreach($programms as $v1) {
+      foreach($v1 as $v2){
+        if ($i == 0) {
+          echo ("<input type=\"checkbox\" name=\"progs".$v2."\" value=\"".$v2."\" ");
+          # check wether user has programm
+          if (empty($userprogramms)) {
+          } else {
+             foreach($userprogramms as $up) {
+               if ( $up == $v2) {
+                 echo ("checked");
+                 break;
+               }
+             }
+          }
+          echo(">");
+          $i = 1;
+          } elseif($i == 1) {
+          echo (" " .$v2. " ");
+          $i = 2;
+          } else {
+          echo ($v2. "<br>\n ");
+          $i = 0;
+        }
+      }
+  }
+  }
 }
 
 ?>

@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changetranscap.php,v $
- * $Revision: 1.1 $
- * $Id: changetranscap.php,v 1.1 2001/12/09 23:32:21 alexgn Exp $
+ * $Revision: 1.2 $
+ * $Id: changetranscap.php,v 1.2 2001/12/13 21:24:49 hifix Exp $
  *
  * To Do:
  * - 
@@ -37,7 +37,7 @@ if (match_referer() && isset($HTTP_POST_VARS)) {
   } else {
     /* user wants to delete his translation capabilities */
     $frm = $HTTP_POST_VARS;
-    $deletemarked = deletemarked($frm,$session['userid']);	 	
+    $deletemarked = deletemarked($frm,$session['userid']);    
 
     $DOC_TITLE = "Changing of User Data Successful";
     include("$CFG->templatedir/header.php");
@@ -95,53 +95,53 @@ function deletemarked(&$frm,$userid) {
 function getUserTransCapData($userid) {
 /* function returns users translation capabilities */
 $tmp2 = sql_getUserTransCapData($userid);
-	$j = 1;
-	$valuestr = "";
-	if(is_null($tmp2)) {
-		echo("<tr><td colspan=\"4\">Es wurden bislang keine Sprachangaben gemacht!</td></tr>\n");
-	} else {
-		foreach($tmp2 as $v1) {
-			$i = 0;
-			foreach($v1 as $v2){
-			   if ($i == 0) {
-				$tmp3 = sql_getLangName($v2);
-				if (is_null($tmp3)) {
-				  echo("<tr><td></td>\n");
-				  $i = 1;
-				} else {
-				  echo ("<tr><td>" .$tmp3. "</td>\n");
-				  $valuestr = "" .$v2. ":";
-				  $i = 1;
-				}
-			   } elseif ($i == 1) {
-				$tmp3 = sql_getLangName($v2);
-				if (is_null($tmp3)) {
-				  echo("<td></td>\n");
-				  $i = 2;
-				} else {
-				  echo ("<td>" .$tmp3. "</td>\n");
-				  $valuestr = $valuestr . $v2 .":";
-				  $i = 2;
-				}
-			   } else {
-				$tmp3 = sql_getKatName($v2);
-				if (is_null($tmp3)) {
-				  echo("<td></td></tr>\n");
-				  $i = 0;
-				} else {
-				  $valuestr = $valuestr . $v2;
-				  echo ("<td>" .$tmp3. "</td>\n");
-				  echo ("<td align=\"center\">
-					 <input type=\"checkbox\" name=\"transl" .$j. "\" 
-					 value=\"". $valuestr  ."\"></td>\n</tr>\n");
-				  $i = 0;
-				  $j = $j + 1;
-				  $valuestr = "";
-   				}
-			   }
-			}
-		}
-	}
+  $j = 1;
+  $valuestr = "";
+  if(empty($tmp2)) {
+    echo("<tr><td colspan=\"4\">Es wurden bislang keine Sprachangaben gemacht!</td></tr>\n");
+  } else {
+    foreach($tmp2 as $v1) {
+      $i = 0;
+      foreach($v1 as $v2){
+         if ($i == 0) {
+        $tmp3 = sql_getLangName($v2);
+        if (empty($tmp3)) {
+          echo("<tr><td></td>\n");
+          $i = 1;
+        } else {
+          echo ("<tr><td>" .$tmp3. "</td>\n");
+          $valuestr = "" .$v2. ":";
+          $i = 1;
+        }
+         } elseif ($i == 1) {
+        $tmp3 = sql_getLangName($v2);
+        if (empty($tmp3)) {
+          echo("<td></td>\n");
+          $i = 2;
+        } else {
+          echo ("<td>" .$tmp3. "</td>\n");
+          $valuestr = $valuestr . $v2 .":";
+          $i = 2;
+        }
+         } else {
+        $tmp3 = sql_getKatName($v2);
+        if (empty($tmp3)) {
+          echo("<td></td></tr>\n");
+          $i = 0;
+        } else {
+          $valuestr = $valuestr . $v2;
+          echo ("<td>" .$tmp3. "</td>\n");
+          echo ("<td align=\"center\">
+           <input type=\"checkbox\" name=\"transl" .$j. "\" 
+           value=\"". $valuestr  ."\"></td>\n</tr>\n");
+          $i = 0;
+          $j = $j + 1;
+          $valuestr = "";
+          }
+         }
+      }
+    }
+  }
 }
 
 function getAllTransPoss() {
@@ -150,43 +150,43 @@ function getAllTransPoss() {
 
   $i = 0;
    echo("<tr>\n");
-  if(is_null($alllang)){
+  if(empty($alllang)){
   echo("<td colspan=\"2\">No languages found in database!</td>\n");
-  } else {	
+  } else {  
      while( $i < 2){
         if($i == 0) {
-	   echo("<td><select name=\"fromlang\" size=\"5\">\n");
-	} else {
-	   echo("<td><select name=\"tolang\" size=\"5\">\n");
+     echo("<td><select name=\"fromlang\" size=\"5\">\n");
+  } else {
+     echo("<td><select name=\"tolang\" size=\"5\">\n");
         }
-	foreach($alllang as $v1) {
-		$j = 0;
-		foreach($v1 as $v2) {
-		   if($j == 0) {
-		      echo("<option value=\"".$v2."\">\n");
-		      $j = 1;   
-		   } else {
- 		      echo($v2."</option>\n");
+  foreach($alllang as $v1) {
+    $j = 0;
+    foreach($v1 as $v2) {
+       if($j == 0) {
+          echo("<option value=\"".$v2."\">\n");
+          $j = 1;   
+       } else {
+          echo($v2."</option>\n");
                    }
-		}
+    }
         }
         echo("</td>\n");
         $i = $i + 1;
      }
-     if(is_null($allcateg)){
+     if(empty($allcateg)){
         echo("<td>No categories found in database!</td>");
      } else {
-	echo("<td><select name=\"kat\" size=\"5\">\n");
+  echo("<td><select name=\"kat\" size=\"5\">\n");
         foreach($allcateg as $v1) {
-		$j = 0;
-		foreach($v1 as $v2) {
-		   if($j == 0) {
-		      echo("<option value=\"".$v2."\">\n");
-		      $j = 1;   
-		   } else {
- 		      echo($v2."</option>\n");
+    $j = 0;
+    foreach($v1 as $v2) {
+       if($j == 0) {
+          echo("<option value=\"".$v2."\">\n");
+          $j = 1;   
+       } else {
+          echo($v2."</option>\n");
                    }
-		}
+    }
         }
      }
   }
@@ -202,22 +202,22 @@ function update_transcap($frm,$userid) {
    foreach($frm as $v1){
        if ($j == 1) {
           $valuestring = $v1;
-	  $j = $j + 1;
+    $j = $j + 1;
        } elseif($j > 1 AND $j < $elements) {
-	  $valuestring = $valuestring . ":" .$v1;
-	  $j = $j + 1;
+    $valuestring = $valuestring . ":" .$v1;
+    $j = $j + 1;
        } else {
        }
      }
    
-   return sql_updateUebsetzerSprachen($valuestring,$userid);	
+   return sql_updateUebsetzerSprachen($valuestring,$userid);  
 
 }
 
 function get_user_info($LoginName) {
 /* function gibt $qid Objekt zurück mit Firstname, Lastname, Email */ 
-	return sql_getUserdataFromUsername($LoginName);
-	
+  return sql_getUserdataFromUsername($LoginName);
+  
 
 }
 
