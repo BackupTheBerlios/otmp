@@ -3,14 +3,15 @@
  * Dokument Upload
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/upload.php,v $
- * $Revision: 1.2 $
- * $Id: upload.php,v 1.2 2001/12/09 21:17:52 hifix Exp $
+ * $Revision: 1.3 $
+ * $Id: upload.php,v 1.3 2001/12/10 10:15:49 hifix Exp $
  *
  * To Do:
  * - LOcalisation
  * - Screen, wenn nicht eingeloggt
  * - Fileupload implementation
  * - Filetyp (now dummy)
+ * - check for doublettes of title in DB 
  */
 
 /******************************************************************************
@@ -26,11 +27,13 @@ if (match_referer() && isset($HTTP_POST_VARS)) {
   $errormsg = validate_form($frm, $errors);
 
   if (empty($errormsg)) {
-    $status = upload_file($frm);
-
+    $id = upload_file($frm);
+    unset($errors);
+    unset($frm);
     $DOC_TITLE = "Upload Successful";
     include("$CFG->templatedir/header.php");
     include("templates/upload_success.inc");
+    include("templates/maketask_form.inc");
     include("$CFG->templatedir/footer.php");
     die;
   } else {
@@ -89,9 +92,8 @@ function upload_file(&$frm) {
   
   // neuen Text anlegen
   // FileTypID ist falsch gesetzt (dummy)
-  $ntextid = sql_addNewText($frm['title'],nvl($frm['abstract']),nvl($frm['length'],0),$frm['lang'],nvl($frm['cat'],0),nvl($frm['filetyp'],0),$session['userid']); 
+  return sql_addNewText($frm['title'],nvl($frm['abstract']),nvl($frm['length'],0),$frm['lang'],nvl($frm['cat'],0),nvl($frm['filetyp'],0),$session['userid']); 
   
-  return 1;
 }
 
 ?>

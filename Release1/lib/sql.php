@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.16 $
- * $Id: sql.php,v 1.16 2001/12/10 00:08:49 alexgn Exp $
+ * $Revision: 1.17 $
+ * $Id: sql.php,v 1.17 2001/12/10 10:15:49 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -398,6 +398,30 @@ function sql_getAuftrag($status) {
    while( $r = db_fetch_object($qid) ) {
      array_push($out,$r);
    }
+  return $out;
+}
+
+function sql_getDocument($id) {
+/* Dokument mit id zurückgeben (alle "wichtigen" Felder) 
+ * returns: Object
+ */
+  global $CFG;
+  $out = array();
+  $qid = db_query ("
+    SELECT
+      TextTID         as textID,
+      TextTitel       as title,
+      PersonKennung   as author,
+      PersonEmail     as email,
+      SpracheName     as language,
+      TextAbstract    as abstract,
+      TextStatus      as status
+    FROM otmp_Text
+    LEFT JOIN otmp_Person ON PersonPID = TextAutor
+    LEFT JOIN otmp_Sprache ON SpracheSID = TextSID
+    WHERE TextTID = $id 
+    ");
+   $out = db_fetch_object($qid);
   return $out;
 }
 
