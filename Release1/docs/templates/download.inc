@@ -3,8 +3,8 @@
  * Show Dokument Info
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/download.inc,v $
- * $Revision: 1.4 $
- * $Id: download.inc,v 1.4 2002/01/27 22:12:37 darkpact Exp $
+ * $Revision: 1.5 $
+ * $Id: download.inc,v 1.5 2002/01/28 17:47:27 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -47,7 +47,7 @@ $d = getDocumentDetails($id);
     </tr>
     <tr> 
       <td> 
-        <input type="submit" name="download" value="File runterladen">
+        <input type="submit" name="download" value="Datei runterladen">
       </td>
       <td>Dr&uuml;cken Sie hier und der Text wird auf Ihren Rechner geladen.<br>
         Ist dies getan, klicken Sie bitte <a href="<?=nvl($session['wantsurl'],"$CFG->wwwroot/main.php")?>">hier</a>.</td>

@@ -1,9 +1,10 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/download.php,v $
- * $Revision: 1.3 $
- * $Id: download.php,v 1.3 2002/01/27 22:12:50 darkpact Exp $
+ * $Revision: 1.4 $
+ * $Id: download.php,v 1.4 2002/01/28 17:47:27 hifix Exp $
  *
+ * Download TextFile
  * To Do:
  * - LOcalisation
  */
@@ -46,34 +47,6 @@ include("$CFG->templatedir/footer.php");
 /******************************************************************************
  * FUNCTIONS
  *****************************************************************************/
-function get_downloadURL($textID, $packerID) {
-/* gibt eine URL für den Download zurück */
-  global $CFG;
-  
-  $CFG->filedirwww="$CFG->wwwroot/files";  // temp
-  // dummy
-  $packerID = 1;
-  $ext = getExtension4TextID($textID);
-  
-  //dummy
-  $filename = "$CFG->filedirwww/$textID.$ext";
-  return $filename;
-}
 
-function getExtension4TextID($textID) {
-  /* this function has to be in sqlLib */
-  /* returns the FileTypeType (extension) for the given TextID */
-  
-  $query = "SELECT FiletypeType FROM otmp_Filetype
-            LEFT JOIN otmp_Text ON TextFID = FiletypeFID
-            WHERE TextTID = $textID";
-  $qid = db_query($query);
-  list($ext) = db_fetch_array($qid);
-  if( $ext == "" ) {
-    echo "internal error: can't find extension for Text in DB";
-    die;
-  }
-  return $ext;  
-}
 ?>
 

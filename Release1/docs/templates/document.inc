@@ -1,16 +1,15 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/document.inc,v $
- * $Revision: 1.7 $
- * $Id: document.inc,v 1.7 2002/01/27 22:12:37 darkpact Exp $
+ * $Revision: 1.8 $
+ * $Id: document.inc,v 1.8 2002/01/28 17:47:27 hifix Exp $
  */
 
 $docs = show_docs($otid);
 include ("documentlist.de");
 ?>
 
-<!--form method="post" action="">
-<p>
+<!--<p>
   <table width="100%" border="0" cellspacing="0" cellpadding="2">
     <tr>
       <td colspan="5" bgcolor="#BBBBBB"><b><font color="#000000"><?=$docorg?></font></b></td>
@@ -64,8 +63,10 @@ include ("documentlist.de");
       <td><b><?=$docauthor?></b></td>
       <td><b><?=$docstatus?></b></td>
     </tr>
-<? $i=0; foreach ($docs as $d) { if ($i>0) {
-    if ($d->Status=="open") { $mystatus = $statusopen; ?>
+<? $i=0; foreach ($docs as $d) { if ($i>0) { ?>
+    <form method="get" action="<?=$CFG->wwwroot?>/docs/taketask.php">
+    <input type="hidden" name="id" value="<?=$otid?>">
+    <? if ($d->Status=="open") { $mystatus = $statusopen; ?>
     <tr bgcolor=<?=$rowopen?>>
       <td><?=$d->Title?></td>
     <? } elseif ($d->Status=="work") { $mystatus = $statuswork ?>
@@ -94,10 +95,11 @@ include ("documentlist.de");
     <? } ?>
       <td colspan="5"><?=$d->Description?></td>
     </tr>
-<? } $i++; } ?>
+  <? } $i++; ?>  
+   </form>
+<? } ?>
   </table>
 </p>
-</form>
 <p align="center">
 <!--
 <input type="submit" name="maketask" value="<?=$maketask?>" class="tbl_btn">
