@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.22 $
- * $Id: sql.php,v 1.22 2001/12/14 19:22:19 hifix Exp $
+ * $Revision: 1.23 $
+ * $Id: sql.php,v 1.23 2001/12/15 00:23:14 alexgn Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -104,15 +104,17 @@ function sql_updateUser($lastname, $firstname, $email,$userid) {
 
 /*                  */
 /********************/
-/* PerPro Table */
+/* PerPro Table     */
 /********************/
 /*                  */
 
-function sql_getUserProgrammData($userid) {
-/* returns ProgrammName and ProgrammVersion inside an array */
+function sql_getUserProgrammData($userid, $archive) {
+/* returns an array of ProgrammName and ProgrammVersion */
+/* $packer = 0 returns non archiving programms          */
+/* $packer = 1 returns archiving programms              */
   global $CFG;
   $result = NULL;
-  $qid = db_query("SELECT t1.ProgrammName, t1.ProgrammVersion FROM $CFG->tbl_programm AS t1, $CFG->tbl_perhatprog AS t2 WHERE t2.PerProPID = '$userid' AND t2.PerProPRGID = t1.ProgrammPRGID ORDER BY t1.ProgrammSort");
+  $qid = db_query("SELECT t1.ProgrammName, t1.ProgrammVersion FROM $CFG->tbl_programm AS t1, $CFG->tbl_perhatprog AS t2 WHERE t2.PerProPID = '$userid' AND t2.PerProPRGID = t1.ProgrammPRGID AND t1.ProgrammPacker = '$archive' ORDER BY t1.ProgrammSort");
   $i = 0;
   while ($row = mysql_fetch_object ($qid)) {
   $result[$i][0] = $row->ProgrammName;
@@ -158,11 +160,11 @@ function sql_setUserProgrammData($v,$userid) {
 /********************/
 /*                  */
 
-function sql_getProgramms() {
+function sql_getProgramms($archive) {
 /* Function returns all programms and their versions */
  global $CFG;
  $result = NULL;
- $qid = db_query("SELECT * FROM $CFG->tbl_programm ORDER BY ProgrammSort");
+ $qid = db_query("SELECT * FROM $CFG->tbl_programm WHERE ProgrammPacker = '$archive' ORDER BY ProgrammSort");
  $i = 0;
  while ($row = mysql_fetch_object($qid)) {
   $result[$i][0] = $row->ProgrammPRGID;
@@ -181,7 +183,7 @@ function sql_SQL4PrgIdAndName($packer=0) {
 
 /*                               */
 /*********************************/
-/* UebersetzerSprachen Table   */
+/* UebersetzerSprachen Table     */
 /*********************************/
 /*                               */
 
@@ -245,6 +247,20 @@ function sql_updateUebsetzerSprachen($valuestring,$userid) {
   return 1;
 }
 
+function sql_existsTransCap($fromlang, $tolang, $kat, $userid) {
+/* Function checks wether entry already exists in table UebersetzerSprachen */
+  
+  global $CFG;
+  $qid = db_query("SELECT * FROM $CFG->tbl_uebsprach WHERE UebersetzerSprachenUEID = '$userid' AND
+		UebersetzerSprachenVonSID = '$fromlang' AND UebersetzerSprachenNachSID = '$tolang' AND
+		UebersetzerSprachenKID ='$kat'");
+  if (mysql_num_rows($qid)>0) {
+    return TRUE;
+  } else {
+    return FALSE;	
+  }
+}
+
 /*                               */
 /*********************************/
 /* Sprache Table                 */
@@ -255,6 +271,7 @@ function sql_getLangName($langkey) {
   global $CFG;
   $qid = db_query("SELECT SpracheName FROM $CFG->tbl_sprache WHERE SpracheSID = '$langkey' ORDER BY SpracheSort");
   $lang = db_fetch_object($qid);
+
   return $lang->SpracheName;
 }
 
@@ -268,8 +285,8 @@ function sql_getAllLangs() {
 
   while ($row = mysql_fetch_object($qid)) {
         $result[$i][0] = $row->SpracheSID;
-  $result[$i][1] = $row->SpracheName;
-  $i = $i + 1;
+  	$result[$i][1] = $row->SpracheName;
+  	$i = $i + 1;
   }
   return $result;
 }
