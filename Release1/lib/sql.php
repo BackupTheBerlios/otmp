@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.27 $
- * $Id: sql.php,v 1.27 2001/12/16 22:23:38 hifix Exp $
+ * $Revision: 1.28 $
+ * $Id: sql.php,v 1.28 2001/12/17 18:37:06 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -277,7 +277,7 @@ function sql_existsTransCap($fromlang, $tolang, $kat, $userid) {
 
 function sql_getLangName($langkey) {
   global $CFG;
-  $qid = db_query("SELECT SpracheName FROM $CFG->tbl_sprache WHERE SpracheSID = '$langkey' ORDER BY SpracheSort");
+  $qid = db_query("SELECT SpracheName FROM $CFG->tbl_sprache WHERE SpracheSID = '$langkey' ORDER BY SpracheName");
   $lang = db_fetch_object($qid);
 
   return $lang->SpracheName;
@@ -289,7 +289,7 @@ function sql_getAllLangs() {
   $result = NULL;
   $i = 0;
 
-  $qid = db_query("SELECT SpracheSID, SpracheName FROM $CFG->tbl_sprache ORDER BY SpracheSort");
+  $qid = db_query("SELECT SpracheSID, SpracheName FROM $CFG->tbl_sprache ORDER BY SpracheName");
 
   while ($row = mysql_fetch_object($qid)) {
         $result[$i][0] = $row->SpracheSID;
@@ -302,7 +302,7 @@ function sql_getAllLangs() {
 function sql_SQL4LangIdAndName() {
 /* returns the Query for Selecting the ID and Name of all Languages in the Table */
   global $CFG;
-  return "SELECT SpracheSID as id, SpracheName as name FROM $CFG->tbl_sprache ORDER BY SpracheSort";
+  return "SELECT SpracheSID as id, SpracheName as name FROM $CFG->tbl_sprache ORDER BY SpracheName";
 
 }
 
