@@ -1,121 +1,182 @@
 <? /*
-    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/show.php,v $ 
-    * $Revision: 1.3 $
-    * $Id: show.php,v 1.3 2001/11/11 19:57:57 hifix Exp $
+    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/show.php,v $
+    * $Revision: 1.4 $
+    * $Id: show.php,v 1.4 2001/11/20 17:21:44 darkpact Exp $
     */
 ?>
+<!-- doc header -->
 <html>
 <head>
-<title>otmp - Show</title>
+<title>OTMP - Textverzeichnis anzeigen</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<meta name="description" content="OTMP - Online Translation Marketplace
-Show">
+<meta name="description" content="OTMP - Online Translation Marketplace">
 <link rel="stylesheet" href="otmp.css">
 </head>
 
-<body bgcolor="#FFFFFF" leftmargin="1" topmargin="1">
-<table width="100%" border="0" cellspacing="0" cellpadding="2">
-  <tr bgcolor="#666666"> 
-    <td colspan="2"> 
-      <div align="right"><b><font color="#FFFFFF">you are not logged in</font></b></div>
-    </td>
+<body bgcolor="#FFFFFF" leftmargin="3" topmargin="1" marginwidth="1">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr bgcolor="#666666">
+    <td><div align="right"><b><font color="#FFFFFF">Sie sind eingeloggt als: Nicht Eingeloggt</font></b></div></td>
   </tr>
-  <tr bgcolor="#CCCCCC"> 
+  <tr bgcolor="#CCCCCC">
     <td><b class="logo">OTMP</b></td>
-    <td>&nbsp;</td>
   </tr>
-  <tr> 
-    <td colspan="2">
-      <div align="right"><a href="main.php">home</a> | <a href="show.php">texts</a> 
-        | <a href="user/options.php">options</a> | <a href="user/login.php">login</a></div>
-    </td>
+</table>
+<!-- doc header end -->
+
+<!-- doc body -->
+<p><font size=-1>Zeige <a href="show.php?list=open">Offene &Uuml;bersetzungen</a> |
+<a href="show.php?list=work">&Uuml;bersetzungen in Arbeit</a> |
+<a href="show.php?list=finished">Fertige &Uuml;bersetzungen</a> |
+<a href="show.php?list=all">alle Dokumente</a> an.</font></p>
+
+<? echo $list; ?>
+<? echo "Hallo Du Da "; ?>
+
+<? if ($list=="all" || $list=="open") { ?>
+<form method="post" action="">
+  <table width="100%" border="0" cellspacing="0" cellpadding="2">
+    <tr>
+      <td colspan="8" bgcolor="#6699FF"><b><font color="#FFFFFF">Offene &Uuml;bersetzungen</font></b></td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1E1FF"><b>Nr</b></td>
+      <td bgcolor="#E1E1FF"><b>Titel</b></td>
+      <td bgcolor="#E1E1FF"><b>Sprache</b></td>
+      <td bgcolor="#E1E1FF"><b>Nach</b></td>
+      <td bgcolor="#E1E1FF"><b>Datum</b></td>
+      <td bgcolor="#E1E1FF"><b>Autor</b></td>
+      <td bgcolor="#E1E1FF"><b>Status</b></td>
+      <td bgcolor="#E1E1FF">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><a href="doc.php?doc=4">Mechanisierung der Kopfarbeit</a></td>
+      <td>Deutsch</td>
+      <td>Suaheli</td>
+      <td>23. Mai 2001</td>
+      <td><a href="mailto:nake@localhost">Biel E. Fake</a></td>
+      <td>Offen</td>
+      <td>
+        <input type="submit" name="translate4" value="&Uuml;bersetzen" class="tbl_btn">
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1E1FF">15</td>
+      <td bgcolor="#E1E1FF">Theorien der Stammbildung</td>
+      <td bgcolor="#E1E1FF">Deutsch</td>
+      <td bgcolor="#E1E1FF">Juristendeutsch</td>
+      <td bgcolor="#E1E1FF">4. November 2001</td>
+      <td bgcolor="#E1E1FF"><a href="mailto:siebert@localhost">Dr. Siebert</a></td>
+      <td bgcolor="#E1E1FF">Offen</td>
+      <td bgcolor="#E1E1FF">
+        <input type="submit" name="translate15" value="&Uuml;bersetzen" class="tbl_btn">
+      </td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Semiotik &amp; Click Languages</td>
+      <td>Englisch</td>
+      <td>Französisch</td>
+      <td>11. November 2001</td>
+      <td> - <a href="contact_user.php?user=doc16">Anonym</a> -</td>
+      <td>Offen</td>
+      <td>
+        <input type="submit" name="translate16" value="&Uuml;bersetzen" class="tbl_btn">
+      </td>
+    </tr>
+  </table>
+</form>
+<? } ?>
+<? if ($list=="all" || $list=="work") { ?>
+<form method="post" action="">
+  <table width="100%" border="0" cellspacing="0" cellpadding="2">
+    <tr>
+      <td colspan="8" bgcolor="#66FF99"><b><font color="#FFFFFF">&Uuml;bersetzungen in Arbeit</font></b></td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1FFE1"><b>Nr</b></td>
+      <td bgcolor="#E1FFE1"><b>Titel</b></td>
+      <td bgcolor="#E1FFE1"><b>Sprache</b></td>
+      <td bgcolor="#E1FFE1"><b>Nach</b></td>
+      <td bgcolor="#E1FFE1"><b>Datum</b></td>
+      <td bgcolor="#E1FFE1"><b>&Uuml;bersetzer</b></td>
+      <td bgcolor="#E1FFE1"><b>Status</b></td>
+      <td bgcolor="#E1FFE1">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td><a href="doc.php?doc=13">Umwelt und Cola</a></td>
+      <td>Deutsch</td>
+      <td>Sanskrit</td>
+      <td>3. November 2001</td>
+      <td><a href="mailto:prinz@localhost">Prinz Felix</a></td>
+      <td>In Arbeit</td>
+      <td>&nbsp; </td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1FFE1">12</td>
+      <td bgcolor="#E1FFE1">Entwicklungl&auml;nder an der TU</td>
+      <td bgcolor="#E1FFE1">Deutsch</td>
+      <td bgcolor="#E1FFE1">Hebräisch</td>
+      <td bgcolor="#E1FFE1">1. November 2001</td>
+      <td bgcolor="#E1FFE1"><a href="mailto:prinz@localhost">Prinz Felix</a></td>
+      <td bgcolor="#E1FFE1">In Arbeit</td>
+      <td bgcolor="#E1FFE1">&nbsp; </td>
+    </tr>
+  </table>
+</form>
+<? } ?>
+<? if ($list=="all" or $list=="finished") { ?>
+<form method="post" action="">
+  <table width="100%" border="0" cellspacing="0" cellpadding="2">
+    <tr>
+      <td colspan="8" bgcolor="#FF6699"><b><font color="#FFFFFF">Fertige &Uuml;bersetzungen</font></b></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFE1E1"><b>Nr</b></td>
+      <td bgcolor="#FFE1E1"><b>Titel</b></td>
+      <td bgcolor="#FFE1E1"><b>Sprache</b></td>
+      <td bgcolor="#FFE1E1"><b>Nach</b></td>
+      <td bgcolor="#FFE1E1"><b>Datum</b></td>
+      <td bgcolor="#FFE1E1"><b>Autor</b></td>
+      <td bgcolor="#FFE1E1"><b>&Uuml;bersetzer</b></td>
+      <td bgcolor="#FFE1E1">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td><a href="doc.php?doc=11">Nazir und seine Nerven</a></td>
+      <td>Deutsch</td>
+      <td>Arabisch</td>
+      <td>2. Oktober 2001</td>
+      <td><a href="mailto:adam@localhost">Adam Eva</a></td>
+      <td><a href="mailto:prinz@localhost">Prinz Felix</a></td>
+      <td>&nbsp; </td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFE1E1">10</td>
+      <td bgcolor="#FFE1E1">Entwicklungl&auml;nder an der FU</td>
+      <td bgcolor="#FFE1E1">Deutsch</td>
+      <td bgcolor="#FFE1E1">Hebräisch</td>
+      <td bgcolor="#FFE1E1">12. September 2001</td>
+      <td bgcolor="#FFE1E1"><a href="mailto:nazir@localhost">Nazir Peroz</a></td>
+      <td bgcolor="#FFE1E1"><a href="mailto:king@localhost">König Hottentotten</a></td>
+      <td bgcolor="#FFE1E1">&nbsp; </td>
+    </tr>
+  </table>
+</form>
+<? } ?>
+<!-- doc body end -->
+
+<!-- doc footer -->
+<table width="100%">
+  <tr>
+    <td align="center"><a href="main.php">Hauptseite</a> | <a href="show.php?list=all">Texte</a> | <a href="contact.php">Kontakt</a> | <a href="help.php">Hilfe</a> | <a href="user/login.php">Einloggen</a></td>
   </tr>
 </table>
 
-<form method="post" action="">
-  <table width="100%" border="0" cellspacing="0" cellpadding="2">
-    <tr> 
-      <td colspan="6" bgcolor="#6699FF"><b><font color="#FFFFFF">offene &Uuml;bersetzungen</font></b></td>
-    </tr>
-    <tr> 
-      <td bgcolor="#E1E1FF"><b>Nr</b></td>
-      <td bgcolor="#E1E1FF"><b>Titel</b></td>
-      <td bgcolor="#E1E1FF"><b>Datum</b></td>
-      <td bgcolor="#E1E1FF"><b>Author<br>
-        Kontakt </b></td>
-      <td bgcolor="#E1E1FF"><b>Status</b></td>
-      <td bgcolor="#E1E1FF" width="5%">&nbsp;</td>
-    </tr>
-    <tr> 
-      <td>4</td>
-      <td>Mechanisierung der Kopfarbeit</td>
-      <td>4.11.2001</td>
-      <td><a href="mailto:nake@localhost">nake</a></td>
-      <td>offen</td>
-      <td> 
-        <input type="submit" name="translate4" value="&uuml;bersetzen" class="tbl_btn">
-      </td>
-    </tr>
-    <tr> 
-      <td bgcolor="#E1E1FF">5</td>
-      <td bgcolor="#E1E1FF">Theorien der Stammbildung</td>
-      <td bgcolor="#E1E1FF">4.11.2001</td>
-      <td bgcolor="#E1E1FF"><a href="mailto:siebert@localhost">siebert</a></td>
-      <td bgcolor="#E1E1FF">offen</td>
-      <td bgcolor="#E1E1FF">
-        <input type="submit" name="translate5" value="&uuml;bersetzen" class="tbl_btn">
-      </td>
-    </tr>
-    <tr> 
-      <td>6</td>
-      <td>Semiotik &amp; Klicksprachen</td>
-      <td>11.11.2001</td>
-      <td> - <a href="contact_user.php">mail</a> -</td>
-      <td>offen</td>
-      <td>
-        <input type="submit" name="translate6" value="&uuml;bersetzen" class="tbl_btn">
-      </td>
-    </tr>
-  </table>
-</form>
-<form method="post" action="">
-  <table width="100%" border="0" cellspacing="0" cellpadding="2">
-    <tr> 
-      <td colspan="6" bgcolor="#6699FF"><b><font color="#FFFFFF"> &Uuml;bersetzungen 
-        in Arbeit</font></b></td>
-    </tr>
-    <tr> 
-      <td bgcolor="#E1E1FF"><b>Nr</b></td>
-      <td bgcolor="#E1E1FF"><b>Titel</b></td>
-      <td bgcolor="#E1E1FF"><b>Datum</b></td>
-      <td bgcolor="#E1E1FF"><b>&Uuml;bersetzer<br>
-        Kontakt </b></td>
-      <td bgcolor="#E1E1FF"><b>Status</b></td>
-      <td bgcolor="#E1E1FF" width="5%">&nbsp;</td>
-    </tr>
-    <tr> 
-      <td>3</td>
-      <td>Umwelt und Cola</td>
-      <td>1.11.2001</td>
-      <td><a href="mailto:prinz@localhost">prinz</a></td>
-      <td>in arbeit</td>
-      <td>&nbsp; </td>
-    </tr>
-    <tr> 
-      <td bgcolor="#E1E1FF">2</td>
-      <td bgcolor="#E1E1FF">CMSV </td>
-      <td bgcolor="#E1E1FF">1.11.2001</td>
-      <td bgcolor="#E1E1FF"><a href="mailto:prinz@localhost">prinz</a></td>
-      <td bgcolor="#E1E1FF">in arbeit</td>
-      <td bgcolor="#E1E1FF">&nbsp; </td>
-    </tr>
-  </table>
-</form>
-<p align="left">&nbsp;</p>
-<p align="center" class="footer"><a href="main.php">home</a>| <a href="show.php">texts</a> 
-  | <a href="upload.php">upload</a> | <a href="contact.php">contact</a> | <a href="help.php">help</a><br>
-  <a href="user/login.php">login</a><br>
-  <br>
-  $Revision: 1.3 $ &copy; 2001 otmp-developer :)</p>
+<p align="center" class="footer">
+  Revision: <? echo $revision; echo $datum; ?> &copy; 2001 otmp-developer</p>
 </body>
 </html>
+<!-- doc footer end -->

@@ -1,7 +1,7 @@
 <? /*
-    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/help.php,v $ 
-    * $Revision: 1.2 $
-    * $Id: help.php,v 1.2 2001/11/11 14:14:16 hifix Exp $
+    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/help.php,v $
+    * $Revision: 1.3 $
+    * $Id: help.php,v 1.3 2001/11/20 17:21:44 darkpact Exp $
     */
 ?>
 <html>
@@ -15,18 +15,18 @@ Helpsites">
 
 <body bgcolor="#FFFFFF" leftmargin="1" topmargin="1">
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
-  <tr bgcolor="#666666"> 
-    <td colspan="2"> 
+  <tr bgcolor="#666666">
+    <td colspan="2">
       <div align="right"><b><font color="#FFFFFF">you are not logged in</font></b></div>
     </td>
   </tr>
-  <tr bgcolor="#CCCCCC"> 
+  <tr bgcolor="#CCCCCC">
     <td><b class="logo">OTMP</b></td>
     <td>&nbsp;</td>
   </tr>
-  <tr> 
+  <tr>
     <td colspan="2">
-      <div align="right"><a href="main.php">home</a> | <a href="show.php">texts</a> 
+      <div align="right"><a href="main.php">home</a> | <a href="show.php">texts</a>
         | <a href="user/options.php">options</a> | <a href="user/login.php">login</a></div>
     </td>
   </tr>
@@ -38,10 +38,10 @@ Helpsites">
   <li> <a href="doc/faq.html">H&auml;ufig gestellte Fragen</a></li>
   <li><a href="contact.php?origin=help">Kontakt zur OTMP-Crew</a></li>
 </ul>
-<p align="center" class="footer"><a href="main.php">home</a>| <a href="show.php">texts</a> 
+<p align="center" class="footer"><a href="main.php">home</a>| <a href="show.php">texts</a>
   | <a href="upload.php">upload</a> | <a href="contact.php">contact</a> | <a href="help.php">help</a><br>
   <a href="user/login.php">login</a><br>
   <br>
-  $Revision: 1.2 $ &copy; 2001 otmp-developer :)</p>
+  $Revision: 1.3 $ &copy; 2001 otmp-developer :)</p>
 </body>
 </html>
