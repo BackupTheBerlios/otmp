@@ -47,34 +47,7 @@
         <b>Kategorien</b>
       </td>
     </tr>
-    <tr>
-      <td>
-	<?php
-		#$tmp2 = sql_getUebersetzerVonSprache(1);
-		# foreach($tmp2 as $v) {
-		#	echo ($v. "<br>");
-		#}
- 	?>
-      </td>
-      <td>
-	<?php
-		#$tmp2 = sql_getUebersetzerNachSprache(1);
-		# foreach($tmp2 as $v) {
-		#	echo ($v. "<br>");
-		#}
- 	?>
-      </td>
-      <td>
-	<?php
-		$tmp2 = sql_getUebersetzerKategorien(111); # Es muss unbedingt die userid aus der 
-						           # Session genommen werden! Hier ist    
- 						           # userid = 111 richtig ist session['userid']
-		 foreach($tmp2 as $v) {
-			echo ($v. "<br>");
-		}
-	?>
-      </td>
-    </tr>
+	<?php $usertranscapdata = getUserTransCapData($session['userid']); ?>
   </table>
 </td>
 </tr>
