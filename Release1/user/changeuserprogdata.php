@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changeuserprogdata.php,v $
- * $Revision: 1.6 $
- * $Id: changeuserprogdata.php,v 1.6 2002/01/09 13:58:03 alexgn Exp $
+ * $Revision: 1.7 $
+ * $Id: changeuserprogdata.php,v 1.7 2002/01/11 13:15:24 alexgn Exp $
  *
  * To Do:
  * -  
@@ -14,7 +14,7 @@
  *****************************************************************************/
 
 include("../application.php");
-$session['wantsurl']=me();  // Ruecksprung (ggf)
+/* $session['wantsurl']=me();  // Ruecksprung (ggf) */
 checklogin();
 
 /* form has been submitted, changing user data */
@@ -28,11 +28,16 @@ if (match_referer() && isset($HTTP_POST_VARS)) {
         changeUserToTranslator($session['userid']);
 	$session['translator'] = 1;
     }
-
-    $DOC_TITLE = "Changing of User Programm Data Successful";
-    include("$CFG->templatedir/header.php");
-    include("templates/change_data_success.inc");
-    include("$CFG->templatedir/footer.php");
+    
+    /* Obsolete Code                                             */
+    /* $DOC_TITLE = "Changing of User Programm Data Successful"; */
+    /* include("$CFG->templatedir/header.php");                  */
+    /* include("templates/change_data_success.inc");             */
+    /* include("$CFG->templatedir/footer.php");                  */
+    
+    $session['notice']="Angaben zu Ihren Programmen erfolgreich ge&auml;ndert!";
+    $goto = empty($session["wantsurl"]) ? "$CFG->wwwroot/user/user_data.php" : $session["wantsurl"];
+    header("Location: $goto");
     die;
 
 }

@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changepersonaldata.php,v $
- * $Revision: 1.3 $
- * $Id: changepersonaldata.php,v 1.3 2001/12/16 13:12:48 alexgn Exp $
+ * $Revision: 1.4 $
+ * $Id: changepersonaldata.php,v 1.4 2002/01/11 13:15:41 alexgn Exp $
  *
  * To Do:
  * - 
@@ -14,7 +14,7 @@
  *****************************************************************************/
 
 include("../application.php");
-$session['wantsurl']=me();  // Rücksprung (ggf)
+/* $session['wantsurl']=me();  // Rücksprung (ggf) */
 checklogin();
 
 /* form has been submitted, changing user data */
@@ -25,11 +25,17 @@ if (match_referer() && isset($HTTP_POST_VARS)) {
   if (empty($errormsg)) {
     $status = update_user($frm,$session['userid']);
 
-    $DOC_TITLE = "Changing of User Data Successful";
-    include("$CFG->templatedir/header.php");
-    include("templates/change_data_success.inc");
-    include("$CFG->templatedir/footer.php");
+    /* Obsolete Code                                    */
+    /* $DOC_TITLE = "Changing of User Data Successful"; */
+    /* include("$CFG->templatedir/header.php");         */
+    /* include("templates/change_data_success.inc");    */
+    /* include("$CFG->templatedir/footer.php");         */ 
+
+    $session['notice']="Angaben zu Ihrer Person erfolgreich ge&auml;ndert!";
+    $goto = empty($session["wantsurl"]) ? "$CFG->wwwroot/user/user_data.php" : $session["wantsurl"];
+    header("Location: $goto");
     die;
+
   } else {
     $session['notice'] = $errormsg;
   }
