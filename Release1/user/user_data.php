@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/user_data.php,v $
- * $Revision: 1.5 $
- * $Id: user_data.php,v 1.5 2001/12/08 02:21:48 alexgn Exp $
+ * $Revision: 1.6 $
+ * $Id: user_data.php,v 1.6 2001/12/09 00:31:38 alexgn Exp $
  *
  * To Do:
  * - 
@@ -44,14 +44,49 @@ if ( isset($session['userid']) ){
  *****************************************************************************/
 
 function get_user_info($LoginName) {
-/* function gibt $qid Objekt zurück mit Firstname, Lastname, Email */ 
+/* function returns $qid Object containing Firstname, Lastname, Email */ 
 	return sql_getUserdataFromUsername($LoginName);
 	
 
 }
 
 function getUserTransCapData($userid) {
-
+/* function returns users translation capabilities */
+$tmp2 = sql_getUserTransCapData($userid);
+	if(is_null($tmp2)) {
+		echo("<tr><td colspan=\"3\">Es wurden bislang keine Sprachangaben gemacht!</td></tr>\n");
+	} else {
+		foreach($tmp2 as $v1) {
+			$i = 0;
+			foreach($v1 as $v2){
+			   if ($i == 0) {
+				$tmp3 = sql_getLangName($v2);
+				if (is_null($tmp3)) {
+				  echo("<tr><td></td>\n");
+				} else {
+				  echo ("<tr><td>" .$tmp3. "</td>\n");
+				  $i = 1;
+				}
+			   } elseif ($i == 1) {
+				$tmp3 = sql_getLangName($v2);
+				if (is_null($tmp3)) {
+				  echo("<td></td>\n");
+				} else {
+				  echo ("<td>" .$tmp3. "</td>\n");
+				  $i = 2;
+				}
+			   } else {
+				$tmp3 = sql_getKatName($v2);
+				if (is_null($tmp3)) {
+				  echo("<td></td></tr>\n");
+				} else {
+				  echo ("<td>" .$tmp3. "</td></tr>\n");
+				  $i = 0;
+   				}
+			   }
+			}
+		}
+	}
 }
 
 function getUserProgrammData($userid) {
