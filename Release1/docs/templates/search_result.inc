@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/search_result.inc,v $ 
-    * $Revision: 1.1 $
-    * $Id: search_result.inc,v 1.1 2001/12/16 21:58:14 alexgn Exp $
+    * $Revision: 1.2 $
+    * $Id: search_result.inc,v 1.2 2001/12/18 00:16:02 alexgn Exp $
     *
     */
 ?> 
@@ -36,7 +36,9 @@
      <?php foreach($status as $v1) { ?>
      <tr>
         <td>
-	   <?php if(!empty($v1->title)) { echo $v1->title;}  ?>
+	   <?php if(!empty($v1->title)) { ?><a href="document.php?otid=<?php echo $v1->textOTID; ?>">
+						<?php echo $v1->title; ?> </a>
+	   <?php }  ?>
         </td>
 	<td>
 	   <?php if(!empty($v1->language)) { echo $v1->language;} ?>
@@ -48,7 +50,7 @@
 	   <?php if(!empty($v1->date)) { echo $v1->date;} ?>
 	</td>
 	<td>
-	   <?php if(!empty($v1->author)) { echo $v1->author;} ?>
+	   <?php if(!empty($v1->author)) {  echo $v1->author;} ?>
 	</td>
      </tr>
      <?php } ?>
