@@ -1,8 +1,8 @@
 <?
 /*
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/templates/footer.php,v $
-* $Revision: 1.6 $
-* $Id: footer.php,v 1.6 2001/12/14 09:35:39 darkpact Exp $
+* $Revision: 1.7 $
+* $Id: footer.php,v 1.7 2001/12/16 11:10:52 alexgn Exp $
 *
 */
 ?>
@@ -19,7 +19,7 @@
   |&nbsp;&nbsp;<a href="mailto:ostkino@citygrid.de">Kontakt</A>&nbsp;&nbsp;
   <br>
   <?if (isset($session['userid'])) { ?>
-    &nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/logout.php">Ausloggen</A>&nbsp;&nbsp;
+    &nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/user/logout.php">Ausloggen</A>&nbsp;&nbsp;
     |&nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/user/changepassword.php">Passwort ändern</A>&nbsp;&nbsp;
     <?if (require_priv(1)) { /* general Admin */?>
     |&nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/opt.php?debug=<?= nvl($session['mode_debug'])==1? 0:1;?>">Debug Modus <?= nvl($session['mode_debug'])==1? "Aus":"An";?></A>&nbsp;&nbsp;
