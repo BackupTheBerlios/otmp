@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changetranscap.php,v $
- * $Revision: 1.2 $
- * $Id: changetranscap.php,v 1.2 2001/12/13 21:24:49 hifix Exp $
+ * $Revision: 1.3 $
+ * $Id: changetranscap.php,v 1.3 2001/12/14 23:53:57 alexgn Exp $
  *
  * To Do:
  * - 
@@ -21,7 +21,7 @@ if (match_referer() && isset($HTTP_POST_VARS)) {
      /* user wants to add new translation capabilities */
      $frm = $HTTP_POST_VARS;
 
-     $errormsg = validate_form($frm, $errors);
+     $errormsg = validate_form($frm, $errors, $session['userid']);
 
      if (empty($errormsg)) {
        $status = update_transcap($frm,$session['userid']);
@@ -58,32 +58,49 @@ include("$CFG->templatedir/footer.php");
  * FUNCTIONS
  *****************************************************************************/
 
-function validate_form(&$frm, &$errors) {
+function validate_form(&$frm, &$errors,$userid) {
 /* validate the signup form, and return the error messages in a string.  if
  * the string is empty, then there are no errors */
 
   $errors = new Object;
   $msg = "";
 
+  if (empty($frm["fromlang"]) OR empty($frm["tolang"]) OR empty($frm["kat"])) {
+      if (empty($frm["fromlang"])) {
+        $errors->fromlang = true;
+        $msg .= "<li>Sie haben keine Quellsprache angegeben";  
+      }
   
-  if (empty($frm["fromlang"])) {
-    $errors->fromlang = true;
-    $msg .= "<li>Sie haben keine Quellsprache angegeben";  
+      if (empty($frm["tolang"])) {
+        $errors->tolang = true;
+        $msg .= "<li>Sie haben keine Zielsprache angegeben";
+      }
+  
+      if (empty($frm["kat"])) {
+        $errors->kat = true;
+        $msg .= "<li>Sie haben keine Kategorie angegeben";  
+      } 
+  } elseif (transCapExists($frm["fromlang"],$frm["tolang"],$frm["kat"],$userid) == TRUE) {
+   $errors->fromlang = true;
+   $errors->tolang = true; 
+   $errors->kat = true;
+   $msg .= "<li>Dieser Eintrag existiert bereits!";	
   }
-  
-  if (empty($frm["tolang"])) {
-    $errors->tolang = true;
-    $msg .= "<li>Sie haben keine Zielsprache angegeben";
+
+   if( !empty($frm["fromlang"]) AND !empty($frm["tolang"]) AND $frm["fromlang"] == $frm["tolang"]) {
+   $errors->fromlang = true;
+   $errors->tolang = true;
+   $msg .= "<li>Quell- und Zielsprache m&uuml;&szlig;en unterschiedlich sein.";
   }
-  
-  if (empty($frm["kat"])) {
-    $errors->kat = true;
-    $msg .= "<li>Sie haben keine Kategorie angegeben";  
-  
-  }
-  
+
   return $msg;
 }
+
+function transCapExists($fromlang, $tolang, $kat, $userid) {
+/* Checks wether data already exists in UebersetzerSprachen table */
+  return sql_existsTransCap($fromlang, $tolang, $kat, $userid);
+}
+
 
 function deletemarked(&$frm,$userid) {
 /* function deletes all marked entries from database */
