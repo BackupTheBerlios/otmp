@@ -1,0 +1,38 @@
+<? /*
+    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/FileTree.txt,v $
+    * $Revision: 1.1 $
+    * $Id: FileTree.txt,v 1.1 2001/11/26 09:26:33 darkpact Exp $
+    */
+?>
+Kompletter OTMP Dateibaum
+
+Hauptverzeichnis
+  otmp.css  - Stylesheet für alle Dateien
+  otmpfooter.php  - Standard Fußbereich
+  otmpheader.php  - Standard Kopfbereich
+  all.de .us  - Standard Variablen
+  database.php .de .us - Datenbankzugriffsfunktionen incl Fehlermeldungen
+  index.html  - Erste Seite mit Auswahl der Sprache
+  main.php .de .us  - Hauptseite
+  contact.php .de .us  - Kontaktinformationen
+
+  user/
+    login.php .de .us  - Einlogseite
+    signup.php .de .us  - Anmeldeseite
+    forgotpasswd.php .de .us  - Passwort vergessen
+    signupok.php .de .us  - Bestätigung das die Anmeldung erfolgreich war
+    options.php .de .us  - Benutzeroptionen einstellen
+    addlanguagecombo.php .de .us  - Neue Sprachkombination hinufügen
+
+  help/
+    help.php .de .us  - Haupthilfeseite
+    whatis.php .de .us  - Was ist OTMP und wozu
+    faq.php .de .us  - Häufig gestellte Fragen
+    howto.php .de .us  - Anleitungenverzeichnis
+
+  docs/
+    documentlist.php .de .us  - Liste aller Dokumente
+    document.php .de .us  - Genauere Ansicht zu einem Dokument
+    upload.php .de .us  - Dokument hochladen
+    download.php .de .us  - Dokument runterladen
+
