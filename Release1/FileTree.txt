@@ -1,7 +1,10 @@
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/FileTree.txt,v $
-* $Revision: 1.8 $
-* $Id: FileTree.txt,v 1.8 2001/12/14 09:37:48 darkpact Exp $
+* $Revision: 1.9 $
+* $Id: FileTree.txt,v 1.9 2001/12/14 18:16:49 hifix Exp $
 * $Log: FileTree.txt,v $
+* Revision 1.9  2001/12/14 18:16:49  hifix
+* added user/logout.php
+*
 * Revision 1.8  2001/12/14 09:37:48  darkpact
 * Erweitert um neue Dateien
 *
@@ -60,6 +63,7 @@ Legende
   login.php               - Login Seite
   signup.php              - Anmeldeseite
   forgot_passwdord.php    - Passwort vergessen
+  logout.php              - User Logout
   *options.php            - Useroptionen einstellen
   changetranscap.php    - Aendern der Uebersetzungsfaehigkeiten
   changepassword.php    - Seite zum Passwort aendern
