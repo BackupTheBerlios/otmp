@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/user_data.php,v $
- * $Revision: 1.1 $
- * $Id: user_data.php,v 1.1 2001/12/04 20:52:24 alexgn Exp $
+ * $Revision: 1.2 $
+ * $Id: user_data.php,v 1.2 2001/12/05 01:11:16 alexgn Exp $
  *
  * To Do:
  * - 
@@ -24,7 +24,7 @@ $DOC_TITLE = "User Account Info";
 if ( isset($session['userid']) ){
  
 	$tmp = get_user_info($session['username']);
-	# echo $tmp->Firstname;
+	/* echo $tmp->Firstname; */
 
 	include("$CFG->templatedir/header.php");
 	include("templates/user_data.inc");

@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changepersonaldata.php,v $
- * $Revision: 1.1 $
- * $Id: changepersonaldata.php,v 1.1 2001/12/04 20:53:07 alexgn Exp $
+ * $Revision: 1.2 $
+ * $Id: changepersonaldata.php,v 1.2 2001/12/05 01:10:48 alexgn Exp $
  *
  * To Do:
  * - 
@@ -21,7 +21,7 @@ if (match_referer() && isset($HTTP_POST_VARS)) {
   $errormsg = validate_form($frm, $errors);
 
   if (empty($errormsg)) {
-    # $status = insert_user($frm);
+    $status = update_user($frm,$session['userid']);
 
     $DOC_TITLE = "Changing of User Data Successful";
     include("$CFG->templatedir/header.php");
@@ -62,45 +62,19 @@ function validate_form(&$frm, &$errors) {
     $msg .= "<li>Sie haben Ihren Vornamen nicht angegeben";
   }
   
-  if (empty($frm["password"])) {
-    $errors->password = true;
-    $msg .= "<li>Sie haben kein Password angegeben";
-  
-  } elseif (empty($frm["password_check"])) {
-    $errors->password_check = true;
-    $msg .= "<li>Sie haben vergessen, daß Password zu wiederholen";
-  
-  } elseif ( $frm["password"] != $frm["password_check"] ) {
-    $errors->password_check = true;
-    $errors->password = true;
-    $msg .= "<li>Die Passwörter stimmen nicht überein";
-  }
-  
-  if (empty($frm["username"])) {
-     $errors->username = true;
-     $msg .= "<li>Sie haben keinen Benutzernamen angegeben";
-     
-  } elseif (username_exists($frm["username"]) ) {
-    $errors->username = true;
-    $msg .= "<li>Der Benutzername <b>" . ov($frm["username"]) ."</b> ist schon vergeben. Bitte wählen Sie einen anderen Namen.";
-  }
-  
-  if (empty($frm["email"])) {
+  elseif (empty($frm["email"])) {
     $errors->email = true;
     $msg .= "<li>Sie haben keine Emailadresse angegeben";  
   
-  } elseif ( email_exists($frm["email"]) ) {
-    $errors->email = true;
-    $msg .= "<li>Die Emailadresse <b>" . ov($frm["email"]) ."</b> existiert bereits.";
   }
   
   return $msg;
 }
 
-function insert_user(&$frm) {
-/* add the new user into the database */
+function update_user(&$frm,$userid) {
+/* update user data in the database*/
  
-  return sql_addNewUser($frm['lastname'], $frm['firstname'], $frm['email'], $frm['username'], $frm['password']);
+  return sql_updateUser($frm['lastname'], $frm['firstname'], $frm['email'],$userid);
 }
 
 function get_user_info($LoginName) {
