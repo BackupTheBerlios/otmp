@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/user/options.php,v $ 
-    * $Revision: 1.2 $
-    * $Id: options.php,v 1.2 2001/11/11 14:14:16 hifix Exp $
+    * $Revision: 1.3 $
+    * $Id: options.php,v 1.3 2001/11/14 20:24:52 hifix Exp $
     */
 ?>
 <html>
@@ -59,12 +59,13 @@ Useroptions">
     <td colspan="3"><a href="%20">[Daten &auml;ndern]</a></td>
   </tr>
 </table>
+<p>Daten eines &Uuml;bersetzers (also welche Programme er hat, Kategorien...)</p>
 <p align="left">&nbsp; </p>
 <p align="center" class="footer"><a href="../main.php">home</a>| <a href="../show.php">texts</a> 
   | <a href="../upload.php">upload</a> | <a href="../contact.php">contact</a> 
   | <a href="../help.php">help</a><br>
   <a href="logout.php">logout</a><br>
   <br>
-  $Revision: 1.2 $ &copy; 2001 otmp-developer :)</p>
+  $Revision: 1.3 $ &copy; 2001 otmp-developer :)</p>
 </body>
 </html>
