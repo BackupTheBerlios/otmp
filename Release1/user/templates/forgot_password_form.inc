@@ -1,8 +1,8 @@
 <? 
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/forgot_password_form.inc,v $
- * $Revision: 1.1 $
- * $Id: forgot_password_form.inc,v 1.1 2001/11/25 23:21:19 hifix Exp $
+ * $Revision: 1.2 $
+ * $Id: forgot_password_form.inc,v 1.2 2001/11/29 22:19:49 hifix Exp $
  *
  * Password vergessen Form
  *
@@ -12,17 +12,16 @@
  * - remove html "errors"
  */
 ?> 
-<h1>OTMP Password Recovery</h1>
+<h2>OTMP Password Recovery</h2>
 <hr size=1>
 <br>
 <table cellpadding=20>
   <tr valign=top> 
     <td width=300 class=normal> 
-      <p>Enter in your email address to recover your password. When you submit 
-        this request, your password will be reset, and a new password will be 
-        sent to you via email.</p> 
-      <p>If you do not want to do this, you can return to the <a href="<?=$CFG->wwwroot?>/login.php">login 
-        screen</a> or the <a href="<?=$CFG->wwwroot?>/">home page</a> now.</p>
+      <p>Um Ihre Logindaten zu erhalten geben Sie hier Ihre emailadresse an (mit der Sie sich am System angemeldet haben).
+         Wenn Sie auf Recover klicken wird Ihr Passwort auf ein neues Passwort gesetzt und Ihnen per mail zugesandt. Alles weitere steht in der mail.</p> 
+      <p>Wenn Sie dies nicht tun wollen können sie zur <a href="<?=$CFG->wwwroot?>/login.php">Login 
+        Seite</a> oder zur <a href="<?=$CFG->wwwroot?>/main.php">Haupseite</a> gehen.</p>
     </td>
     <td> <? if (! empty($errormsg)) { ?> 
       <div class=warning align=center><? pv($errormsg) ?></div>
@@ -41,10 +40,9 @@
                 <tr> 
                   <td></td>
                   <td>
-                    <input type="submit" value="Submit">
-                    <input type="button" value="Cancel" onClick="javascript: history.go(-1)">
-                    <p> <a href="login.php">Login Screen</a> | <a href="<?=$CFG->wwwroot?>/main.php">Home 
-                      Page</a></p> 
+                    <input type="submit" value="Recover">
+                    <input type="button" value="Abbruch" onClick="javascript: history.go(-1)">
+                    <p> <a href="login.php">Login Seite</a> | <a href="<?=$CFG->wwwroot?>/main.php">Hauptseite </a></p> 
                   </td>
                 </tr>
               </table>
