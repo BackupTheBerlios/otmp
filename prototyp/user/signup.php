@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/user/signup.php,v $ 
-    * $Revision: 1.1 $
-    * $Id: signup.php,v 1.1 2001/11/16 16:08:44 hifix Exp $
+    * $Revision: 1.2 $
+    * $Id: signup.php,v 1.2 2001/11/20 12:39:12 alexgn Exp $
     */
 ?>
 <html>
@@ -33,11 +33,13 @@ Signup">
 </table>
 <h3 align="left">Anmeldung f&uuml;r OTMP</h3>
 <div align="center"><br>
-  Bitte füll das Formular vollständig aus. Alle mit einem * versehene Felder sind 
-  optionale Angaben.<br>
-  <b><font color="#FF0000">!! ist noch nicht fertig !!!</font></b><br>
+  Egal ob Sie sich als Übersetzer oder als Nutzer anmelden, die Anmeldung beim OTMP erfolgt in 
+  wenigen einfachen Schritten. Füllen Sie einfach untenstehendes Formular aus und folgen Sie
+  den weiteren Anweisungen.<br>
+  <br><br>
+  <b>Schritt 1</b>
 </div>
-<form method="post" action="signup_ok.php">
+<form method="post" action="signup2a.php">
   <div align="center"> 
     <table cellspacing="0" cellpadding="1" bgcolor="#000000">
       <tr> 
@@ -57,21 +59,33 @@ Signup">
             </tr>
             <tr bgcolor="#FFFFFF"> 
               <td class=label> 
-                <p>password:</p>
+                <p>E-mail:</p>
               </td>
+              <td> 
+                <input type="password" size=25 name="email">
+              </td>
+            </tr>
+            <tr bgcolor="#FFFFFF"> 
+              <td class=label>Passwort:</td>
               <td> 
                 <input type="password" size=25 name="password">
               </td>
             </tr>
             <tr bgcolor="#FFFFFF"> 
-              <td class=label>e-mail:</td>
+              <td class=label>Passwort wiederholen:</td>
               <td> 
-                <input type="text" size=25 name="email">
+                <input type="password" size=25 name="password2">
               </td>
             </tr>
+	    <tr bgcolor="#FFFFFF">
+	      <td class="label" colspan="2" align="center">Anmelden als</td>
+	    </tr>
             <tr bgcolor="#FFFFFF" > 
-              <td colspan=2 align="center"> 
-                <input type="submit" name="signup" value="signup">
+              <td colspan="1" align="center"> 
+                <input type="submit" name="signup" value="Übersetzer">
+	      </td>
+	      <td colspan="1" align="center"> 
+                <input type="button" name="signup" value="Nutzer">
               </td>
             </tr>
           </table>
@@ -80,11 +94,14 @@ Signup">
     </table>
   </div>
 </form>
+<b>Hilfe:</b><br>
+<i>Wie kann ich ein Passwort eingeben obwohl ich keins habe?</i><br><br>
+An dieser Stelle w&auml;hlen Sie Ihr Passwort selber fest. Um sicher zu gehen, da&szlig; Sie sich nicht vertippt haben, m&uuml;ssen Sie das Passwort dann ein zweites Mal eingeben.<br>
 <p align="center" class="footer"><a href="../main.php"> home</a>| <a href="../show.php">texts</a> 
   | <a href="../upload.php">upload</a> | <a href="../contact.php">contact</a> 
   | <a href="../help.php">help</a><br>
   <a href="login.php">login</a><br>
   <br>
-  $Revision: 1.1 $ &copy; 2001 otmp-developer :)</p>
+  $Revision: 1.2 $ &copy; 2001 otmp-developer :)</p>
 </body>
 </html>
