@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/signup.php,v $
- * $Revision: 1.3 $
- * $Id: signup.php,v 1.3 2001/11/29 19:08:31 hifix Exp $
+ * $Revision: 1.4 $
+ * $Id: signup.php,v 1.4 2001/11/29 20:17:30 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -80,7 +80,7 @@ function validate_form(&$frm, &$errors) {
      
   } elseif (username_exists($frm["username"]) ) {
     $errors->username = true;
-    $msg .= "<li>Der Benutzername <b>" . ov($frm["email"]) ."</b> ist schon vergeben. Bitte wählen Sie einen anderen Namen.";
+    $msg .= "<li>Der Benutzername <b>" . ov($frm["username"]) ."</b> ist schon vergeben. Bitte wählen Sie einen anderen Namen.";
   }
   
   if (empty($frm["email"])) {
