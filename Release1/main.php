@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/main.php,v $
-    * $Revision: 1.5 $
-    * $Id: main.php,v 1.5 2001/12/05 00:54:42 alexgn Exp $
+    * $Revision: 1.6 $
+    * $Id: main.php,v 1.6 2001/12/06 16:21:29 hifix Exp $
     */
 
 include "application.php";
@@ -37,16 +37,17 @@ include("$CFG->templatedir/header.php");
     <td valign="top">
       <br>
       <ul>
-        <li><a href="<?=$CFG->wwwroot?>/docs/what.html">Was ist OTMP ?</a></li>
-        <li><a href="<?=$CFG->wwwroot?>/docs/faq.html">H&auml;ufig gestellte Fragen (FAQ)</a></li>
-        <li><a href="<?=$CFG->wwwroot?>/docs/help.html">Weitere Hilfen und Kontakt</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/help/what.html">Was ist OTMP ?</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/help/faq.html">H&auml;ufig gestellte Fragen (FAQ)</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/help/help.html">Weitere Hilfen und Kontakt</a></li>
       </ul>
       <ul>
         <li><a href="<?=$CFG->wwwroot?>/user/signup.php">Neu Anmelden</a></li>
         <li><a href="<?=$CFG->wwwroot?>/user/login.php">Einloggen</a></li>
       </ul>
       <ul>
-        <li><a href="<?=$CFG->wwwroot?>/documentlist.php?list=all">Textverzeichnis anzeigen</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/docs/documentlist.php?list=all">Textverzeichnis anzeigen</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/docs/upload.php">Einen Text Übersetzen lassen</a></li>
         <li><a href="<?=$CFG->wwwroot?>/user/user_data.php">Ihre Daten</a></li>
       </ul>
     </td>
