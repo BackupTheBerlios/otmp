@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changeuserprogdata.php,v $
- * $Revision: 1.3 $
- * $Id: changeuserprogdata.php,v 1.3 2001/12/13 21:27:04 hifix Exp $
+ * $Revision: 1.4 $
+ * $Id: changeuserprogdata.php,v 1.4 2001/12/14 23:51:18 alexgn Exp $
  *
  * To Do:
  * - Check that user is logged in! 
@@ -54,11 +54,11 @@ function update_userProgramms(&$frm,$userid) {
   # return sql_updateuserProgramms($frm['lastname'], $frm['firstname'], $frm['email'],$userid);
 }
 
-function getProgramms($userid) {
+function getProgramms($userid,$archive) {
 /* gets every programm from db and checks wether user has programm */
 
 $userprogramms = sql_getUserProgrammData2($userid);
-$programms = sql_getProgramms();
+$programms = sql_getProgramms($archive);
   $i = 0;
   if (empty($programms)) {
   /* In case no programms can be found in the database */
@@ -68,7 +68,7 @@ $programms = sql_getProgramms();
       foreach($v1 as $v2){
         if ($i == 0) {
           echo ("<input type=\"checkbox\" name=\"progs".$v2."\" value=\"".$v2."\" ");
-          # check wether user has programm
+          /* check wether user has programm */
           if (empty($userprogramms)) {
           } else {
              foreach($userprogramms as $up) {

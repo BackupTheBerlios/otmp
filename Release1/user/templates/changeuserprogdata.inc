@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/changeuserprogdata.inc,v $
- * $Revision: 1.1 $
- * $Id: changeuserprogdata.inc,v 1.1 2001/12/07 23:54:09 alexgn Exp $
+ * $Revision: 1.2 $
+ * $Id: changeuserprogdata.inc,v 1.2 2001/12/14 23:51:44 alexgn Exp $
  *
  * Signup Formular
  *
@@ -26,16 +26,23 @@ Hinweise zu den einzelnen Felder stehen rechts daneben.
     <tr> 
       <td align="right" bgcolor="#DDDDDD"><b>Ihre Programme</b></td>
       <td> 
-        <?php $programs = getProgramms($session['userid']); ?> 
+        <?php $programs = getProgramms($session['userid'],0); ?> 
       </td>
       <td rowspan="1">
         W&auml;hlen Sie hier alle Programme aus, die Ihnen zur Verf&uuml;gung stehen.<br>
 	Dadurch k&ouml;nnen Sie sich dann nur noch die Texte anzeigen lassen, die Sie auch wirklich lesen k&ouml;nnen.<br>
-	Zum markieren mehrerer Programme m&uuml;ssen Sie bei manchen Browser die <kbd>Steuerung</kbd> bzw. <kbd>Control</kbd> Taste,<br>
-	 bei anderen die <kbd>Shift</kbd> Taste gedr&uuml;ckt halten.
       </td>
     </tr>
-    
+    <tr> 
+      <td align="right" bgcolor="#DDDDDD"><b>Ihre Packer</b></td>
+      <td> 
+        <?php $programs = getProgramms($session['userid'],1); ?> 
+      </td>
+      <td rowspan="1">
+        W&auml;hlen Sie hier alle Packer aus, die Ihnen zur Verf&uuml;gung stehen.<br>
+	Dadurch werden Ihnen nur die Dateien angezeigt, die Sie auch entpacken k&ouml;nnen<br>
+      </td>
+    </tr>
     <tr> 
       <td align="center" colspan="3" bgcolor="#EEEEEE"> 
         <input type="submit" name="change" value="Daten &auml;ndern">
