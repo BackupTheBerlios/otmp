@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.12 $
- * $Id: sql.php,v 1.12 2001/12/09 21:01:38 hifix Exp $
+ * $Revision: 1.13 $
+ * $Id: sql.php,v 1.13 2001/12/09 21:02:46 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -312,6 +312,22 @@ function sql_getAuftrag($status) {
   return $out;
 }
 
-
+function sql_addNewText($title,$abstract,$length,$langID,$CategoryID,$filetypID,$authorID,$OriginalTextID=0) {
+/* add a new Text, return generated textID or 0 if an error occured 
+ * if $OriginalTextID == 0, this is an brandNew Text with Status=finished, otherwise Status set to open
+ */
+ $status = $OriginalTextID==0?'finished':'open';
+ 
+ $query = "
+    INSERT INTO `otmp_Text` 
+    (`TextOTID`, `TextTitel`, `TextAbstract`, `TextLaenge`, `TextSID`, `TextKID`, `TextFID`, `TextAutor` , `TextStatus`) 
+    VALUES ('$OriginalTextID', '$title', '$abstract','$length', '$langID', '$CategoryID', '$filetypID', '$authorID', '$status')"; 
+  $qid = db_query($query);
+  if(!$qid) {
+    $session['notice'] = "Ein interner Fehler ist aufgetreten. Versuchen Sie es bitte nochmals<br>";
+    return 0;  
+  }
+  return db_insert_id();
+}
 
 ?>
