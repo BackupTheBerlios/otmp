@@ -36,7 +36,7 @@ CREATE TABLE otmp_Person
    PersonStatus   ENUM('locked','deleted')  DEFAULT NULL ,
    PersonAdminlevel TINYINT UNSIGNED DEFAULT 0,
    PersonPunkte   SMALLINT(5) UNSIGNED DEFAULT 0,
-   PersonUebersetzer  TINYINT UNSIGNED DEFAULT 0,
+   PersonUebersetzer  ENUM('1', '0') DEFAULT '0',
 
    PRIMARY KEY(PersonPID)
 
@@ -45,13 +45,15 @@ CREATE TABLE otmp_Person
 # #######################################
 
 # ProgrammPacker 0 --> kein Packer
+# ProgrammSort DEFAULT 255, falls nicht gegeben, dann am Ende der Liste
 
 CREATE TABLE otmp_Programm
        (
-   ProgrammPRGID          SMALLINT(5) UNSIGNED AUTO_INCREMENT NOT NULL,
-   ProgrammName   VARCHAR(50) NOT NULL,
+   ProgrammPRGID    SMALLINT(5) UNSIGNED AUTO_INCREMENT NOT NULL,
+   ProgrammName     VARCHAR(50) NOT NULL,
    ProgrammVersion  VARCHAR(20) NOT NULL,
    ProgrammPacker   ENUM('0','1') DEFAULT '0',
+   ProgrammSort	    TINYINT UNSIGNED DEFAULT 255,
 
   PRIMARY KEY(ProgrammPRGID,ProgrammVersion)
        );
@@ -59,12 +61,15 @@ CREATE TABLE otmp_Programm
 # #####################################
 
 # FiletypePRGID --> Fremdschluessel von der Tabelle Programm, also ProgrammPRGID
+# FiletypeSort DEFAULT 255, falls nicht gegeben, dann am Ende der Liste.
+# FiletypeType 0 kein Packer, 1 Packer
 
 CREATE TABLE otmp_Filetype
        (
    FiletypeFID    SMALLINT(5) UNSIGNED AUTO_INCREMENT NOT NULL,
    FiletypePRGID    SMALLINT(5) UNSIGNED NOT NULL,
-   FiletypeType   VARCHAR(5) NOT NULL DEFAULT '---',
+   FiletypeType   VARCHAR(5) DEFAULT '---',
+   FiletypeSort	    TINYINT UNSIGNED DEFAULT 255,
 
   PRIMARY KEY(FiletypeFID)
        );
@@ -95,7 +100,7 @@ CREATE TABLE otmp_Optionen
    OptionenSprachGUI  VARCHAR(20),
    OptionenPublicEmail  ENUM('y','n') DEFAULT 'n',
    OptionenSecureGUI  VARCHAR(20),
-   OptionenMutterSprache  VARCHAR(20),
+   OptionenMutterSprache  VARCHAR(30),
 
   PRIMARY KEY(OptionenPID)
        );
@@ -107,6 +112,7 @@ CREATE TABLE otmp_Sprache
    SpracheSID         TINYINT(3) UNSIGNED AUTO_INCREMENT NOT NULL,
    SpracheName    VARCHAR(25) NOT NULL,
    SpracheAbkuerzung  CHAR(3) NOT NULL DEFAULT '---',
+   SpracheSort	    TINYINT UNSIGNED DEFAULT 255,
 
   PRIMARY KEY(SpracheSID)
 
@@ -118,6 +124,7 @@ CREATE TABLE otmp_Kategorie
        (
    KategorieKID       TINYINT(3) UNSIGNED NOT NULL,
    KategorieName    VARCHAR(60) NOT NULL,
+   KategorieSort	    TINYINT UNSIGNED DEFAULT 255,
 
   PRIMARY KEY(KategorieKID)
        );
@@ -261,3 +268,20 @@ CREATE TABLE otmp_UebersetzerSprachen
   PRIMARY KEY(UebersetzerSprachenUEID,UebersetzerSprachenVonSID,UebersetzerSprachenNachSID,UebersetzerSprachenKID)
 
        );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
