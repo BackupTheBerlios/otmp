@@ -53,7 +53,7 @@ CREATE TABLE otmp_Programm
    ProgrammName     VARCHAR(50) NOT NULL,
    ProgrammVersion  VARCHAR(20) NOT NULL,
    ProgrammPacker   ENUM('0','1') DEFAULT '0',
-   ProgrammSort	    TINYINT UNSIGNED DEFAULT 255,
+   ProgrammSort     TINYINT UNSIGNED DEFAULT 255,
 
   PRIMARY KEY(ProgrammPRGID,ProgrammVersion)
        );
@@ -69,7 +69,7 @@ CREATE TABLE otmp_Filetype
    FiletypeFID    SMALLINT(5) UNSIGNED AUTO_INCREMENT NOT NULL,
    FiletypePRGID    SMALLINT(5) UNSIGNED NOT NULL,
    FiletypeType   VARCHAR(5) DEFAULT '---',
-   FiletypeSort	    TINYINT UNSIGNED DEFAULT 255,
+   FiletypeSort     TINYINT UNSIGNED DEFAULT 255,
 
   PRIMARY KEY(FiletypeFID)
        );
@@ -112,7 +112,7 @@ CREATE TABLE otmp_Sprache
    SpracheSID         TINYINT(3) UNSIGNED AUTO_INCREMENT NOT NULL,
    SpracheName    VARCHAR(25) NOT NULL,
    SpracheAbkuerzung  CHAR(3) NOT NULL DEFAULT '---',
-   SpracheSort	    TINYINT UNSIGNED DEFAULT 255,
+   SpracheSort      TINYINT UNSIGNED DEFAULT 255,
 
   PRIMARY KEY(SpracheSID)
 
@@ -124,7 +124,7 @@ CREATE TABLE otmp_Kategorie
        (
    KategorieKID       TINYINT(3) UNSIGNED NOT NULL,
    KategorieName    VARCHAR(60) NOT NULL,
-   KategorieSort	    TINYINT UNSIGNED DEFAULT 255,
+   KategorieSort      TINYINT UNSIGNED DEFAULT 255,
 
   PRIMARY KEY(KategorieKID)
        );
@@ -142,10 +142,8 @@ CREATE TABLE otmp_Auftrag
    AuftragAID   MEDIUMINT  UNSIGNED AUTO_INCREMENT  NOT NULL,
    AuftragOTID    MEDIUMINT  UNSIGNED NOT NULL DEFAULT 0,
    AuftragNTID    MEDIUMINT  UNSIGNED NOT NULL DEFAULT 0,
-   AuftragStatus  ENUM('open','finished','work','hold','deleted') NOT NULL DEFAULT 'open',
    AuftragDatum   DateTIME NOT NULL DEFAULT '0000-00-00 00:00:00'  ,
    AuftragNID MEDIUMINT UNSIGNED NOT NULL,
-   AuftragUEID  MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,
    AuftragTransDatum  DATE DEFAULT '0000-00-00',
    AuftragBisDatum  DATE DEFAULT '0000-00-00',
 
