@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.25 $
- * $Id: sql.php,v 1.25 2001/12/16 13:15:43 alexgn Exp $
+ * $Revision: 1.26 $
+ * $Id: sql.php,v 1.26 2001/12/16 21:55:00 alexgn Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -322,7 +322,7 @@ function sql_getKatName($katkey) {
 }
 
 function sql_getAllCategories() {
-/* function returns array containing all categorie names and keys */
+/* function returns array containing all category names and keys */
   global $CFG;
   $result = NULL;
   $i = 0;
@@ -349,6 +349,40 @@ function sql_SQL4KatNameAndID() {
 /* Text Table                  */
 /*******************************/
 
+function sql_getDocumentIDFromSearch($keyword) {
+   global $CFG;
+   $i = 0;
+   $result = NULL;
+   $qid = db_query("SELECT TextTID FROM otmp_Text WHERE TextTitel LIKE '%$keyword%'");
+      
+   while ($row = mysql_fetch_object($qid)) {
+   $result[$i] = $row->TextTID;
+   $i = $i + 1;
+   }
+   
+   return $result; 
+} 
+
+function sql_getDocumentFromSearch($docid) {
+   global $CFG;
+   $qid = db_query ("
+    SELECT
+      TextTID         as textID,
+      TextTitel       as title,
+      PersonKennung   as author,
+      PersonEmail     as email,
+      SpracheName     as language,
+      KategorieName   as category,
+      TextDatum       as date
+    FROM otmp_Text
+    LEFT JOIN otmp_Person ON PersonPID = TextAutor
+    LEFT JOIN otmp_Sprache ON SpracheSID = TextSID
+    LEFT JOIN otmp_Kategorie ON KategorieKID = TextKID
+    WHERE TextTID = '$docid'
+    ");
+   $out = db_fetch_object($qid);
+  return $out;
+}
 
 function sql_getDocument($id) {
 /* Dokument mit id zurückgeben (alle "wichtigen" Felder)
