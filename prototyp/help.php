@@ -1,6 +1,7 @@
 <? /*
-  	* $Revision: 1.1 $
-  	* $Id: help.php,v 1.1 2001/11/11 13:55:32 hifix Exp $
+    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/help.php,v $ 
+    * $Revision: 1.2 $
+    * $Id: help.php,v 1.2 2001/11/11 14:14:16 hifix Exp $
     */
 ?>
 <html>
@@ -41,6 +42,6 @@ Helpsites">
   | <a href="upload.php">upload</a> | <a href="contact.php">contact</a> | <a href="help.php">help</a><br>
   <a href="user/login.php">login</a><br>
   <br>
-  &copy; 2001 otmp-developer :)</p>
+  $Revision: 1.2 $ &copy; 2001 otmp-developer :)</p>
 </body>
 </html>
