@@ -1,9 +1,17 @@
 #
 # Beispielsql für OTMP
-# $Id: examples.sql,v 1.2 2001/12/09 21:34:06 hifix Exp $
-# $Revision: 1.2 $
-# 
-# Diese Version wurde zuletzt mit Revision 1.11 der tables.sql getestet.
+# $Id: examples.sql,v 1.3 2001/12/13 21:23:23 hifix Exp $
+# $Revision: 1.3 $
+#
+# ----------------------------------------------------------------------
+# Log for examples.sql
+# ----------------------------------------------------------------------
+# $Log: examples.sql,v $
+# Revision 1.3  2001/12/13 21:23:23  hifix
+# added languages (iso) !!!
+#
+# ----------------------------------------------------------------------
+# Diese Version wurde zuletzt mit Revision 1.13 der tables.sql getestet.
 #
 # Database : `otmp`
 # Achtung: Diese BeispielSQL sollte nach einem Delete auf die Tabellen eingespielt werden!
