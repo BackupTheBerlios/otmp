@@ -1,4 +1,4 @@
-/* $Id: otmp.css,v 1.6 2001/12/14 09:36:00 darkpact Exp $ */
+/* $Id: otmp.css,v 1.7 2001/12/17 18:32:48 hifix Exp $ */
 
 .logo {font-family: Arial, Helvetica, sans-serif; font-size: x-large; font-weight: bold}
 .footer {font-size: xx-small; color: #333333;  text-decoration: none}
@@ -7,4 +7,4 @@
 
 td {font-family: Arial, Helvetica, sans-serif; font-size: smaller}
 body {font-family: Arial, Helvetica, sans-serif}
-p {font-family: Arial, Helvetica, sans-serif font-size: smaller}
+p {font-family: Arial, Helvetica, sans-serif}
