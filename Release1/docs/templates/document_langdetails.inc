@@ -3,8 +3,8 @@
  * Show Dokument Info (additional)
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/document_langdetails.inc,v $
- * $Revision: 1.1 $
- * $Id: document_langdetails.inc,v 1.1 2001/12/16 22:25:17 hifix Exp $
+ * $Revision: 1.2 $
+ * $Id: document_langdetails.inc,v 1.2 2001/12/18 15:25:31 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -23,15 +23,13 @@
     <td valign="top"> 
       <? foreach($d as $_d) {
      if($_d->status == "finished") { ?>
-      &nbsp;<a href=""><?=$_d->language?>
-      </a> 
+      &nbsp;<a href="<?=$CFG->wwwroot?>/docs/download.php?id=<?=$_d->textID?>"><?=$_d->language?></a> 
       <? }
    } ?>
     </td>
   </tr>
   <tr> 
-    <td colspan="2"><font size="-1">(zum downloaden auf gew&uuml;nschte Sprache 
-      klicken)</font></td>
+    <td colspan="2" class="hint">(zum downloaden auf gew&uuml;nschte Sprache klicken)</td>
   </tr>
   <tr> 
     <td colspan="2" bgcolor="#eeeeee"><b>&Uuml;bersetzungen</b></td>
@@ -60,8 +58,7 @@
     </td>
   </tr>
   <tr> 
-    <td colspan="2"><font size="-1">(zum &Uuml;bersetzen, klicken Sie auf die 
-      Sprache)</font></td>
+    <td colspan="2" class="hint">(zum &Uuml;bersetzen, klicken Sie auf die  Sprache)</td>
   </tr>
 </table>
 <!-- END -->
