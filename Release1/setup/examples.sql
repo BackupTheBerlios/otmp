@@ -1,12 +1,19 @@
 #
 # Beispielsql für OTMP
-# $Id: examples.sql,v 1.6 2001/12/14 17:31:15 hifix Exp $
-# $Revision: 1.6 $
+# $Id: examples.sql,v 1.7 2001/12/17 18:59:52 hifix Exp $
+# $Revision: 1.7 $
 #
 # ----------------------------------------------------------------------
 # Log for examples.sql
 # ----------------------------------------------------------------------
 # $Log: examples.sql,v $
+# Revision 1.7  2001/12/17 18:59:52  hifix
+# examples updated
+# user hifix now has translator capabilities and Programms
+# Programlist shortened
+# Kategories sortorder changed
+# Added Packer to Programme
+#
 # Revision 1.6  2001/12/14 17:31:15  hifix
 # Sprachen nochmal neu! (wg. event. Abschnitte durch Varchar(25))
 #
@@ -24,7 +31,7 @@
 # added languages (iso) !!!
 #
 # ----------------------------------------------------------------------
-# Diese Version wurde zuletzt mit Revision 1.14 der tables.sql getestet.
+# Diese Version wurde zuletzt mit Revision 1.15 der tables.sql getestet.
 #
 # Database : `otmp`
 # Achtung: Diese BeispielSQL sollte nach einem Delete auf die Tabellen eingespielt werden!
@@ -111,7 +118,7 @@ INSERT INTO otmp_Kategorie (KategorieKID, KategorieName, KategorieSort) VALUES (
 INSERT INTO otmp_Kategorie (KategorieKID, KategorieName, KategorieSort) VALUES ('50', 'Rechtswissenschaften', '60');
 INSERT INTO otmp_Kategorie (KategorieKID, KategorieName, KategorieSort) VALUES ('60', 'Sozialwissenschaften', '70');
 INSERT INTO otmp_Kategorie (KategorieKID, KategorieName, KategorieSort) VALUES ('70', 'Wirtschaftswissenschaften', '80');
-INSERT INTO otmp_Kategorie (KategorieKID, KategorieName, KategorieSort) VALUES ('100', 'Nichtwissenschaftlich', '90');
+INSERT INTO otmp_Kategorie (KategorieKID, KategorieName, KategorieSort) VALUES ('100', 'Nichtwissenschaftlich', '5');
 INSERT INTO otmp_Kategorie (KategorieKID, KategorieName, KategorieSort) VALUES ('80', 'Sonstiges', '255');
 
 #
@@ -128,12 +135,16 @@ INSERT INTO otmp_Kategorie (KategorieKID, KategorieName, KategorieSort) VALUES (
 # Dumping data for table `otmp_PerPro`
 #
 
+INSERT INTO otmp_PerPro (PerProPRGID, PerProPID) VALUES (12, 1);
+INSERT INTO otmp_PerPro (PerProPRGID, PerProPID) VALUES (21, 1);
+INSERT INTO otmp_PerPro (PerProPRGID, PerProPID) VALUES (22, 1);
+INSERT INTO otmp_PerPro (PerProPRGID, PerProPID) VALUES (23, 1);
 
 #
 # Dumping data for table `otmp_Person`
 #
 
-INSERT INTO otmp_Person (PersonPID, PersonKennung, PersonName, PersonVorname, PersonSex, PersonEmail, PersonPassword, PersonStatus, PersonAdminlevel, PersonPunkte, PersonUebersetzer) VALUES (1, 'feb', 'Borchers', 'Felix', 'm', 'hifix@citygrid.de', '627364d648719f7b',  NULL, '0', 0, '0');
+INSERT INTO otmp_Person (PersonPID, PersonKennung, PersonName, PersonVorname, PersonSex, PersonEmail, PersonPassword, PersonStatus, PersonAdminlevel, PersonPunkte, PersonUebersetzer) VALUES (1, 'feb', 'Borchers', 'Felix', 'm', 'hifix@citygrid.de', '627364d648719f7b',  NULL, '0', 0, '1');
 INSERT INTO otmp_Person (PersonPID, PersonKennung, PersonName, PersonVorname, PersonSex, PersonEmail, PersonPassword, PersonStatus, PersonAdminlevel, PersonPunkte, PersonUebersetzer) VALUES (2, 'iszuzi', 'Szuzi', 'Indara', 'f', 'szui@yahoo.com', '76d9607f417308e4',  NULL, '0', 0, '1');
 INSERT INTO otmp_Person (PersonPID, PersonKennung, PersonName, PersonVorname, PersonSex, PersonEmail, PersonPassword, PersonStatus, PersonAdminlevel, PersonPunkte, PersonUebersetzer) VALUES (3, 'chrisi', 'Goldhorn', 'Chris', 'm', 'goldhorn@citygrid.de', '0c9cea580647a65f',  NULL, '0', 0, '1');
 INSERT INTO otmp_Person (PersonPID, PersonKennung, PersonName, PersonVorname, PersonSex, PersonEmail, PersonPassword, PersonStatus, PersonAdminlevel, PersonPunkte, PersonUebersetzer) VALUES (4, 'hachen', 'Nagy', 'Matthias Sylvester', 'm', 'darkpact@cs.tu-berlin.de', '5e97e40d4bcb93b6',  NULL, '1', 0, '0');
@@ -144,11 +155,11 @@ INSERT INTO otmp_Person (PersonPID, PersonKennung, PersonName, PersonVorname, Pe
 
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (1, 'StarOffice', '5.2', '0', '60');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (2, 'KOffice KWord', '', '0', '30');
-INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (3, 'WordPerfect', '10', '0', '40');
+#INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (3, 'WordPerfect', '10', '0', '40');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (4, 'WordPerfect Office', '2002', '0', '50');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (5, 'StarOffice', '5.2', '0', '60');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (6, 'KOffice KWord', '', '0', '30');
-INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (7, 'WordPerfect', '10', '0', '40');
+#INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (7, 'WordPerfect', '10', '0', '40');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (8, 'WordPerfect Office', '2002', '0', '50');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (9, 'Gnome Office AbiWord', '', '0', '70');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (10, 'OpenOffice OpenWriter', '', '0', '80');
@@ -157,11 +168,14 @@ INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, Program
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (13, 'MS Excel', '97', '0', '21');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (14, 'MS Excel', '2000', '0', '20');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (15, 'MS Word', '95', '0', '12');
-INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (16, 'MS WinWord', '6.0', '0', '13');
-INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (17, 'MS WinWord', '5.0', '0', '14');
+#INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (16, 'MS WinWord', '6.0', '0', '13');
+#INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (17, 'MS WinWord', '5.0', '0', '14');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (18, 'MS Excel', '4.0', '0', '24');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (19, 'MS Excel', '5.0', '0', '23');
 INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (20, 'MS Excel', '95', '0', '22');
+INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (21, 'WinZip', '', '1', '100');
+INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (22, 'Stuff It!', '', '1', '110');
+INSERT INTO otmp_Programm (ProgrammPRGID, ProgrammName, ProgrammVersion, ProgrammPacker, ProgrammSort) VALUES (23, 'WinRar', '', '1', '105');
 
 #
 # Dumping data for table `otmp_Sprache`
@@ -338,3 +352,10 @@ INSERT INTO otmp_Text (TextTID, TextOTID, TextTitel, TextAbstract, TextDatum, Te
 #
 # Dumping data for table `otmp_UebersetzerSprachen`
 #
+
+INSERT INTO otmp_UebersetzerSprachen (UebersetzerSprachenUEID, UebersetzerSprachenVonSID, UebersetzerSprachenNachSID, UebersetzerSprachenKID, UebersetzerSprachenAuto) VALUES (1, '64', '72', '80', '0');
+INSERT INTO otmp_UebersetzerSprachen (UebersetzerSprachenUEID, UebersetzerSprachenVonSID, UebersetzerSprachenNachSID, UebersetzerSprachenKID, UebersetzerSprachenAuto) VALUES (1, '72', '64', '80', '0');
+INSERT INTO otmp_UebersetzerSprachen (UebersetzerSprachenUEID, UebersetzerSprachenVonSID, UebersetzerSprachenNachSID, UebersetzerSprachenKID, UebersetzerSprachenAuto) VALUES (1, '64', '15', '80', '0');
+INSERT INTO otmp_UebersetzerSprachen (UebersetzerSprachenUEID, UebersetzerSprachenVonSID, UebersetzerSprachenNachSID, UebersetzerSprachenKID, UebersetzerSprachenAuto) VALUES (1, '15', '64', '80', '0');
+INSERT INTO otmp_UebersetzerSprachen (UebersetzerSprachenUEID, UebersetzerSprachenVonSID, UebersetzerSprachenNachSID, UebersetzerSprachenKID, UebersetzerSprachenAuto) VALUES (1, '119', '64', '100', '0');
+INSERT INTO otmp_UebersetzerSprachen (UebersetzerSprachenUEID, UebersetzerSprachenVonSID, UebersetzerSprachenNachSID, UebersetzerSprachenKID, UebersetzerSprachenAuto) VALUES (1, '64', '119', '100', '0');
