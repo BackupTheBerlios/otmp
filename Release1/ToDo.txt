@@ -8,22 +8,16 @@ index.html
 
 main.php
 
-user/login.php
 user/...
   Aufbau der ganzen Seiten für...
-   Login
    Options
-  etc...
 
 help/help.php
-help/...
-  Schreiben der Texte für alle
-  Hilfeseiten in Deutsch, Englisch und Türkisch
+help/what.php
 
 docs/documentlist.php
-docs/...
-  Erste Datenbank Einbindung schreiben
+docs/upload.php  ...
+docs/download.php ...
+
 
 Wenn euch noch was auffällt sagt bescheid.
-
-<? echo $; ?>
