@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.33 $
- * $Id: sql.php,v 1.33 2001/12/18 23:29:22 hifix Exp $
+ * $Revision: 1.34 $
+ * $Id: sql.php,v 1.34 2002/01/28 17:42:00 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -304,6 +304,18 @@ function sql_SQL4LangIdAndName() {
   global $CFG;
   return "SELECT SpracheSID as id, SpracheName as name FROM $CFG->tbl_sprache ORDER BY SpracheName";
 
+}
+
+function sql_getSprache($sid) {
+  global $CFG;
+  return  db_query("
+  SELECT 
+    SpracheSID as id, 
+    SpracheName as name 
+  FROM otmp_Sprache
+  LEFT JOIN otmp_
+  ");
+  
 }
 
 /*                               */
