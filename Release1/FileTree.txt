@@ -1,7 +1,10 @@
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/FileTree.txt,v $
-* $Revision: 1.7 $
-* $Id: FileTree.txt,v 1.7 2001/12/10 22:06:33 darkpact Exp $
+* $Revision: 1.8 $
+* $Id: FileTree.txt,v 1.8 2001/12/14 09:37:48 darkpact Exp $
 * $Log: FileTree.txt,v $
+* Revision 1.8  2001/12/14 09:37:48  darkpact
+* Erweitert um neue Dateien
+*
 * Revision 1.7  2001/12/10 22:06:33  darkpact
 * Erweitert um Tasks
 *
@@ -38,10 +41,12 @@ Legende
 
 /setup/
   tables.sql              - Tabellendefinitionen für die DB (MySQL)
+  examples.sql            - Beispieldaten für die Prüfung
 
 /templates/
   header.php              - allgemeiner Seitenheader
   footer.php              - allgemeiner Seitenfooter
+  intro.inc               - Begrüssungstext der Hauptseite
 
 /templates/email
   reset_password          - email template für password vergessen
@@ -86,17 +91,21 @@ Legende
 
 /docs/
   documentlist.php        - Liste aller Dokumente
-  tasks.php               - Liste aller Aufträge
-  document.php           - Genauere Ansicht zu einem Dokument
+  tasklist.php            - Liste aller Aufträge
+  document.php            - Genauere Ansicht zu einem Dokument
   userdocuments.php       - Alle Dokumente eines Benutzers aufgeführt
   *download.php           - Dokument runterladen
   upload.php              - Dokument hochladen
   *task.php               - Auftragseingabe
 
 /docs/templates
+  documentlist.inc        - Liste aller Dokumente
+  tasklist.inc            - Liste aller Aufträge
+  document.inc            - Genauere Ansicht zu einem Dokument
+  userdocuments.inc       - Alle Dokumente eines Benutzers aufgeführt
   upload_data_form.inc    - Text upload Formular (Daten)
-  upload_success.inc    - Text upload Erfolgreich
-  *download_form.inc    - Text download Formular
+  upload_success.inc      - Text upload Erfolgreich
+  *download_form.inc      - Text download Formular
   *task_form.inc          - Auftragsformular
 
 /imgs/
