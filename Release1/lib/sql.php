@@ -1,28 +1,28 @@
-<? 
+<?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.10 $
- * $Id: sql.php,v 1.10 2001/12/09 00:30:19 alexgn Exp $
+ * $Revision: 1.11 $
+ * $Id: sql.php,v 1.11 2001/12/09 13:34:53 darkpact Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
  *
- * Note: 
+ * Note:
  * - all functionnames has to start with "sql_"
  *
  * To Do:
  * - error trapping
  */
 
-/* 
+/*
  * ******************
- * Usertable                                                      
- * ****************** 
+ * Usertable
+ * ******************
  */
- 
+
 function sql_LoginGetUserdata($username, $password) {
-/* return an array of userdata if password is valid for given username. 
-   Otherwise return false 
+/* return an array of userdata if password is valid for given username.
+   Otherwise return false
    return:  array(usrID, Name, AdminLevel) */
   global $CFG;
   $qid = db_query("
@@ -80,7 +80,7 @@ function sql_getUsername($email) {
 }
 
 function sql_getUserdataFromUsername($username) {
-/* return the user (object) based on the username 
+/* return the user (object) based on the username
    user : Lastname, Firstname, LastName, Email */
   global $CFG;
   $qid = db_query("SELECT PersonVorname as Firstname, PersonName as Lastname, PersonEmail as Email FROM $CFG->tbl_user WHERE PersonKennung = '$username'");
@@ -115,10 +115,10 @@ function sql_getUserProgrammData($userid) {
   $qid = db_query("SELECT t1.ProgrammName, t1.ProgrammVersion FROM $CFG->tbl_programm AS t1, $CFG->tbl_perhatprog AS t2 WHERE t2.PerProPID = '$userid' AND t2.PerProPRGID = t1.ProgrammPRGID");
   $i = 0;
   while ($row = mysql_fetch_object ($qid)) {
-	$result[$i][0] = $row->ProgrammName;
-	$result[$i][1] = $row->ProgrammVersion;
+  $result[$i][0] = $row->ProgrammName;
+  $result[$i][1] = $row->ProgrammVersion;
         $i = $i + 1;
-	} 
+  }
   return $result;
 }
 
@@ -129,16 +129,16 @@ function sql_getUserProgrammData2($userid) {
   $qid = db_query("SELECT PerProPRGID FROM $CFG->tbl_perhatprog WHERE PerProPID = '$userid'");
   $i = 0;
   while ($row = mysql_fetch_object ($qid)) {
-	$result[$i] = $row->PerProPRGID;
+  $result[$i] = $row->PerProPRGID;
         $i = $i + 1;
-	} 
+  }
   return $result;
 }
 
 function sql_deleteUserProgrammData($userid) {
   global $CFG;
   $qid = db_query("DELETE FROM $CFG->tbl_perhatprog WHERE PerProPID = '$userid'");
-  return $qid; 
+  return $qid;
 }
 
 function sql_setUserProgrammData($v,$userid) {
@@ -166,11 +166,11 @@ function sql_getProgramms() {
  $qid = db_query("SELECT * FROM $CFG->tbl_programm");
  $i = 0;
  while ($row = mysql_fetch_object($qid)) {
-	$result[$i][0] = $row->ProgrammPRGID;
-	$result[$i][1] = $row->ProgrammName;
-	$result[$i][2] = $row->ProgrammVersion;
+  $result[$i][0] = $row->ProgrammPRGID;
+  $result[$i][1] = $row->ProgrammName;
+  $result[$i][2] = $row->ProgrammVersion;
         $i = $i + 1;
-	}
+  }
  return $result;
 }
 
@@ -187,10 +187,10 @@ function sql_getUserTransCapData($userid) {
   $qid = db_query("SELECT UebersetzerSprachenVonSID, UebersetzerSprachenNachSID, UebersetzerSprachenKID FROM $CFG->tbl_uebsprach WHERE UebersetzerSprachenUEID = '$userid'");
   $i = 0;
   while ($row = mysql_fetch_object($qid)) {
-	$result[$i][0] = $row->UebersetzerSprachenVonSID;
-	$result[$i][1] = $row->UebersetzerSprachenNachSID;
-	$result[$i][2] = $row->UebersetzerSprachenKID;
-	$i = $i + 1; 
+  $result[$i][0] = $row->UebersetzerSprachenVonSID;
+  $result[$i][1] = $row->UebersetzerSprachenNachSID;
+  $result[$i][2] = $row->UebersetzerSprachenKID;
+  $i = $i + 1;
   }
   return $result;
 }
@@ -206,7 +206,7 @@ function sql_getLangName($langkey) {
   $qid = db_query("SELECT SpracheName FROM $CFG->tbl_sprache WHERE SpracheSID = '$langkey'");
   $lang = db_fetch_object($qid);
 
-  return $lang->SpracheName; 
+  return $lang->SpracheName;
 }
 
 /*                               */
@@ -220,7 +220,84 @@ function sql_getKatName($katkey) {
   $qid = db_query("SELECT KategorieName FROM $CFG->tbl_kategorie WHERE KategorieKID = '$katkey'");
   $kat = db_fetch_object($qid);
 
-  return $kat->KategorieName; 
+  return $kat->KategorieName;
+}
+
+/*                               */
+/*********************************/
+/* Dokument Seiten               */
+/*********************************/
+/*                               */
+
+function sql_getBaseDocuments($otid) {
+/* Alle Dokumente im System, welche eine BaseID haben */
+  global $CFG;
+  $out = array();
+  $qid = db_query ("SELECT
+      TextTID         as TextID,
+      TextTitel       as Titel,
+      PersonName      as Author,
+      SpracheName     as Sprache,
+      TextAbstract    as Description,
+      TextStatus      as Status
+    FROM otmp_Text, otmp_Person, otmp_Sprache
+    WHERE TextOTID = $otid AND
+      TextSID = SpracheSID AND
+      TextAutor = PersonPID");
+   while( $r = db_fetch_object($qid) ) {
+     array_push($out,$r);
+   }
+  return $out;
+}
+
+function sql_getUserDocuments($usrid) {
+/* Alle Dokumente im System, welche eine UserID haben */
+  global $CFG;
+  $out = array();
+  $qid = db_query ("SELECT
+      TextOTID        as BaseID,
+      TextTitel       as Titel,
+      PersonName      as Author,
+      SpracheName     as Sprache,
+      TextAbstract    as Description,
+      TextStatus      as Status
+    FROM otmp_Text, otmp_Person, otmp_Sprache
+    WHERE PersonPID = $usrid AND
+      TextSID = SpracheSID AND
+      TextAutor = $usrid");
+   while( $r = db_fetch_object($qid) ) {
+     array_push($out,$r);
+   }
+  return $out;
+}
+
+function sql_getAuftrag($status) {
+/* Alle Aufträge mit $status aus dem System holen */
+  global $CFG;
+  $out = array();
+  $qid = db_query ("SELECT
+      AuftragDatum    as Date,
+      AuftragStatus   as Status,
+      d1.TextTitel    as Title,
+      d1.TextOTID     as BaseID,
+      s1.SpracheName  as FromLanguage,
+      d1.TextStatus   as FromDocStatus,
+      p1.PersonName   as Author,
+      s2.SpracheName  as ToLanguage,
+      d2.TextStatus   as ToDocStatus,
+      p2.PersonName   as Translator
+    FROM otmp_Auftrag, otmp_Text as d1, otmp_Text as d2, otmp_Person as p1, otmp_Person as p2, otmp_Sprache as s1, otmp_Sprache as s2
+    WHERE d1.TextTID = AuftragOTID AND
+          d2.TextTID = AuftragNTID AND
+          d2.TextStatus = '$status' AND
+          s1.SpracheSID = d1.TextSID AND
+          s2.SpracheSID = d2.TextSID AND
+          p1.PersonPID = d1.TextAutor AND
+          p2.PersonPID = d2.TextAutor");
+   while( $r = db_fetch_object($qid) ) {
+     array_push($out,$r);
+   }
+  return $out;
 }
 
 
