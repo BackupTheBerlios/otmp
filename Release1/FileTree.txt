@@ -1,7 +1,10 @@
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/FileTree.txt,v $
-* $Revision: 1.5 $
-* $Id: FileTree.txt,v 1.5 2001/12/06 22:40:34 darkpact Exp $
+* $Revision: 1.6 $
+* $Id: FileTree.txt,v 1.6 2001/12/09 23:49:41 alexgn Exp $
 * $Log: FileTree.txt,v $
+* Revision 1.6  2001/12/09 23:49:41  alexgn
+* neue Dateien eingefuegt
+*
 * Revision 1.5  2001/12/06 22:40:34  darkpact
 * Erweitert um userdocs
 *
@@ -50,6 +53,11 @@ Legende
   signup.php              - Anmeldeseite
   forgot_passwdord.php    - Passwort vergessen
   *options.php            - Useroptionen einstellen
+  changetranscap.php	  - Aendern der Uebersetzungsfaehigkeiten
+  changepassword.php	  - Seite zum Passwort aendern
+  changepersonaldata.php  - Aendern der personenbezogenen Daten
+  changeuserprogdata.php  - Aendern der bekannten Programme
+  user_data.php		  - Uebersicht ueber alle Nutzerdaten
 
 /user/templates/
   forgot_password_form.inc   - Formular zum Password vergessen
@@ -57,6 +65,15 @@ Legende
   forgot_password_success.inc- Passwort erfolgreich wiederhergestellt
   signup_success.inc         - Useranmeldung erfolgreich
   login_form.inc             - Login Formular
+  change_data_success.inc    - Allgemeine Seite fuer erfolgreiche Datenaenderung
+  change_password_success.inc- Passwort Aenderung erfolgreich
+  changepersonaldata.inc     - Formular zum Aendern der personenbezogenen Daten
+  changepassword.inc	     - Formular zum Aendern des Passworts
+  changetranscap.inc	     - Formular zum Aendern der Uebersetzerfaehigkeiten
+  changeuserprogdata.inc     - Formular zum Aendern der dem User bekannte Programme
+  user_data.inc		     - 2 Tabellen mit personenbezogenen Daten
+  user_dataUeb.inc	     - 2 Tabellen mit Uebersetzerfaehigkeitsdaten und infos zu bekannten Programmen
+
 
 /help/
   !help.php               - Haupthilfeseite
