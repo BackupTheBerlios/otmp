@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.32 $
- * $Id: sql.php,v 1.32 2001/12/18 11:52:21 ahlabadi Exp $
+ * $Revision: 1.33 $
+ * $Id: sql.php,v 1.33 2001/12/18 23:29:22 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -257,7 +257,7 @@ function sql_updateUebsetzerSprachen($valuestring,$userid) {
 
 function sql_existsTransCap($fromlang, $tolang, $kat, $userid) {
 /* Function checks wether entry already exists in table UebersetzerSprachen */
-  
+
   global $CFG;
   $qid = db_query("SELECT * FROM $CFG->tbl_uebsprach WHERE UebersetzerSprachenUEID = '$userid' AND
     UebersetzerSprachenVonSID = '$fromlang' AND UebersetzerSprachenNachSID = '$tolang' AND
@@ -265,7 +265,7 @@ function sql_existsTransCap($fromlang, $tolang, $kat, $userid) {
   if (mysql_num_rows($qid)>0) {
     return TRUE;
   } else {
-    return FALSE; 
+    return FALSE;
   }
 }
 
@@ -352,26 +352,28 @@ function sql_SQL4KatNameAndID() {
 function sql_getDocumentIDFromSearch($keyword,$search_in,$lang) {
    global $CFG;
    $i = 0;
-   $result = NULL;
-   if(empty($lang)) {
-      $qid = db_query("SELECT TextTID FROM $CFG->tbl_text WHERE $search_in LIKE '%$keyword%'");
-   } else {
-      $qid = db_query("SELECT TextTID FROM $CFG->tbl_text WHERE $search_in LIKE '%$keyword%' AND TextSID=$lang");
-   }   
-   while ($row = mysql_fetch_object($qid)) {
-   $result[$i] = $row->TextTID;
-   $i = $i + 1;
-   }
+   $result = array();
+   $morelike = '';
    
-   return $result; 
-} 
+   if(!empty($lang)) {
+     $morelike = "AND TextSID=$lang";
+   }
+   $query = "SELECT TextTID FROM $CFG->tbl_text WHERE $search_in LIKE '%$keyword%' ".$morelike." ORDER BY TextOTID";
+   $qid = db_query($query);
+   while ($row = mysql_fetch_object($qid)) {
+     $result[$i] = $row->TextTID;
+     $i = $i + 1;
+   }
+
+   return $result;
+}
 
 function sql_getDocumentFromSearch($docid) {
    global $CFG;
    $qid = db_query ("
     SELECT
       TextTID         as textID,
-      TextOTID	      as textOTID,
+      TextOTID        as textOTID,
       TextTitel       as title,
       PersonKennung   as author,
       PersonEmail     as email,
@@ -441,6 +443,7 @@ function sql_addNewText($title,$abstract,$length,$langID,$CategoryID,$filetypID,
 /* add a new Text, return generated textID or 0 if an error occured
  * if $OriginalTextID == 0, this is an brandNew Text with Status=finished, otherwise Status set to open
  */
+ global $CFG;
  $status = $OriginalTextID==0?'finished':'open';
 
  $query = "
@@ -461,9 +464,10 @@ function sql_addNewText($title,$abstract,$length,$langID,$CategoryID,$filetypID,
 
 function sql_addNewTask($fromTextID,$toTextID,$userID,$frist='0000-00-00') {
 /* add a new Task for the given arguments, return generated TaskID*/
- 
+ global $CFG;
+
   $query = "
-    INSERT INTO $CFG->tbl_auftrag (`AuftragOTID`, `AuftragNTID`, `AuftragDatum`, `AuftragNID`, `AuftragBisDatum`) 
+    INSERT INTO $CFG->tbl_auftrag (`AuftragOTID`, `AuftragNTID`, `AuftragDatum`, `AuftragNID`, `AuftragBisDatum`)
     VALUES ('$fromTextID', '$toTextID', NOW(), '$userID', '$frist')
   ";
   $qid = db_query($query);
@@ -548,6 +552,7 @@ function sql_getAuftrag($status) {
   $qid = db_query ("SELECT
       DATE_FORMAT(a1.AuftragDatum,'%e.%b.%Y') as Date,
       d1.TextTitel     as Title,
+      d1.TextTID       as TextID,
       d1.TextOTID      as BaseID,
       s1.SpracheName   as FromLanguage,
       d1.TextAutor     as AuthorID,
@@ -558,7 +563,8 @@ function sql_getAuftrag($status) {
       AND d2.TextTID = a1.AuftragNTID
       AND d2.TextStatus = '$status'
       AND s1.SpracheSID = d1.TextSID
-      AND s2.SpracheSID = d2.TextSID");
+      AND s2.SpracheSID = d2.TextSID
+    ORDER BY d2.TextStatus");
   while( $r = db_fetch_object($qid) ) {
     array_push($out,$r);
   }
@@ -567,6 +573,7 @@ function sql_getAuftrag($status) {
 
 function sql_getUserFromText($usrid) {
 /* UserNamen zu den IDs holen */
+  global $CFG;
   $qid = db_query ("SELECT PersonKennung as Author FROM $CFG->tbl_person WHERE PersonPID = $usrid");
   $qname = db_fetch_object($qid);
   return $qname->Author;
@@ -576,23 +583,4 @@ function sql_getUserFromText($usrid) {
 /* Ende Dokument Seiten          */
 /*********************************/
 
-
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

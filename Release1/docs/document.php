@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/document.php,v $
- * $Revision: 1.7 $
- * $Id: document.php,v 1.7 2001/12/16 22:48:11 hifix Exp $
+ * $Revision: 1.8 $
+ * $Id: document.php,v 1.8 2001/12/18 23:29:22 hifix Exp $
  *
  * To Do:
  * - Localisation
@@ -13,6 +13,7 @@
  *****************************************************************************/
 
 include("../application.php");
+$session['wantsurl']=me();  // Rücksprung (ggf)
 
 $DOC_TITLE = "Document List";
 
@@ -24,9 +25,8 @@ include("$CFG->templatedir/header.php");
 $id = $otid;
 echo "\n<!-- ID: $id -->\n";
 include("templates/document_details.inc");
-include("templates/document_langdetails.inc");
-echo "<hr>";
-
+//include("templates/document_langdetails.inc");
+//echo "<hr>";
 include("templates/document.inc");
 include("$CFG->templatedir/footer.php");
 

@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/search.php,v $
- * $Revision: 1.2 $
- * $Id: search.php,v 1.2 2001/12/18 00:15:17 alexgn Exp $
+ * $Revision: 1.3 $
+ * $Id: search.php,v 1.3 2001/12/18 23:29:22 hifix Exp $
  *
  * To Do:
  * - 
@@ -25,7 +25,7 @@ if (match_referer() && isset($HTTP_POST_VARS) && $noerror!=1) {
 
   if (empty($errormsg)) {
     /* Should be search */
-    $status = search($keywordtitle,$search_in,$lang);
+    $status = search($frm['keywordtitle'],$frm['search_in'],$frm['lang']);
 
     $DOC_TITLE = "Your Search Results";
     include("$CFG->templatedir/header.php");

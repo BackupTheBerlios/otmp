@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/search.inc,v $
- * $Revision: 1.2 $
- * $Id: search.inc,v 1.2 2001/12/18 00:13:36 alexgn Exp $
+ * $Revision: 1.3 $
+ * $Id: search.inc,v 1.3 2001/12/18 23:29:22 hifix Exp $
  *
  * Signup Formular
  *
@@ -51,7 +51,7 @@ Hinweise zu den einzelnen Felder stehen rechts daneben. <? } ?>
       <td align="right" bgcolor="#DDDDDD"><b>Sprache</b>
       </td>
       <td>
-	<select name="lang">
+	  <select name="lang">
           <option value="" <?=isempty($frm['lang'],0)?'selected':''?>>Alle Sprachen</option>
           <?=db_listbox(sql_SQL4LangIdAndName(),nvl($frm['lang']))?> 
         </select>

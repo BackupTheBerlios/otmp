@@ -3,8 +3,8 @@
  * Task Form
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/maketask_form.inc,v $
- * $Revision: 1.1 $
- * $Id: maketask_form.inc,v 1.1 2001/12/16 22:27:10 hifix Exp $
+ * $Revision: 1.2 $
+ * $Id: maketask_form.inc,v 1.2 2001/12/18 23:29:22 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -63,7 +63,7 @@
           <input type="submit" name="addTask" value="Auftrag abschicken">
         </div>
       </td>
-      <td>&nbsp;</td>
+      <td> Klicken sie <a href="<?=nvl($session['wantsurl'],"$CFG->wwwroot/main.php")?>?otid=<?=nvl($id,0)?>">keinen weiteren Auftrag eingeben</a> um abzubrechen.</td>
     </tr>
   </table>
 </form>

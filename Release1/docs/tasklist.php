@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/tasklist.php,v $
- * $Revision: 1.1 $
- * $Id: tasklist.php,v 1.1 2001/12/14 09:32:44 darkpact Exp $
+ * $Revision: 1.2 $
+ * $Id: tasklist.php,v 1.2 2001/12/18 23:29:22 hifix Exp $
  *
  * To Do:
  * - Localisation
@@ -13,6 +13,7 @@
  *****************************************************************************/
 
 include("../application.php");
+$session['wantsurl']=me();  // Rücksprung (ggf)
 
 $DOC_TITLE = "Tasks Info";
 

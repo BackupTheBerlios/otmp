@@ -1,7 +1,7 @@
  <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/documentlist.de,v $
-    * $Revision: 1.6 $
-    * $Id: documentlist.de,v 1.6 2001/12/14 09:33:04 darkpact Exp $
+    * $Revision: 1.7 $
+    * $Id: documentlist.de,v 1.7 2001/12/18 23:29:22 hifix Exp $
     */
 
 $opendocs = "Offene &Uuml;bersetzungsaufträge";      // Title of all Open Tasks
@@ -33,11 +33,16 @@ $docorg = "Original Dokument";                       // Original Document
 $doctrans = "Übersetzungen des Dokuments";           // Translations of the Document
 
 $headeropen     = "#FF6666";              // color scheme for open docs header
-$rowopen        = "#FFAAAA";              // color scheme for open docs rows
+$rowopen        = "#FFAAAA";              // color scheme for open docs rows filled
+$rowopen2       = "#FFFFFF";              // color scheme for open docs rows unfilled
+//$rowopen = $CFG->bgcolorTwo;
+//$rowopen2 = $CFG->bgcolorOne;
 $headerwork     = "#FFFF55";              // color scheme for work docs header
-$rowwork        = "#FFFF88";              // color scheme for work docs rows
+$rowwork        = "#FFFF88";              // color scheme for work docs rows filled
+$rowwork2       = "#FFFFFF";              // color scheme for work docs rows unfilled
 $headerfinished = "#55FF55";              // color scheme for finished docs header
-$rowfinished    = "#88FF88";              // color scheme for finished docs rows
+$rowfinished    = "#88FF88";              // color scheme for finished docs rows filled
+$rowfinished2   = "#FFFFFF";              // color scheme for finished docs rows unfilled
 
 // Alternate Colors
 // $headeropen     = "#99FF66";

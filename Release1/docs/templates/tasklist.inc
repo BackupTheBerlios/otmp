@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/tasklist.inc,v $
- * $Revision: 1.1 $
- * $Id: tasklist.inc,v 1.1 2001/12/14 09:32:01 darkpact Exp $
+ * $Revision: 1.2 $
+ * $Id: tasklist.inc,v 1.2 2001/12/18 23:29:22 hifix Exp $
  */
 
 include ("documentlist.de");
@@ -24,7 +24,7 @@ $docopen = $docwork = $docfinished = show_tasks($list);
 <form method="post" action="">
   <table width="100%" border="0" cellspacing="0" cellpadding="2">
     <tr>
-      <td colspan="7" bgcolor=<?=$headeropen?>><b><font color="#000000"><?=$opendocs?></font></b></td>
+      <td colspan="6" bgcolor=<?=$headeropen?>><b><font size="+1" color="#000000"><?=$opendocs?></font></b></td>
     </tr>
     <tr>
       <td><b><?=$doctitle?></b></td>
@@ -32,7 +32,6 @@ $docopen = $docwork = $docfinished = show_tasks($list);
       <td><b><?=$languageto?></b></td>
       <td><b><?=$docdate?></b></td>
       <td><b><?=$docauthor?></b></td>
-      <td><b><?=$docstatus?></b></td>
       <td>&nbsp;</td>
     </tr>
 <? $i=0;
@@ -40,14 +39,13 @@ $docopen = $docwork = $docfinished = show_tasks($list);
     if ($i==0) { ?>
     <tr bgcolor=<?=$rowopen?>>
     <? } else { ?>
-    <tr>
+    <tr bgcolor=<?=$rowopen2?>>
     <? } ?>
-      <td><a href="document.php?otid=<?=$d->BaseID?>"><?=$d->Title?></a></td>
+      <td><a href="document.php?otid=<?=($d->BaseID)?$d->BaseID:$d->TextID?>"><?=$d->Title?></a></td>
       <td><?=$d->FromLanguage?></td>
       <td><?=$d->ToLanguage?></td>
       <td><?=$d->Date?></td>
       <td><?=show_name($d->AuthorID)?></td>
-      <td><?=$statusopen?></td>
       <td><input type="submit" name="download_X" value=<?=$taketask?> class="tbl_btn"></td>
     </tr>
 <? $i=1-$i; } ?>
@@ -58,7 +56,7 @@ $docopen = $docwork = $docfinished = show_tasks($list);
 <form method="post" action="">
   <table width="100%" border="0" cellspacing="0" cellpadding="2">
     <tr>
-      <td colspan="7" bgcolor=<?=$headerwork?>><b><font color="#000000"><?=$workdocs;?></font></b></td>
+      <td colspan="6" bgcolor=<?=$headerwork?>><b><font size="+1" color="#000000"><?=$workdocs;?></font></b></td>
     </tr>
     <tr>
       <td><b><?=$doctitle; ?></b></td>
@@ -67,22 +65,20 @@ $docopen = $docwork = $docfinished = show_tasks($list);
       <td><b><?=$docdate; ?></b></td>
       <td><b><?=$docauthor; ?></b></td>
       <td><b><?=$translator; ?></b></td>
-      <td><b><?=$docstatus; ?></b></td>
     </tr>
 <? $i=0;
    foreach ($docwork as $d) {
     if ($i==0) { ?>
     <tr bgcolor=<?=$rowwork?>>
     <? } else { ?>
-    <tr>
+    <tr bgcolor=<?=$rowwork2?>>
     <? } ?>
-      <td><a href="document.php?otid=<?=$d->BaseID?>"><?=$d->Title?></a></td>
+      <td><a href="document.php?otid=<?=($d->BaseID)?$d->BaseID:$d->TextID?>"><?=$d->Title?></a></td>
       <td><?=$d->FromLanguage?></td>
       <td><?=$d->ToLanguage?></td>
       <td><?=$d->Date?></td>
       <td><?=show_name($d->AuthorID)?></td>
       <td><?=show_name($d->TranslatorID)?></td>
-      <td><?=$statuswork?></td>
     </tr>
 <? $i=1-$i; } ?>
   </table>
@@ -92,7 +88,7 @@ $docopen = $docwork = $docfinished = show_tasks($list);
 <form method="post" action="">
   <table width="100%" border="0" cellspacing="0" cellpadding="2">
     <tr>
-      <td colspan="5" bgcolor=<?=$headerfinished?>><b><font color="#000000"><?=$finisheddocs;?></font></b></td>
+      <td colspan="5" bgcolor=<?=$headerfinished?>><b><font size="+1" color="#000000"><?=$finisheddocs;?></font></b></td>
     </tr>
     <tr>
       <td><b><?=$doctitle; ?></b></td>
@@ -106,9 +102,9 @@ $docopen = $docwork = $docfinished = show_tasks($list);
     if ($i==0) { ?>
     <tr bgcolor=<?=$rowfinished?>>
     <? } else { ?>
-    <tr>
+    <tr bgcolor=<?=$rowfinished2?>>
     <? } ?>
-      <td><a href="document.php?otid=<?=$d->BaseID?>"><?=$d->Title?></a></td>
+      <td><a href="document.php?otid=<?=($d->BaseID)?$d->BaseID:$d->TextID?>"><?=$d->Title?></a></td>
       <td><?=$d->FromLanguage?></td>
       <td><?=$d->ToLanguage?></td>
       <td><?=$d->Date?></td>

@@ -2,8 +2,8 @@
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/application.php,v $
  *
- * $Revision: 1.11 $
- * $Id: application.php,v 1.11 2001/12/17 19:25:46 ahlabadi Exp $ 
+ * $Revision: 1.12 $
+ * $Id: application.php,v 1.12 2001/12/18 23:29:22 hifix Exp $ 
  * 
  *
  * -----------------------------------------------------------------
@@ -103,6 +103,5 @@ session_register("session");
 /* connect to the database */
 db_connect($CFG->dbhost, $CFG->dbname, $CFG->dbuser, $CFG->dbpass);
 
+set_magic_quotes_runtime(0);
 ?>
-
-

@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/download.php,v $
- * $Revision: 1.1 $
- * $Id: download.php,v 1.1 2001/12/18 15:24:34 hifix Exp $
+ * $Revision: 1.2 $
+ * $Id: download.php,v 1.2 2001/12/18 23:29:22 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -50,7 +50,7 @@ function get_downloadURL($fileID, $packerID) {
 /* gibt eine URL für den Download zurück */
   global $CFG;
   
-  $CFG->filedirwww="$CFG->";  // temp
+  $CFG->filedirwww="$CFG->wwwroot/files/";  // temp
   // dummy
   $packerID = 1;
   $ext = 0;

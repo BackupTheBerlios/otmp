@@ -3,8 +3,8 @@
  * Task (make)
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/task.php,v $
- * $Revision: 1.2 $
- * $Id: task.php,v 1.2 2001/12/16 22:54:43 hifix Exp $
+ * $Revision: 1.3 $
+ * $Id: task.php,v 1.3 2001/12/18 23:29:22 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -93,7 +93,7 @@ function makeTask(&$frm) {
   /////////////
   
   // neuen Text anlegen
-  $ntextid = sql_addNewText($frm['title'],nvl($frm['abstract']),0,$frm['lang'],nvl($frm['cat'],0),nvl($frm['filetyp'],0),$session['userid'],$frm['textID']); 
+  $ntextid = sql_addNewText(sqlv($frm['title']),sqlv(nvl($frm['abstract'])),0,$frm['lang'],nvl($frm['cat'],0),nvl($frm['filetyp'],0),$session['userid'],$frm['textID']); 
   if (!isset($ntextid) or ($ntextid==0)) {
     $session['notice'] = "error making Task. Cannot generate new Text! Please contact the administrator via contact-link<br>Errorcode: tid=$frm[textID]";
     return 0;

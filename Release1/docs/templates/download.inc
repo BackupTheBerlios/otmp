@@ -3,8 +3,8 @@
  * Show Dokument Info
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/download.inc,v $
- * $Revision: 1.2 $
- * $Id: download.inc,v 1.2 2001/12/18 15:25:31 hifix Exp $
+ * $Revision: 1.3 $
+ * $Id: download.inc,v 1.3 2001/12/18 23:29:22 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -20,12 +20,16 @@ $d = getDocumentDetails($id);
   <table width="100%" cellspacing="1" cellpadding="2">
     <tr> 
       <td>runterzuladener Text:</td>
-      <td><?=ov($d->title)?></td>
+      <td> 
+        <?=ov($d->title)?>
+      </td>
       <td>&nbsp;</td>
     </tr>
     <tr> 
       <td>Sprache:</td>
-      <td><?=ov($d->language)?></td>
+      <td> 
+        <?=ov($d->language)?>
+      </td>
       <td>&nbsp;</td>
     </tr>
     <tr> 
@@ -40,11 +44,12 @@ $d = getDocumentDetails($id);
       </td>
       <td>&nbsp;</td>
     </tr>
-    <tr>
-      <td>
+    <tr> 
+      <td> 
         <input type="submit" name="download" value="File runterladen">
       </td>
-      <td>&nbsp;</td>
+      <td>Dr&uuml;cken Sie hier und der Text wird auf Ihren Rechner geladen.<br>
+        Ist dies getan, klicken Sie bitte <a href="<?=nvl($session['wantsurl'],"$CFG->wwwroot/main.php")?>">hier</a>.</td>
       <td>&nbsp;</td>
     </tr>
   </table>

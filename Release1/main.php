@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/main.php,v $
-    * $Revision: 1.11 $
-    * $Id: main.php,v 1.11 2001/12/17 18:32:20 hifix Exp $
+    * $Revision: 1.12 $
+    * $Id: main.php,v 1.12 2001/12/18 23:29:22 hifix Exp $
     */
 
 include "application.php";
@@ -19,13 +19,12 @@ include("$CFG->templatedir/header.php");
     </td>
     <td bgcolor="#CCCCCC">
       <h5>Benutzer</h5>
-      <p> 
     <? if ( isset($session['userid']) ){ ?>
-      <a href="<?=$CFG->wwwroot?>/user/user_data.php">Ihre Daten</a>
-      <br><a href="<?=$CFG->wwwroot?>/user/logout.php">Ausloggen</a>  
+      <p> <a href="<?=$CFG->wwwroot?>/user/user_data.php">Ihre Daten</a>
+      <br><a href="<?=$CFG->wwwroot?>/user/logout.php">Ausloggen</a>
     <? } else { ?>
-      <a href="<?=$CFG->wwwroot?>/user/signup.php">Neu Anmelden</a>
-      <br><a href="<?=$CFG->wwwroot?>/user/login.php">Einloggen</a>  
+      <p> <a href="<?=$CFG->wwwroot?>/user/signup.php">Neu Anmelden</a>
+      <br><a href="<?=$CFG->wwwroot?>/user/login.php">Einloggen</a>
     <? } ?>
       </p>
     </td>
@@ -33,9 +32,9 @@ include("$CFG->templatedir/header.php");
   <tr>
     <td bgcolor="#CCCCCC">
       <h5>Dokumente</h5>
-      <p> <a href="<?=$CFG->wwwroot?>/docs/tasklist.php">Ich will &Uuml;bersetzen</a>
-      <br><a href="<?=$CFG->wwwroot?>/docs/upload.php">Ich brauche eine &Uuml;bersetzung</a>
-      <br><a href="<?=$CFG->wwwroot?>/docs/search.php?list=all">Ich suche ein Dokument</a>
+      <p> <a href="<?=$CFG->wwwroot?>/docs/tasklist.php">&Uuml;bersetzungsauftr&auml;ge</a>
+      <br><a href="<?=$CFG->wwwroot?>/docs/upload.php">Neues Dokument</a>
+      <br><a href="<?=$CFG->wwwroot?>/docs/search.php?list=all">Dokument Suchen</a>
       </p>
     </td>
   </tr>

@@ -1,60 +1,74 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/search_result.inc,v $ 
-    * $Revision: 1.2 $
-    * $Id: search_result.inc,v 1.2 2001/12/18 00:16:02 alexgn Exp $
+    * $Revision: 1.3 $
+    * $Id: search_result.inc,v 1.3 2001/12/18 23:29:22 hifix Exp $
     *
     */
 ?> 
 
 <h3 align="left">Ihr Suchergebnis:</h3>
 <center>
-<table border="1">
-  <?php if(empty($status)){ ?>
-  <tr>
-     <td>
+  <table border="1" width="90%" cellpadding="2" cellspacing="0">
+    <?php if(empty($status)){ ?>
+    <tr>
+     <td colspan="5">
          Leider hat Ihre Suche keine Treffer erzielt!
      </td>
   </tr>
   <?php } else { ?>
   <?php  ?>
      <tr>
-        <td colspan="5"><?php echo ("Es wurden<b> ". count($status) ."</b> Eintr&auml;ge gefunden!"); ?>
+        <td colspan="5"><? echo ("Es wurden<b> ". count($status) ."</b> Eintr&auml;ge gefunden!"); ?>
         </td>
      </tr>
-     <tr>
-	<td><b>Titel</b>
-	</td>
-	<td><b>Sprache</b>
-	</td>
-	<td><b>Kategorie</b>
-	</td>
-	<td><b>Datum</b>
-	</td>
-	<td><b>Autor</b>
-	</td>
+     
+    <tr bgcolor="#eeeeee"> 
+      <td><b>Titel</b> </td>
+	  <td><b>Sprache</b> </td>
+	  <td><b>Kategorie</b> </td>
+	  <td><b>Datum</b> </td>
+	  <td><b>Autor</b> </td>
      </tr>
-     <?php foreach($status as $v1) { ?>
+     <? foreach($status as $v1) { ?>
      <tr>
         <td>
-	   <?php if(!empty($v1->title)) { ?><a href="document.php?otid=<?php echo $v1->textOTID; ?>">
-						<?php echo $v1->title; ?> </a>
-	   <?php }  ?>
+	   <? if(empty($v1->title)) { ?>
+	   <br>
+	   <? } else { ?>
+	    <a href="document.php?otid=<?=$v1->textOTID?$v1->textOTID:$v1->textID?>"><?=$v1->title ?></a>
+	   <? } ?>
         </td>
 	<td>
-	   <?php if(!empty($v1->language)) { echo $v1->language;} ?>
+	   <? if(empty($v1->language)) { ?>
+	   <br>
+	   <? } else { ?>
+	    <?=$v1->language?> 
+	   <? } ?>
 	</td>
 	<td>
-	   <?php if(!empty($v1->category)) { echo $v1->category;}  ?>
+	   <? if(empty($v1->category)) { ?>
+	   -
+	   <? } else { ?> 
+	      <?=$v1->category?> 
+	   <? } ?>
 	</td>
 	<td>
-	   <?php if(!empty($v1->date)) { echo $v1->date;} ?>
+	   <? if(empty($v1->date)) { ?>
+	    <br>
+	   <? } else { ?> 
+	     <?=$v1->date?> 
+	   <? } ?>
 	</td>
-	<td>
-	   <?php if(!empty($v1->author)) {  echo $v1->author;} ?>
-	</td>
+	  <td> 
+        <? if(empty($v1->author)) { ?>
+        <i>offen</i> 
+        <? } else { ?>
+        <?=$v1->author?>
+        <? } ?>
+      </td>
      </tr>
-     <?php } ?>
-  <?php } ?>
+     <? } ?>
+  <? } ?>
 </table>
 </center>
 <p>
