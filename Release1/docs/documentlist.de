@@ -1,33 +1,36 @@
-<? /*
+ <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/documentlist.de,v $
-    * $Revision: 1.5 $
-    * $Id: documentlist.de,v 1.5 2001/12/10 22:08:46 darkpact Exp $
+    * $Revision: 1.6 $
+    * $Id: documentlist.de,v 1.6 2001/12/14 09:33:04 darkpact Exp $
     */
 
-$pagename = "Dokumente";                  // Name of the Page
-$opendocs = "Offene Aufträge";            // Title of all Open Tasks
-$workdocs = "Aufträge in Arbeit";         // Tasks in work
-$finisheddocs = "Fertige Aufträge";       // Finished Tasks
-$alldocs = "Alle Aufträge";               // All Tasks
-$show = "Zeige";                          // Show
-$translate = "&Uuml;bersetzen";           // to translate
-$translator = "&Uuml;bersetzer";          // Translator
-$number = "Nr";                           // Number (obsolete)
-$docinfos = "Doumentinformationen";       // Doc Infors
-$doctitle = "Titel";                      // Title
-$description = "Beschreibung";            // Abstract
-$languagefrom = "Original";               // Language of the Original Document
-$languageto = "Nach";                     // New Language of the Translation
-$language = "Sprache";                    // Language
-$docdate = "Datum";                       // Date
-$docauthor = "Autor";                     // Author
-$docstatus = "Status";                    // Status
-$statusopen = "Offen";                    // Open
-$statuswork = "In Arbeit";                // In Work
-$statusfinished = "Beendet";              // Finished
-$download = "Herunterladen";              // Download
-$allready = "Alle Dokumente";             // All Documents
-$taketask = "Annehmen";                   // Take Task
+$opendocs = "Offene &Uuml;bersetzungsaufträge";      // Title of all Open Tasks
+$workdocs = "&Uuml;bersetungsaufträge in Arbeit";    // Tasks in work
+$finisheddocs = "Fertige &Uuml;bersetzungen";        // Finished Tasks
+$alldocs = "Alle Aufträge";                          // All Tasks
+$show = "Zeige";                                     // Show
+$translate = "&Uuml;bersetzen";                      // to translate
+$translator = "&Uuml;bersetzer";                     // Translator
+$number = "Nr";                                      // Number (obsolete)
+$docinfos = "Doumentinformationen";                  // Doc Infors
+$doctitle = "Titel";                                 // Title
+$description = "Beschreibung";                       // Abstract
+$languagefrom = "Original";                          // Language of the Original Document
+$languageto = "Nach";                                // New Language of the Translation
+$language = "Sprache";                               // Language
+$docdate = "Datum";                                  // Date
+$docauthor = "Autor";                                // Author
+$docstatus = "Status";                               // Status
+$statusopen = "Offen";                               // Open
+$statuswork = "In Arbeit";                           // In Work
+$statusfinished = "Fertig";                          // Finished
+$download = "Herunterladen";                         // Download
+$allready = "Alle Dokumente";                        // All Documents
+$taketask = "Annehmen";                              // Take Task
+$maketask = "Neuen Übersertzungsauftrag zu diesem Dokument erstellen";
+                                                     // Assign a new Task
+$docorg = "Original Dokument";                       // Original Document
+$doctrans = "Übersetzungen des Dokuments";           // Translations of the Document
 
 $headeropen     = "#FF6666";              // color scheme for open docs header
 $rowopen        = "#FFAAAA";              // color scheme for open docs rows
@@ -37,11 +40,11 @@ $headerfinished = "#55FF55";              // color scheme for finished docs head
 $rowfinished    = "#88FF88";              // color scheme for finished docs rows
 
 // Alternate Colors
-//$headeropen     = "#99FF66";
-//$rowopen        = "#BBFF88";
-//$headerwork     = "#DDDD77";
-//$rowwork        = "#DDDD99";
-//$headerfinished = "#FF8855";
-//$rowfinished    = "#FFAA77";
+// $headeropen     = "#99FF66";
+// $rowopen        = "#BBFF88";
+// $headerwork     = "#DDDD77";
+// $rowwork        = "#DDDD99";
+// $headerfinished = "#FF8855";
+// $rowfinished    = "#FFAA77";
 
 ?>
