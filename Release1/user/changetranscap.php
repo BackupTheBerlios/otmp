@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changetranscap.php,v $
- * $Revision: 1.3 $
- * $Id: changetranscap.php,v 1.3 2001/12/14 23:53:57 alexgn Exp $
+ * $Revision: 1.4 $
+ * $Id: changetranscap.php,v 1.4 2001/12/16 13:17:51 alexgn Exp $
  *
  * To Do:
  * - 
@@ -14,6 +14,8 @@
  *****************************************************************************/
 
 include("../application.php");
+$session['wantsurl']=me();  // Rücksprung (ggf)
+checklogin();
 
 /* form has been submitted, changing user data */
 if (match_referer() && isset($HTTP_POST_VARS)) {
@@ -25,6 +27,12 @@ if (match_referer() && isset($HTTP_POST_VARS)) {
 
      if (empty($errormsg)) {
        $status = update_transcap($frm,$session['userid']);
+
+       /* change user translator status to translator */
+       if ( $session['translator'] == 0){
+           changeUserToTranslator($session['userid']);
+	   $session['translator'] = 1;
+       }
 
        $DOC_TITLE = "Database update successful!";
        include("$CFG->templatedir/header.php");
@@ -57,6 +65,10 @@ include("$CFG->templatedir/footer.php");
 /******************************************************************************
  * FUNCTIONS
  *****************************************************************************/
+
+function changeUserToTranslator($userid) {
+   return sql_changeUserToTranslator($userid);
+}
 
 function validate_form(&$frm, &$errors,$userid) {
 /* validate the signup form, and return the error messages in a string.  if

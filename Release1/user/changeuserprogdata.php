@@ -1,12 +1,12 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changeuserprogdata.php,v $
- * $Revision: 1.4 $
- * $Id: changeuserprogdata.php,v 1.4 2001/12/14 23:51:18 alexgn Exp $
+ * $Revision: 1.5 $
+ * $Id: changeuserprogdata.php,v 1.5 2001/12/16 13:17:30 alexgn Exp $
  *
  * To Do:
- * - Check that user is logged in! 
- * - How to let users select programms not found in our database?
+ * -  
+ * - How do we let users select programms not found in our database?
  */
 
 /******************************************************************************
@@ -14,12 +14,20 @@
  *****************************************************************************/
 
 include("../application.php");
+$session['wantsurl']=me();  // Ruecksprung (ggf)
+checklogin();
 
 /* form has been submitted, changing user data */
 if (match_referer() && isset($HTTP_POST_VARS)) {
   $frm = $HTTP_POST_VARS;
 
     $status = update_userProgramms($frm,$session['userid']);
+
+    /* change user translator status to translator */
+    if ( $session['translator'] == 0){
+        changeUserToTranslator($session['userid']);
+	$session['translator'] = 1;
+    }
 
     $DOC_TITLE = "Changing of User Programm Data Successful";
     include("$CFG->templatedir/header.php");
@@ -28,7 +36,6 @@ if (match_referer() && isset($HTTP_POST_VARS)) {
     die;
 
 }
-/* Check that user is logged in is missing! */
 
 $DOC_TITLE = "Change User Programm Data";
 # $tmp = get_user_info($session['username']);
@@ -39,6 +46,10 @@ include("$CFG->templatedir/footer.php");
 /******************************************************************************
  * FUNCTIONS
  *****************************************************************************/
+
+function changeUserToTranslator($userid) {
+   return sql_changeUserToTranslator($userid);
+}
 
 function update_userProgramms(&$frm,$userid) {
 /* update programms, that user has access to*/
