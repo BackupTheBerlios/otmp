@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/tasklist.inc,v $
- * $Revision: 1.2 $
- * $Id: tasklist.inc,v 1.2 2001/12/18 23:29:22 hifix Exp $
+ * $Revision: 1.3 $
+ * $Id: tasklist.inc,v 1.3 2002/01/30 01:42:58 hifix Exp $
  */
 
 include ("documentlist.de");
@@ -21,7 +21,6 @@ $docopen = $docwork = $docfinished = show_tasks($list);
    <a href="tasklist.php?list=finished"><?=$finisheddocs?></a> |
    <a href="tasklist.php?list=all"><?=$alldocs?></a></font></p>
 <? if ($list=="all" || $list=="open") { ?>
-<form method="post" action="">
   <table width="100%" border="0" cellspacing="0" cellpadding="2">
     <tr>
       <td colspan="6" bgcolor=<?=$headeropen?>><b><font size="+1" color="#000000"><?=$opendocs?></font></b></td>
@@ -35,8 +34,10 @@ $docopen = $docwork = $docfinished = show_tasks($list);
       <td>&nbsp;</td>
     </tr>
 <? $i=0;
-   foreach ($docopen as $d) {
-    if ($i==0) { ?>
+   foreach ($docopen as $d) { ?>
+   <form method="get" action="<?=$CFG->wwwroot?>/docs/taketask.php">
+   <input type="hidden" name="id" value="<?=$d->TextToID?>">
+ <? if ($i==0) { ?>
     <tr bgcolor=<?=$rowopen?>>
     <? } else { ?>
     <tr bgcolor=<?=$rowopen2?>>
@@ -46,11 +47,11 @@ $docopen = $docwork = $docfinished = show_tasks($list);
       <td><?=$d->ToLanguage?></td>
       <td><?=$d->Date?></td>
       <td><?=show_name($d->AuthorID)?></td>
-      <td><input type="submit" name="download_X" value=<?=$taketask?> class="tbl_btn"></td>
+      <td><input type="submit" name="taketask" value=<?=$taketask?> class="tbl_btn"></td>
     </tr>
+    </form>
 <? $i=1-$i; } ?>
   </table>
-</form>
 <? } ?>
 <? if ($list=="all" || $list=="work") { ?>
 <form method="post" action="">

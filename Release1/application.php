@@ -2,8 +2,8 @@
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/application.php,v $
  *
- * $Revision: 1.12 $
- * $Id: application.php,v 1.12 2001/12/18 23:29:22 hifix Exp $ 
+ * $Revision: 1.13 $
+ * $Id: application.php,v 1.13 2002/01/30 01:42:58 hifix Exp $ 
  * 
  *
  * -----------------------------------------------------------------
@@ -24,8 +24,8 @@
 
 /* turn on verbose error reporting (15) to see all warnings and errors */
 error_reporting(15);
-$RELEASE = "1.1";
-$RELEASEDATE = "17-12-2001";
+$RELEASE = "1.3";
+$RELEASEDATE = "29-01-2002";
 
 $debug_mode=1;
 
@@ -54,6 +54,7 @@ $CFG->imagedir    = "$CFG->wwwroot/imgs";
 $CFG->templatedir = "$CFG->dirwww/templates";
 $CFG->support     = "root@localhost";
 $CFG->sspath      = "$CFG->dirwww/.sessions";
+$CFG->uploadDir   = "$CFG->dirwww/files";
 
 $CFG->bgcolorOne    = "#FFFFFF";
 $CFG->bgcolorTwo    = "#EEEEEE";
@@ -78,6 +79,7 @@ $CFG->tbl_konto = "otmp_Konto";
 $CFG->tbl_systemkonto = "otmp_SystemKonto";
 $CFG->tbl_bankkonto = "otmp_BankKonto";
 $CFG->tbl_filetype = "otmp_Filetype";
+$CFG->tbl_prgHasType = "otmp_PrgHasType";
 
 /* define database error handling behavior, since we are in development stages
  * we will turn on all the debugging messages to help us troubleshoot */

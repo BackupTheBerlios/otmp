@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.34 $
- * $Id: sql.php,v 1.34 2002/01/28 17:42:00 hifix Exp $
+ * $Revision: 1.35 $
+ * $Id: sql.php,v 1.35 2002/01/30 01:42:58 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -402,8 +402,9 @@ function sql_getDocumentFromSearch($docid) {
   return $out;
 }
 
-function sql_getDocument($id) {
+function sql_getDocument($id,$full=0) {
 /* Dokument mit id zurückgeben (alle "wichtigen" Felder)
+ * Wenn full = 1, dann auch Informationen zum originalDokument
  * returns: Object
  */
   global $CFG;
@@ -411,6 +412,7 @@ function sql_getDocument($id) {
   $qid = db_query ("
     SELECT
       TextTID         as textID,
+      TextOTID        as otextID,
       TextTitel       as title,
       DATE_FORMAT(TextDatum,'%e.%b.%Y')  as date,
       PersonKennung   as author,
@@ -424,6 +426,11 @@ function sql_getDocument($id) {
     WHERE TextTID = $id
     ");
    $out = db_fetch_object($qid);
+   if( $full AND ( ! ( ($out->otextID == $out->textID) OR ( $out->otextID == 0 ))) ) {
+     /* originaltext informationen holen */
+     $otext = sql_getDocument($out->otextID);
+     $out->original = $otext;
+   }
   return $out;
 }
 
@@ -569,7 +576,8 @@ function sql_getAuftrag($status) {
       s1.SpracheName   as FromLanguage,
       d1.TextAutor     as AuthorID,
       s2.SpracheName   as ToLanguage,
-      d2.TextAutor     as TranslatorID
+      d2.TextAutor     as TranslatorID,
+      d2.TextTID       as TextToID
     FROM $CFG->tbl_auftrag  as a1, $CFG->tbl_text as d1, $CFG->tbl_text as d2, $CFG->tbl_sprache as s1, $CFG->tbl_sprache as s2
     WHERE d1.TextTID = a1.AuftragOTID
       AND d2.TextTID = a1.AuftragNTID

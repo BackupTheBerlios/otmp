@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/otmplib.php,v $
- * $Revision: 1.6 $
- * $Id: otmplib.php,v 1.6 2002/01/28 17:47:27 hifix Exp $
+ * $Revision: 1.7 $
+ * $Id: otmplib.php,v 1.7 2002/01/30 01:42:58 hifix Exp $
  * 
  */
  
@@ -109,9 +109,9 @@ function mydebug(&$var) {
 }
 
 
-function getDocumentDetails($id) {
+function getDocumentDetails($id,$full=0) {
 /* Daten zum Dokument zurückgeben */
-  return sql_getDocument($id);
+  return sql_getDocument($id,$full);
 }
 
 function getDocuments4BaseID($id) {
@@ -150,5 +150,25 @@ function getExtension4TextID($textID) {
     die;
   }
   return $ext;  
+}
+
+function getFileID4ext($prgID,$ext) {
+  /* returns fileTypeID for given extension and Programm*/
+  global $CFG;
+  // FileTypID bestimmen
+    $qid = db_query("
+      SELECT  
+      FiletypeFID 
+      FROM $CFG->tbl_programm 
+      LEFT JOIN $CFG->tbl_prgHasType ON prtPRGID = ProgrammPRGID
+      LEFT JOIN $CFG->tbl_filetype ON FiletypeFID = prtFID
+      WHERE ProgrammPRGID=$prgID AND FiletypeType like '".$ext."'
+      ");
+    list($filetypeID) = db_fetch_array($qid);
+    if(!isset($filetypeID)) {
+      // errorhandling for unknown fileExtension for given Programm here ...
+      return 0;
+    }
+    return $filetypeID;
 }
 ?>

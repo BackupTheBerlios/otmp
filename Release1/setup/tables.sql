@@ -1,12 +1,15 @@
 #
 # Datenbank für OTMP
-# $Id: tables.sql,v 1.18 2002/01/29 17:07:56 hifix Exp $
-# $Revision: 1.18 $
+# $Id: tables.sql,v 1.19 2002/01/30 01:42:58 hifix Exp $
+# $Revision: 1.19 $
 #
 # ----------------------------------------------------------------------
 # Log for tables.sql
 # ----------------------------------------------------------------------
 # $Log: tables.sql,v $
+# Revision 1.19  2002/01/30 01:42:58  hifix
+# release 1.3
+#
 # Revision 1.18  2002/01/29 17:07:56  hifix
 # changed Table Sprache
 # prpared for Ethnocode Languages
@@ -37,6 +40,8 @@ DROP TABLE IF EXISTS otmp_SystemKonto ;
 DROP TABLE IF EXISTS otmp_BankKonto ;
 DROP TABLE IF EXISTS otmp_UebersetzerSprachen;
 DROP TABLE IF EXISTS otmp_PerPro;
+DROP TABLE IF EXISTS otmp_PrgHasType;
+
 
 # #######################################
 # -------- TABELLEN  -------------------
@@ -65,16 +70,24 @@ CREATE TABLE otmp_Person
 # ProgrammPacker 0 --> kein Packer
 # ProgrammSort DEFAULT 255, falls nicht gegeben, dann am Ende der Liste
 
-CREATE TABLE otmp_Programm
-       (
-   ProgrammPRGID    SMALLINT(5) UNSIGNED AUTO_INCREMENT NOT NULL,
-   ProgrammName     VARCHAR(50) NOT NULL,
-   ProgrammVersion  VARCHAR(20) NOT NULL,
-   ProgrammPacker   ENUM('0','1') DEFAULT '0',
-   ProgrammSort     TINYINT UNSIGNED DEFAULT 255,
+CREATE TABLE otmp_Programm (
+  ProgrammPRGID smallint(5) unsigned NOT NULL auto_increment,
+  ProgrammName varchar(50) NOT NULL default '',
+  ProgrammVersion varchar(20) NOT NULL default '',
+  ProgrammPacker enum('0','1') default '0',
+  ProgrammSort tinyint(3) unsigned default '255',
+  PRIMARY KEY  (ProgrammPRGID,ProgrammVersion)
+);
 
-  PRIMARY KEY(ProgrammPRGID,ProgrammVersion)
-       );
+CREATE TABLE otmp_PrgHasType (
+  prtPRGID smallint(5) unsigned NOT NULL default '0',
+  prtFID smallint(5) unsigned NOT NULL default '0',
+  prtDefault enum('0','1') NOT NULL default '0',
+  prtSortOrder tinyint(3) unsigned default NULL,
+  PRIMARY KEY  (prtPRGID,prtFID),
+  KEY prtPRGID (prtPRGID,prtFID)
+);
+
 
 # #####################################
 
@@ -82,15 +95,12 @@ CREATE TABLE otmp_Programm
 # FiletypeSort DEFAULT 255, falls nicht gegeben, dann am Ende der Liste.
 # FiletypeType 0 kein Packer, 1 Packer
 
-CREATE TABLE otmp_Filetype
-       (
-   FiletypeFID    SMALLINT(5) UNSIGNED AUTO_INCREMENT NOT NULL,
-   FiletypePRGID    SMALLINT(5) UNSIGNED NOT NULL,
-   FiletypeType   VARCHAR(5) DEFAULT '---',
-   FiletypeSort     TINYINT UNSIGNED DEFAULT 255,
-
-  PRIMARY KEY(FiletypeFID)
-       );
+CREATE TABLE otmp_Filetype (
+  FiletypeFID smallint(5) unsigned NOT NULL auto_increment,
+  FiletypeType varchar(5) default '---',
+  FiletypeNote varchar(100) default NULL,
+  PRIMARY KEY  (FiletypeFID)
+);
 
 
 # ######################################

@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/document.inc,v $
- * $Revision: 1.8 $
- * $Id: document.inc,v 1.8 2002/01/28 17:47:27 hifix Exp $
+ * $Revision: 1.9 $
+ * $Id: document.inc,v 1.9 2002/01/30 01:42:58 hifix Exp $
  */
 
 $docs = show_docs($otid);
@@ -65,19 +65,27 @@ include ("documentlist.de");
     </tr>
 <? $i=0; foreach ($docs as $d) { if ($i>0) { ?>
     <form method="get" action="<?=$CFG->wwwroot?>/docs/taketask.php">
-    <input type="hidden" name="id" value="<?=$otid?>">
+    <input type="hidden" name="id" value="<?=$d->TextID?>">
     <? if ($d->Status=="open") { $mystatus = $statusopen; ?>
     <tr bgcolor=<?=$rowopen?>>
       <td><?=$d->Title?></td>
     <? } elseif ($d->Status=="work") { $mystatus = $statuswork ?>
     <tr bgcolor=<?=$rowwork?>>
-      <td><?=$d->Title?></td>
+      <td>
+       <? if(($d->Status=="work") AND ($d->AuthorID == $session['userid'])){ ?>
+          <a href="<?=$CFG->wwwroot?>/docs/upload_translation.php?id=<?=$d->TextID?>"><?=$d->Title?></a>
+          <? } else { ?>
+          <?=$d->Title?>
+          <? } ?>
+      </td>
     <? } elseif ($d->Status=="finished") { $mystatus = $statusfinished ?>
     <tr bgcolor=<?=$rowfinished?>>
       <td><a href="download.php?id=<?=$d->TextID?>"><?=$d->Title?></a></td>
     <? } else { ?>
     <tr>
-      <td><?=$d->Title?></td>
+      <td>
+      <?=$d->Title?>
+      </td>
     <? } ?>
       <td><?=$d->Language?></td>
       <td><?=$d->Date?></td>

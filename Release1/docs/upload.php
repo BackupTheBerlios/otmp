@@ -3,8 +3,8 @@
  * Dokument Upload
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/upload.php,v $
- * $Revision: 1.6 $
- * $Id: upload.php,v 1.6 2002/01/27 22:12:50 darkpact Exp $
+ * $Revision: 1.7 $
+ * $Id: upload.php,v 1.7 2002/01/30 01:42:58 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -20,8 +20,6 @@
 
 include("../application.php");
 checklogin();
-
-$CFG->uploadDir = "$CFG->dirwww/files";
 
 /* form has been submitted, try to create the new user account */
 if (match_referer() && isset($HTTP_POST_VARS)) {
@@ -82,33 +80,33 @@ function validate_form(&$frm, &$errors) {
       $errors->filetyp = true;
       $msg .= "<li>Sie haben kein Dateiformat angegeben";
   } else {
-	  if (!isset($frm['file'])) {
-		$errors->file = true;
-		$msg .= "<li>Sie haben keine Datei angegeben/ausgew&auml;hlt";
-		
-	  } elseif(is_uploaded_file($frm['file']['tmp_name'])) {
-		// file checken
-		if(preg_match("/\.(\w{2,4})$/",$frm['file']['name'],$parts)){
-		  /* extension given */
-		  $frm['file']['ext'] = $parts[1];
-		  // extension is valid ?
-		  $fileID = getFileID4ext( $frm['filetyp'],$frm['file']['ext'] );
-		  if( !$fileID ) {
-		   	$errors->file = true;
-			$msg .= "<li>Fehler beim Hochladen der Datei! Die Dateierweiterung ist nicht g&uuml;ltig f&uuml;r das gew&auml;hlte Programm!";
-		  } else {
-		  	$frm['file']['fileID'] = $fileID;
-		  	//mydebug($frm);
-		  	//die;
-		  }
-		} else {
-			$errors->file = true;
-			$msg .= "<li>Fehler im Dateinamen! Es ist eine Datei ohne Dateierweiterung (z.B. .doc, .txt) ausgw&auml;t worden, w&auml;len Sie eine andere Datei!<br>F&uuml;r weitere Hilfe, lesen sie bitte auf den Hilfeseiten nach.";
-		}
-	  } else { // hacking ?!
-		$errors->file = true;
-		$msg .= "<li>Fehler beim Hochladen der Datei! Sicherheitsverletzung!";
-	  }
+    if (!isset($frm['file'])) {
+    $errors->file = true;
+    $msg .= "<li>Sie haben keine Datei angegeben/ausgew&auml;hlt";
+    
+    } elseif(is_uploaded_file($frm['file']['tmp_name'])) {
+    // file checken
+    if(preg_match("/\.(\w{2,4})$/",$frm['file']['name'],$parts)){
+      /* extension given */
+      $frm['file']['ext'] = $parts[1];
+      // extension is valid ?
+      $fileID = getFileID4ext( $frm['filetyp'],$frm['file']['ext'] );
+      if( !$fileID ) {
+        $errors->file = true;
+      $msg .= "<li>Fehler beim Hochladen der Datei! Die Dateierweiterung ist nicht g&uuml;ltig f&uuml;r das gew&auml;hlte Programm!";
+      } else {
+        $frm['file']['fileID'] = $fileID;
+        //mydebug($frm);
+        //die;
+      }
+    } else {
+      $errors->file = true;
+      $msg .= "<li>Fehler im Dateinamen! Es ist eine Datei ohne Dateierweiterung (z.B. .doc, .txt) ausgw&auml;t worden, w&auml;len Sie eine andere Datei!<br>F&uuml;r weitere Hilfe, lesen sie bitte auf den Hilfeseiten nach.";
+    }
+    } else { // hacking ?!
+    $errors->file = true;
+    $msg .= "<li>Fehler beim Hochladen der Datei! Sicherheitsverletzung!";
+    }
   }  
 
   return $msg;
@@ -127,19 +125,4 @@ function upload_file(&$frm) {
   
 }
 
-function getFileID4ext($prgID,$ext) {
-  /* returns */
-  // FileTypID bestimmen
-    $qid = db_query("
-    	SELECT FiletypeFID FROM otmp_Filetype 
-    	WHERE FiletypePRGID = $prgID
-    	  AND FiletypeType like '".$ext."'
-    	");
-   	list($filetypeID) = db_fetch_array($qid);
-   	if(!isset($filetypeID)) {
-   	  // errorhandling for unknown fileExtension for given Programm here ...
-   	  return 0;
-   	}
-    return $filetypeID;
-}
 ?>

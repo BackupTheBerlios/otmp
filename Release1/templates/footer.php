@@ -1,8 +1,8 @@
 <?
 /*
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/templates/footer.php,v $
-* $Revision: 1.7 $
-* $Id: footer.php,v 1.7 2001/12/16 11:10:52 alexgn Exp $
+* $Revision: 1.8 $
+* $Id: footer.php,v 1.8 2002/01/30 01:42:58 hifix Exp $
 *
 */
 ?>
@@ -24,13 +24,13 @@
     <?if (require_priv(1)) { /* general Admin */?>
     |&nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/opt.php?debug=<?= nvl($session['mode_debug'])==1? 0:1;?>">Debug Modus <?= nvl($session['mode_debug'])==1? "Aus":"An";?></A>&nbsp;&nbsp;
     |&nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/opt.php?admin=<?= nvl($session['mode_admin'])==1? 0:1;?>">Admin Modus <?= nvl($session['mode_admin'])==1? "Aus":"An";?></A>&nbsp;&nbsp;
-    |&nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/admin.php">Admin Seite</A>&nbsp;&nbsp;
+    |&nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/admin/admin.php">Admin Seite</A>&nbsp;&nbsp;
     <?}?>
   <?} else {?>
   <a href="<?=$CFG->wwwroot?>/user/login.php">Einloggen</A>
   <?}?>
   <br>
-  release: <?=$RELEASE?> Date: <?=$RELEASEDATE?>  &copy; 2001 otmp-developer
+  release: <?=$RELEASE?> Date: <?=$RELEASEDATE?>  &copy; 2001-2002 otmp-developer
   </span>
 </center>
 </td></tr></table>
