@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/user_data.inc,v $
- * $Revision: 1.3 $
- * $Id: user_data.inc,v 1.3 2001/12/07 23:58:25 alexgn Exp $
+ * $Revision: 1.4 $
+ * $Id: user_data.inc,v 1.4 2001/12/12 10:14:04 hifix Exp $
  *
  * Displays all of the users current data
  *
@@ -14,10 +14,10 @@
 ?> 
 <center>
 <br>
-Hier sehen Sie alle Ihre angegebenen Daten. Diese können Sie (fast) nach
-belieben ändern.<br>
-Hinweise zu den einzelnen Felder stehen rechts daneben.
-<table border="0">
+  Hier sehen Sie alle Ihre angegebenen Daten. Diese können Sie mit einem klick 
+  auf <i>ändern</i> &auml;ndern.<br>
+  <br>
+  <table border="0">
 <tr>
 <td>  
   <table cellspacing="0" cellpadding="6" border="1">
@@ -64,7 +64,7 @@ Hinweise zu den einzelnen Felder stehen rechts daneben.
    <table cellspacing="0" cellpadding="6" border="1"> 
       <td align="left" bgcolor="#CCCCCC" colspan="3"> 
         <b>Angaben f&uuml;r die Benutzung von OTMP</b>
-	&nbsp;<a href="changepassword.php">&auml;ndern</a>
+  &nbsp;<a href="changepassword.php">&auml;ndern</a>
       </td>
     </tr>
     <tr> 
@@ -73,16 +73,16 @@ Hinweise zu den einzelnen Felder stehen rechts daneben.
         <?=$session['username']?>
       </td>
       <td>
-	Der Name mit dem Sie sich einloggen. (Dieser kann nicht geändert werden)
+  Der Name mit dem Sie sich einloggen. (Dieser kann nicht geändert werden)
       </td>
     </tr>
     <tr> 
       <td align="right" bgcolor="#DDDDDD"><b>Passwort</b></td>
-      <td> 
+      <td> <br>
       </td>
       <td>
         Ihr Passwort wird hier natürlich nicht angezeigt. Sie können es allerdings ändern.<br>
-	Sollten Sie Ihr Passwort vergessen haben, dann klicken Sie bitte <a href="">hier</a>.
+  Sollten Sie Ihr Passwort vergessen haben, dann klicken Sie bitte <a href="">hier</a>.
       </td>
     </tr>
     </table>
@@ -93,3 +93,4 @@ Hinweise zu den einzelnen Felder stehen rechts daneben.
 </td>
 </tr>
 
+</table></center>
