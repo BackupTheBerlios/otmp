@@ -1,4 +1,8 @@
 
+# hier sind die Daten(BeispielDaten), von der letzten Version von tables.sql
+# tables.sql Version 1.13   Ahmad 12.12.2001 22:30
+
+
 
 # phpMyAdmin MySQL-Dump
 # version 2.2.2
