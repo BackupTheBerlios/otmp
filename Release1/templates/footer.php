@@ -1,8 +1,8 @@
 <? 
 /*
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/templates/footer.php,v $
-* $Revision: 1.1 $
-* $Id: footer.php,v 1.1 2001/11/25 23:22:18 hifix Exp $
+* $Revision: 1.2 $
+* $Id: footer.php,v 1.2 2001/11/29 18:52:38 hifix Exp $
 *
 */
 ?>
@@ -10,7 +10,7 @@
 <hr size=1>
 <center>
   <span class="footer">
-  &nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/">home</A>&nbsp;&nbsp;
+  &nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/main.php">home</A>&nbsp;&nbsp;
   |&nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/documentlist.php">documents</A>&nbsp;&nbsp;
   |&nbsp;&nbsp;<a href="mailto:ostkino@citygrid.de">contact</A>&nbsp;&nbsp;
   <br>
