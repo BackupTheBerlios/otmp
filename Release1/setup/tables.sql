@@ -1,12 +1,16 @@
 #
 # Datenbank für OTMP
-# $Id: tables.sql,v 1.17 2001/12/18 23:54:25 hifix Exp $
-# $Revision: 1.17 $
+# $Id: tables.sql,v 1.18 2002/01/29 17:07:56 hifix Exp $
+# $Revision: 1.18 $
 #
 # ----------------------------------------------------------------------
 # Log for tables.sql
 # ----------------------------------------------------------------------
 # $Log: tables.sql,v $
+# Revision 1.18  2002/01/29 17:07:56  hifix
+# changed Table Sprache
+# prpared for Ethnocode Languages
+#
 # Revision 1.17  2001/12/18 23:54:25  hifix
 # SpracheTabelle um EthnoCode erweitert
 #
@@ -119,16 +123,23 @@ CREATE TABLE otmp_Optionen
   PRIMARY KEY(OptionenPID)
        );
 
-# #######################################
+
+########################################
+#   Sprache
+########################################
 
 CREATE TABLE otmp_Sprache (
-  SpracheSID tinyint(3) unsigned NOT NULL auto_increment,
-  SpracheName varchar(40) NOT NULL default '',
+  SpracheSID smallint(5) unsigned NOT NULL auto_increment,
+  SpracheName varchar(50) NOT NULL default '',
   SpracheAbkuerzung char(3) default NULL,
   SpracheEthnoCode varchar(4) default NULL,
+  SpracheAltNamen varchar(255) default NULL,
+  SpracheFamilie varchar(30) default NULL,
+  SpracheLink_fam varchar(50) default NULL,
   SpracheSort tinyint(3) unsigned default '255',
   PRIMARY KEY  (SpracheSID)
-) ;
+);
+
 
 
 # #####################################
