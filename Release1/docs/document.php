@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/document.php,v $
- * $Revision: 1.6 $
- * $Id: document.php,v 1.6 2001/12/16 22:26:29 hifix Exp $
+ * $Revision: 1.7 $
+ * $Id: document.php,v 1.7 2001/12/16 22:48:11 hifix Exp $
  *
  * To Do:
  * - Localisation
@@ -22,6 +22,7 @@ include("$CFG->templatedir/header.php");
 
 // testing
 $id = $otid;
+echo "\n<!-- ID: $id -->\n";
 include("templates/document_details.inc");
 include("templates/document_langdetails.inc");
 echo "<hr>";
