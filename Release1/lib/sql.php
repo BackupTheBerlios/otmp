@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.30 $
- * $Id: sql.php,v 1.30 2001/12/17 23:09:37 alexgn Exp $
+ * $Revision: 1.31 $
+ * $Id: sql.php,v 1.31 2001/12/18 00:14:40 alexgn Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -349,12 +349,15 @@ function sql_SQL4KatNameAndID() {
 /* Text Table                  */
 /*******************************/
 
-function sql_getDocumentIDFromSearch($keyword) {
+function sql_getDocumentIDFromSearch($keyword,$search_in,$lang) {
    global $CFG;
    $i = 0;
    $result = NULL;
-   $qid = db_query("SELECT TextTID FROM $CFG->tbl_text WHERE TextTitel LIKE '%$keyword%'");
-      
+   if(empty($lang)) {
+      $qid = db_query("SELECT TextTID FROM $CFG->tbl_text WHERE $search_in LIKE '%$keyword%'");
+   } else {
+      $qid = db_query("SELECT TextTID FROM $CFG->tbl_text WHERE $search_in LIKE '%$keyword%' AND TextSID=$lang");
+   }   
    while ($row = mysql_fetch_object($qid)) {
    $result[$i] = $row->TextTID;
    $i = $i + 1;
@@ -374,7 +377,7 @@ function sql_getDocumentFromSearch($docid) {
       PersonEmail     as email,
       SpracheName     as language,
       KategorieName   as category,
-      TextDatum       as date
+      DATE_FORMAT(TextDatum,'%e.%b.%Y')      as date
     FROM $CFG->tbl_text
     LEFT JOIN $CFG->tbl_person ON PersonPID = TextAutor
     LEFT JOIN $CFG->tbl_sprache ON SpracheSID = TextSID
