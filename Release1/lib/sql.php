@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.21 $
- * $Id: sql.php,v 1.21 2001/12/14 09:34:03 darkpact Exp $
+ * $Revision: 1.22 $
+ * $Id: sql.php,v 1.22 2001/12/14 19:22:19 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -255,8 +255,6 @@ function sql_getLangName($langkey) {
   global $CFG;
   $qid = db_query("SELECT SpracheName FROM $CFG->tbl_sprache WHERE SpracheSID = '$langkey' ORDER BY SpracheSort");
   $lang = db_fetch_object($qid);
-
-/* <<<<<<< sql.php */
   return $lang->SpracheName;
 }
 
@@ -274,15 +272,13 @@ function sql_getAllLangs() {
   $i = $i + 1;
   }
   return $result;
-/* ======= */
-  return $lang->SpracheName;
 }
 
 function sql_SQL4LangIdAndName() {
 /* returns the Query for Selecting the ID and Name of all Languages in the Table */
   global $CFG;
-  return "SELECT SpracheSID as id, SpracheName as name FROM $CFG->tbl_sprache OREDER BY SpracheSort";
-/* >>>>>>> 1.15 */
+  return "SELECT SpracheSID as id, SpracheName as name FROM $CFG->tbl_sprache ORDER BY SpracheSort";
+
 }
 
 /*                               */
@@ -300,7 +296,6 @@ function sql_getKatName($katkey) {
   return $kat->KategorieName;
 }
 
-/* <<<<<<< sql.php */
 function sql_getAllCategories() {
 /* function returns array containing all categorie names and keys */
   global $CFG;
@@ -316,7 +311,7 @@ function sql_getAllCategories() {
   }
   return $result;
 }
-/* ======= */
+
 function sql_SQL4KatNameAndID() {
 /* returns the Query for Selecting the ID and Name of all Kategories in the Table */
   global $CFG;
@@ -354,6 +349,30 @@ function sql_getDocument($id) {
   return $out;
 }
 
+function sql_getDocuments4BaseID($id) {
+/* returns all Documents (with Datas) with BASEID = $id
+ * returns: Object
+ */
+  global $CFG;
+  $out = array();
+  $qid = db_query ("
+    SELECT
+      TextTID         as textID,
+      TextTitel       as title,
+      SpracheName     as language,
+      TextStatus      as status
+    FROM otmp_Text
+    LEFT JOIN otmp_Person ON PersonPID = TextAutor
+    LEFT JOIN otmp_Sprache ON SpracheSID = TextSID
+    WHERE ((TextOTID = $id) OR (TextTID = $id))
+    ORDER BY TextStatus
+    ");
+  while( $r = db_fetch_object($qid) ) {
+   array_push($out,$r);
+  }
+  return $out;
+}
+
 function sql_addNewText($title,$abstract,$length,$langID,$CategoryID,$filetypID,$authorID,$OriginalTextID=0) {
 /* add a new Text, return generated textID or 0 if an error occured
  * if $OriginalTextID == 0, this is an brandNew Text with Status=finished, otherwise Status set to open
@@ -371,7 +390,6 @@ function sql_addNewText($title,$abstract,$length,$langID,$CategoryID,$filetypID,
   }
   return db_insert_id();
 }
-/* >>>>>>> 1.15 */
 
 /*                               */
 /*********************************/
