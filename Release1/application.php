@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/application.php,v $
- * $Revision: 1.3 $
- * $Id: application.php,v 1.3 2001/11/29 18:55:59 hifix Exp $
+ * $Revision: 1.4 $
+ * $Id: application.php,v 1.4 2001/12/04 21:01:34 alexgn Exp $
  *
  * -----------------------------------------------------------------
  *
@@ -39,8 +39,12 @@ $CFG->dbname = "otmp";
 $CFG->dbuser = "otmp";
 $CFG->dbpass = "";
 
+
 $CFG->wwwroot     = "/otmp/Release1";
 $CFG->dirwww      = "/var/www/otmp/Release1";
+# Werte von alexgn
+# $CFG->wwwroot     = "/projekt/Release1";
+# $CFG->dirwww      = "/var/www/html/projekt/Release1";
 $CFG->libdir      = "$CFG->dirwww/lib";
 $CFG->imagedir    = "$CFG->wwwroot/imgs";
 $CFG->templatedir = "$CFG->dirwww/templates";
@@ -55,7 +59,12 @@ $CFG->bgcolorNav    = "#eeeee0";
 $CFG->wordlist    = "$CFG->libdir/wordlist.txt";
 
 /* setup the db variables for "mapping" of tablenames */
-$CFG->tbl_user = "otmp_user";
+$CFG->tbl_user = "otmp_Person";
+$CFG->tbl_perhatprog = "otmp_PerHatProg";
+$CFG->tbl_uebvonsprach = "otmp_UebersetzerVonSprache";
+$CFG->tbl_sprache = "otmp_Sprache";
+$CFG->tbl_uebnachsprach = "otmp_UebersetzerNachSprache";
+$CFG->tbl_kenntsichaus = "otmp_KenntSichAus";
 
 /* define database error handling behavior, since we are in development stages
  * we will turn on all the debugging messages to help us troubleshoot */
@@ -74,7 +83,7 @@ $ME = qualified_me();
 
 /* start up the sessions, to keep things clean and manageable we will just
  * use one array called SESSION to store our persistent variables */
-session_save_path($CFG->sspath);
+# session_save_path($CFG->sspath);
 session_start();
 session_register("session");
 
