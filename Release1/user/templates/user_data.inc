@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/user_data.inc,v $
- * $Revision: 1.5 $
- * $Id: user_data.inc,v 1.5 2001/12/15 00:09:28 alexgn Exp $
+ * $Revision: 1.6 $
+ * $Id: user_data.inc,v 1.6 2001/12/18 00:19:30 alexgn Exp $
  *
  * Displays all of the users current data
  *
@@ -82,7 +82,7 @@
       </td>
       <td>
         Ihr Passwort wird hier natürlich nicht angezeigt. Sie können es allerdings ändern.<br>
-  Sollten Sie Ihr Passwort vergessen haben, dann klicken Sie bitte <a href="">hier</a>.
+  Sollten Sie Ihr Passwort vergessen haben, dann klicken Sie bitte <a href="forgot_password.php">hier</a>.
       </td>
     </tr>
     </table>
