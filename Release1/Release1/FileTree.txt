@@ -1,0 +1,82 @@
+* $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/Release1/Attic/FileTree.txt,v $
+* $Revision: 1.1 $
+* $Id: FileTree.txt,v 1.1 2001/12/02 08:23:05 ahlabadi Exp $
+* $Log: FileTree.txt,v $
+* Revision 1.1  2001/12/02 08:23:05  ahlabadi
+* Initial revision
+*
+* Revision 1.3  2001/12/01 00:34:20  hifix
+* added Dir: /imgs , /imgs/flags
+*
+
+Diese Datei dient zur Übersicht, was die einzelnen Files machen und wo sie sich befinden. 
+Dies sind, solange noch nicht umgesetzt, nur Vorschläge. Wenn Ihr was ändert oder einstellt, dann passt diese Datei auch an.
+
+Kompletter OTMP Dateibaum
+
+Legende
+* - sind noch nicht vorhanden, meist auch Platzhalter für mehrere Dateien
+! - vorhanden, aber nur "placebo"
+
+
+/
+  otmp.css                - Stylesheet für alle Dateien
+  application.php         - Globale config Datei (php, db Variablen)
+  index.html              - Erste Seite mit Auswahl der Sprache
+  main.php                - Hauptseite
+  !contact.php            - Kontaktinformationen/formular
+
+/setup/
+  tables.sql              - Tabellendefinitionen für die DB (MySQL)
+
+/templates/
+  header.php              - allgemeiner Seitenheader
+  footer.php              - allgemeiner Seitenfooter
+
+/templates/email
+  reset_password          - email template für password vergessen
+  *welcome                - willkommensmail mit Accountdaten und ersten Hinweisen
+  *c_upload               - Bestätigung des Textuploads und Infos
+  *c_translation          - Bestätigung der Annahme zur Übersetzung
+  *i_textintranslation    - Info, daß Text in Übersetzung ist
+  *i_textstatus           - Info über Status der Texte (User)
+
+/user/
+  login.php               - Login Seite
+  signup.php              - Anmeldeseite
+  forgot_passwdord.php    - Passwort vergessen
+  *options.php            - Useroptionen einstellen
+  
+/user/templates/
+  forgot_password_form.inc   - Formular zum Password vergessen
+  signup_form.inc            - Formular für Useranmeldung
+  forgot_password_success.inc- Passwort erfolgreich wiederhergestellt
+  signup_success.inc         - Useranmeldung erfolgreich
+  login_form.inc             - Login Formular
+  
+/help/
+  !help.php               - Haupthilfeseite
+  *whatis.php             - Was ist OTMP und wozu
+  *faq.php                - Häufig gestellte Fragen
+  *upload.html            - Hilfe zum Upload von Texten
+  
+/docs/
+  *documentlist.php       - Liste aller Dokumente
+  *document.php           - Genauere Ansicht zu einem Dokument
+  *upload.php             - Dokument hochladen
+  *download.php           - Dokument runterladen
+
+/docs/templates
+  *upload_form.inc	  - Text upload Formular
+  *upload_success.inc	  - Text upload Erfolgreich
+  *download_form.inc	  - Text download Formular
+  
+/imgs/
+/imgs/flags/
+  flag_xx.gif             - Die einzelnen Flaggen Bilder [..]
+
+/admin/
+  *index.php              - Administratorseite (haupt)
+
+/admin/templates
+  *user.inc               - User anzeigen
