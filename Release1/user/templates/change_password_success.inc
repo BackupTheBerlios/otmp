@@ -1,8 +1,9 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/change_password_success.inc,v $ 
-    * $Revision: 1.1 $
-    * $Id: change_password_success.inc,v 1.1 2001/12/07 18:21:04 alexgn Exp $
+    * $Revision: 1.2 $
+    * $Id: change_password_success.inc,v 1.2 2002/01/11 13:13:56 alexgn Exp $
     *
+    * File is obsolete?
     */
 ?> 
 <h3 align="left">Sie haben Ihr Passwort  erfolgreich ge&auml;ndert!</h3>

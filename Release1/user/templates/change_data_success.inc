@@ -1,8 +1,9 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/change_data_success.inc,v $ 
-    * $Revision: 1.1 $
-    * $Id: change_data_success.inc,v 1.1 2001/12/05 01:13:35 alexgn Exp $
+    * $Revision: 1.2 $
+    * $Id: change_data_success.inc,v 1.2 2002/01/11 13:13:37 alexgn Exp $
     *
+    * File is obsolete?
     */
 ?> 
 <h3 align="left">Sie haben Ihre Daten erfolgreich ge&auml;ndert!</h3>
