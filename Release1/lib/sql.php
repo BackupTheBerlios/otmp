@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.35 $
- * $Id: sql.php,v 1.35 2002/01/30 01:42:58 hifix Exp $
+ * $Revision: 1.36 $
+ * $Id: sql.php,v 1.36 2002/01/30 09:54:44 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -419,10 +419,14 @@ function sql_getDocument($id,$full=0) {
       PersonEmail     as email,
       SpracheName     as language,
       TextAbstract    as abstract,
-      TextStatus      as status
+      TextStatus      as status,
+      FiletypeType    as filetyp,
+      FileTypeNote    as filetypenote
+      
     FROM $CFG->tbl_text
     LEFT JOIN $CFG->tbl_person ON PersonPID = TextAutor
     LEFT JOIN $CFG->tbl_sprache ON SpracheSID = TextSID
+    LEFT JOIN $CFG->tbl_filetype ON FiletypeFID = TextFID
     WHERE TextTID = $id
     ");
    $out = db_fetch_object($qid);
