@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/application.php,v $
- * $Revision: 1.1 $
- * $Id: application.php,v 1.1 2001/11/24 14:47:30 hifix Exp $
+ * $Revision: 1.2 $
+ * $Id: application.php,v 1.2 2001/11/24 16:12:06 hifix Exp $
  *
  * -----------------------------------------------------------------
  *
@@ -45,7 +45,7 @@ $CFG->libdir      = "$CFG->dirwww/lib";
 $CFG->imagedir    = "$CFG->wwwroot/imgs";
 $CFG->templatedir = "$CFG->dirwww/templates";
 $CFG->support     = "root@localhost";
-//$CFG->sspath      = "$CFG->dirwww/.sessions";
+$CFG->sspath      = "$CFG->dirwww/.sessions";
 
 $CFG->bgcolorOne    = "#FFFFFF";
 $CFG->bgcolorTwo    = "#EEEEEE";
@@ -55,7 +55,7 @@ $CFG->bgcolorNav    = "#eeeee0";
 $CFG->wordlist    = "$CFG->libdir/wordlist.txt";
 
 /* setup the db variables for "mapping" of tablenames */
-$tbl_user = "otmp_user";
+$CFG->tbl_user = "otmp_user";
 
 /* define database error handling behavior, since we are in development stages
  * we will turn on all the debugging messages to help us troubleshoot */
@@ -65,7 +65,7 @@ $DB_DIE_ON_FAIL = true;
 /* load up standard libraries  */
 require("$CFG->libdir/stdlib.php");
 require("$CFG->libdir/dblib.php");
-require("$CFG->libdir/otmpkinolib.php");
+require("$CFG->libdir/otmplib.php");
 
 require("$CFG->libdir/sql.php");
 
@@ -74,7 +74,7 @@ $ME = qualified_me();
 
 /* start up the sessions, to keep things clean and manageable we will just
  * use one array called SESSION to store our persistent variables */
-//session_save_path($CFG->sspath);
+session_save_path($CFG->sspath);
 session_start();
 session_register("session");
 
