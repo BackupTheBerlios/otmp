@@ -1,8 +1,8 @@
 <? 
 /*
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/templates/header.php,v $
-* $Revision: 1.1 $
-* $Id: header.php,v 1.1 2001/11/25 23:22:18 hifix Exp $
+* $Revision: 1.2 $
+* $Id: header.php,v 1.2 2001/11/29 19:01:00 hifix Exp $
 *
 *
 * ToDo:
@@ -16,7 +16,7 @@
 <title><?=$CFG->PNAME?> - <?=$DOC_TITLE?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="description" content="OTMP - Online Translation Marketplace">
-<link rel="stylesheet" href="<?=$CFG->dirwww?>/otmp.css">
+<link rel="stylesheet" href="<?=$CFG->wwwroot?>/otmp.css">
 </head>
 
 <body bgcolor="#FFFFFF" leftmargin="3" topmargin="1" marginwidth="1">
