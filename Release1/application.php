@@ -2,8 +2,8 @@
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/application.php,v $
  *
- * $Revision: 1.6 $
- * $Id: application.php,v 1.6 2001/12/08 02:25:26 alexgn Exp $ 
+ * $Revision: 1.7 $
+ * $Id: application.php,v 1.7 2001/12/09 00:28:28 alexgn Exp $ 
  * 
  *
  * -----------------------------------------------------------------
@@ -46,8 +46,8 @@ $CFG->dbpass = "";
 $CFG->wwwroot     = "/otmp/Release1";          
 $CFG->dirwww      = "/var/www/otmp/Release1";  
 /* Werte von alexgn                               */
-/* $CFG->wwwroot     = "/projekt/Release1"; */
-/* $CFG->dirwww      = "/var/www/html/projekt/Release1"; */
+/* $CFG->wwwroot     = "/projekt/Release1";       */
+/* $CFG->dirwww      = "/var/www/html/projekt/Release1";*/ 
 
 $CFG->libdir      = "$CFG->dirwww/lib";
 $CFG->imagedir    = "$CFG->wwwroot/imgs";
@@ -64,12 +64,12 @@ $CFG->wordlist    = "$CFG->libdir/wordlist.txt";
 
 /* setup the db variables for "mapping" of tablenames */
 $CFG->tbl_user = "otmp_Person";
-$CFG->tbl_perhatprog = "otmp_PerHatProg";
-$CFG->tbl_uebvonsprach = "otmp_UebersetzerVonSprache";
+$CFG->tbl_perhatprog = "otmp_PerPro";
 $CFG->tbl_sprache = "otmp_Sprache";
-$CFG->tbl_uebnachsprach = "otmp_UebersetzerNachSprache";
-$CFG->tbl_kenntsichaus = "otmp_KenntSichAus";
+$CFG->tbl_uebsprach = "otmp_UebersetzerSprachen";
 $CFG->tbl_programm = "otmp_Programm";
+$CFG->tbl_sprache = "otmp_Sprache";
+$CFG->tbl_kategorie = "otmp_Kategorie";
 
 /* define database error handling behavior, since we are in development stages
  * we will turn on all the debugging messages to help us troubleshoot */
