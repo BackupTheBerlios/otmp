@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/main.php,v $
-    * $Revision: 1.2 $
-    * $Id: main.php,v 1.2 2001/11/23 08:03:04 darkpact Exp $
+    * $Revision: 1.3 $
+    * $Id: main.php,v 1.3 2001/11/25 21:12:32 hifix Exp $
     */
 ?>
 <!-- doc header -->
@@ -42,9 +42,9 @@ include ("otmpheader.php");
     <td valign="top">
       <br>
       <ul>
-        <li><a href="doc/what.html">Was ist OTMP ?</a></li>
-        <li><a href="doc/faq.html">H&auml;ufig gestellte Fragen (FAQ)</a></li>
-        <li><a href="doc/help.html">Weitere Hilfen und Kontakt</a></li>
+        <li><a href="docs/what.html">Was ist OTMP ?</a></li>
+        <li><a href="docs/faq.html">H&auml;ufig gestellte Fragen (FAQ)</a></li>
+        <li><a href="docs/help.html">Weitere Hilfen und Kontakt</a></li>
       </ul>
       <ul>
         <li><a href="user/signup.php?langs=<? echo $langs; ?>">Neu Anmelden</a></li>
