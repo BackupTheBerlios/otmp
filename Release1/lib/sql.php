@@ -1,8 +1,8 @@
 <? 
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.5 $
- * $Id: sql.php,v 1.5 2001/12/05 00:09:38 alexgn Exp $
+ * $Revision: 1.6 $
+ * $Id: sql.php,v 1.6 2001/12/05 01:14:49 alexgn Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -93,7 +93,19 @@ function sql_setUserpasswd($username, $passwd) {
   $qid = db_query("UPDATE $CFG->tbl_user SET usrPasswd = PASSWORD('$passwd') WHERE usrName = '$username'");
 }
 
+function sql_updateUser($lastname, $firstname, $email,$userid) {
+/* Update User Data in the Database */
+  global $CFG;
+  $query = "UPDATE $CFG->tbl_user SET PersonName = '$lastname', PersonVorname= '$firstname', PersonEmail= '$email' WHERE PersonPID= '$userid'";
+  $qid = db_query($query);
+  return $qid;
+}
+
+/*                  */
+/********************/
 /* PerHatProg Table */
+/********************/
+/*                  */
 
 function sql_getUserProgrammData($userid) {
   global $CFG;
