@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changetranscap.php,v $
- * $Revision: 1.4 $
- * $Id: changetranscap.php,v 1.4 2001/12/16 13:17:51 alexgn Exp $
+ * $Revision: 1.5 $
+ * $Id: changetranscap.php,v 1.5 2001/12/18 00:17:37 alexgn Exp $
  *
  * To Do:
  * - 
@@ -199,7 +199,7 @@ function getAllTransPoss() {
                    }
     }
         }
-        echo("</td>\n");
+        echo("</select></td>\n");
         $i = $i + 1;
      }
      if(empty($allcateg)){
@@ -217,6 +217,7 @@ function getAllTransPoss() {
                    }
     }
         }
+       echo("</select></td>\n");
      }
   }
   echo("</tr>\n");
