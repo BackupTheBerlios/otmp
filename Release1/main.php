@@ -1,20 +1,15 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/main.php,v $
-    * $Revision: 1.3 $
-    * $Id: main.php,v 1.3 2001/11/25 21:12:32 hifix Exp $
+    * $Revision: 1.4 $
+    * $Id: main.php,v 1.4 2001/11/29 18:55:59 hifix Exp $
     */
-?>
-<!-- doc header -->
-<?
-$langs=isset($langs)?$langs:"us";
-include ("all." . $langs);
-include ("main." . $langs);
-$loginname=isset($loginname)?$loginname:$notlogedin;
-$maindir = "";
-include ("otmpheader.php");
-?>
-<!-- doc header end -->
 
+include "application.php";
+
+$DOC_TITLE = "Main";
+
+include("$CFG->templatedir/header.php");
+?>
 <!-- doc body -->
 <table width="100%">
   <tr>
@@ -42,17 +37,17 @@ include ("otmpheader.php");
     <td valign="top">
       <br>
       <ul>
-        <li><a href="docs/what.html">Was ist OTMP ?</a></li>
-        <li><a href="docs/faq.html">H&auml;ufig gestellte Fragen (FAQ)</a></li>
-        <li><a href="docs/help.html">Weitere Hilfen und Kontakt</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/docs/what.html">Was ist OTMP ?</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/docs/faq.html">H&auml;ufig gestellte Fragen (FAQ)</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/docs/help.html">Weitere Hilfen und Kontakt</a></li>
       </ul>
       <ul>
-        <li><a href="user/signup.php?langs=<? echo $langs; ?>">Neu Anmelden</a></li>
-        <li><a href="user/login.php?langs=<? echo $langs; ?>">Einloggen</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/user/signup.php">Neu Anmelden</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/user/login.php">Einloggen</a></li>
       </ul>
       <ul>
-        <li><a href="documentlist.php?list=all">Textverzeichnis anzeigen</a></li>
-        <li><a href="user.php?group=translator">Benutzer</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/documentlist.php?list=all">Textverzeichnis anzeigen</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/user.php?group=translator">Benutzer</a></li>
       </ul>
     </td>
   </tr>
@@ -60,10 +55,6 @@ include ("otmpheader.php");
 <!-- doc body end -->
 
 <!-- doc footer -->
-<?
-$userdir = "user/";
-$docsdir = "docs/";
-$helpdir = "help/";
-include ("otmpfooter.php");
+<?  
+include("$CFG->templatedir/footer.php");
 ?>
-<!-- doc footer end -->

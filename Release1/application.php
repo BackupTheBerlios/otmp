@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/application.php,v $
- * $Revision: 1.2 $
- * $Id: application.php,v 1.2 2001/11/24 16:12:06 hifix Exp $
+ * $Revision: 1.3 $
+ * $Id: application.php,v 1.3 2001/11/29 18:55:59 hifix Exp $
  *
  * -----------------------------------------------------------------
  *
@@ -40,7 +40,7 @@ $CFG->dbuser = "otmp";
 $CFG->dbpass = "";
 
 $CFG->wwwroot     = "/otmp/Release1";
-$CFG->dirwww     = "/var/www/otmp/Release1";
+$CFG->dirwww      = "/var/www/otmp/Release1";
 $CFG->libdir      = "$CFG->dirwww/lib";
 $CFG->imagedir    = "$CFG->wwwroot/imgs";
 $CFG->templatedir = "$CFG->dirwww/templates";
