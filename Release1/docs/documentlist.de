@@ -1,0 +1,9 @@
+<? /*
+    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/documentlist.de,v $
+    * $Revision: 1.1 $
+    * $Id: documentlist.de,v 1.1 2001/11/22 20:24:37 darkpact Exp $
+    */
+
+$pagename = "Dokumente";
+
+?>

@@ -1,0 +1,9 @@
+<? /*
+    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/Attic/login.de,v $
+    * $Revision: 1.1 $
+    * $Id: login.de,v 1.1 2001/11/22 20:21:39 darkpact Exp $
+    */
+
+$pagename = "Einloggen";
+
+?>
