@@ -1,12 +1,11 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/document.php,v $
- * $Revision: 1.1 $
- * $Id: document.php,v 1.1 2001/12/06 15:55:01 hifix Exp $
+ * $Revision: 1.2 $
+ * $Id: document.php,v 1.2 2001/12/06 22:38:34 darkpact Exp $
  *
  * To Do:
  * - Localisation
- * - minimal password length check
  */
 
 /******************************************************************************
@@ -17,21 +16,19 @@ include("../application.php");
 
 $DOC_TITLE = "Document List";
 
-setdefault($list,"all");
+setdefault($otid,"0");
 
 include("$CFG->templatedir/header.php");
 include("templates/documentlist.inc");
 include("$CFG->templatedir/footer.php");
 
-
-
 /******************************************************************************
  * FUNCTIONS
  *****************************************************************************/
 
-function show_docs($baseid) {
+function show_docs($otid) {
 /* ... */
-  return sql_getDocuments($baseid);
+  return sql_getBaseDocuments($otid);
 }
 
 ?>

@@ -1,4 +1,10 @@
 <?
+/*
+ * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/userdocuments.inc,v $
+ * $Revision: 1.2 $
+ * $Id: userdocuments.inc,v 1.2 2001/12/06 22:38:50 darkpact Exp $
+ */
+
 $docs = show_docs($usrid);
 include ("documentlist.de");
 ?>
@@ -30,7 +36,7 @@ include ("documentlist.de");
     <? } else { ?>
     <tr>
     <? } ?>
-      <td><b><?=$d->Title?></b></td>
+      <td><b><a href="document.php?otid<?=$d->TextOTID?>"><?=$d->Title?></b></td>
       <td><?=$d->Language?></td>
       <td><?=$d->Date?></td>
       <td><?=$d->Author?></td>

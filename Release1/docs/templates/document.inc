@@ -1,5 +1,11 @@
 <?
-$docs = show_docs($baseid);
+/*
+ * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/document.inc,v $
+ * $Revision: 1.2 $
+ * $Id: document.inc,v 1.2 2001/12/06 22:38:50 darkpact Exp $
+ */
+
+$docs = show_docs($otid);
 include ("documentlist.de");
 ?>
 
@@ -30,7 +36,7 @@ include ("documentlist.de");
     <? } else { ?>
     <tr>
     <? } ?>
-      <td><?=$d->Title?></td>
+      <td><a href="download.php?tid<?=$d->TextTID?>"><?=$d->Title?></td>
       <td><?=$d->Language?></td>
       <td><?=$d->Date?></td>
       <td><?=$d->Author?></td>
