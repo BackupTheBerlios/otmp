@@ -26,3 +26,4 @@ docs/...
 
 Wenn euch noch was auffällt sagt bescheid.
 
+<? echo $; ?>

@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/help/Attic/help.de,v $
-    * $Revision: 1.1 $
-    * $Id: help.de,v 1.1 2001/11/22 20:24:04 darkpact Exp $
+    * $Revision: 1.2 $
+    * $Id: help.de,v 1.2 2001/11/23 08:03:04 darkpact Exp $
     */
 
 $pagename = "Hilfe";

@@ -1,9 +1,23 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/documentlist.us,v $
-    * $Revision: 1.1 $
-    * $Id: documentlist.us,v 1.1 2001/11/22 20:24:37 darkpact Exp $
+    * $Revision: 1.2 $
+    * $Id: documentlist.us,v 1.2 2001/11/23 08:03:04 darkpact Exp $
     */
 
 $pagename = "Documents";
+$opendocs = "Open Documents";
+$workdocs = "Documents in Work";
+$finisheddocs = "Finished Documents";
+$alldocs = "All Documents";
+$show = "Show";
+$translate = "Translate";
+$translator = "Translator";
+$number = "No";
+$doctitle = "Title";
+$languagefrom = "From";
+$languageto = "To";
+$docdate = "Date";
+$docauthor = "Author";
+$docstatus = "Status";
 
 ?>

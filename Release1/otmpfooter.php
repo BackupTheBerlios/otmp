@@ -1,13 +1,16 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/Attic/otmpfooter.php,v $
-    * $Revision: 1.1 $
-    * $Id: otmpfooter.php,v 1.1 2001/11/22 20:00:46 darkpact Exp $
+    * $Revision: 1.2 $
+    * $Id: otmpfooter.php,v 1.2 2001/11/23 08:03:04 darkpact Exp $
     *
     * This footer should be inserted in all files.
     *
     * Following Variables must be defined:
     *
-    * None
+    * $maindir - should allready be defined for otmpheader
+    * $userdir - path to the user directory from this file
+    * $docsdir - path to the docs directory from this file
+    * $helpdir - path to the help directory from this file
     */
 
 echo '<table width="100%">

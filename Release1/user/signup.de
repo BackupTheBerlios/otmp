@@ -1,0 +1,16 @@
+<? /*
+    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/Attic/signup.de,v $
+    * $Revision: 1.1 $
+    * $Id: signup.de,v 1.1 2001/11/23 08:03:04 darkpact Exp $
+    */
+
+$pagename = "Anmelden";
+$signuphead = "Anmeldung bei OTMP";
+$signuptext = "";
+$signupname = "Name:";
+$signupfirstname = "Vorname:";
+$signupemail = "Email:";
+$signuppasswd = "Passwort:";
+$signuppasswdrepeat = "Passwort wiederholen:";
+
+?>

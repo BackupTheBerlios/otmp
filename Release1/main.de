@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/Attic/main.de,v $
-    * $Revision: 1.1 $
-    * $Id: main.de,v 1.1 2001/11/22 20:15:33 darkpact Exp $
+    * $Revision: 1.2 $
+    * $Id: main.de,v 1.2 2001/11/23 08:03:04 darkpact Exp $
     */
 
 $pagename = "Hauptseite";

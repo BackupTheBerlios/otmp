@@ -1,14 +1,16 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/contact.php,v $
-    * $Revision: 1.1 $
-    * $Id: contact.php,v 1.1 2001/11/22 20:15:33 darkpact Exp $
+    * $Revision: 1.2 $
+    * $Id: contact.php,v 1.2 2001/11/23 08:03:04 darkpact Exp $
     */
 ?>
 <!-- doc header -->
 <?
+$langs=isset($langs)?$langs:"us";
 include ("all." . $langs);
 include ("contact." . $langs);
-$loginname = $notlogedin;
+$loginname=isset($loginname)?$loginname:$notlogedin;
+$maindir = "";
 include ("otmpheader.php");
 ?>
 <!-- doc header end -->
@@ -27,7 +29,6 @@ include ("otmpheader.php");
 
 <!-- doc footer -->
 <?
-$maindir = "";
 $userdir = "user/";
 $docsdir = "docs/";
 $helpdir = "help/";

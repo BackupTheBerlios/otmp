@@ -1,14 +1,16 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/main.php,v $
-    * $Revision: 1.1 $
-    * $Id: main.php,v 1.1 2001/11/22 20:15:33 darkpact Exp $
+    * $Revision: 1.2 $
+    * $Id: main.php,v 1.2 2001/11/23 08:03:04 darkpact Exp $
     */
 ?>
 <!-- doc header -->
 <?
+$langs=isset($langs)?$langs:"us";
 include ("all." . $langs);
 include ("main." . $langs);
-$loginname = $notlogedin;
+$loginname=isset($loginname)?$loginname:$notlogedin;
+$maindir = "";
 include ("otmpheader.php");
 ?>
 <!-- doc header end -->
@@ -42,11 +44,11 @@ include ("otmpheader.php");
       <ul>
         <li><a href="doc/what.html">Was ist OTMP ?</a></li>
         <li><a href="doc/faq.html">H&auml;ufig gestellte Fragen (FAQ)</a></li>
-        <li><a href="doc/faq.html">Weitere Hilfen</a></li>
+        <li><a href="doc/help.html">Weitere Hilfen und Kontakt</a></li>
       </ul>
       <ul>
-        <li><a href="user/signup.php">Neu Anmelden</a></li>
-        <li><a href="user/login.php">Einloggen</a></li>
+        <li><a href="user/signup.php?langs=<? echo $langs; ?>">Neu Anmelden</a></li>
+        <li><a href="user/login.php?langs=<? echo $langs; ?>">Einloggen</a></li>
       </ul>
       <ul>
         <li><a href="documentlist.php?list=all">Textverzeichnis anzeigen</a></li>
@@ -59,7 +61,6 @@ include ("otmpheader.php");
 
 <!-- doc footer -->
 <?
-$maindir = "";
 $userdir = "user/";
 $docsdir = "docs/";
 $helpdir = "help/";

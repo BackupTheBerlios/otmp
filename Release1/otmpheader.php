@@ -1,13 +1,14 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/Attic/otmpheader.php,v $
-    * $Revision: 1.1 $
-    * $Id: otmpheader.php,v 1.1 2001/11/22 20:00:46 darkpact Exp $
+    * $Revision: 1.2 $
+    * $Id: otmpheader.php,v 1.2 2001/11/23 08:03:04 darkpact Exp $
     *
     * This header should be inserted in all files.
     *
     * Following Variables must be defined:
     *
     * $loginname - the name of the logged in user
+    * $maindir - path to the main directory from this file
     */
 
 echo '<html>
@@ -15,7 +16,7 @@ echo '<html>
 <title>OTMP - '; echo $pagename; echo '</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="description" content="OTMP - Online Translation Marketplace">
-<link rel="stylesheet" href="otmp.css">
+<link rel="stylesheet" href="'; echo $maindir; echo 'otmp.css">
 </head>
 
 <body bgcolor="#FFFFFF" leftmargin="3" topmargin="1" marginwidth="1">
