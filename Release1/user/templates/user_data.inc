@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/user_data.inc,v $
- * $Revision: 1.4 $
- * $Id: user_data.inc,v 1.4 2001/12/12 10:14:04 hifix Exp $
+ * $Revision: 1.5 $
+ * $Id: user_data.inc,v 1.5 2001/12/15 00:09:28 alexgn Exp $
  *
  * Displays all of the users current data
  *
@@ -15,7 +15,7 @@
 <center>
 <br>
   Hier sehen Sie alle Ihre angegebenen Daten. Diese können Sie mit einem klick 
-  auf <i>ändern</i> &auml;ndern.<br>
+  auf <i>&auml;ndern</i> &auml;ndern.<br>
   <br>
   <table border="0">
 <tr>
@@ -33,7 +33,7 @@
         <?=$tmp->Lastname;?>
       </td>
       <td rowspan="2">
-        Hier k&ouml;nnen Sie den von Ihnen angegebenen Vor- und Nachname &auml;ndern. 
+        Ihr Vor- und Nachname. 
       </td>
     </tr>
     <tr> 
@@ -93,4 +93,3 @@
 </td>
 </tr>
 
-</table></center>
