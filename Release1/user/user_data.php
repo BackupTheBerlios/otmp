@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/user_data.php,v $
- * $Revision: 1.3 $
- * $Id: user_data.php,v 1.3 2001/12/07 23:56:25 alexgn Exp $
+ * $Revision: 1.4 $
+ * $Id: user_data.php,v 1.4 2001/12/08 02:20:15 alexgn Exp $
  *
  * To Do:
  * - 
@@ -48,6 +48,9 @@ function get_user_info($LoginName) {
 	return sql_getUserdataFromUsername($LoginName);
 	
 
+}
+
+function getUserTransCapData($userid) {
 }
 
 function getUserProgrammData($userid) {
