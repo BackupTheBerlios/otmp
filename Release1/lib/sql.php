@@ -1,8 +1,8 @@
 <? 
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.9 $
- * $Id: sql.php,v 1.9 2001/12/07 23:55:12 alexgn Exp $
+ * $Revision: 1.10 $
+ * $Id: sql.php,v 1.10 2001/12/09 00:30:19 alexgn Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -26,7 +26,7 @@ function sql_LoginGetUserdata($username, $password) {
    return:  array(usrID, Name, AdminLevel) */
   global $CFG;
   $qid = db_query("
-    SELECT PersonPID as usrID, PersonKennung as Name, PersonAdmin as AdminLevel
+    SELECT PersonPID as usrID, PersonKennung as Name, PersonAdminlevel as AdminLevel
     FROM $CFG->tbl_user
     WHERE PersonKennung = '$username' AND PersonPassword = PASSWORD('$password')
   ");
@@ -104,14 +104,15 @@ function sql_updateUser($lastname, $firstname, $email,$userid) {
 
 /*                  */
 /********************/
-/* PerHatProg Table */
+/* PerPro Table */
 /********************/
 /*                  */
 
 function sql_getUserProgrammData($userid) {
+/* returns ProgrammName and ProgrammVersion inside an array */
   global $CFG;
   $result = NULL;
-  $qid = db_query("SELECT t1.ProgrammName, t1.ProgrammVersion FROM $CFG->tbl_programm AS t1, $CFG->tbl_perhatprog AS t2 WHERE t2.PerHatProgPID = '$userid' AND t2.PerHatProgPRGID = t1.ProgrammPRGID");
+  $qid = db_query("SELECT t1.ProgrammName, t1.ProgrammVersion FROM $CFG->tbl_programm AS t1, $CFG->tbl_perhatprog AS t2 WHERE t2.PerProPID = '$userid' AND t2.PerProPRGID = t1.ProgrammPRGID");
   $i = 0;
   while ($row = mysql_fetch_object ($qid)) {
 	$result[$i][0] = $row->ProgrammName;
@@ -122,12 +123,13 @@ function sql_getUserProgrammData($userid) {
 }
 
 function sql_getUserProgrammData2($userid) {
+/* returns programmID of all programms user has selected */
   global $CFG;
   $result = NULL;
-  $qid = db_query("SELECT PerHatProgPRGID FROM $CFG->tbl_perhatprog WHERE PerHatProgPID = '$userid'");
+  $qid = db_query("SELECT PerProPRGID FROM $CFG->tbl_perhatprog WHERE PerProPID = '$userid'");
   $i = 0;
   while ($row = mysql_fetch_object ($qid)) {
-	$result[$i] = $row->PerHatProgPRGID;
+	$result[$i] = $row->PerProPRGID;
         $i = $i + 1;
 	} 
   return $result;
@@ -135,14 +137,14 @@ function sql_getUserProgrammData2($userid) {
 
 function sql_deleteUserProgrammData($userid) {
   global $CFG;
-  $qid = db_query("DELETE FROM $CFG->tbl_perhatprog WHERE PerHatProgPID = '$userid'");
+  $qid = db_query("DELETE FROM $CFG->tbl_perhatprog WHERE PerProPID = '$userid'");
   return $qid; 
 }
 
 function sql_setUserProgrammData($v,$userid) {
   global $CFG;
   $query = "INSERT INTO $CFG->tbl_perhatprog
-            (PerHatProgPID, PerHatProgPRGID)
+            (PerProPID, PerProPRGID)
             VALUES (
             '$userid'
             ,'$v'
@@ -160,6 +162,7 @@ function sql_setUserProgrammData($v,$userid) {
 function sql_getProgramms() {
 /* Function returns all programms and their versions */
  global $CFG;
+ $result = NULL;
  $qid = db_query("SELECT * FROM $CFG->tbl_programm");
  $i = 0;
  while ($row = mysql_fetch_object($qid)) {
@@ -171,47 +174,54 @@ function sql_getProgramms() {
  return $result;
 }
 
+/*                               */
+/*********************************/
+/* UebersetzerSprachen Table   */
+/*********************************/
+/*                               */
+
+function sql_getUserTransCapData($userid) {
+/*  */
+  global $CFG;
+  $result = NULL;
+  $qid = db_query("SELECT UebersetzerSprachenVonSID, UebersetzerSprachenNachSID, UebersetzerSprachenKID FROM $CFG->tbl_uebsprach WHERE UebersetzerSprachenUEID = '$userid'");
+  $i = 0;
+  while ($row = mysql_fetch_object($qid)) {
+	$result[$i][0] = $row->UebersetzerSprachenVonSID;
+	$result[$i][1] = $row->UebersetzerSprachenNachSID;
+	$result[$i][2] = $row->UebersetzerSprachenKID;
+	$i = $i + 1; 
+  }
+  return $result;
+}
 
 /*                               */
 /*********************************/
-/* UebersetzerVonSprache Table   */
+/* Sprache Table                 */
 /*********************************/
 /*                               */
 
-function sql_getUebersetzerVonSprache($userid) {
+function sql_getLangName($langkey) {
   global $CFG;
-  $qid = db_query("SELECT t1.SpracheName FROM $CFG->tbl_sprache AS t1, $CFG->tbl_uebvonsprach AS t2 WHERE t2.UebersetzerUEID = '$userid' AND t1.SpracheAbkuerzung = t2.SpracheAbkuerzung");
-  $i = 0;
-  while ($row = mysql_fetch_object ($qid)) {
-    $result[$i] = $row->SpracheName;
-    $i = $i + 1;
-  }
- return $result; 
+  $qid = db_query("SELECT SpracheName FROM $CFG->tbl_sprache WHERE SpracheSID = '$langkey'");
+  $lang = db_fetch_object($qid);
+
+  return $lang->SpracheName; 
 }
 
-/* UbersetzerNachSprache Table */
+/*                               */
+/*********************************/
+/* Kategorie Table               */
+/*********************************/
+/*                               */
 
-function sql_getUebersetzerNachSprache($userid) {
+function sql_getKatName($katkey) {
   global $CFG;
-  $qid = db_query("SELECT t1.SpracheName From $CFG->tbl_sprache AS t1, $CFG->tbl_uebnachsprach AS t2 WHERE t2.UebersetzerUEID = '$userid' AND t1.SpracheAbkuerzung = t2.SpracheAbkuerzung");
-   $i = 0;
-  while ($row = mysql_fetch_object ($qid)) {
-    $result[$i] = $row->SpracheName;
-    $i = $i + 1;
-  }
- return $result; 
+  $qid = db_query("SELECT KategorieName FROM $CFG->tbl_kategorie WHERE KategorieKID = '$katkey'");
+  $kat = db_fetch_object($qid);
+
+  return $kat->KategorieName; 
 }
 
-/* KenntSichAus Table */
 
-function sql_getUebersetzerKategorien($userid) {
-  global $CFG;
-  $qid = db_query("Select KategorieName FROM $CFG->tbl_kenntsichaus WHERE UebersetzerUEID = '$userid'");
-  $i = 0;
-  while ($row = mysql_fetch_object ($qid)) {
-    $result[$i] = $row->KategorieName;
-    $i = $i + 1;
-  }
- return $result;
-}
 ?>
