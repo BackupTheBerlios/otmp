@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.29 $
- * $Id: sql.php,v 1.29 2001/12/17 19:25:46 ahlabadi Exp $
+ * $Revision: 1.30 $
+ * $Id: sql.php,v 1.30 2001/12/17 23:09:37 alexgn Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -353,7 +353,7 @@ function sql_getDocumentIDFromSearch($keyword) {
    global $CFG;
    $i = 0;
    $result = NULL;
-   $qid = db_query("SELECT TextTID FROM tbl_text WHERE TextTitel LIKE '%$keyword%'");
+   $qid = db_query("SELECT TextTID FROM $CFG->tbl_text WHERE TextTitel LIKE '%$keyword%'");
       
    while ($row = mysql_fetch_object($qid)) {
    $result[$i] = $row->TextTID;
@@ -368,16 +368,17 @@ function sql_getDocumentFromSearch($docid) {
    $qid = db_query ("
     SELECT
       TextTID         as textID,
+      TextOTID	      as textOTID,
       TextTitel       as title,
       PersonKennung   as author,
       PersonEmail     as email,
       SpracheName     as language,
       KategorieName   as category,
       TextDatum       as date
-    FROM tbl_text
-    LEFT JOIN tbl_person ON PersonPID = TextAutor
-    LEFT JOIN tbl_sprache ON SpracheSID = TextSID
-    LEFT JOIN tbl_kategorie ON KategorieKID = TextKID
+    FROM $CFG->tbl_text
+    LEFT JOIN $CFG->tbl_person ON PersonPID = TextAutor
+    LEFT JOIN $CFG->tbl_sprache ON SpracheSID = TextSID
+    LEFT JOIN $CFG->tbl_kategorie ON KategorieKID = TextKID
     WHERE TextTID = '$docid'
     ");
    $out = db_fetch_object($qid);
@@ -400,9 +401,9 @@ function sql_getDocument($id) {
       SpracheName     as language,
       TextAbstract    as abstract,
       TextStatus      as status
-    FROM tbl_text
-    LEFT JOIN tbl_person ON PersonPID = TextAutor
-    LEFT JOIN tbl_sprache ON SpracheSID = TextSID
+    FROM $CFG->tbl_text
+    LEFT JOIN $CFG->tbl_person ON PersonPID = TextAutor
+    LEFT JOIN $CFG->tbl_sprache ON SpracheSID = TextSID
     WHERE TextTID = $id
     ");
    $out = db_fetch_object($qid);
@@ -422,8 +423,8 @@ function sql_getDocuments4BaseID($id) {
       SpracheName     as language,
       TextStatus      as status
     FROM tbl_text
-    LEFT JOIN tbl_person ON PersonPID = TextAutor
-    LEFT JOIN tbl_sprache ON SpracheSID = TextSID
+    LEFT JOIN $CFG->tbl_person ON PersonPID = TextAutor
+    LEFT JOIN $CFG->tbl_sprache ON SpracheSID = TextSID
     WHERE ((TextOTID = $id) OR (TextTID = $id))
     ORDER BY TextStatus
     ");
@@ -484,7 +485,7 @@ function sql_getBaseDocuments($otid) {
       SpracheName      as Language,
       TextAbstract     as Description,
       TextStatus       as Status
-    FROM tbl_text, tbl_sprache
+    FROM $CFG->tbl_text, $CFG->tbl_sprache
     WHERE ((TextOTID = $otid) OR (TextTID = $otid))
       AND TextSID = SpracheSID");
    while( $r = db_fetch_object($qid) ) {
@@ -505,7 +506,7 @@ function sql_getUserDocuments($usrid) {
       SpracheName      as Language,
       TextAbstract     as Description,
       TextStatus       as Status
-    FROM tbl_text, tbl_sprache, tbl_person
+    FROM $CFG->tbl_text, $CFG->tbl_sprache, $CFG->tbl_person
     WHERE PersonPID = $usrid
       AND TextSID = SpracheSID
       AND TextAutor = $usrid");
@@ -528,7 +529,7 @@ function sql_getDocuments($status) {
       SpracheName      as Language,
       TextAbstract     as Description,
       TextStatus       as Status
-    FROM tbl_text, tbl_sprache
+    FROM $CFG->tbl_text, $CFG->tbl_sprache
     WHERE TextStatus = '$status'
       AND TextSID = SpracheSID");
   while( $r = db_fetch_object($qid) ) {
@@ -549,7 +550,7 @@ function sql_getAuftrag($status) {
       d1.TextAutor     as AuthorID,
       s2.SpracheName   as ToLanguage,
       d2.TextAutor     as TranslatorID
-    FROM tbl_auftrag  as a1, tbl_text as d1, tbl_text as d2, tbl_sprache as s1, tbl_sprache as s2
+    FROM $CFG->tbl_auftrag  as a1, $CFG->tbl_text as d1, $CFG->tbl_text as d2, $CFG->tbl_sprache as s1, $CFG->tbl_sprache as s2
     WHERE d1.TextTID = a1.AuftragOTID
       AND d2.TextTID = a1.AuftragNTID
       AND d2.TextStatus = '$status'
