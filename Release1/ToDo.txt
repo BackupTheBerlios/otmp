@@ -1,0 +1,28 @@
+Noch zu tun...
+
+Release 1:
+
+index.html
+  Liste aller Wichtigen Flaggen besonders von Entwicklungsländern
+  mit den entsprechenden Amtssprachen
+
+main.php
+
+user/login.php
+user/...
+  Aufbau der ganzen Seiten für...
+   Login
+   Options
+  etc...
+
+help/help.php
+help/...
+  Schreiben der Texte für alle
+  Hilfeseiten in Deutsch, Englisch und Türkisch
+
+docs/documentlist.php
+docs/...
+  Erste Datenbank Einbindung schreiben
+
+Wenn euch noch was auffällt sagt bescheid.
+

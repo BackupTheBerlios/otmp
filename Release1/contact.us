@@ -1,0 +1,9 @@
+<? /*
+    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/Attic/contact.us,v $
+    * $Revision: 1.1 $
+    * $Id: contact.us,v 1.1 2001/11/22 20:15:33 darkpact Exp $
+    */
+
+$pagename = "Contact Information";
+
+?>
