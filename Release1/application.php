@@ -2,8 +2,8 @@
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/application.php,v $
  *
- * $Revision: 1.7 $
- * $Id: application.php,v 1.7 2001/12/09 00:28:28 alexgn Exp $ 
+ * $Revision: 1.8 $
+ * $Id: application.php,v 1.8 2001/12/12 21:55:22 ahlabadi Exp $ 
  * 
  *
  * -----------------------------------------------------------------
@@ -68,8 +68,16 @@ $CFG->tbl_perhatprog = "otmp_PerPro";
 $CFG->tbl_sprache = "otmp_Sprache";
 $CFG->tbl_uebsprach = "otmp_UebersetzerSprachen";
 $CFG->tbl_programm = "otmp_Programm";
-$CFG->tbl_sprache = "otmp_Sprache";
 $CFG->tbl_kategorie = "otmp_Kategorie";
+
+$CFG->tbl_adresse = "otmp_Adresse";
+$CFG->tbl_optionen = "otmp_Optionen";
+$CFG->tbl_auftrag = "otmp_Auftrag";
+$CFG->tbl_text = "otmp_Text";
+$CFG->tbl_konto = "otmp_Konto";
+$CFG->tbl_systemkonto = "otmp_SystemKonto";
+$CFG->tbl_bankkonto = "otmp_BankKonto";
+$CFG->tbl_filetype = "otmp_Filetype";
 
 /* define database error handling behavior, since we are in development stages
  * we will turn on all the debugging messages to help us troubleshoot */
@@ -96,3 +104,4 @@ session_register("session");
 db_connect($CFG->dbhost, $CFG->dbname, $CFG->dbuser, $CFG->dbpass);
 
 ?>
+
