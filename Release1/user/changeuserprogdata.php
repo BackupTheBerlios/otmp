@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changeuserprogdata.php,v $
- * $Revision: 1.1 $
- * $Id: changeuserprogdata.php,v 1.1 2001/12/07 23:53:23 alexgn Exp $
+ * $Revision: 1.2 $
+ * $Id: changeuserprogdata.php,v 1.2 2001/12/09 00:25:30 alexgn Exp $
  *
  * To Do:
  * - Check that user is logged in! 
@@ -60,6 +60,10 @@ function getProgramms($userid) {
 $userprogramms = sql_getUserProgrammData2($userid);
 $programms = sql_getProgramms();
 	$i = 0;
+	if (is_null($programms)) {
+	/* In case no programms can be found in the database */
+	echo("Leider keine Programme zur Auswahl!");
+	} else {
 	foreach($programms as $v1) {
 			foreach($v1 as $v2){
 				if ($i == 0) {
@@ -84,6 +88,7 @@ $programms = sql_getProgramms();
 					$i = 0;
 				}
 			}
+	}
 	}
 }
 
