@@ -1,7 +1,11 @@
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/FileTree.txt,v $
-* $Revision: 1.3 $
-* $Id: FileTree.txt,v 1.3 2001/12/01 00:34:20 hifix Exp $
+* $Revision: 1.4 $
+* $Id: FileTree.txt,v 1.4 2001/12/05 00:02:29 hifix Exp $
 * $Log: FileTree.txt,v $
+* Revision 1.4  2001/12/05 00:02:29  hifix
+* added Task.php etc.
+* added Upload.php etc.
+*
 * Revision 1.3  2001/12/01 00:34:20  hifix
 * added Dir: /imgs , /imgs/flags
 *
@@ -60,13 +64,15 @@ Legende
 /docs/
   *documentlist.php       - Liste aller Dokumente
   *document.php           - Genauere Ansicht zu einem Dokument
-  *upload.php             - Dokument hochladen
+  upload.php              - Dokument hochladen
   *download.php           - Dokument runterladen
+  *task.php               - Auftragseingabe
 
 /docs/templates
-  *upload_form.inc	  - Text upload Formular
-  *upload_success.inc	  - Text upload Erfolgreich
+  upload_data_form.inc	  - Text upload Formular (Daten)
+  upload_success.inc	  - Text upload Erfolgreich
   *download_form.inc	  - Text download Formular
+  *task_form.inc          - Auftragsformular
   
 /imgs/
 /imgs/flags/
