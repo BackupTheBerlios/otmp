@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/signup_success.inc,v $ 
-    * $Revision: 1.2 $
-    * $Id: signup_success.inc,v 1.2 2001/11/29 20:09:39 hifix Exp $
+    * $Revision: 1.3 $
+    * $Id: signup_success.inc,v 1.3 2001/12/04 00:16:37 alexgn Exp $
     *
     */
 ?> 
@@ -17,6 +17,6 @@
 Schreiben Sie sich diese Daten auf und bewahren Sie das Passwort an einem sicheren Ort auf. Geben Sie es unter keinen Umständen an dritte Personen weiter, auch nicht an einen Mitarbeiter von OTMP!
 </p>
 <p>
-Sie k&ouml;nnen sich jetzt mit Ihrem Benutzernamen und Passwort hier <a href="login.php">einloggen</a>, oder zur <a href="<?=CFG->wwwroot?>/main.php">Hauptseite</a> gehen.
+Sie k&ouml;nnen sich jetzt mit Ihrem Benutzernamen und Passwort hier <a href="login.php">einloggen</a>, oder zur <a href="<?=CFG->wwwroot;?>/main.php">Hauptseite</a> gehen.
 </p>
 <p>Viel Spa&szlig; mit OTMP.</p>
