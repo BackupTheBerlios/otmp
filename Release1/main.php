@@ -1,10 +1,11 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/main.php,v $
-    * $Revision: 1.9 $
-    * $Id: main.php,v 1.9 2001/12/14 18:17:42 hifix Exp $
+    * $Revision: 1.10 $
+    * $Id: main.php,v 1.10 2001/12/16 22:18:18 hifix Exp $
     */
 
 include "application.php";
+$session['wantsurl']=me();  // Rücksprung (ggf)
 
 $DOC_TITLE = "Hauptseite";
 
