@@ -1,8 +1,8 @@
 <? 
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.6 $
- * $Id: sql.php,v 1.6 2001/12/05 01:14:49 alexgn Exp $
+ * $Revision: 1.7 $
+ * $Id: sql.php,v 1.7 2001/12/05 23:43:43 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -26,9 +26,9 @@ function sql_LoginGetUserdata($username, $password) {
    return:  array(usrID, Name, AdminLevel) */
   global $CFG;
   $qid = db_query("
-    SELECT PersonPID as usrID, LoginName as Name, '0' as AdminLevel
+    SELECT PersonPID as usrID, PersonKennung as Name, PersonAdmin as AdminLevel
     FROM $CFG->tbl_user
-    WHERE LoginName = '$username' AND PersonPassword = PASSWORD('$password')
+    WHERE PersonKennung = '$username' AND PersonPassword = PASSWORD('$password')
   ");
   return db_fetch_array($qid);
 }
@@ -37,7 +37,7 @@ function sql_addNewUser($lastname, $firstname, $email, $username, $password) {
 /* insert a new user into the DB */
   global $CFG;
   $query = "INSERT INTO $CFG->tbl_user
-            (LoginName, PersonPassword, PersonEmail, PersonName, PersonVorname)
+            (PersonKennung, PersonPassword, PersonEmail, PersonName, PersonVorname)
             VALUES (
             '$username'
             ,PASSWORD('$password')
@@ -52,14 +52,14 @@ function sql_addNewUser($lastname, $firstname, $email, $username, $password) {
 function sql_usernameExists($username) {
 /* returns 1 if the username exists, otherwise 0 */
   global $CFG;
-  $qid = db_query("SELECT 1 FROM $CFG->tbl_user WHERE LoginName = '$username'");
+  $qid = db_query("SELECT 1 FROM $CFG->tbl_user WHERE PersonKennung = '$username'");
   return db_num_rows($qid);
 }
 
 function sql_nameExists($firstname, $lastname) {
 /* returns 1 if the name (first, last) exists otherwise 0*/
   global $CFG;
-  $qid = db_query("SELECT 1 FROM $CFG->tbl_user WHERE usrFirstname = '$firstname' AND usrLastname = '$lastname'");
+  $qid = db_query("SELECT 1 FROM $CFG->tbl_user WHERE PersonVorname = '$firstname' AND PersonNachname = '$lastname'");
   return db_num_rows($qid);
 }
 
@@ -83,14 +83,14 @@ function sql_getUserdataFromUsername($username) {
 /* return the user (object) based on the username 
    user : Lastname, Firstname, LastName, Email */
   global $CFG;
-  $qid = db_query("SELECT PersonVorname as Firstname, PersonName as Lastname, PersonEmail as Email FROM $CFG->tbl_user WHERE LoginName = '$username'");
+  $qid = db_query("SELECT PersonVorname as Firstname, PersonName as Lastname, PersonEmail as Email FROM $CFG->tbl_user WHERE PersonKennung = '$username'");
   return db_fetch_object($qid);
 }
 
 function sql_setUserpasswd($username, $passwd) {
 /* set new password for user with username */
   global $CFG;
-  $qid = db_query("UPDATE $CFG->tbl_user SET usrPasswd = PASSWORD('$passwd') WHERE usrName = '$username'");
+  $qid = db_query("UPDATE $CFG->tbl_user SET PersonPassword = PASSWORD('$passwd') WHERE PersonKennung = '$username'");
 }
 
 function sql_updateUser($lastname, $firstname, $email,$userid) {
