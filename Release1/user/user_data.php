@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/user_data.php,v $
- * $Revision: 1.9 $
- * $Id: user_data.php,v 1.9 2001/12/16 13:14:33 alexgn Exp $
+ * $Revision: 1.10 $
+ * $Id: user_data.php,v 1.10 2001/12/19 00:16:17 hifix Exp $
  *
  * To Do:
  * - Quelltext aufraeumen!
@@ -56,41 +56,7 @@ function makeusertranslator($userid) {
 
 function getUserTransCapData($userid) {
 /* function returns users translation capabilities */
-$tmp2 = sql_getUserTransCapData($userid);
-  if(empty($tmp2)) {
-    echo("<tr><td colspan=\"3\">Es wurden bislang keine Sprachangaben gemacht!</td></tr>\n");
-  } else {
-    foreach($tmp2 as $v1) {
-      $i = 0;
-      foreach($v1 as $v2){
-         if ($i == 0) {
-        $tmp3 = sql_getLangName($v2);
-        if (empty($tmp3)) {
-          echo("<tr><td></td>\n");
-        } else {
-          echo ("<tr><td>" .$tmp3. "</td>\n");
-          $i = 1;
-        }
-         } elseif ($i == 1) {
-        $tmp3 = sql_getLangName($v2);
-        if (empty($tmp3)) {
-          echo("<td></td>\n");
-        } else {
-          echo ("<td>" .$tmp3. "</td>\n");
-          $i = 2;
-        }
-         } else {
-        $tmp3 = sql_getKatName($v2);
-        if (empty($tmp3)) {
-          echo("<td></td></tr>\n");
-        } else {
-          echo ("<td>" .$tmp3. "</td></tr>\n");
-          $i = 0;
-          }
-         }
-      }
-    }
-  }
+  return  sql_getUserTransCapData($userid);
 }
 
 function getUserProgrammData($userid, $archive) {
