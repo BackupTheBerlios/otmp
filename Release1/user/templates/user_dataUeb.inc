@@ -1,3 +1,15 @@
+<?
+/*
+ * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/user_dataUeb.inc,v $
+ * $Revision: 1.4 $
+ * $Id: user_dataUeb.inc,v 1.4 2001/12/15 00:08:49 alexgn Exp $
+ *
+ * To Do:
+ * - 
+ * - 
+ */
+?>
+
 <tr>
 <td>
    <table cellspacing="0" cellpadding="6" border="1">
@@ -10,11 +22,20 @@
     <tr> 
       <td align="right" bgcolor="#DDDDDD"><b>Ihre Programme</b></td>
       <td> 
-        <?php $userprogdata = getUserProgrammData($session['userid']); ?>
+        <?php $userprogdata = getUserProgrammData($session['userid'],0); ?>
       </td>
       <td>
         Dies sind die Programme, die Sie benutzen. Mit diesen Angaben, k&ouml;nnen Sie<br>
         sich nur die Dokumente anzeigen lassen, die Sie auch lesen k&ouml;nnen.
+      </td>
+    </tr>
+    <tr>
+      <td align="right" bgcolor="#DDDDDD"><b>Ihre Packer</b></td>
+      <td> 
+        <?php $userprogdata = getUserProgrammData($session['userid'],1); ?>
+      </td>
+      <td>
+        Diese Packer Formate unterst&uuml;tzen Sie.
       </td>
     </tr>
    </table>
