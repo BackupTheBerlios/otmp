@@ -1,8 +1,8 @@
 <?
 /*
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/templates/footer.php,v $
-* $Revision: 1.3 $
-* $Id: footer.php,v 1.3 2001/12/06 22:39:27 darkpact Exp $
+* $Revision: 1.4 $
+* $Id: footer.php,v 1.4 2001/12/07 18:15:55 alexgn Exp $
 *
 */
 ?>
@@ -16,7 +16,7 @@
   <br>
   <?if (isset($session['userid'])) { ?>
     &nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/logout.php">logout</A>&nbsp;&nbsp;
-    |&nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/user/change_password.php">change password</A>&nbsp;&nbsp;
+    |&nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/user/changepassword.php">change password</A>&nbsp;&nbsp;
     <?if (require_priv(1)) { /* general Admin */?>
     |&nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/opt.php?debug=<?= nvl($session['mode_debug'])==1? 0:1;?>">debug <?= nvl($session['mode_debug'])==1? "off":"on";?></A>&nbsp;&nbsp;
     |&nbsp;&nbsp;<a href="<?=$CFG->wwwroot?>/opt.php?admin=<?= nvl($session['mode_admin'])==1? 0:1;?>">admin mode <?= nvl($session['mode_admin'])==1? "off":"on";?></A>&nbsp;&nbsp;
