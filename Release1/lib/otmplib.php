@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/otmplib.php,v $
- * $Revision: 1.3 $
- * $Id: otmplib.php,v 1.3 2001/12/13 21:25:21 hifix Exp $
+ * $Revision: 1.4 $
+ * $Id: otmplib.php,v 1.4 2001/12/14 19:22:43 hifix Exp $
  * 
  */
  
@@ -106,4 +106,17 @@ function mydebug($txt) {
   echo "<h5>$txt</h5>\n";
 }
 
+
+function getDocumentDetails($id) {
+/* Daten zum Dokument zurückgeben */
+  return sql_getDocument($id);
+}
+
+function getDocuments4BaseID($id) {
+/* Alle Dokumente im System, welche eine BaseID haben 
+ * return object of dokument data */
+  global $CFG;
+  $d = sql_getDocuments4BaseID($id);
+  return $d;
+}
 ?>
