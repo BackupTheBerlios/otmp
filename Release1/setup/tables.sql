@@ -1,15 +1,7 @@
-# $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/setup/tables.sql,v $
-# $Revision: 1.8 $
-# $Id: tables.sql,v 1.8 2001/12/05 23:36:19 hifix Exp $
-# -------------------------------------------------------------
-# $Log: tables.sql,v $
-# Revision 1.8  2001/12/05 23:36:19  hifix
-# CVS comments added
-# minor changes in some default values
-#
-# -------------------------------------------------------------
 # ####################################
+
 # 	OTMP-Datenbank
+
 # ####################################
 
 
@@ -37,15 +29,15 @@ CREATE TABLE otmp_Person
        ( 
 	 PersonPID		MEDIUMINT  UNSIGNED AUTO_INCREMENT	NOT NULL,	 
 	 PersonKennung		VARCHAR(20)	NOT NULL,
-	 PersonName		VARCHAR(20)	NOT NULL,
-	 PersonVorname	     	VARCHAR(20), 
-	 PersonSex		CHAR(1), 
-	 PersonEmail		VARCHAR(100), 
+	 PersonName		VARCHAR(50)	NOT NULL DEFAULT '',
+	 PersonVorname	     	VARCHAR(50), 
+	 PersonSex		ENUM('m','f') DEFAULT NULL, 
+	 PersonEmail		VARCHAR(255)  DEFAULT '', 
 	 PersonPassword		VARCHAR(20)	NOT NULL,
-	 PersonStatus		VARCHAR(20)	DEFAULT 'nicht gesperrt' ,
-	 PersonAdmin		CHAR(1)		DEFAULT	'0',
-	 PersonPunkte	 	SMALLINT(5) DEFAULT 0,	
-	 PersonType		ENUM('Nutzer', 'Uebersetzer', 'Administrator') DEFAULT 'Nutzer', 
+	 PersonStatus		ENUM('locked','deleted')	DEFAULT NULL ,
+	 PersonAdminlevel	TINYINT UNSIGNED DEFAULT 0,
+	 PersonPunkte	 	SMALLINT(5) UNSIGNED DEFAULT 0,	
+	 PersonUebersetzer	TINYINT UNSIGNED DEFAULT 0, 
 
 	 PRIMARY KEY(PersonPID)
 	 
@@ -71,7 +63,7 @@ CREATE TABLE otmp_Filetype
        ( 
 	 FiletypeFID		SMALLINT(5) UNSIGNED AUTO_INCREMENT NOT NULL,
 	 FiletypePRGID		SMALLINT(5) UNSIGNED NOT NULL,
-	 FiletypeType		VARCHAR(5) NOT NULL DEFAULT '-',
+	 FiletypeType		VARCHAR(5) NOT NULL DEFAULT '---',
 
 	PRIMARY KEY(FiletypeFID)
        );
@@ -107,7 +99,7 @@ CREATE TABLE otmp_Optionen
        ( 
          OptionenPID		MEDIUMINT UNSIGNED NOT NULL,
 	 OptionenSprachGUI	VARCHAR(20),
-	 OptionenPublicEmail	CHAR(1) DEFAULT '0', 
+	 OptionenPublicEmail	ENUM('y','n') DEFAULT 'n', 
 	 OptionenSecureGUI	VARCHAR(20), 
 	 OptionenMutterSprache	VARCHAR(20), 
 
@@ -120,7 +112,7 @@ CREATE TABLE otmp_Sprache
        ( 
 	 SpracheSID	        TINYINT(3) UNSIGNED AUTO_INCREMENT NOT NULL, 	
 	 SpracheName		VARCHAR(25) NOT NULL,
-	 SpracheAbkuerzung	CHAR(3)	NOT NULL DEFAULT '-', 
+	 SpracheAbkuerzung	CHAR(3)	NOT NULL DEFAULT '---', 
 
 	PRIMARY KEY(SpracheSID)
 
@@ -186,7 +178,7 @@ CREATE TABLE otmp_Text
 CREATE TABLE otmp_Konto
        ( 
     	 KontoPID		MEDIUMINT  UNSIGNED NOT NULL,	 
-	 KontoKontoNr		INT(15)		NOT NULL, 
+	 KontoKontoNr		INT(15) UNSIGNED NOT NULL, 
 	 KontoName		VARCHAR(20),
 	 KontoType		VARCHAR(20),
 
@@ -212,7 +204,7 @@ CREATE TABLE otmp_BankKonto
 	 BankKontoPID		MEDIUMINT  UNSIGNED NOT NULL,	 
 	 BankKontoBank		VARCHAR(30), 
 	 BankKontoBLZ		VARCHAR(20)	NOT NULL,
-	 BankKontoKontoNr	INT(15)		NOT NULL,
+	 BankKontoKontoNr	INT(15)	UNSIGNED NOT NULL,
 	
 	PRIMARY KEY(BankKontoKontoNr,BankKontoBLZ)
 
