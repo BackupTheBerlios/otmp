@@ -44,7 +44,7 @@
         <b>Nach</b> 
       </td>
       <td align="center" bgcolor="#DDDDDD">
-        <b>Kategorien</b>
+        <b>Kategorie</b>
       </td>
     </tr>
 	<?php $usertranscapdata = getUserTransCapData($session['userid']); ?>
