@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/main.php,v $
-    * $Revision: 1.4 $
-    * $Id: main.php,v 1.4 2001/11/29 18:55:59 hifix Exp $
+    * $Revision: 1.5 $
+    * $Id: main.php,v 1.5 2001/12/05 00:54:42 alexgn Exp $
     */
 
 include "application.php";
@@ -47,7 +47,7 @@ include("$CFG->templatedir/header.php");
       </ul>
       <ul>
         <li><a href="<?=$CFG->wwwroot?>/documentlist.php?list=all">Textverzeichnis anzeigen</a></li>
-        <li><a href="<?=$CFG->wwwroot?>/user.php?group=translator">Benutzer</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/user/user_data.php">Ihre Daten</a></li>
       </ul>
     </td>
   </tr>
