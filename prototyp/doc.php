@@ -1,6 +1,8 @@
-<?
-$revision="1.5"
-$datum="21. November 2001"
+<? /*
+    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/doc.php,v $
+    * $Revision: 1.2 $
+    * $Id: doc.php,v 1.2 2001/11/20 17:27:58 darkpact Exp $
+    */
 ?>
 <!-- doc header -->
 <html>
