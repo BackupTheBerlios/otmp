@@ -1,5 +1,3 @@
-Noch zu tun...
-
 Release 1:
 
 index.html
@@ -8,16 +6,27 @@ index.html
 
 main.php
 
-user/...
-  Aufbau der ganzen Seiten für...
-   Options
+setup/
+  sprachabkürzugen.sql
 
-help/help.php
-help/what.php
+user/
+  Nach Änderungen und Speicherung -> zurück zu user_data.php
 
-docs/documentlist.php
-docs/upload.php  ...
-docs/download.php ...
+help/
+  help.php
+  what_is_otmp.php
+  faq.php
 
+docs/
+  tasks.php
+  upload.php
+  download.php
+  search.php
 
-Wenn euch noch was auffällt sagt bescheid.
+Datenbank:
+
+Tabelle Programm, Filetype, Kategorien, Sprache
+  Neue Spalte Sortierung
+
+Beispieldatenpflege
+
