@@ -1,7 +1,11 @@
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/FileTree.txt,v $
-* $Revision: 1.10 $
-* $Id: FileTree.txt,v 1.10 2001/12/16 22:22:18 hifix Exp $
+* $Revision: 1.11 $
+* $Id: FileTree.txt,v 1.11 2001/12/17 20:27:59 hifix Exp $
 * $Log: FileTree.txt,v $
+* Revision 1.11  2001/12/17 20:27:59  hifix
+* added help seiten
+* added new images
+*
 * Revision 1.10  2001/12/16 22:22:18  hifix
 * added: task und upload files
 *
@@ -91,10 +95,15 @@ Legende
 
 
 /help/
-  !help.php               - Haupthilfeseite
-  *whatis.php             - Was ist OTMP und wozu
-  *faq.php                - Häufig gestellte Fragen
-  *upload.html            - Hilfe zum Upload von Texten
+  help.php               - Haupthilfeseite
+  what.php               - Was ist OTMP und wozu
+  faq.php                - Häufig gestellte Fragen
+  *upload.html           - Hilfe zum Upload von Texten
+
+/help/templates
+  help.inc               - Text für help Seite
+  faq.inc                - FAQ
+  whatis.inc             - what text (OTMP Beschreibung)
 
 /docs/
   documentlist.php        - Liste aller Dokumente
@@ -119,8 +128,9 @@ Legende
   maketask_form.inc       - Formular zur Auftragserstellung
 
 /imgs/
-/imgs/flags/
   flag_xx.gif             - Die einzelnen Flaggen Bilder [..]
+  otmp_logo.gif           - Logog indexSeite
+  otmp_logo_head.gif      - Logo Header
 
 /admin/
   *index.php              - Administratorseite (haupt)
