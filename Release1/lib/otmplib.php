@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/otmplib.php,v $
- * $Revision: 1.1 $
- * $Id: otmplib.php,v 1.1 2001/11/25 23:18:21 hifix Exp $
+ * $Revision: 1.2 $
+ * $Id: otmplib.php,v 1.2 2001/12/09 20:17:55 hifix Exp $
  * 
  */
  
@@ -89,7 +89,7 @@ function checklogin()
   global $session, $CFG;
   if( !isset($session['userid']) ) {
     $session['notice'] = "Sie müssen sich erst einloggen um diese Seite benutzen zu können";
-    header("Location: $CFG->wwwroot/login.php");
+    header("Location: $CFG->wwwroot/user/login.php");
     die;
   }
 }
