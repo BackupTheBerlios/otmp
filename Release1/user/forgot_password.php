@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/forgot_password.php,v $
- * $Revision: 1.1 $
- * $Id: forgot_password.php,v 1.1 2001/11/25 23:21:53 hifix Exp $
+ * $Revision: 1.2 $
+ * $Id: forgot_password.php,v 1.2 2001/11/29 19:10:26 hifix Exp $
  *
  * Password vergessen - Retrieval
  *
@@ -11,6 +11,7 @@
  * ToDo:
  *
  * - Localize
+ * - mehr Hilfe bei Fehlermeldungen
  */
  
  
@@ -56,11 +57,11 @@ function validate_form(&$frm, &$errors) {
 
   if (empty($frm["email"])) {
     $errors->email = true;
-    $msg .= "You did not specify your email address";
+    $msg .= "Sie haben Ihre Emailadresse nicht angegeben";
 
   } elseif (! email_exists($frm["email"])) {
     $errors->email = true;
-    $msg .= "The specified email address is not known!";
+    $msg .= "Die von Ihnen eingegebene Emailadresse ist uns nicht bekannt";
   }
 
   return $msg;

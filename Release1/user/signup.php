@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/signup.php,v $
- * $Revision: 1.2 $
- * $Id: signup.php,v 1.2 2001/11/25 23:20:02 hifix Exp $
+ * $Revision: 1.3 $
+ * $Id: signup.php,v 1.3 2001/11/29 19:08:31 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -52,44 +52,44 @@ function validate_form(&$frm, &$errors) {
   
   if (empty($frm["lastname"])) {
     $errors->lastname = true;
-    $msg .= "<li>You did not specify your lastname";  
+    $msg .= "<li>Sie haben Ihren Nachnamen nicht angegeben";  
   }
   
   if (empty($frm["firstname"])) {
     $errors->firstname = true;
-    $msg .= "<li>You did not specify your firstname";
+    $msg .= "<li>Sie haben Ihren Vornamen nicht angegeben";
   }
   
   if (empty($frm["password"])) {
     $errors->password = true;
-    $msg .= "<li>You did not specify a password";
+    $msg .= "<li>Sie haben kein Password angegeben";
   
   } elseif (empty($frm["password_check"])) {
     $errors->password_check = true;
-    $msg .= "<li>You did not repeat your password";
+    $msg .= "<li>Sie haben vergessen, daß Password zu wiederholen";
   
   } elseif ( $frm["password"] != $frm["password_check"] ) {
     $errors->password_check = true;
     $errors->password = true;
-    $msg .= "<li>the password you entered doesn't match!";
+    $msg .= "<li>Die Passwörter stimmen nicht überein";
   }
   
   if (empty($frm["username"])) {
      $errors->username = true;
-     $msg .= "<li>You did not specify a username";
+     $msg .= "<li>Sie haben keinen Benutzernamen angegeben";
      
   } elseif (username_exists($frm["username"]) ) {
     $errors->username = true;
-    $msg .= "<li>The username <b>" . ov($frm["email"]) ."</b> already exists. Please choose an other name.";
+    $msg .= "<li>Der Benutzername <b>" . ov($frm["email"]) ."</b> ist schon vergeben. Bitte wählen Sie einen anderen Namen.";
   }
   
   if (empty($frm["email"])) {
     $errors->email = true;
-    $msg .= "<li>You did not specify your email adress";  
+    $msg .= "<li>Sie haben keine Emailadresse angegeben";  
   
   } elseif ( email_exists($frm["email"]) ) {
     $errors->email = true;
-    $msg .= "<li>The email address <b>" . ov($frm["email"]) ."</b> already exists";
+    $msg .= "<li>Die Emailadresse <b>" . ov($frm["email"]) ."</b> existiert bereits.";
   }
   
   return $msg;
