@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/application.php,v $
- * $Revision: 1.4 $
- * $Id: application.php,v 1.4 2001/12/04 21:01:34 alexgn Exp $
+ * $Revision: 1.5 $
+ * $Id: application.php,v 1.5 2001/12/04 21:30:26 hifix Exp $
  *
  * -----------------------------------------------------------------
  *
@@ -42,9 +42,9 @@ $CFG->dbpass = "";
 
 $CFG->wwwroot     = "/otmp/Release1";
 $CFG->dirwww      = "/var/www/otmp/Release1";
-# Werte von alexgn
-# $CFG->wwwroot     = "/projekt/Release1";
-# $CFG->dirwww      = "/var/www/html/projekt/Release1";
+// Werte von alexgn
+// $CFG->wwwroot     = "/projekt/Release1";
+// $CFG->dirwww      = "/var/www/html/projekt/Release1";
 $CFG->libdir      = "$CFG->dirwww/lib";
 $CFG->imagedir    = "$CFG->wwwroot/imgs";
 $CFG->templatedir = "$CFG->dirwww/templates";
@@ -83,7 +83,7 @@ $ME = qualified_me();
 
 /* start up the sessions, to keep things clean and manageable we will just
  * use one array called SESSION to store our persistent variables */
-# session_save_path($CFG->sspath);
+// session_save_path($CFG->sspath);
 session_start();
 session_register("session");
 
