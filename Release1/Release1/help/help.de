@@ -1,9 +1,0 @@
-<? /*
-    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/Release1/help/Attic/help.de,v $
-    * $Revision: 1.1 $
-    * $Id: help.de,v 1.1 2001/12/02 08:23:05 ahlabadi Exp $
-    */
-
-$pagename = "Hilfe";
-
-?>
