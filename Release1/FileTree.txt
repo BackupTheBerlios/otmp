@@ -1,38 +1,92 @@
-<? /*
-    * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/FileTree.txt,v $
-    * $Revision: 1.1 $
-    * $Id: FileTree.txt,v 1.1 2001/11/26 09:26:33 darkpact Exp $
-    */
-?>
+* $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/FileTree.txt,v $
+* $Revision: 1.2 $
+* $Id: FileTree.txt,v 1.2 2001/12/01 00:16:49 hifix Exp $
+* $Log: FileTree.txt,v $
+* Revision 1.2  2001/12/01 00:16:49  hifix
+* neue erste Version (hifix-Schema).
+* Die 1.1 wird damit obsolet.
+*
+
+Diese Datei dient zur Übersicht, was die einzelnen Files machen und wo sie sich befinden. 
+Dies sind, solange noch nicht umgesetzt, nur Vorschläge. Wenn Ihr was ändert oder einstellt, dann passt diese Datei auch an.
+
 Kompletter OTMP Dateibaum
 
-Hauptverzeichnis
-  otmp.css  - Stylesheet für alle Dateien
-  otmpfooter.php  - Standard Fußbereich
-  otmpheader.php  - Standard Kopfbereich
-  all.de .us  - Standard Variablen
-  database.php .de .us - Datenbankzugriffsfunktionen incl Fehlermeldungen
-  index.html  - Erste Seite mit Auswahl der Sprache
-  main.php .de .us  - Hauptseite
-  contact.php .de .us  - Kontaktinformationen
+Legende
+* - sind noch nicht vorhanden, meist auch Platzhalter für mehrere Dateien
+! - vorhanden, aber nur "placebo"
 
-  user/
-    login.php .de .us  - Einlogseite
-    signup.php .de .us  - Anmeldeseite
-    forgotpasswd.php .de .us  - Passwort vergessen
-    signupok.php .de .us  - Bestätigung das die Anmeldung erfolgreich war
-    options.php .de .us  - Benutzeroptionen einstellen
-    addlanguagecombo.php .de .us  - Neue Sprachkombination hinufügen
 
-  help/
-    help.php .de .us  - Haupthilfeseite
-    whatis.php .de .us  - Was ist OTMP und wozu
-    faq.php .de .us  - Häufig gestellte Fragen
-    howto.php .de .us  - Anleitungenverzeichnis
+/
+  otmp.css                - Stylesheet für alle Dateien
+  application.php         - Globale config Datei (php, db Variablen)
+  index.html              - Erste Seite mit Auswahl der Sprache
+  main.php                - Hauptseite
+  !contact.php            - Kontaktinformationen/formular
 
-  docs/
-    documentlist.php .de .us  - Liste aller Dokumente
-    document.php .de .us  - Genauere Ansicht zu einem Dokument
-    upload.php .de .us  - Dokument hochladen
-    download.php .de .us  - Dokument runterladen
+/lib/
+  class.html.mime.mail.inc- mail class zum versenden und erstellen von (html)mails
+  dblib.php               - Datenbankfunktionen
+  otmplib.php             - Projektspezifische Funktionen
+  sql.php                 - Alle SQL Queries als Funktionen
+  stdlib.php              - "Standart" (php) funktionen
+  wordlist.txt            - Wortliste zur Erstellung 
+  
+/setup/
+  tables.sql              - Tabellendefinitionen für die DB (MySQL)
+  *install.txt            - Installationsanweisungen
 
+/templates/
+  header.php              - allgemeiner Seitenheader
+  footer.php              - allgemeiner Seitenfooter
+
+/templates/email
+  reset_password          - email template für password vergessen
+  *welcome                - willkommensmail mit Accountdaten und ersten Hinweisen
+  *c_upload               - Bestätigung des Textuploads und Infos
+  *c_translation          - Bestätigung der Annahme zur Übersetzung
+  *i_textintranslation    - Info, daß Text in Übersetzung ist
+  *i_textstatus           - Info über Status der Texte (User)
+  *i_passwordchanged      - Info über Passwordänderung
+
+/user/
+  login.php               - Login Seite
+  signup.php              - Anmeldeseite
+  forgot_password.php     - Passwort vergessen
+  *change_password.php    - Passwort ändern
+  *options.php            - Useroptionen einstellen
+  
+/user/templates/
+  forgot_password_form.inc   - Formular zum Password vergessen
+  signup_form.inc            - Formular für Useranmeldung
+  forgot_password_success.inc- Passwort erfolgreich wiederhergestellt
+  signup_success.inc         - Useranmeldung erfolgreich
+  login_form.inc             - Login Formular
+  *change_password_form.inc  - Password ändern Formular
+  
+/help/
+  !help.php               - Haupthilfeseite
+  *whatis.php             - Was ist OTMP und wozu
+  *faq.php                - Häufig gestellte Fragen
+  *upload.html            - Hilfe zum Upload von Texten
+  
+/docs/
+  *documentlist.php       - Liste aller Dokumente
+  *document.php           - Genauere Ansicht zu einem Dokument
+  *upload.php             - Dokument hochladen
+  *download.php           - Dokument runterladen
+
+/docs/templates
+  *upload_form.inc	  - Text upload Formular
+  *upload_success.inc	  - Text upload Erfolgreich
+  *download_form.inc	  - Text download Formular
+  
+
+/admin/
+  *index.php              - Administratorseite (haupt)
+  *konto.php              - Kontos verwalten
+
+/admin/templates
+  *s_user.inc               - User anzeigen
+  *s_konto.inc              - Konto(s) anzeigen
+  *e_konto_form.inc         - Konto editieren Formular
