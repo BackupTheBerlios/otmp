@@ -3,8 +3,8 @@
  * Show Dokument Info
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/document_details.inc,v $
- * $Revision: 1.5 $
- * $Id: document_details.inc,v 1.5 2002/01/27 22:12:37 darkpact Exp $
+ * $Revision: 1.6 $
+ * $Id: document_details.inc,v 1.6 2002/01/30 09:55:29 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -41,6 +41,10 @@ $d = getDocumentDetails($id);
   <tr>
     <td><b>erstellt von:</b></td>
     <td><?=ov($d->author)?> (<?=$d->date?>)</td>
+  </tr>
+  <tr>
+      <td><b>Dateiformat:</b></td>
+      <td><?=ov($d->filetyp)?> <?=isset($d->filetypnote)?"(".ov($d->filetypnote).")":''?></td>
   </tr>
   <tr>
     <td><br></td>

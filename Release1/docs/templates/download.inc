@@ -3,8 +3,8 @@
  * Show Dokument Info
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/download.inc,v $
- * $Revision: 1.5 $
- * $Id: download.inc,v 1.5 2002/01/28 17:47:27 hifix Exp $
+ * $Revision: 1.6 $
+ * $Id: download.inc,v 1.6 2002/01/30 09:55:41 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -20,18 +20,23 @@ $d = getDocumentDetails($id);
   <input type="hidden" name="textID" value="<?=$id?>">
   <table width="100%" cellspacing="1" cellpadding="2">
     <tr> 
-      <td>runterzuladener Text:</td>
+      <td><b>runterzuladener Text:</b></td>
       <td> 
         <?=ov($d->title)?>
       </td>
       <td>&nbsp;</td>
     </tr>
     <tr> 
-      <td>Sprache:</td>
+      <td><b>Sprache:</b></td>
       <td> 
         <?=ov($d->language)?>
       </td>
       <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td><b>Dateiformat:</b></td>
+        <td><?=ov($d->filetyp)?> <?=isset($d->filetypnote)?"(".ov($d->filetypnote).")":''?></td>
+        <td>&nbsp;</td>
     </tr>
     <tr> 
       <td>m&ouml;chten Sie es gepackt?<br>
