@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/main.php,v $
-    * $Revision: 1.6 $
-    * $Id: main.php,v 1.6 2001/12/06 16:21:29 hifix Exp $
+    * $Revision: 1.7 $
+    * $Id: main.php,v 1.7 2001/12/10 22:06:21 darkpact Exp $
     */
 
 include "application.php";
@@ -46,8 +46,10 @@ include("$CFG->templatedir/header.php");
         <li><a href="<?=$CFG->wwwroot?>/user/login.php">Einloggen</a></li>
       </ul>
       <ul>
-        <li><a href="<?=$CFG->wwwroot?>/docs/documentlist.php?list=all">Textverzeichnis anzeigen</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/docs/documentlist.php?list=all">Das gesammte Textverzeichnis anzeigen</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/docs/search.php?list=all">Das Textverzeichnis durchsuchen</a></li>
         <li><a href="<?=$CFG->wwwroot?>/docs/upload.php">Einen Text Übersetzen lassen</a></li>
+        <li><a href="<?=$CFG->wwwroot?>/docs/tasks.php">Einen Text Übersetzen wollen</a></li>
         <li><a href="<?=$CFG->wwwroot?>/user/user_data.php">Ihre Daten</a></li>
       </ul>
     </td>
@@ -56,6 +58,6 @@ include("$CFG->templatedir/header.php");
 <!-- doc body end -->
 
 <!-- doc footer -->
-<?  
+<?
 include("$CFG->templatedir/footer.php");
 ?>
