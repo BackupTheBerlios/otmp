@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/main.php,v $
-    * $Revision: 1.10 $
-    * $Id: main.php,v 1.10 2001/12/16 22:18:18 hifix Exp $
+    * $Revision: 1.11 $
+    * $Id: main.php,v 1.11 2001/12/17 18:32:20 hifix Exp $
     */
 
 include "application.php";
@@ -21,8 +21,8 @@ include("$CFG->templatedir/header.php");
       <h5>Benutzer</h5>
       <p> 
     <? if ( isset($session['userid']) ){ ?>
-      <br><a href="<?=$CFG->wwwroot?>/user/logout.php">Ausloggen</a>
-      <br><a href="<?=$CFG->wwwroot?>/user/user_data.php">Ihre Daten</a>
+      <a href="<?=$CFG->wwwroot?>/user/user_data.php">Ihre Daten</a>
+      <br><a href="<?=$CFG->wwwroot?>/user/logout.php">Ausloggen</a>  
     <? } else { ?>
       <a href="<?=$CFG->wwwroot?>/user/signup.php">Neu Anmelden</a>
       <br><a href="<?=$CFG->wwwroot?>/user/login.php">Einloggen</a>  
