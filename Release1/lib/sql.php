@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.15 $
- * $Id: sql.php,v 1.15 2001/12/09 21:14:52 hifix Exp $
+ * $Revision: 1.16 $
+ * $Id: sql.php,v 1.16 2001/12/10 00:08:49 alexgn Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -201,6 +201,51 @@ function sql_getUserTransCapData($userid) {
   return $result;
 }
 
+function sql_deleteMarkedTransData($frm,$userid) {
+ $katid = NULL;
+ $vonid = NULL;
+ $nachid = NULL;
+ global $CFG;
+ 
+ $repeats = count($frm);
+ $i = 1;
+
+ if($repeats > 1) {
+    foreach($frm as $v1) {
+       if($i < $repeats) {
+          $tmparray = explode(":",$v1);
+          $vonid = $tmparray[0];
+          $nachid = $tmparray[1];
+          $katid = $tmparray[2];
+ 
+          $qid = db_query("DELETE FROM $CFG->tbl_uebsprach WHERE UebersetzerSprachenUEID = '$userid' AND
+	  	  UebersetzerSprachenVonSID = '$vonid' AND UebersetzerSprachenNachSID = '$nachid' AND
+		  UebersetzerSprachenKID = '$katid'");
+          $i = $i + 1;
+       }
+    }  
+  }
+  return 1; 
+}
+
+function sql_updateUebsetzerSprachen($valuestring,$userid) {
+ $katid = NULL;
+ $vonid = NULL;
+ $nachid = NULL;
+ global $CFG;
+ 
+ $tmparray = explode(":",$valuestring);
+ $vonid = $tmparray[0];
+ $nachid = $tmparray[1];
+ $katid = $tmparray[2];
+ 
+ $qid = db_query("INSERT INTO $CFG->tbl_uebsprach (UebersetzerSprachenUEID, UebersetzerSprachenVonSID,
+		 UebersetzerSprachenNachSID, UebersetzerSprachenKID, UebersetzerSprachenAuto)
+		VALUES ('$userid','$vonid','$nachid','$katid','0')");
+
+  return 1;
+}
+
 /*                               */
 /*********************************/
 /* Sprache Table                 */
@@ -212,6 +257,25 @@ function sql_getLangName($langkey) {
   $qid = db_query("SELECT SpracheName FROM $CFG->tbl_sprache WHERE SpracheSID = '$langkey'");
   $lang = db_fetch_object($qid);
 
+/* <<<<<<< sql.php */
+  return $lang->SpracheName; 
+}
+
+function sql_getAllLangs() {
+/* function returns all language names and their keys */
+  global $CFG;
+  $result = NULL;
+  $i = 0;
+
+  $qid = db_query("SELECT SpracheSID, SpracheName FROM $CFG->tbl_sprache");
+  
+  while ($row = mysql_fetch_object($qid)) {
+        $result[$i][0] = $row->SpracheSID;
+	$result[$i][1] = $row->SpracheName;
+	$i = $i + 1; 
+  }
+  return $result;
+/* ======= */
   return $lang->SpracheName;
 }
 
@@ -219,6 +283,7 @@ function sql_SQL4LangIdAndName() {
 /* returns the Query for Selecting the ID and Name of all Languages in the Table */
   global $CFG;
   return "SELECT SpracheSID as id, SpracheName as name FROM $CFG->tbl_sprache";
+/* >>>>>>> 1.15 */
 }
 
 /*                               */
@@ -228,6 +293,7 @@ function sql_SQL4LangIdAndName() {
 /*                               */
 
 function sql_getKatName($katkey) {
+/* function returns kategorie name for a given key */
   global $CFG;
   $qid = db_query("SELECT KategorieName FROM $CFG->tbl_kategorie WHERE KategorieKID = '$katkey'");
   $kat = db_fetch_object($qid);
@@ -235,6 +301,23 @@ function sql_getKatName($katkey) {
   return $kat->KategorieName;
 }
 
+/* <<<<<<< sql.php */
+function sql_getAllCategories() {
+/* function returns array containing all categorie names and keys */
+  global $CFG;
+  $result = NULL;
+  $i = 0;
+
+  $qid = db_query("SELECT KategorieKID, KategorieName FROM $CFG->tbl_kategorie");
+  
+  while ($row = mysql_fetch_object($qid)) {
+	$result[$i][0] = $row->KategorieKID;
+	$result[$i][1] = $row->KategorieName;
+	$i = $i + 1; 
+  }
+  return $result;
+}
+/* ======= */
 function sql_SQL4KatNameAndID() {
 /* returns the Query for Selecting the ID and Name of all Kategories in the Table */
   global $CFG;
@@ -335,5 +418,6 @@ function sql_addNewText($title,$abstract,$length,$langID,$CategoryID,$filetypID,
   }
   return db_insert_id();
 }
+/* >>>>>>> 1.15 */
 
 ?>
