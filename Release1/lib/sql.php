@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.26 $
- * $Id: sql.php,v 1.26 2001/12/16 21:55:00 alexgn Exp $
+ * $Revision: 1.27 $
+ * $Id: sql.php,v 1.27 2001/12/16 22:23:38 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -394,6 +394,7 @@ function sql_getDocument($id) {
     SELECT
       TextTID         as textID,
       TextTitel       as title,
+      DATE_FORMAT(TextDatum,'%e.%b.%Y')  as date,
       PersonKennung   as author,
       PersonEmail     as email,
       SpracheName     as language,
@@ -447,6 +448,21 @@ function sql_addNewText($title,$abstract,$length,$langID,$CategoryID,$filetypID,
     $session['notice'] = "Ein interner Fehler ist aufgetreten. Versuchen Sie es bitte nochmals<br>";
     return 0;
   }
+  return db_insert_id();
+}
+
+/*********************************/
+/* Auftrag                       */
+/*********************************/
+
+function sql_addNewTask($fromTextID,$toTextID,$userID,$frist='0000-00-00') {
+/* add a new Task for the given arguments, return generated TaskID*/
+ 
+  $query = "
+    INSERT INTO otmp_Auftrag (`AuftragOTID`, `AuftragNTID`, `AuftragDatum`, `AuftragNID`, `AuftragBisDatum`) 
+    VALUES ('$fromTextID', '$toTextID', NOW(), '$userID', '$frist')
+  ";
+  $qid = db_query($query);
   return db_insert_id();
 }
 
