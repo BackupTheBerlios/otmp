@@ -1,6 +1,6 @@
 <? /*
-	* $Revision: 1.1 $
-	* $ID$
+  	* $Revision: 1.2 $
+  	* $Id: main.php,v 1.2 2001/11/11 13:52:34 hifix Exp $
     */
 ?>
 <html>

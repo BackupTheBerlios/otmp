@@ -1,6 +1,6 @@
 <? /*
-	* $Revision: 1.1 $
-	* $ID$
+    * $Revision: 1.2 $
+    * $Id: login.php,v 1.2 2001/11/11 13:52:34 hifix Exp $
     */
 ?>
 <html>
@@ -33,7 +33,7 @@
   Dein Passwort ein.</p>
 <form method="post" action="">
   <div align="center"> 
-    <table width="100%" border="0" cellspacing="0" cellpadding="4">
+    <table border="0" cellspacing="0" cellpadding="4">
       <tr> 
         <td align="center" valign="top"> 
           <table cellspacing="0" cellpadding="1" bgcolor="#000000">
