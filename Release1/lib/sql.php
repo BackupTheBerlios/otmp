@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.19 $
- * $Id: sql.php,v 1.19 2001/12/12 21:51:01 ahlabadi Exp $
+ * $Revision: 1.20 $
+ * $Id: sql.php,v 1.20 2001/12/13 21:25:21 hifix Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -146,11 +146,10 @@ function sql_setUserProgrammData($v,$userid) {
   $query = "INSERT INTO $CFG->tbl_perhatprog
             (PerProPID, PerProPRGID)
             VALUES (
-            '$userid'
+             '$userid'
             ,'$v'
             )";
-  $qid = db_query($query);
-  return $qid;
+  return db_query($query);
 }
 
 /*                  */
@@ -477,4 +476,3 @@ function sql_getUserFromText($usrid) {
 }
 
 ?>
-
