@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/show.php,v $
-    * $Revision: 1.4 $
-    * $Id: show.php,v 1.4 2001/11/20 17:21:44 darkpact Exp $
+    * $Revision: 1.5 $
+    * $Id: show.php,v 1.5 2001/11/20 17:31:51 darkpact Exp $
     */
 ?>
 <!-- doc header -->
@@ -30,8 +30,7 @@
 <a href="show.php?list=finished">Fertige &Uuml;bersetzungen</a> |
 <a href="show.php?list=all">alle Dokumente</a> an.</font></p>
 
-<? echo $list; ?>
-<? echo "Hallo Du Da "; ?>
+<? $list=isset($list)?$list:"all"; ?>
 
 <? if ($list=="all" || $list=="open") { ?>
 <form method="post" action="">
