@@ -1,7 +1,10 @@
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/FileTree.txt,v $
-* $Revision: 1.11 $
-* $Id: FileTree.txt,v 1.11 2001/12/17 20:27:59 hifix Exp $
+* $Revision: 1.12 $
+* $Id: FileTree.txt,v 1.12 2002/01/28 17:50:45 hifix Exp $
 * $Log: FileTree.txt,v $
+* Revision 1.12  2002/01/28 17:50:45  hifix
+* added download sites
+*
 * Revision 1.11  2001/12/17 20:27:59  hifix
 * added help seiten
 * added new images
@@ -110,10 +113,11 @@ Legende
   tasklist.php            - Liste aller Aufträge
   document.php            - Genauere Ansicht zu einem Dokument
   userdocuments.php       - Alle Dokumente eines Benutzers aufgeführt
-  *download.php           - Dokument runterladen
+  download.php            - Dokument runterladen
   upload.php              - Dokument hochladen
   task.php                - Auftragseingabe
-
+  takeTask.php            - Uebersetzung uebernehmen
+  
 /docs/templates
   documentlist.inc        - Liste aller Dokumente
   tasklist.inc            - Liste aller Aufträge
@@ -126,6 +130,7 @@ Legende
   document_langdetails.inc- Angaben zu Sprachen, Aufträgen zum Dokument
   task_success.inc        - Auftragseingabe ok, nochmal (Form)
   maketask_form.inc       - Formular zur Auftragserstellung
+  takeTask.inc            - Text ueber Download fuer Ubersetzungsuebernahme
 
 /imgs/
   flag_xx.gif             - Die einzelnen Flaggen Bilder [..]
