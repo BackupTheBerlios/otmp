@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changeuserprogdata.php,v $
- * $Revision: 1.5 $
- * $Id: changeuserprogdata.php,v 1.5 2001/12/16 13:17:30 alexgn Exp $
+ * $Revision: 1.6 $
+ * $Id: changeuserprogdata.php,v 1.6 2002/01/09 13:58:03 alexgn Exp $
  *
  * To Do:
  * -  
@@ -65,6 +65,7 @@ function update_userProgramms(&$frm,$userid) {
   # return sql_updateuserProgramms($frm['lastname'], $frm['firstname'], $frm['email'],$userid);
 }
 
+/* Function is obsolete */
 function getProgramms($userid,$archive) {
 /* gets every programm from db and checks wether user has programm */
 

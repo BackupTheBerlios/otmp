@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/templates/changetranscap.inc,v $
- * $Revision: 1.1 $
- * $Id: changetranscap.inc,v 1.1 2001/12/09 23:32:50 alexgn Exp $
+ * $Revision: 1.2 $
+ * $Id: changetranscap.inc,v 1.2 2002/01/09 13:57:08 alexgn Exp $
  *
  * Signup Formular
  *
@@ -37,8 +37,58 @@ Hinweise zu den einzelnen Felder stehen rechts daneben. <? } ?>
       </td>
     </tr>
 
-    <?php $usertranscapdata = getUserTransCapData($session['userid']); ?>
-
+    
+    <?php 
+       $tmp2 = sql_getUserTransCapData($session['userid']);
+       $j = 1;
+       $valuestr = "";
+       if(empty($tmp2)) {
+          ?><tr><td colspan="4">Es wurden bislang keine Sprachangaben gemacht!</td></tr><?php
+       } else {
+          foreach($tmp2 as $v1) {
+             $i = 0;
+             foreach($v1 as $v2){
+                if ($i == 0) {
+                   $tmp3 = sql_getLangName($v2);
+                   if (empty($tmp3)) {
+                      ?><tr><td></td><?php
+          	      $i = 1;
+                   } else {
+                      ?><tr><td>&nbsp;<?php echo $tmp3;?></td><?php
+          	      $valuestr = "" .$v2. ":";
+                      $i = 1;
+                   }
+                } elseif ($i == 1) {
+                   $tmp3 = sql_getLangName($v2);
+                   if (empty($tmp3)) {
+                      ?><td></td><?php
+                      $i = 2;
+                   } else {
+                      ?><td><?php echo $tmp3;?></td><?php
+                      $valuestr = $valuestr . $v2 .":";
+                      $i = 2;
+                   }
+                } else {
+                   $tmp3 = sql_getKatName($v2);
+                   if (empty($tmp3)) {
+                      ?><td></td></tr><?php
+                      $i = 0;
+                   } else {
+                      $valuestr = $valuestr . $v2;
+                      ?><td><?php echo $tmp3;?></td>
+                      <td align="center">
+                         <input type="checkbox" name="transl<?php echo $j;?>" value="<?php echo $valuestr;?>">
+                      </td>
+                      </tr><?php
+                      $i = 0;
+                      $j = $j + 1;
+                      $valuestr = "";
+                   }
+                }
+            }
+         }
+      }
+   ?>
      <tr> 
       <td align="center" colspan="2" bgcolor="#EEEEEE"> 
         <input type="submit" name="change" value="Daten l&ouml;schen">
@@ -69,36 +119,56 @@ Hinweise zu den einzelnen Felder stehen rechts daneben. <? } ?>
       </td>
     </tr>
 
-    <?php $transposdata = getAllTransPoss(); ?>
+    <!-- <?php $transposdata = getAllTransPoss(); ?> -->
+  <?php  
+     $alllang = sql_getAllLangs();
+     $allcateg = sql_getAllCategories();
 
-<!-- 
-    <tr> 
-      <td align="right" <?=isset($errors->lastname)?'class="warning"':''?> bgcolor="#DDDDDD"><b>Ihr Name</b></td>
-      <td> 
-        <input type="text" size="40" name="lastname" value="<?=$tmp->Lastname;?>">
-      </td>
-      <td rowspan="2">
-        Hier können Sie Ihren Namen ändern! 
-      </td>
-    </tr>
-    <tr> 
-      <td align="right" <?=isset($errors->firstname)?'class="warning"':''?> bgcolor="#DDDDDD"><b>Ihr Vorname</b></td>
-      <td> 
-        <input type="text" size="40" name="firstname" value="<?=$tmp->Firstname;?>"
-      </td>
-    </tr>
-    <tr> 
-      <td align="right" <?=isset($errors->email)?'class="warning"':''?> bgcolor="#DDDDDD"><b>Ihre Email Adresse </b></td>
-      <td> 
-        <input type="text" size="40" name="email" value="<?=$tmp->Email;?>">
-      </td>
-      <td>
-        Hier k&ouml;nnen Sie Ihre Email Adresse &auml;ndern.<br>
-        Haben Sie keine email-Adresse, dann klicken Sie bitte <a href="%20">hier</a>.
-      </td>
-    </tr> -->
-
-
+     $i = 0;
+     ?><tr><?php
+  
+     if(empty($alllang)){
+        ?><td colspan="2">No languages found in database!</td><?php
+     } else {  
+        while( $i < 2){
+           if($i == 0) {
+              ?><td><select name="fromlang" size="5"><?php
+           } else {
+              ?><td><select name="tolang" size="5"><?php
+           }
+           foreach($alllang as $v1) {
+              $j = 0;
+                 foreach($v1 as $v2) {
+                    if($j == 0) {
+                       ?><option value="<?php echo $v2;?>"><?php
+                       $j = 1;   
+                    } else {
+                       echo $v2;?></option><?php
+                    }
+                 }
+           }
+        ?></select></td><?php
+        $i = $i + 1;
+     }
+     if(empty($allcateg)){
+        ?><td>No categories found in database!</td><?php
+     } else {
+        ?><td><select name="kat" size="5"><?php
+        foreach($allcateg as $v1) {
+           $j = 0;
+           foreach($v1 as $v2) {
+              if($j == 0) {
+                 ?><option value="<?php echo $v2;?>"><?php
+                 $j = 1;   
+              } else {
+                 echo $v2;?></option><?php
+              }
+           }
+        }
+        ?></select></td><?php
+     }
+  }
+  ?></tr>
     <tr> 
       <td align="center" colspan="3" bgcolor="#EEEEEE"> 
         <input type="submit" name="change" value="Daten speichern">

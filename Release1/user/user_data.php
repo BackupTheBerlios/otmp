@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/user_data.php,v $
- * $Revision: 1.10 $
- * $Id: user_data.php,v 1.10 2001/12/19 00:16:17 hifix Exp $
+ * $Revision: 1.11 $
+ * $Id: user_data.php,v 1.11 2002/01/09 13:58:48 alexgn Exp $
  *
  * To Do:
  * - Quelltext aufraeumen!
@@ -59,25 +59,26 @@ function getUserTransCapData($userid) {
   return  sql_getUserTransCapData($userid);
 }
 
+/* Function is not used */
 function getUserProgrammData($userid, $archive) {
 
 $tmp2 = sql_getUserProgrammData($userid,$archive);
-           if(empty($tmp2)) {
-     echo ("Keine Angaben");
+     if(empty($tmp2)) {
+       echo ("Keine Angaben");
      } else {
-    foreach($tmp2 as $v1) {
-      $i = 0;
-      foreach($v1 as $v2){
-         if ($i == 0) {
-        echo ($v2. " ");
-        $i = 1;
-         } else {
-        echo ($v2. "<br>");
-        $i = 0;
+       foreach($tmp2 as $v1) {
+         $i = 0;
+         foreach($v1 as $v2){
+            if ($i == 0) {
+               echo ($v2. " ");
+               $i = 1;
+            } else {
+               echo ($v2. "<br>");
+               $i = 0;
+            }
          }
-      }
+       }
     }
-           }
 }
 
 

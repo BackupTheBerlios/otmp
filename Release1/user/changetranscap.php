@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changetranscap.php,v $
- * $Revision: 1.5 $
- * $Id: changetranscap.php,v 1.5 2001/12/18 00:17:37 alexgn Exp $
+ * $Revision: 1.6 $
+ * $Id: changetranscap.php,v 1.6 2002/01/09 13:56:45 alexgn Exp $
  *
  * To Do:
  * - 
@@ -54,7 +54,6 @@ if (match_referer() && isset($HTTP_POST_VARS)) {
     die;
   }
 }
-/* Check that user is logged in is missing! */
 
 $DOC_TITLE = "Change Translation Capabilities Data";
 $tmp = get_user_info($session['username']);
@@ -121,6 +120,7 @@ function deletemarked(&$frm,$userid) {
   
 }
 
+/* function obsolete */
 function getUserTransCapData($userid) {
 /* function returns users translation capabilities */
 $tmp2 = sql_getUserTransCapData($userid);
