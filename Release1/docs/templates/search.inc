@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/templates/search.inc,v $
- * $Revision: 1.1 $
- * $Id: search.inc,v 1.1 2001/12/16 21:58:01 alexgn Exp $
+ * $Revision: 1.2 $
+ * $Id: search.inc,v 1.2 2001/12/18 00:13:36 alexgn Exp $
  *
  * Signup Formular
  *
@@ -31,8 +31,32 @@ Hinweise zu den einzelnen Felder stehen rechts daneben. <? } ?>
       <td> 
         <input type="text" size="40" name="keywordtitle" value="">
       </td>
-      <td rowspan="1">
+      <td>
         Geben Sie hier ein Stichwort ein, nach dem gesucht werden soll! 
+      </td>
+    </tr>
+    <tr>
+      <td align="right" bgcolor="#DDDDDD"><b>Suche in</b>
+      </td>
+      <td>
+	<select name="search_in" size="1">
+          <option value="TextTitel" selected>Text Titel</option>
+          <option value="TextAbstract">Text Abstract</option>
+        </select>
+      </td>
+      <td> 
+      </td>
+    </tr>
+    <tr>
+      <td align="right" bgcolor="#DDDDDD"><b>Sprache</b>
+      </td>
+      <td>
+	<select name="lang">
+          <option value="" <?=isempty($frm['lang'],0)?'selected':''?>>Alle Sprachen</option>
+          <?=db_listbox(sql_SQL4LangIdAndName(),nvl($frm['lang']))?> 
+        </select>
+      </td>
+      <td> 
       </td>
     </tr>
     <tr> 
