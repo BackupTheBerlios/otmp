@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changepersonaldata.php,v $
- * $Revision: 1.2 $
- * $Id: changepersonaldata.php,v 1.2 2001/12/05 01:10:48 alexgn Exp $
+ * $Revision: 1.3 $
+ * $Id: changepersonaldata.php,v 1.3 2001/12/16 13:12:48 alexgn Exp $
  *
  * To Do:
  * - 
@@ -14,6 +14,8 @@
  *****************************************************************************/
 
 include("../application.php");
+$session['wantsurl']=me();  // Rücksprung (ggf)
+checklogin();
 
 /* form has been submitted, changing user data */
 if (match_referer() && isset($HTTP_POST_VARS)) {

@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/changepassword.php,v $
- * $Revision: 1.1 $
- * $Id: changepassword.php,v 1.1 2001/12/07 18:19:20 alexgn Exp $
+ * $Revision: 1.2 $
+ * $Id: changepassword.php,v 1.2 2001/12/16 13:13:20 alexgn Exp $
  *
  * To Do:
  * - 
@@ -14,6 +14,9 @@
  *****************************************************************************/
 
 include("../application.php");
+$session['wantsurl']=me();  // Rücksprung (ggf)
+checklogin();
+
 
 /* form has been submitted, changing user data */
 if (match_referer() && isset($HTTP_POST_VARS)) {
