@@ -1,7 +1,7 @@
 <? /*
     * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/prototyp/main.php,v $ 
-    * $Revision: 1.4 $
-    * $Id: main.php,v 1.4 2001/11/14 20:24:52 hifix Exp $
+    * $Revision: 1.5 $
+    * $Id: main.php,v 1.5 2001/11/20 12:35:32 alexgn Exp $
     */
 ?>
 <html>
@@ -34,7 +34,7 @@
 <font color="#000000"> OTMP ist eine offene &Uuml;bersetzungsplattform, auf der 
 Sie Ihre Texte in verschiedene andere Sprachen &uuml;bersetzen lassen k&ouml;nnen. 
 Dazu m&uuml;ssen sie sich <a href="user/signup.php">anmelden</a> falls Sie noch 
-keine Zugangsdaten haben oder <a href="/www/prototyp/user/login.php">einloggen</a> 
+keine Zugangsdaten haben oder <a href="user/login.php">einloggen</a> 
 falls Sie schon &uuml;ber einen Benutzernamen und Passwort verf&uuml;gen.<br>
 <br>
 OTMP ist auf gute &Uuml;bersetzer angewiesen, und daher stets auf der Suche nach 
@@ -44,12 +44,13 @@ Sie sich ja gleich <a href="user/signup.php">anmelden</a>!<br>
 <br>
 Wir w&uuml;nschen Ihnen viel Spass und Erfolg mit unserem System!</font> 
 <ul>
-  <li><a href="user/login.php">Anmelden</a></li>
+  <li><a href="user/signup.php">Neu anmelden</a></li>
   <li><a href="doc/what.html">Was ist OTMP ?</a></li>
   <li><a href="doc/faq.html">H&auml;ufig gestellte Fragen (FAQ)</a></li>
 </ul>
 <ul>
-  <li><a href="upload.php">Text zur &Uuml;bersetzung hochloaden </a></li>
+  <li><a href="user/login.php">Einloggen</a></li>
+  <li><a href="upload.php">Text zur &Uuml;bersetzung hochladen </a></li>
   <li><a href="show.php?list=open">Text &uuml;bersetzen</a></li>
   <li><a href="show.php?list=all"> Alle Texte anzeigen</a> </li>
 </ul>
@@ -57,6 +58,6 @@ Wir w&uuml;nschen Ihnen viel Spass und Erfolg mit unserem System!</font>
   | <a href="upload.php">upload</a> | <a href="contact.php">contact</a> | <a href="help.php">help</a><br>
   <a href="user/login.php">login</a><br>
   <br>
-  $Revision: 1.4 $ &copy; 2001 otmp-developer :)</p>
+  $Revision: 1.5 $ &copy; 2001 otmp-developer :)</p>
 </body>
 </html>
