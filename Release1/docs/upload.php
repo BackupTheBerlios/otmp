@@ -3,8 +3,8 @@
  * Dokument Upload
  *
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/docs/upload.php,v $
- * $Revision: 1.3 $
- * $Id: upload.php,v 1.3 2001/12/10 10:15:49 hifix Exp $
+ * $Revision: 1.4 $
+ * $Id: upload.php,v 1.4 2001/12/16 22:29:22 hifix Exp $
  *
  * To Do:
  * - LOcalisation
@@ -33,6 +33,7 @@ if (match_referer() && isset($HTTP_POST_VARS)) {
     $DOC_TITLE = "Upload Successful";
     include("$CFG->templatedir/header.php");
     include("templates/upload_success.inc");
+    include("templates/document_details.inc");
     include("templates/maketask_form.inc");
     include("$CFG->templatedir/footer.php");
     die;
@@ -95,5 +96,6 @@ function upload_file(&$frm) {
   return sql_addNewText($frm['title'],nvl($frm['abstract']),nvl($frm['length'],0),$frm['lang'],nvl($frm['cat'],0),nvl($frm['filetyp'],0),$session['userid']); 
   
 }
+
 
 ?>
