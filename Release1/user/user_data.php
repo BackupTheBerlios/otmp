@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/user/user_data.php,v $
- * $Revision: 1.2 $
- * $Id: user_data.php,v 1.2 2001/12/05 01:11:16 alexgn Exp $
+ * $Revision: 1.3 $
+ * $Id: user_data.php,v 1.3 2001/12/07 23:56:25 alexgn Exp $
  *
  * To Do:
  * - 
@@ -24,13 +24,19 @@ $DOC_TITLE = "User Account Info";
 if ( isset($session['userid']) ){
  
 	$tmp = get_user_info($session['username']);
-	/* echo $tmp->Firstname; */
 
 	include("$CFG->templatedir/header.php");
 	include("templates/user_data.inc");
+	/* if user = uebersetzer */
+		/* include user_dataUeb.inc */
+	/* else include </table></center> */
+ 	/* end if */
+	include("templates/user_dataUeb.inc");
 	include("$CFG->templatedir/footer.php");
-} else {  
-        echo("you are not logged in: <a href=\"=$CFG->wwwroot/user/login.php\">login</a>");
+} else {
+	include("$CFG->templatedir/header.php");  
+        echo("<br><br>you are not logged in: <a href=\"$CFG->wwwroot/user/login.php\">login</a><br><br>");
+	include("$CFG->templatedir/footer.php");
 } 
 
 /******************************************************************************
@@ -44,10 +50,26 @@ function get_user_info($LoginName) {
 
 }
 
-function insert_user(&$frm) {
-/* add the new user into the database */
- 
-  return sql_addNewUser($frm['lastname'], $frm['firstname'], $frm['email'], $frm['username'], $frm['password']);
+function getUserProgrammData($userid) {
+
+$tmp2 = sql_getUserProgrammData($userid);
+           if(is_null($tmp2)) {
+	   echo ("Keine Angaben");
+	   } else {
+		foreach($tmp2 as $v1) {
+			$i = 0;
+			foreach($v1 as $v2){
+			   if ($i == 0) {
+				echo ($v2. " ");
+				$i = 1;
+			   } else {
+				echo ($v2. "<br>");
+				$i = 0;
+			   }
+			}
+		}
+           }
 }
+
 
 ?>
