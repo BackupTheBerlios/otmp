@@ -1,12 +1,15 @@
 #
 # Beispielsql für OTMP
-# $Id: examples.sql,v 1.5 2001/12/14 09:34:57 darkpact Exp $
-# $Revision: 1.5 $
+# $Id: examples.sql,v 1.6 2001/12/14 17:31:15 hifix Exp $
+# $Revision: 1.6 $
 #
 # ----------------------------------------------------------------------
 # Log for examples.sql
 # ----------------------------------------------------------------------
 # $Log: examples.sql,v $
+# Revision 1.6  2001/12/14 17:31:15  hifix
+# Sprachen nochmal neu! (wg. event. Abschnitte durch Varchar(25))
+#
 # Revision 1.5  2001/12/14 09:34:57  darkpact
 # Anpassung der Beispile an die tables 1.14 und das neue Sprachverzeichnis
 #
@@ -21,7 +24,7 @@
 # added languages (iso) !!!
 #
 # ----------------------------------------------------------------------
-# Diese Version wurde zuletzt mit Revision 1.13 der tables.sql getestet.
+# Diese Version wurde zuletzt mit Revision 1.14 der tables.sql getestet.
 #
 # Database : `otmp`
 # Achtung: Diese BeispielSQL sollte nach einem Delete auf die Tabellen eingespielt werden!
@@ -201,7 +204,7 @@ INSERT INTO otmp_Sprache (SpracheSID, SpracheName, SpracheAbkuerzung, SpracheSor
 INSERT INTO otmp_Sprache (SpracheSID, SpracheName, SpracheAbkuerzung, SpracheSort) VALUES ('35', 'Kasachisch', 'kk', '255');
 INSERT INTO otmp_Sprache (SpracheSID, SpracheName, SpracheAbkuerzung, SpracheSort) VALUES ('36', 'Slowakisch', 'sk', '255');
 INSERT INTO otmp_Sprache (SpracheSID, SpracheName, SpracheAbkuerzung, SpracheSort) VALUES ('37', 'Bislamisch', 'bi', '255');
-INSERT INTO otmp_Sprache (SpracheSID, SpracheName, SpracheAbkuerzung, SpracheSort) VALUES ('38', 'Kalaallisut (Grönländisch', 'kl', '255');
+INSERT INTO otmp_Sprache (SpracheSID, SpracheName, SpracheAbkuerzung, SpracheSort) VALUES ('38', 'Kalaallisut (Grönländisch)', 'kl', '255');
 INSERT INTO otmp_Sprache (SpracheSID, SpracheName, SpracheAbkuerzung, SpracheSort) VALUES ('39', 'Slowenisch', 'sl', '255');
 INSERT INTO otmp_Sprache (SpracheSID, SpracheName, SpracheAbkuerzung, SpracheSort) VALUES ('40', 'Bengalisch', 'bn', '255');
 INSERT INTO otmp_Sprache (SpracheSID, SpracheName, SpracheAbkuerzung, SpracheSort) VALUES ('41', 'Kambodschanisch', 'km', '255');
