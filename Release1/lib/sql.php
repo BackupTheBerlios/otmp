@@ -1,8 +1,8 @@
 <?
 /*
  * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/lib/sql.php,v $
- * $Revision: 1.24 $
- * $Id: sql.php,v 1.24 2001/12/15 17:34:33 hifix Exp $
+ * $Revision: 1.25 $
+ * $Id: sql.php,v 1.25 2001/12/16 13:15:43 alexgn Exp $
  *
  * sql.php
  * This file stores all sql commands in functions.
@@ -98,6 +98,14 @@ function sql_updateUser($lastname, $firstname, $email,$userid) {
 /* Update User Data in the Database */
   global $CFG;
   $query = "UPDATE $CFG->tbl_user SET PersonName = '$lastname', PersonVorname= '$firstname', PersonEmail= '$email' WHERE PersonPID= '$userid'";
+  $qid = db_query($query);
+  return $qid;
+}
+
+function sql_changeUserToTranslator($userid) {
+/* set PersonUebersetzer = 1 */
+   global $CFG;
+   $query = "UPDATE $CFG->tbl_user SET PersonUebersetzer = 1  WHERE PersonPID= '$userid'";
   $qid = db_query($query);
   return $qid;
 }
