@@ -1,8 +1,8 @@
 <?
 /*
 * $Source: /home/xubuntu/berlios_backup/github/tmp-cvs/otmp/Repository/Release1/templates/header.php,v $
-* $Revision: 1.3 $
-* $Id: header.php,v 1.3 2001/12/09 13:34:26 darkpact Exp $
+* $Revision: 1.4 $
+* $Id: header.php,v 1.4 2001/12/10 22:06:57 darkpact Exp $
 *
 *
 * ToDo:
@@ -21,8 +21,8 @@
 
 <body bgcolor="#FFFFFF" leftmargin="3" topmargin="1" marginwidth="1">
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
-  <tr bgcolor="#898989">
-    <td><div align="right"><b><font color="#FFFFFF">
+  <tr bgcolor="#8989FF">
+    <td><div align="right"><b><font color="#000000">
     <? if ( isset($session['userid']) ){ ?>
         Dein Status: Eingelogged als <?=$session['username']?>
     <? } else { ?>
@@ -30,7 +30,7 @@
     <? } ?>
     </font></b></div></td>
   </tr>
-  <tr bgcolor="#CCCCCC">
+  <tr bgcolor="#BBBBFF">
     <td><b class="logo">OTMP</b></td>
   </tr>
 </table>
